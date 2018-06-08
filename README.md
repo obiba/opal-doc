@@ -1,2 +1,2 @@
-# opal-doc
-Opal documentation
+# mica-doc
+Mica documentation

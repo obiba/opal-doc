@@ -1,0 +1,4 @@
+# Build PDF & HTML
+formats:
+    - pdf
+    - htmlzip
