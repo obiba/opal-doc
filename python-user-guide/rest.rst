@@ -1,11 +1,11 @@
 Web Services
 ============
 
-This command is for advanced users wanting to directly access to the REST API of Mica server.
+This command is for advanced users wanting to directly access to the REST API of Opal server.
 
 .. code-block:: bash
 
-  mica rest ws <CREDENTIALS> [OPTIONS] [EXTRA]
+  opal rest ws <CREDENTIALS> [OPTIONS] [EXTRA]
 
 Arguments
 ---------
@@ -13,7 +13,7 @@ Arguments
 ======== ===========
 Argument Description
 ======== ===========
-``ws``	 Web service path, for instance: /user/xxx
+``ws``	 Web service path, for instance: /project/xxx
 ======== ===========
 
 Credentials
@@ -21,13 +21,15 @@ Credentials
 
 Authentication is done by username/password credentials.
 
-==================================== ====================================
-Option                               Description
-==================================== ====================================
-``--mica MICA, -mk MICA``            Mica server base url.
-``--user USER, -u USER``             User name. User with appropriate permissions is expected depending of the REST resource requested.
-``--password PASSWORD, -p PASSWORD`` User password.
-==================================== ====================================
+===================================== ====================================
+Option                                Description
+===================================== ====================================
+``--opal OPAL, -o OPAL``              Opal server base url.
+``--user USER, -u USER``              User name. User with appropriate permissions is expected depending of the REST resource requested.
+``--password PASSWORD, -p PASSWORD``  User password.
+``--ssl-cert SSL_CERT, -sc SSL_CERT`` Path to the certificate (public key) file
+``--ssl-key SSL_KEY, -sk SSL_KEY``    Path to the private key file
+===================================== ====================================
 
 Options
 -------
@@ -38,6 +40,7 @@ Option                                            Description
 ``--method METHOD, -m METHOD``                    HTTP method: GET (default), POST, PUT, DELETE, OPTIONS.
 ``--accept ACCEPT, -a ACCEPT``                    Accept header (default is application/json).
 ``--content-type CONTENT_TYPE, -ct CONTENT_TYPE`` Content-Type header (default is application/json).
+``--headers HEADERS, -hs HEADERS``                Custom headers in the form of: { "Key2": "Value2", "Key2": "Value2" }
 ``--json, -j``                                    Pretty JSON formatting of the response.
 ================================================= ====================================
 
@@ -54,20 +57,20 @@ Option            Description
 Example
 -------
 
-Get all the published studies visible to an anonymous user.
+Get the list of all datasources:
 
 .. code-block:: bash
 
-  mica rest /studies -m GET -mk https://mica-demo.obiba.org -u anonymous -p password -a application/json -j
+  opal rest /datasources --opal https://opal-demo.obiba.org --user administrator --password password --json
 
-Add a new individual study document:
-
-.. code-block:: bash
-
-  mica rest /draft/individual-studies -m POST -u administrator -p password -mk https://mica-demo.obiba.org -a application/json < patate-study.json
-
-Search all files of the draft version of a network:
+Get the list of all tables of datasource 'medications':
 
 .. code-block:: bash
 
-  mica rest /draft/files-search/network/some-network -m GET -mk https://mica-demo.obiba.org -u administrator -p password -a application/json -j
+  opal rest /datasource/medications/tables --opal https://opal-demo.obiba.org --user administrator --password password --json
+
+Get the list of tables with entity id '6397957' of type 'Participant':
+
+.. code-block:: bash
+
+  opal rest /entity/6397957/type/Participant/tables --opal https://opal-demo.obiba.org --user administrator --password password --json

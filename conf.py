@@ -19,7 +19,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = u'Mica'
+project = u'Opal'
 copyright = u'2018, OBiBa'
 author = u'OBiBa'
 
@@ -102,7 +102,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'Micadoc'
+htmlhelp_basename = 'Opaldoc'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -129,7 +129,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'Mica.tex', u'Mica Documentation',
+    (master_doc, 'Opal.tex', u'Opal Documentation',
      u'OBiBa', 'manual'),
 ]
 
@@ -139,7 +139,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'mica', u'Mica Documentation',
+    (master_doc, 'opal', u'Opal Documentation',
      [author], 1)
 ]
 
@@ -150,8 +150,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'Mica', u'Mica Documentation',
-     author, 'Mica', 'One line description of project.',
+    (master_doc, 'Opal', u'Opal Documentation',
+     author, 'Opal', 'One line description of project.',
      'Miscellaneous'),
 ]
 
