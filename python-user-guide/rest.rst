@@ -16,6 +16,18 @@ Argument Description
 ``PATH``	 Web service path, for instance: /project/xxx
 ======== ===========
 
+Options
+-------
+
+================================================= ====================================
+Option                                            Description
+================================================= ====================================
+``--method METHOD, -m METHOD``                    HTTP method: GET (default), POST, PUT, DELETE, OPTIONS.
+``--accept ACCEPT, -a ACCEPT``                    Accept header (default is application/json).
+``--content-type CONTENT_TYPE, -ct CONTENT_TYPE`` Content-Type header (default is application/json).
+``--headers HEADERS, -hs HEADERS``                Custom headers in the form of: { "Key2": "Value2", "Key2": "Value2" }
+================================================= ====================================
+
 Credentials
 -----------
 
@@ -30,18 +42,6 @@ Option                                Description
 ``--ssl-cert SSL_CERT, -sc SSL_CERT`` Path to the certificate (public key) file
 ``--ssl-key SSL_KEY, -sk SSL_KEY``    Path to the private key file
 ===================================== ====================================
-
-Options
--------
-
-================================================= ====================================
-Option                                            Description
-================================================= ====================================
-``--method METHOD, -m METHOD``                    HTTP method: GET (default), POST, PUT, DELETE, OPTIONS.
-``--accept ACCEPT, -a ACCEPT``                    Accept header (default is application/json).
-``--content-type CONTENT_TYPE, -ct CONTENT_TYPE`` Content-Type header (default is application/json).
-``--headers HEADERS, -hs HEADERS``                Custom headers in the form of: { "Key2": "Value2", "Key2": "Value2" }
-================================================= ====================================
 
 Extras
 ------

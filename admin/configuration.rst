@@ -1,199 +1,158 @@
 Configuration
 =============
 
-The file **MICA_HOME/conf/application.yml** is to be edited to match your server needs. This file is written in YAML format allowing to specify a hierarchy within the configuration keys. The YAML format uses indentations to express the different levels of this hierarchy. The file is already pre-filled with default values (to be modified to match your configuration), just be aware that you should not modify the indentations. In the following documentation, the configuration keys will be presented using the dot-notation (levels are separated by dots) for readability.
+Main Configuration File
+-----------------------
+
+The file **OPAL_HOME/conf/opal-config.properties** is to be edited to match your server needs.
 
 HTTP Server Configuration
--------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Mica server is a web application and as such, you need to specify on which ports the web server should listen to incoming requests.
+Opal web services and web application user interface can be accessed through HTTP or secured HTTP requests. The HTTP(S) connection ports can be configured.
 
-=============== ==================
-Property        Description
-=============== ==================
-``server.port`` HTTP port number. Generally speaking this port should not be exposed to the web. Use the https port instead.
-``server.host`` Web server host name.
-``https.port``  HTTPS port number.
-=============== ==================
+=========================================== =========================================================================
+Property                                    Description
+=========================================== =========================================================================
+``org.obiba.opal.http.port``                The port to use for listening for HTTP connections. Default value is 8080, -1 to disable.
+``org.obiba.opal.https.port``               The port to use for listening for HTTPS connections. Default value is 8443, -1 to disable.
+``org.obiba.opal.ajp.port``                 The port to use for the Apache JServ Protocol. Default is -1 (disabled).
+``org.obiba.opal.maxIdleTime``              The maximum time a single read/write HTTP operation can take in millis (default is 30000). See `idleTimeout Jetty configuration <http://www.eclipse.org/jetty/documentation/current/configuring-connectors.html>`_.
+``org.obiba.opal.ssl.excludedProtocols``    Specify the SSL/TLS protocols to be excluded. Usually SSLv3 will be excluded. Use commas for separating multiple protocol names. Default is no protocol is excluded (for legacy reason). See `JSSE Provider documentation <http://docs.oracle.com/javase/8/docs/technotes/guides/security/SunProviders.html#SunJSSEProvider>`_.
+``org.obiba.opal.ssl.includedCipherSuites`` Specify which Cipher Suites to be included. Use commas for separating multiple cipher suites names. Default is all that is available. See `JSSE Provider documentation <http://docs.oracle.com/javase/8/docs/technotes/guides/security/SunProviders.html#SunJSSEProvider>`_.
+=========================================== =========================================================================
 
-MongoDB Server Configuration
-----------------------------
+The HTTPS server requires a certificate. If none can be found Opal creates a default one to ensure that HTTPS is always available. It should be configured afterward, following the procedure described in HTTPS Configuration.
 
-Mica server will store its data (system configuration, networks, studies, datasets, etc.) in a MongoDB database. You must specify how to connect to this database.
+SSH Server Configuration
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-=========================== ===========================
+Opal is accessible using SSH clients: SFTP is available through SSH connections. The SSH connection port can be configured.
+
+=========================== =========================================================================
 Property                    Description
-=========================== ===========================
-``spring.data.mongodb.uri`` MongoDB URI. `Read Standard Connection <https://docs.mongodb.com/manual/reference/connection-string/>`_ String Format to learn more.
-=========================== ===========================
+=========================== =========================================================================
+``org.obiba.opal.ssh.port`` The port to use for listening for SSH connections. Default value is 8022.
+=========================== =========================================================================
 
-By default MongoDB does not require any user name, it is highly recommended to configure the database with a user. This can be done by enabling the Client Access Control procedure.
+SMTP Server Configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Follow these steps to enable the Client Access Control on your server:
+Opal is able to send emails to notify that a rapport has been produced. To allow this, it is required to configuration to a SMTP server.
 
-* create a user with the proper roles on the target databases
-* restart the MongoDB service with Client Access Control enabled
+================================ =========================================================================
+Property                         Description
+================================ =========================================================================
+``org.obiba.opal.smtp.host``     The SMTP server host name.
+``org.obiba.opal.smtp.port``     The SMTP server port number.
+``org.obiba.opal.smtp.from``     The "From" email address when sending emails.
+``org.obiba.opal.smtp.auth``     A flag to indicated if authentication against SMTP server is required. Allowed values are: true/false. Default is false (usually not required when server is in the same intranet).
+``org.obiba.opal.smtp.username`` The SMTP user name to be authenticate (if authentication is activated).
+``org.obiba.opal.smtp.password`` The SMTP user password (if authentication is activated).
+================================ =========================================================================
 
-.. note::
+R Server Configuration
+~~~~~~~~~~~~~~~~~~~~~~
 
-  Once the MongoDB service runs with Client Access Control enabled, all database connections require authentication.
+Opal is able to perform R queries by talking with a running Rserve. Opal does not provide R and Rserve: see R Server Installation Guide. Rserve version must be 0.6+. The properties for connecting to Rserve are the following:
 
-**MongoDB User Creation Example**
-
-The example below creates the *micaadmin* user for *mica* database:
-
-.. code-block:: javascript
-
-  use admin
-
-  db.createRole({
-    role: 'obibauser',
-    privileges:[{
-        resource: {anyResource: true},
-        actions: ['anyAction']
-    }],
-    roles: []
-  });
-
-  db.createUser({
-    user: "micaadmin",
-    pwd: "micaadmin",
-    roles: ['obibauser']
-  });
-
-Here is the required configuration snippet in **/etc/mica/application.yml** for the above user:
-
-.. code-block:: yaml
-
-  spring:
-    data:
-      mongodb:
-        uri: mongodb://micaadmin:micaadmin@localhost:27017/mica?authSource=admin
-
-.. note::
-
-  Mica requires either **clusterMonitor** or **readAnyDatabase** role on the *admin* database for validation operations. The first role is useful for a cluster setup and the latter if your MongoDB is on a single server.
-
-Opal Server Configuration
--------------------------
-
-Mica server uses Opal to retrieve data dictionaries, data summaries and variable taxonomies. This server is sometimes referred as the Opal primary server (secondary servers can be defined at study level). If you want to publish datasets, the following Opal connection details needs to be configured.
-
-================= ================================================================
-Property          Description
-================= ================================================================
-``opal.url``      Opal server URL. It is highly recommended to use https protocol.
-``opal.username`` User name for connection to Opal server.
-``opal.password`` User password for connection to Opal server.
-================= ================================================================
-
-Mica server should connect to Opal and access to some selected tables only with the lowest level of permissions (View dictionary and summary, i.e. no access to individual data). Please refer to the Opal Table Documentation for more details about the permissions that can be applied on a table.
-
-Mica Server Configuration
---------------------------
-
-Mica server uses Mica as a user directory and as a notification emails service. From the Mica point of view, Mica is not a user: it is an application. Each time Mica needs a service from Mica, it will provide the information necessary to its identification. The application credentials registered in Mica are to be specified in this section. If you want to specify advanced permissions or allow users to submit data access requests, the following Mica connection details needs to be configured.
-
-========================== ================================================================
-Property                   Description
-========================== ================================================================
-``agate.url``              Mica server URL. It is highly recommended to use https protocol.
-``agate.application.name`` Application name for connection to Mica server.
-``agate.application.key``  Application key for connection to Mica server.
-========================== ================================================================
-
-Shiro Configuration
--------------------
-
-`Shiro <http://shiro.apache.org/>`_ is the authentication and authorization framework used by Mica. There is a minimum advanced configuration that can be applied to specify how Shiro will hash the password. In practice this only applies to the users defined in the shiro.ini file. Default configuration is usually enough.
-
-=================================== ================================
+=================================== =========================================================================
 Property                            Description
-=================================== ================================
-``shiro.password.nbHashIterations`` Number of re-hash operations.
-``shiro.password.salt``             Salt to be applied to the hash.
-=================================== ================================
+=================================== =========================================================================
+``org.obiba.rserver.port``          Port number of the R server controller (allows Opal to start/stop the R server).
+``org.obiba.opal.Rserve.host``      Hostname of the Rserve daemon (default is blank, i.e. the one defined by Rserve (localhost))
+``org.obiba.opal.Rserve.port``      TCP port to connect to (default is blank, i.e. the one defined by Rserve (6311))
+``org.obiba.opal.Rserve.username``  Username to use for login-in to Rserve (none by default)
+``org.obiba.opal.Rserve.password``  Password to use for login-in to Rserve (none by default)
+``org.obiba.opal.Rserve.encoding``  Character encoding for strings (default is utf8)
+``org.obiba.opal.r.sessionTimeout`` Time in minutes after which an active R session will be automatically terminated (default is 4 hours).
+=================================== =========================================================================
 
-Elasticsearch Configuration
----------------------------
+Agate Server Configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Mica server embeds `Elasticsearch <https://www.elastic.co/>`_ as its search engine. Elasticsearch is a key functionality of Mica as the process of publication consist in indexing documents (networks, studies, variables etc.) in the search engine. Advanced queries can be applied on the published documents. Elasticsearch is embeded, i.e. it is not an external application. Mica's Elasticsearch can be part of a cluster of Elasticsearch cluster. The configuration of the Elasticsearch node and how it should connect to the other nodes of the cluster can be specified in this section. Default configuration is usually enough.
+Opal user lookup can include the Agate's user realm. Default configuration enables connection to a Agate server.
 
-=================================== ================================
-Property                            Description
-=================================== ================================
-``elasticsearch.dataNode``          Boolean to specify if this node has data or if it is just a proxy to other nodes in a cluster.
-``elasticsearch.clusterName``       Cluster identifier.
-``elasticsearch.shards``            Number of shards.
-``elasticsearch.replicas``          Number of replicas.
-``elasticsearch.settings``          A string in JSON or YAML format to define other elasticsearch settings. See Elasticsearch Documentation for advanced settings.
-``elasticsearch.transportClient``   Boolean to indicate to use the Transport Client instead of creating an elasticsearch Node.
-``elasticsearch.transportAddress``  Elasticsearch service IP address and port when using the Transport Client, defaults to the localhost at port 9300.
-``elasticsearch.transportSniff``    Boolean to indicate the Transport Client to collect IP addresses from nodes in an elasticsearch cluster.
-=================================== ================================
+================================ =========================================================================
+Property                         Description
+================================ =========================================================================
+``org.obiba.realm.url``          Address to connect to Agate server. Default is https://localhost:8444. To disable Agate connection, specify an empty value for this property.
+``org.obiba.realm.service.name`` Application name of this Opal instance in Agate. Default is opal.
+``org.obiba.realm.service.key``  Application key of this Opal instance in Agate. Default is changeit.
+================================ =========================================================================
 
-**Elasticsearch Cluster**
+Miscelaneous Configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Mica can be set to join or connect to an Elasticsearch cluster. You need to set *elasticsearch.clusterName* to the name of the cluster you want to join. There are different possible `cluster topologies <https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html>`_, each of which has different resource utilization profiles in terms or memory and CPU.
+Advanced settings.
 
-.. note::
+======================================== =========================================================================
+Property                                 Description
+======================================== =========================================================================
+``org.obiba.opal.keys.entityType``       Type of entities to store in the identifiers table.
+``org.obiba.opal.keys.tableReference``   Fully-qualified name of the identifiers table
+``org.obiba.opal.taxonomies``            Comma separated list of URIs to taxonomy files in YAML format. Note that file URI schema is supported (allows to read locally defined taxonomy).
+``org.obiba.opal.plugins.site``          The URL to the plugins repository (default is http://obiba.org/assets). A plugin repository is not just a list of files, meta-data information about plugins are expected to be provided by a plugins.json file.
+``org.obiba.opal.ssl.excludedProtocols`` SSL/TLS (comma separated) protocols that HTTPS server must not reply to. Typical configuration value would be: SSLv3. Default is to not exclude any of the SSL/TLS protocols.
+``org.obiba.opal.maxFormContentSize``    Maximum body size of a HTTP(S) form post request. Default value is "200000" bytes.
+``org.obiba.opal.ws.messageSizeLimit``   Limit of the Protobuf message size. Default value is "524288000" bytes (500MB).
+``org.obiba.magma.entityIdNames``        Specify the column name per entity type to be used for the entity identifier when exporting data to a file (CSV, SAS, SPSS, Stata). If empty for the considered entity type, the default column name will apply. The format to be used is a comma-separated key-value list, for instance: ``org.obiba.magma.entityIdNames=Participant=Idepic,Biomarker=Biom_Id``
+``org.obiba.magma.entityIdName``         Specify the default column name to be used for the entity identifier when exporting data to a file (CSV, SAS, SPSS, Stata). If empty, this name depends on the file format.
+======================================== =========================================================================
 
-  To avoid API incompatibility issues, the recommended version of `Elasticsearch server is 2.4 <https://www.elastic.co/downloads/past-releases/elasticsearch-2-4-4>`_.
+Advanced Configuration File
+--------------------------------
 
+The file **OPAL_HOME/data/opal-config.xml** can be edited to match some of your server needs.
 
-An example of a configuration to join an elasticsearch cluster using a `Client Node <https://www.elastic.co/guide/en/elasticsearch/reference/2.2/modules-node.html#client-node>`_:
+File System Root
+~~~~~~~~~~~~~~~~
 
-.. code-block:: yaml
+Opal offers a "file system" in which users may manipulate files without having a user defined in the OS running Opal. That is, all interactions with the underlying file-system go through a unique system-user: the one that runs the Opal server.
 
-  elasticsearch:
-    clusterName: mycluster
-    dataNode: false
-    settings: '{"node.master": false, "node.local": false}'
+The Opal file system root is set by default to be OPAL_HOME/fs. To change it, modify the following statement:
 
-An example of a configuration using the transport client:
+.. code-block:: xml
 
-.. code-block:: yaml
+  <!-- Windows example -->
+  <fileSystemRoot>C:/opal-filesystem</fileSystemRoot>
 
-  elasticsearch:
-    clusterName: mycluster
-    transportClient: true
-    transportAddress: "myhost:9300"
+Several types of file root names are recognized:
 
-**Elasticsearch Server Configuration**
+* Absolute URI. These must start with a scheme, such as 'file:', followed by a scheme dependent file name. For example:
 
-Mica uses the scripting capabilities of Elasticsearch. All the machines in the Elasticsearch cluster should have the scripting module enabled by setting the following values in the *elasticsearch.yml* configuration file (location of this file depends on how your elasticsearch service is installed):
+    file:/c:/dir/somedir
 
-.. code-block:: yaml
+* Absolute local file name. For example, /home/someuser/somedir or c:\dir\somedir. Elements in the name can be separated using any of the following characters: /, \, or the native file separator character. For example, the following file names are the same:
 
-  script:
-    inline: true
-    indexed: true
+    c:\dir\somedir
+    c:/dir/somedir
+
 
 User Directories
 ----------------
 
-The security framework that is used by Mica for authentication, authorization etc. is `Shiro <http://shiro.apache.org/>`_. Configuring Shiro for Mica is done via the file **MICA_HOME/conf/shiro.ini**. See also `Shiro ini file documentation <http://cwiki.apache.org/confluence/display/SHIRO/Configuration#Configuration-INISections>`_.
+The security framework that is used by Opal for authentication, authorization etc. is `Shiro <http://shiro.apache.org/>`_. Configuring Shiro for Opal is done via the file **OPAL_HOME/conf/shiro.ini**. See also `Shiro ini file documentation <http://cwiki.apache.org/confluence/display/SHIRO/Configuration#Configuration-INISections>`_.
 
 .. note::
 
-  Default configuration is a static user 'administrator' with password 'password' (or the one provided while installing Mica Debian/RPM package).
+  Default configuration is a static user 'administrator' with password 'password' (or the one provided while installing Opal Debian/RPM package).
 
-By default Mica server has several built-in user directories (in the world of Shiro, a user directory is called a realm):
+By default Opal server has several built-in user directories (in the world of Shiro, a user directory is called a realm):
 
 * a file-based user directory (**shiro.ini** file),
+* the internal Opal user directory,
 * the user directory provided by Agate.
-
-Although it is possible to register some additional user directories, this practice is not recommended as Agate provides more than a service of authentication (user profile, notification emails etc.).
 
 In the world of Shiro, a user directory is called a *realm*.
 
 **File Based User Directory**
 
-The file-based user directory configuration file **MICA_HOME/conf/shiro.ini**.
+The file-based user directory configuration file **OPAL_HOME/conf/shiro.ini**.
 
 .. note::
 
-  It is not recommended to use this file-based user directory. It is mainly dedicated to define a default system super-user and a password for the anonymous user.
+  It is not recommended to use this file-based user directory. It is mainly dedicated to define a default system super-user.
 
 For a better security, user passwords are encrypted with a one way hash such as sha256.
 
@@ -217,35 +176,113 @@ The example shiro.ini file below demonstrates how encryption is configured.
   # Password here must be encrypted!
   # Use shiro-hasher tools to encrypt your passwords:
   #   DEBIAN:
-  #     cd /usr/share/mica2/tools && ./shiro-hasher -p
+  #     cd /usr/share/opal/tools && ./shiro-hasher -p
   #   UNIX:
-  #     cd <MICA_DIST_HOME>/tools && ./shiro-hasher -p
+  #     cd <OPAL_DIST_HOME>/tools && ./shiro-hasher -p
   #   WINDOWS:
-  #     cd <MICA_DIST_HOME>/tools && shiro-hasher.bat -p
+  #     cd <OPAL_DIST_HOME>/tools && shiro-hasher.bat -p
   #
   # Format is:
   # username=password[,role]*
-  administrator = $shiro1$SHA-256$500000$dxucP0IgyO99rdL0Ltj1Qg==$qssS60kTC7TqE61/JFrX/OEk0jsZbYXjiGhR7/t+XNY=,mica-administrator
-  anonymous = $shiro1$SHA-256$500000$dxucP0IgyO99rdL0Ltj1Qg==$qssS60kTC7TqE61/JFrX/OEk0jsZbYXjiGhR7/t+XNY=
+  administrator = $shiro1$SHA-256$500000$dxucP0IgyO99rdL0Ltj1Qg==$qssS60kTC7TqE61/JFrX/OEk0jsZbYXjiGhR7/t+XNY=,admin
 
   [roles]
   # The 'roles' section is for simple deployments
   # when you only need a small number of statically-defined roles.
   # Format is:
   # role=permission[,permission]*
-  mica-administrator = *
+  opal-administrator = *
 
-Passwords must be encrypted using shiro-hasher tools (included in Mica tools directory):
+Passwords must be encrypted using shiro-hasher tools (included in Opal tools directory):
 
 .. code-block:: bash
 
-  cd /usr/share/mica2/tools
+  cd /usr/share/opal/tools
   ./shiro-hasher -p
+
+LDAP and Active Directory Authentication
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Opal can authenticate users by using an existing LDAP or Active Directory server. This is done by adding the proper configuration section in the shiro.ini file:
+
+.. code-block:: bash
+
+  [main]
+  ldapRealm = org.apache.shiro.realm.ldap.JndiLdapRealm
+  ldapRealm.contextFactory.url = ldap://ldap.hostname.or.ip:389
+  ldapRealm.userDnTemplate = uid={0},ou=users,dc=mycompany,dc=com
+
+The userDnTemplate should be modified to match your LDAP schema. The {0} will be replaced by the username provided at login. Authentication will use the user's credentials to try to bind to LDAP; if binding succeeds, the credentials are considered valid and authentication will succeed.
+
+There is currently no support to extract a user's groups from LDAP. This will be added in a future release.
+
+With Active Directory you can specify a mapping between AD groups and roles in Shiro. Example configuration for Active Directory authentication:
+
+.. code-block:: bash
+
+  [main]
+  adRealm = org.apache.shiro.realm.activedirectory.ActiveDirectoryRealm
+  adRealm.url = ldap://ad.hostname.or.ip:389
+  adRealm.systemUsername = usernameToConnectToAD
+  adRealm.systemPassword = passwordToConnectToAD
+  adRealm.searchBase = "CN=Users,DC=myorg"
+  adRealm.groupRolesMap = "CN=shiroGroup,CN=Users,DC=myorg":"myrole"
+  #adRealm.principalSuffix =
+
+Atlassian Crowd User Directory
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Opal can authenticate users by using an Crowd.
+
+First, you need to enable Crowd client by uncommenting the following in OPAL_HOME/conf/custom-context.xml:
+
+.. code-block:: xml
+
+  <import resource="file:${OPAL_HOME}/conf/crowd/crowd-context.xml" />
+
+Then configure your Crowd client in OPAL_HOME/conf/crowd/crowd.properties:
+
+.. code-block:: bash
+
+  application.name=application
+  application.password=password
+  application.login.url=http://crowd.example.com/crowd/console/
+  crowd.server.url=http://crowd.example.com/crowd/services/
+  crowd.base.url=http://crowd.example.com/crowd/
+  session.isauthenticated=session.isauthenticated
+  session.tokenkey=session.tokenkey
+  session.validationinterval=2
+  session.lastvalidation=session.lastvalidation
+
+Other Settings
+~~~~~~~~~~~~~~
+
+Shiro's default session timeout is 1800s (half an hour). The session timeout can be set explicitly in the shiro.ini file, in the [main] section:
+
+.. code-block:: bash
+
+  # =======================
+  # Shiro INI configuration
+  # =======================
+
+  [main]
+  # Objects and their properties are defined here,
+  # Such as the securityManager, Realms and anything else needed to build the SecurityManager
+  # 3,600,000 milliseconds = 1 hour
+  securityManager.sessionManager.globalSessionTimeout = 3600000
+
+  # ...
+
+The session timeout is in milliseconds and allowed values are:
+
+* a negative value means sessions never expire.
+* a non-negative value (0 or greater) means session timeout will occur as expected.
+
 
 Reverse Proxy Configuration
 ---------------------------
 
-Mica server can be accessed through a reverse proxy server.
+Opal server can be accessed through a reverse proxy server.
 
 **Apache**
 
@@ -258,7 +295,7 @@ Example of Apache directives that:
 .. code-block:: text
 
   <VirtualHost *:80>
-      ServerName mica.your-organization.org
+      ServerName opal.your-organization.org
       ProxyRequests Off
       ProxyPreserveHost On
       <Proxy *>
@@ -267,10 +304,10 @@ Example of Apache directives that:
       </Proxy>
       RewriteEngine on
       ReWriteCond %{SERVER_PORT} !^443$
-      RewriteRule ^/(.*) https://mica.your-organization.org:443/$1 [NC,R,L]
+      RewriteRule ^/(.*) https://opal.your-organization.org:443/$1 [NC,R,L]
   </VirtualHost>
   <VirtualHost *:443>
-      ServerName mica.your-organization.org
+      ServerName opal.your-organization.org
       SSLProxyEngine on
       SSLEngine on
       SSLProtocol All -SSLv2 -SSLv3
@@ -283,8 +320,8 @@ Example of Apache directives that:
       SSLCertificateKeyFile /etc/apache2/ssl/private/your-organization.org.key
       ProxyRequests Off
       ProxyPreserveHost On
-      ProxyPass / https://localhost:8445/
-      ProxyPassReverse / https://localhost:8445/
+      ProxyPass / https://localhost:8443/
+      ProxyPassReverse / https://localhost:8443/
   </VirtualHost>
 
 For performance, you can also activate Apache's compression module (mod_deflate) with the following settings (note the json content type setting) in file */etc/apache2/mods-available/deflate.conf*:
