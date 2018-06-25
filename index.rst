@@ -40,6 +40,14 @@ Targeted at individual studies and study consortia, `OBiBa <http://obiba.org/>`_
 
 .. toctree::
    :maxdepth: 1
+   :caption: R DataSHIELD User Guide
+
+   r-user-guide/index
+   r-user-guide/r
+   r-user-guide/datashield
+
+.. toctree::
+   :maxdepth: 1
    :caption: Python User Guide
 
    python-user-guide/index
