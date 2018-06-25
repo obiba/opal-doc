@@ -20,7 +20,7 @@ Memory (RAM) Minimum: 4GB, Recommended: >8GB
 Server Software Requirements
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-`Java <https://www.java.com>`_ is the minimum software requirement, other software are for a fully functional system. While Java is required by Opal server application, MongoDB, MySQL, R can be installed on another server. See also :doc:`../rserver-admin/installation`.
+`Java <https://www.java.com>`_ is the minimum software requirement, other software are for a fully functional system. While Java is required by Opal server application, MongoDB, MySQL, R can be installed on another server. See also :doc:`rserver`.
 
 ======== ================= ========================================================== ========================
 Software Suggested version Download link                                              Usage

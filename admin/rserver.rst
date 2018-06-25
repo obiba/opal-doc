@@ -1,5 +1,8 @@
-R Server Installation
-=====================
+R Server
+========
+
+Installation
+------------
 
 Opal is able to interact with a R server for running statistics analysis and reports.
 
@@ -16,10 +19,10 @@ Typical usage is the ability to start / stop a R server from the Opal R Server A
 .. image:: ../images/opal-r-server.png
 
 Requirements
-------------
+~~~~~~~~~~~~
 
 Server Hardware Requirements
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ============ ===============
 Component    Requirement
@@ -30,7 +33,7 @@ Memory (RAM) Minimum: 4GB, Recommended: >8GB
 ============ ===============
 
 Server Software Requirements
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 `Java <https://www.java.com>`_ is the minimum software requirement, other software are for a fully functional system.
 
@@ -44,12 +47,12 @@ R        >= 3.0.x          `R downloads <http://cran.r-project.org/>`_          
 While Java is required by Opal server application, MongoDB/MySQL/R can be installed on another server.
 
 Install
--------
+~~~~~~~
 
 Opal is distributed as a Debian/RPM package and as a zip file. The resulting installation has default configuration that makes Opal ready to be used. Once installation is done, see :doc:`configuration` instructions.
 
 Debian Package Installation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Opal R Server is available as a Debian package from OBiBa Debian repository. To proceed installation, do as follows:
 
@@ -57,7 +60,7 @@ Opal R Server is available as a Debian package from OBiBa Debian repository. To 
 * Manage Opal Service: after package installation, Opal server is running: see how to manage the Service.
 
 RPM Package Installation
-~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Opal R Server is available as a RPM package from OBiBa RPM repository. To proceed installation, do as follows:
 
@@ -65,7 +68,7 @@ Opal R Server is available as a RPM package from OBiBa RPM repository. To procee
 * Manage Opal Service: after package installation, Opal is running: see how to manage the Service.
 
 Zip Distribution Installation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Opal R Server is also available as a Zip file. To install Opal zip distribution, proceed as follows:
 
@@ -79,12 +82,12 @@ Opal R Server is also available as a Zip file. To install Opal zip distribution,
   install.packages(c('rserve', 'opal', 'tidyverse', 'knitr', 'rmarkdown'), repos=c('http://cran.rstudio.com', 'http://cran.obiba.org'), dependencies=TRUE, lib='/usr/local/lib/R/site-library')
 
 Upgrade
--------
+~~~~~~~
 
 The upgrade procedures are handled by the application itself.
 
 Debian Package Upgrade
-~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^
 
 If you installed Opal via the Debian package, you may update it using the command:
 
@@ -93,7 +96,7 @@ If you installed Opal via the Debian package, you may update it using the comman
   apt-get install opal-rserver
 
 RPM Package Upgrade
-~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^
 
 If you installed Opal via the RPM package, you may update it using the command:
 
@@ -102,15 +105,15 @@ If you installed Opal via the RPM package, you may update it using the command:
   yum install opal-rserver
 
 Zip Distribution Upgrade
-~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Follow the Installation of Opal Zip distribution above but make sure you don't overwrite your opal-home directory.
 
 Execution
----------
+~~~~~~~~~
 
 Server launch
-~~~~~~~~~~~~~
+^^^^^^^^^^^^^
 
 **Service**
 
@@ -148,7 +151,7 @@ Execute the command line (bin directory is in your execution PATH)):
 The R Server Admin server log files are located in **RSERVER_HOME/logs** directory. If the logs directory does not exist, it will be created by R Server.
 
 Usage
-~~~~~
+^^^^^
 
 R Server Admin is a REST server and therefore can be queried using the `curl <http://curl.haxx.se/>`_ tool.
 
@@ -166,8 +169,51 @@ R Server Admin is a REST server and therefore can be queried using the `curl <ht
   curl -X DELETE localhost:6312/rserver
 
 Troubleshooting
-~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^
 
 If you encounter an issue during the installation and you can't resolve it, please report it in our `Opal Issue Tracker <https://github.com/obiba/rserver-admin/issues>`_.
 
 Opal logs can be found in **/var/log/opal**. If the installation fails, always refer to this log when reporting an error.
+
+
+
+
+
+
+Configuration
+-------------
+
+R Server Admin package has two configuration files: one for the R server controller and one for the R serv itself.
+
+Controller Configuration
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+The file **RSERVER_HOME/conf/application.properties** allows the configuration of the R server controller. This one provides REST web services to start/stop a R server.
+
+=============== ===================
+Property        Description
+=============== ===================
+``server.port``	R server controller port (default is 6312).
+``r.exec``	    R executable path, required to launch the R server.
+=============== ===================
+
+Rserve Configuration
+~~~~~~~~~~~~~~~~~~~~
+
+The file **RSERVER_HOME/conf/Rserv.conf** allows the configuration of the core R server. See also `the full documentation of the Rserv.conf file <http://www.rforge.net/Rserve/doc.html#conf>`_.
+
+By default the R server has the following configuration:
+
+* connection port is 6311,
+* remote connection is disabled,
+* no authentication is required.
+
+If the R server is installed on a different machine as the Opal server, you typically will have to:
+
+* enable remote connection,
+* enable authentication.
+
+R Session Configuration
+~~~~~~~~~~~~~~~~~~~~~~~
+
+When a new R session is started on server side the starting state of this session can be configured using the **RSERVER_HOME/conf/Rprofile.R**. Any R command (to be executed by the ``rserver`` user) can be put in this file.

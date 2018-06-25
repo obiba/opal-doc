@@ -24,13 +24,7 @@ Targeted at individual studies and study consortia, `OBiBa <http://obiba.org/>`_
    admin/installation
    admin/configuration
    admin/plugins
-
-.. toctree::
-   :maxdepth: 1
-   :caption: R Server Administrator Guide
-
-   rserver-admin/installation
-   rserver-admin/configuration
+   admin/rserver
 
 .. toctree::
    :maxdepth: 1
