@@ -5,7 +5,7 @@ This command is for advanced users wanting to directly access to the REST API of
 
 .. code-block:: bash
 
-  opal rest ws <CREDENTIALS> [OPTIONS] [EXTRA]
+  opal rest <PATH> <CREDENTIALS> [OPTIONS] [EXTRA]
 
 Arguments
 ---------
@@ -13,7 +13,7 @@ Arguments
 ======== ===========
 Argument Description
 ======== ===========
-``ws``	 Web service path, for instance: /project/xxx
+``PATH``	 Web service path, for instance: /project/xxx
 ======== ===========
 
 Credentials
@@ -41,7 +41,6 @@ Option                                            Description
 ``--accept ACCEPT, -a ACCEPT``                    Accept header (default is application/json).
 ``--content-type CONTENT_TYPE, -ct CONTENT_TYPE`` Content-Type header (default is application/json).
 ``--headers HEADERS, -hs HEADERS``                Custom headers in the form of: { "Key2": "Value2", "Key2": "Value2" }
-``--json, -j``                                    Pretty JSON formatting of the response.
 ================================================= ====================================
 
 Extras
@@ -50,8 +49,9 @@ Extras
 ================= =================
 Option            Description
 ================= =================
-``-h, --help``    Show the command help's message
-``--verbose, -v`` Verbose output
+``-h, --help``    Show the command help's message.
+``--verbose, -v`` Verbose output.
+``--json, -j``    Pretty JSON formatting of the response.
 ================= =================
 
 Example

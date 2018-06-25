@@ -36,4 +36,11 @@ Targeted at individual studies and study consortia, `OBiBa <http://obiba.org/>`_
    :caption: Python User Guide
 
    python-user-guide/index
+   python-user-guide/data-dictionary
+   python-user-guide/data
+   python-user-guide/entity
+   python-user-guide/table-copy
+   python-user-guide/table-delete
+   python-user-guide/annot-export
+   python-user-guide/annot-import
    python-user-guide/rest

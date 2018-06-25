@@ -1,7 +1,7 @@
 Python Introduction
 ===================
 
-Mica Python client, a command line scripting tool written in Python, enables automation of tasks in a Mica server.
+Opal Python client, a command line scripting tool written in Python, enables automation of tasks in a Opal server.
 
 Requirements
 ------------
@@ -11,7 +11,7 @@ Python 2.x must be installed on the system. See more about `Python <https://www.
 Installation
 ------------
 
-You can install Mica Python Client via the following two methods:
+You can install Opal Python Client via the following two methods:
 
 * use the Debian/RPM package manager
 * use a Python package
@@ -23,7 +23,7 @@ Follow the `OBiBa Debian Repository <http://www.obiba.org/pages/pkg/>`_ instruct
 
 .. code-block:: bash
 
-  sudo apt-get install mica-python-client
+  sudo apt-get install opal-python-client
 
 RPM Package Installation
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -32,7 +32,7 @@ Follow the `OBiBa RPM Repository <http://www.obiba.org/pages/rpm/>`_ instruction
 
 .. code-block:: bash
 
-  sudo yum install mica-python-client
+  sudo yum install opal-python-client
 
 Python Package Installation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -41,13 +41,13 @@ This type of package is cross-platform (Linux, Windows, Mac).
 
 **Install on Linux or Mac**
 
-1. `Download the most recent version <https://download.obiba.org/mica/stable/>`_
+1. `Download the most recent version <https://download.obiba.org/opal/stable/>`_
 2. Decompress the file and enter the installation folder:
 
 .. code-block:: bash
 
-  tar xvzf mica-python-client-X.XX.tar.gz
-  cd mica-python-client-X.XX
+  tar xvzf opal-python-client-X.XX.tar.gz
+  cd opal-python-client-X.XX
 
 3. Install the package:
 
@@ -56,7 +56,7 @@ This type of package is cross-platform (Linux, Windows, Mac).
   sudo python setup.py install --record installed_files.lst
 
 .. note::
-  The *--record* will generate a list of installed files on your system. Since there is no uninstaller, you can use this file to remove the Mica Python Client package. You can do this by executing the following command:
+  The *--record* will generate a list of installed files on your system. Since there is no uninstaller, you can use this file to remove the Opal Python Client package. You can do this by executing the following command:
   ``sudo cat installed_files.lst | xargs rm -rf``
 
 **Install on Windows**
@@ -70,9 +70,9 @@ You can install Cygwin, making sure that CURL, Python, gcc are included and foll
   cd /usr/lib
   cp libcurl.dll.a libcurl.a
   cd <your-desired-dir>
-  curl -C - -O http://download.obiba.org/mica/stable/mica-python-client-X.XX.tar.gz
-  tar xzvf mica-python-client-X.XX.tar.gz
-  cd mica-python-client-X.XX
+  curl -C - -O http://download.obiba.org/opal/stable/opal-python-client-X.XX.tar.gz
+  tar xzvf opal-python-client-X.XX.tar.gz
+  cd opal-python-client-X.XX
   python setup.py install --record installed_files.lst
 
 * Using plain Windows tools
@@ -91,16 +91,16 @@ This Windows installation is the most complicated one but does not required any 
 
 4. Go to the `Python Libs <http://www.lfd.uci.edu/~gohlke/pythonlibs/>`_ site and download the file pycurl-7.19.0.win-amd64-py2.7.‌exe
 5. Run the installer and follow the instructions until the package is installed
-6. `Download the most recent version <https://download.obiba.org/mica/stable/>`_ and follow these steps:
+6. `Download the most recent version <https://download.obiba.org/opal/stable/>`_ and follow these steps:
 
 .. code-block:: bash
 
-  unzip http://download.obiba.org/mica/stable/mica-python-client-X.XX.zip
-  cd mica-python-client-X.XX
+  unzip http://download.obiba.org/opal/stable/opal-python-client-X.XX.zip
+  cd opal-python-client-X.XX
   python setup.py bdist_wininst
   cd dist
 
-7. Execute the generated installer and follow the instructions (mica-python-client-X.XX.win-amd64.exe)
+7. Execute the generated installer and follow the instructions (opal-python-client-X.XX.win-amd64.exe)
 
 Usage
 -----
@@ -109,12 +109,12 @@ To get the options of the command line:
 
 .. code-block:: bash
 
-  mica --help
+  opal --help
 
 This command will display which sub-commands are available. Further, given a subcommand obtained from command above, its help message can be displayed via:
 
 .. code-block:: bash
 
-  mica <subcommand> --help
+  opal <subcommand> --help
 
 This command will display available subcommands.
