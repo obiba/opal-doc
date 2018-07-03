@@ -4,7 +4,7 @@ Using DataSHIELD
 Prerequisites
 -------------
 
-On client side, R is to be available. See the `R installation documentation <http://www.r-project.org/>`_ that matches your system.
+On client side, R is to be available. See the `R installation documentation <https://www.r-project.org/>`_ that matches your system.
 
 Installation
 ------------
@@ -22,7 +22,7 @@ Then you can install the Opal package and its dependencies with this command wit
 
 .. code-block:: r
 
-  install.packages('opal', repos=c('http://cran.rstudio.com/', 'http://cran.obiba.org'), dependencies=TRUE)
+  install.packages('opal', repos=c('https://cran.rstudio.com/', 'https://cran.obiba.org'), dependencies=TRUE)
 
 On Windows
 ~~~~~~~~~~
@@ -31,13 +31,13 @@ Installing the Opal R package on Windows requires that the package's dependencie
 
 .. code-block:: r
 
-  install.packages(c('RCurl', 'rjson'), repos=c('http://cran.rstudio.com/', 'http://www.stats.ox.ac.uk/pub/RWin/'))
+  install.packages(c('RCurl', 'rjson'), repos=c('https://cran.rstudio.com/', 'https://www.stats.ox.ac.uk/pub/RWin/'))
 
 Once these are installed, the opal package can be installed like so:
 
 .. code-block:: r
 
-  install.packages('opal', repos='http://cran.obiba.org', type='source')
+  install.packages('opal', repos='https://cran.obiba.org', type='source')
 
 Usage
 -----
@@ -69,7 +69,7 @@ First thing required to use DataSHIELD is to load datashieldclient, the DataSHIE
 .. code-block:: r
 
   # Install datashieldclient and dependecies if not already done
-  install.packages('datashieldclient', repos=c(getOption('repos'), 'http://cran.obiba.org'), dependencies=TRUE)
+  install.packages('datashieldclient', repos=c(getOption('repos'), 'https://cran.obiba.org'), dependencies=TRUE)
 
   # Load datashieldclient library
   library(datashieldclient)
@@ -111,8 +111,8 @@ As mentioned previously, all DataSHIELD methods require an argument of class 'op
 .. code-block:: r
 
   # Login in each Opal
-  studyA <- opal.login('username', 'password', 'http://opal.studya.org')
-  studyB <- opal.login('username', 'password', 'http://opal.studyb.net')
+  studyA <- opal.login('username', 'password', 'https://opal.studya.org')
+  studyB <- opal.login('username', 'password', 'https://opal.studyb.net')
 
   # Invoke some datashield methods
   datashield.assign(studyA, ...)
@@ -123,8 +123,8 @@ Since DataSHIELD is always using multiple Opal instances, the same methods are a
 .. code-block:: r
 
   # Login in each Opal
-  studyA <- opal.login('username', 'password', 'http://opal.studya.org')
-  studyB <- opal.login('username', 'password', 'http://opal.studyb.net')
+  studyA <- opal.login('username', 'password', 'https://opal.studya.org')
+  studyB <- opal.login('username', 'password', 'https://opal.studyb.net')
 
   opals <- list(StudyA=studyA, StudyB=studyB)
 
@@ -218,8 +218,8 @@ Generalized Linear Model (glm) Example
 
   # Login to all Opal instances. The 'ssl.verifypeer' parameter is used to login to Opal instances that use self-signed certs.
   opals<-datashield.login('username', 'password', list(S1='https://demo.obiba.org:8443',
-                                                     S2='http://opal.obiba.org',
-                                                     S3='http://localhost:8080'), list(ssl.verifypeer=0))
+                                                     S2='https://opal.obiba.org',
+                                                     S3='https://localhost:8080'), list(ssl.verifypeer=0))
 
   # Push the data we want to work with in the server-side R
   datashield.assign(opals, 'ds.demo', 'ds-demo.Simulated')

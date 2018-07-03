@@ -4,7 +4,7 @@ Using R
 Prerequisites
 -------------
 
-On client side, R is to be available. See the `R installation documentation <http://www.r-project.org/>`_ that matches your system.
+On client side, R is to be available. See the `R installation documentation <https://www.r-project.org/>`_ that matches your system.
 
 Installation
 ------------
@@ -22,7 +22,7 @@ Then you can install the Opal package and its dependencies with this command wit
 
 .. code-block:: r
 
-  install.packages('opal', repos=c('http://cran.rstudio.com/', 'http://cran.obiba.org'), dependencies=TRUE)
+  install.packages('opal', repos=c('https://cran.rstudio.com/', 'https://cran.obiba.org'), dependencies=TRUE)
 
 On Windows
 ~~~~~~~~~~
@@ -31,13 +31,13 @@ Installing the Opal R package on Windows requires that the package's dependencie
 
 .. code-block:: r
 
-  install.packages(c('RCurl', 'rjson'), repos=c('http://cran.rstudio.com/', 'http://www.stats.ox.ac.uk/pub/RWin/'))
+  install.packages(c('RCurl', 'rjson'), repos=c('https://cran.rstudio.com/', 'https://www.stats.ox.ac.uk/pub/RWin/'))
 
 Once these are installed, the opal package can be installed like so:
 
 .. code-block:: r
 
-  install.packages('opal', repos='http://cran.obiba.org', type='source')
+  install.packages('opal', repos='https://cran.obiba.org', type='source')
 
 Usage
 -----
@@ -50,16 +50,16 @@ Accessing Opal data using R is straightforward:
   library(opal)
 
   # get a reference to the opal server
-  o <- opal.login('administrator','password','https://demo.obiba.org:8443')
+  o <- opal.login('administrator','password','https://opal-demo.obiba.org')
 
   # assign some data to a data.frame
-  opal.assign(o,'HOP','mica_demo.HOP',variables=list('GENDER','PM_BMI_CONTINUOUS'))
+  opal.assign(o,'CNSIM1','datashield.CNSIM1',variables=list('GENDER','PM_BMI_CONTINUOUS'))
 
   # do some analysis on the remote R session
-  opal.execute(o,'summary(HOP)')
+  opal.execute(o,'summary(CNSIM1)')
 
   # get the remote data.frame on the client
-  D <- opal.execute(o,'HOP')
+  D <- opal.execute(o,'CNSIM1')
   head(D)
 
   # clean remote R session
@@ -84,4 +84,4 @@ Advanced users can login to Opal by providing a key pair: certificate and privat
     sslcert='my-publickey.pem',
     sslkey='my-privatekey.pem')
 
-  o <- opal.login(url='https://demo.obiba.org:8443', opts=credentials)
+  o <- opal.login(url='https://opal-demo.obiba.org', opts=credentials)

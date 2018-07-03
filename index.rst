@@ -16,6 +16,7 @@ Targeted at individual studies and study consortia, `OBiBa <http://obiba.org/>`_
    :maxdepth: 1
 
    introduction
+   variables-data
 
 .. toctree::
    :maxdepth: 1
@@ -45,11 +46,5 @@ Targeted at individual studies and study consortia, `OBiBa <http://obiba.org/>`_
    :caption: Python User Guide
 
    python-user-guide/index
-   python-user-guide/data-dictionary
-   python-user-guide/data
-   python-user-guide/entity
-   python-user-guide/table-copy
-   python-user-guide/table-delete
-   python-user-guide/annot-export
-   python-user-guide/annot-import
-   python-user-guide/rest
+   python-user-guide/data-commands
+   python-user-guide/other-commands
