@@ -46,5 +46,9 @@ Targeted at individual studies and study consortia, `OBiBa <http://obiba.org/>`_
    :caption: Python User Guide
 
    python-user-guide/index
-   python-user-guide/data-commands
+   python-user-guide/datasources-commands
+   python-user-guide/import-commands
+   python-user-guide/export-commands
+   python-user-guide/user-group-commands
+   python-user-guide/permission-commands
    python-user-guide/other-commands

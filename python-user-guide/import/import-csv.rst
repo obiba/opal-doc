@@ -1,32 +1,50 @@
-Web Services
-============
+Import CSV
+==========
 
-This command is for advanced users wanting to directly access to the REST API of Opal server.
+Import a CSV file, to be found in Opal file system.
 
 .. code-block:: bash
 
-  opal rest <PATH> <CREDENTIALS> [OPTIONS] [EXTRA]
-
-Arguments
----------
-
-======== ===========
-Argument Description
-======== ===========
-``PATH`` Web service path, for instance: /project/xxx
-======== ===========
+  opal import-csv <CREDENTIALS> <DESTINATION> [OPTIONS] [EXTRA]
 
 Options
 -------
 
-================================================= ====================================
-Option                                            Description
-================================================= ====================================
-``--method METHOD, -m METHOD``                    HTTP method: GET (default), POST, PUT, DELETE, OPTIONS.
-``--accept ACCEPT, -a ACCEPT``                    Accept header (default is application/json).
-``--content-type CONTENT_TYPE, -ct CONTENT_TYPE`` Content-Type header (default is application/json).
-``--headers HEADERS, -hs HEADERS``                Custom headers in the form of: { "Key2": "Value2", "Key2": "Value2" }
-================================================= ====================================
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Option
+     - Description
+   * - ``--destination DESTINATION, -d DESTINATION``
+     - Destination datasource name
+   * - ``--tables TABLES [TABLES ...], -t TABLES [TABLES ...]``
+     - The list of tables to be imported (defaults to all)
+   * - ``--incremental -i``
+     - Incremental import
+   * - ``--identifiers IDENTIFIERS, -id IDENTIFIERS``
+     - Name of the ID mapping
+   * - ``--policy POLICY, -po POLICY``
+     - | ID mapping policy:
+       |
+       | ``required`` : each identifiers must be mapped prior importation (default),
+       | ``ignore`` : ignore unknown identifiers,
+       | ``generate`` : generate a system identifier for each unknown identifier.
+   * - ``--path PATH -pa PATH``
+     - Path to the CSV file to import on the Opal file system
+   * - ``--characterSet CHARACTERSET, -c CHARACTERSET``
+     - Character set of the file (e.g utf-8)
+   * - ``--separator SEPARATOR, -s SEPARATOR``
+     - Field separator
+   * - ``--quote QUOTE, -q QUOTE``
+     - Quotation mark character
+   * - ``--firstRow FIRSTROW, -f FIRSTROW``
+     - Number of the first row that contains data to import
+   * - ``--type TYPE, -ty TYPE``
+     - Entity type of the data (e.g. Participant)
+   * - ``--valueType VALUETYPE, -vt VALUETYPE``
+     - Default value type (text, integer, decimal, boolean etc.). When not specified, "text" is the default.
+
 
 Credentials
 -----------
