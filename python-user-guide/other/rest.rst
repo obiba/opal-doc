@@ -5,7 +5,7 @@ This command is for advanced users wanting to directly access to the REST API of
 
 .. code-block:: bash
 
-  opal rest <PATH> <CREDENTIALS> [OPTIONS] [EXTRA]
+  opal rest <PATH> <CREDENTIALS> [OPTIONS] [EXTRAS]
 
 Arguments
 ---------
