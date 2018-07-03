@@ -1,11 +1,11 @@
-Import CSV
-==========
+Import Opal Archive
+===================
 
-Import a CSV file, to be found in Opal file system.
+Import an archive of XML files, to be found in Opal file system.
 
 .. code-block:: bash
 
-  opal import-csv <CREDENTIALS> <OPTIONS> [EXTRAS]
+  opal import-spss <CREDENTIALS> <OPTIONS> [EXTRAS]
 
 Options
 -------
@@ -31,20 +31,7 @@ Options
        | ``ignore`` : ignore unknown identifiers,
        | ``generate`` : generate a system identifier for each unknown identifier.
    * - ``--path PATH -pa PATH``
-     - Path to the CSV file to import on the Opal file system
-   * - ``--characterSet CHARACTERSET, -c CHARACTERSET``
-     - Character set of the file (e.g utf-8)
-   * - ``--separator SEPARATOR, -s SEPARATOR``
-     - Field separator
-   * - ``--quote QUOTE, -q QUOTE``
-     - Quotation mark character
-   * - ``--firstRow FIRSTROW, -f FIRSTROW``
-     - Number of the first row that contains data to import
-   * - ``--type TYPE, -ty TYPE``
-     - Entity type of the data (e.g. Participant)
-   * - ``--valueType VALUETYPE, -vt VALUETYPE``
-     - Default value type (text, integer, decimal, boolean etc.). When not specified, "text" is the default.
-
+     - Path to the zip of XML files to import on the Opal file system
 
 Credentials
 -----------
@@ -75,8 +62,12 @@ Option            Description
 Example
 -------
 
-Import catchment areas from a csv file delimited with ',' :
+Import tables from 20-onyx ZIP file to the opal-data datasource:
 
 .. code-block:: bash
 
-  opal import-csv --opal https://opal-demo.obiba.org --user administrator --password password --destination opal-data --path /home/administrator/catchment-area.csv --tables catchment-area --separator , --type Area
+  # Import all tables
+  opal import-xml --opal https://opal-demo.obiba.org --user administrator --password password --path /home/administrator/20-onyx-data.zip --destination opal-data
+
+  # Import only ArmSpan and BloodPressure tables
+  opal import-xml --opal https://opal-demo.obiba.org --user administrator --password password --path /home/administrator/20-onyx-data.zip --destination opal-data --tables ArmSpan BloodPressure

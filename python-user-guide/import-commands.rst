@@ -7,3 +7,5 @@ Import data from files (CSV, XML, SPSS) or a remote server (Opal, Limesurvey).
    :maxdepth: 1
 
    import/import-csv.rst
+   import/import-xml.rst
+   import/import-spss.rst

@@ -1,11 +1,11 @@
-Import CSV
-==========
+Import SPSS
+===========
 
-Import a CSV file, to be found in Opal file system.
+Import a SPSS file, to be found in Opal file system.
 
 .. code-block:: bash
 
-  opal import-csv <CREDENTIALS> <OPTIONS> [EXTRAS]
+  opal import-xml <CREDENTIALS> <OPTIONS> [EXTRAS]
 
 Options
 -------
@@ -31,20 +31,15 @@ Options
        | ``ignore`` : ignore unknown identifiers,
        | ``generate`` : generate a system identifier for each unknown identifier.
    * - ``--path PATH -pa PATH``
-     - Path to the CSV file to import on the Opal file system
+     - Path to the SPSS file to import on the Opal file system
+   * - ``--locale LOCALE, -l LOCALE``
+     - Language code to be associated to labels
    * - ``--characterSet CHARACTERSET, -c CHARACTERSET``
-     - Character set of the file (e.g utf-8)
-   * - ``--separator SEPARATOR, -s SEPARATOR``
-     - Field separator
-   * - ``--quote QUOTE, -q QUOTE``
-     - Quotation mark character
-   * - ``--firstRow FIRSTROW, -f FIRSTROW``
-     - Number of the first row that contains data to import
+     - Character set to be used when reading the file
    * - ``--type TYPE, -ty TYPE``
-     - Entity type of the data (e.g. Participant)
-   * - ``--valueType VALUETYPE, -vt VALUETYPE``
-     - Default value type (text, integer, decimal, boolean etc.). When not specified, "text" is the default.
-
+     - Entity type (default is Participant)
+   * - ``--idVariable IDVARIABLE, -iv IDVARIABLE``
+     - SPSS variable that provides the entity ID. If not specified, first variable values are considered to be the entity identifiers.
 
 Credentials
 -----------
@@ -75,8 +70,8 @@ Option            Description
 Example
 -------
 
-Import catchment areas from a csv file delimited with ',' :
+Import table from RobotChicken SPSS file in opal-data datasource:
 
 .. code-block:: bash
 
-  opal import-csv --opal https://opal-demo.obiba.org --user administrator --password password --destination opal-data --path /home/administrator/catchment-area.csv --tables catchment-area --separator , --type Area
+  opal import-spss --opal https://opal-demo.obiba.org --user administrator --password password --destination opal-data --characterSet ISO-8859-1 --locale en --path /home/administrator/RobotChicken.sav
