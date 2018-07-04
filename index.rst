@@ -17,6 +17,7 @@ Targeted at individual studies and study consortia, `OBiBa <http://obiba.org/>`_
 
    introduction
    variables-data
+   ids
 
 .. toctree::
    :maxdepth: 1
