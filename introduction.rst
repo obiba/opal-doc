@@ -7,6 +7,9 @@ For more information on Opal future, see `Opal description on OBiBa <https://www
 
 See detailed concepts and tutorials:
 
-* :doc:`variables-data`
-* :doc:`ids`
-* :doc:`data-harmonization`
+.. toctree::
+   :maxdepth: 1
+
+   variables-data
+   ids
+   data-harmonization
