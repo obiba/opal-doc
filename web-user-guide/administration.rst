@@ -1,6 +1,7 @@
 Administration
 ==============
 
+Administrate the Opal system services and settings.
 
 .. toctree::
    :maxdepth: 1

@@ -165,6 +165,8 @@ Data Schemas
 
 Depending on the database engine and usage, an administrator will be asked to specify how the data will be organized in the database. See :doc:`../../variables-data` documentation for a description of the Opal's data model. This data model can be persisted in different data schemas depending on the usage.
 
+.. _opal-sql:
+
 Opal SQL
 ~~~~~~~~
 
@@ -174,6 +176,8 @@ You may choose this data schema when:
 
 * the number of expected variables is large (more than several hundreds),
 * flexibility is preferred to performance.
+
+.. _tabular-sql:
 
 Tabular SQL
 ~~~~~~~~~~~
