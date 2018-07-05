@@ -199,7 +199,6 @@ Opal offers to specify some settings for this schema:
 
 
 .. list-table::
-   :widths: 10 60 30
    :header-rows: 1
 
    * - Setting
@@ -217,8 +216,8 @@ Opal offers to specify some settings for this schema:
      - | Optional, value is *opal_created* when usage is
        | *storage*.
    * - Update Timestamp Column
-     - | Name of the column holding the timestamp of the last modification date of a row in the SQL-table. This information can be useful when
-       | performing an incremental import (only new or updated rows are imported).
+     - | Name of the column holding the timestamp of the last modification date of a row in the SQL-table. This information can be useful
+       | when performing an incremental import (only new or updated rows are imported).
      - | Optional, recommended for *import*/*export*, value
        | is *opal_updated* when usage is *storage*.
    * - With variables description tables
