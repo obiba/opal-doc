@@ -81,6 +81,8 @@ Property                         Description
 ``org.obiba.realm.service.key``  Application key of this Opal instance in Agate. Default is changeit.
 ================================ =========================================================================
 
+.. _misc-config:
+
 Miscelaneous Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -92,7 +94,7 @@ Property                                 Description
 ``org.obiba.opal.keys.entityType``       Type of entities to store in the identifiers table.
 ``org.obiba.opal.keys.tableReference``   Fully-qualified name of the identifiers table
 ``org.obiba.opal.taxonomies``            Comma separated list of URIs to taxonomy files in YAML format. Note that file URI schema is supported (allows to read locally defined taxonomy).
-``org.obiba.opal.plugins.site``          The URL to the plugins repository (default is http://obiba.org/assets). A plugin repository is not just a list of files, meta-data information about plugins are expected to be provided by a plugins.json file.
+``org.obiba.opal.plugins.site``          The URL to the plugins repository (default is https://plugins.obiba.org). A plugin repository is not just a list of files, meta-data information about plugins are expected to be provided by a plugins.json file.
 ``org.obiba.opal.ssl.excludedProtocols`` SSL/TLS (comma separated) protocols that HTTPS server must not reply to. Typical configuration value would be: SSLv3. Default is to not exclude any of the SSL/TLS protocols.
 ``org.obiba.opal.maxFormContentSize``    Maximum body size of a HTTP(S) form post request. Default value is "200000" bytes.
 ``org.obiba.opal.ws.messageSizeLimit``   Limit of the Protobuf message size. Default value is "524288000" bytes (500MB).

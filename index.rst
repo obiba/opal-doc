@@ -31,9 +31,9 @@ Targeted at individual studies and study consortia, `OBiBa <http://obiba.org/>`_
    :caption: Web User Guide
 
    web-user-guide/index
-   web-user-guide/post-install
    web-user-guide/projects
    web-user-guide/search
+   web-user-guide/administration
 
 .. toctree::
    :maxdepth: 1
