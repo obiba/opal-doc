@@ -10,19 +10,19 @@ Manage a user in the Opal internal user directory.
 Options
 -------
 
-========================== =====================================
-Option                     Description
-========================== =====================================
-``--name NAME, -n NAME``   User name
-``--fetch, -f``            Fetch a user (all users are returned if no option --name is given)
-``--delete, -de``          Delete the user specified by the --name option
-``--add, -a``              Add a user specified by the --name option
-``--update, -ud``          Update user password/certificate, status (enable/disable) and groups
-``--upassword, -upa``      User password of at least six characters.
-``--ucertificate, -uc``    User certificate (public key) file
-``--disabled, -di``        Disable user account (if omitted the user is enabled by default).
-``--groups, -g``           User groups (separated by space)
-========================== =====================================
+============================================= =====================================
+Option                                        Description
+============================================= =====================================
+``--name NAME, -n NAME``                      User name
+``--fetch, -f``                               Fetch a user (all users are returned if no option --name is given)
+``--delete, -de``                             Delete the user specified by the --name option
+``--add, -a``                                 Add a user specified by the --name option
+``--update, -ud``                             Update user password/certificate, status (enable/disable) and groups
+``--upassword PWD, -upa PWD``                 User password of at least six characters.
+``--ucertificate CERT, -uc CERT``             User certificate (public key) file
+``--disabled, -di``                           Disable user account (if omitted the user is enabled by default).
+``--groups GRP [GRP ...], -g GRP [GRP ...]``  User groups (separated by space)
+============================================= =====================================
 
 Credentials
 -----------
