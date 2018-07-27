@@ -6,4 +6,8 @@ Other commands, for advanced users.
 .. toctree::
    :maxdepth: 1
 
+   other/file
+   other/system
+   other/plugin
+   other/task
    other/rest

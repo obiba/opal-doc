@@ -6,15 +6,15 @@ Import data from files (CSV, XML, SPSS) or a remote server (Opal, Limesurvey).
 .. toctree::
    :maxdepth: 1
 
-   import/import-csv.rst
-   import/import-xml.rst
-   import/import-spss.rst
-   import/import-r-sas.rst
-   import/import-r-spss.rst
-   import/import-r-stata.rst
-   import/import-opal.rst
-   import/import-limesurvey.rst
-   import/import-sql.rst
-   import/import-ids.rst
-   import/import-ids-map.rst
-   import/import-vcf.rst
+   import/import-csv
+   import/import-xml
+   import/import-spss
+   import/import-r-sas
+   import/import-r-spss
+   import/import-r-stata
+   import/import-opal
+   import/import-limesurvey
+   import/import-sql
+   import/import-ids
+   import/import-ids-map
+   import/import-vcf

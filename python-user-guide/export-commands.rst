@@ -6,10 +6,10 @@ Export one or more tables to the Opal file system.
 .. toctree::
    :maxdepth: 1
 
-   export/export-csv.rst
-   export/export-xml.rst
-   export/export-sas.rst
-   export/export-spss.rst
-   export/export-stata.rst
-   export/export-sql.rst
-   export/export-vcf.rst
+   export/export-csv
+   export/export-xml
+   export/export-sas
+   export/export-spss
+   export/export-stata
+   export/export-sql
+   export/export-vcf
