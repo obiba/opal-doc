@@ -52,7 +52,7 @@ Targeted at individual studies and study consortia, `OBiBa <http://obiba.org/>`_
    python-user-guide/datasources-commands
    python-user-guide/import-commands
    python-user-guide/export-commands
-   python-user-guide/user-group-commands
+   python-user-guide/directory-commands
    python-user-guide/permission-commands
    python-user-guide/other-commands
 
