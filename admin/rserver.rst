@@ -175,9 +175,13 @@ If you encounter an issue during the installation and you can't resolve it, plea
 
 Opal logs can be found in **/var/log/opal**. If the installation fails, always refer to this log when reporting an error.
 
+Rserve logs can be found in **/var/lib/rserver/logs/Rserve.log** and might indicate R errors.
 
+In case the **Rserve** R binary package does not match the R version, it is possible to update it from the R console (started as root), with the following command:
 
+.. code-block:: text
 
+  install.packages("Rserve", "http://www.rforge.net/", type="source", lib="/usr/lib/R/site-library")
 
 
 Configuration
