@@ -61,3 +61,5 @@ Targeted at individual studies and study consortia, `OBiBa <http://obiba.org/>`_
   :caption: Magma Javascript API
 
   magma-user-guide/index
+  magma-user-guide/global
+  magma-user-guide/sequence
