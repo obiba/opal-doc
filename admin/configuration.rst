@@ -66,6 +66,7 @@ Property                            Description
 ``org.obiba.opal.Rserve.password``  Password to use for login-in to Rserve (none by default)
 ``org.obiba.opal.Rserve.encoding``  Character encoding for strings (default is ``utf8``)
 ``org.obiba.opal.r.sessionTimeout`` Time in minutes after which an active R session will be automatically terminated (default is 4 hours).
+``org.obiba.opal.r.repos``          The list of CRAN repositories from which R packages can be downloaded, comma separated. Default value is ``https://cran.rstudio.com,https://cran.obiba.org``.
 =================================== =========================================================================
 
 Agate Server Configuration
@@ -95,7 +96,6 @@ Property                                 Description
 ``org.obiba.opal.keys.tableReference``   Fully-qualified name of the identifiers table
 ``org.obiba.opal.taxonomies``            Comma separated list of URIs to taxonomy files in YAML format. Note that file URI schema is supported (allows to read locally defined taxonomy).
 ``org.obiba.opal.plugins.site``          The URL to the plugins repository (default is https://plugins.obiba.org). A plugin repository is not just a list of files, meta-data information about plugins are expected to be provided by a plugins.json file.
-``org.obiba.opal.r.repos``               The list of CRAN repositories from which R packages can be downloaded, comma separated. Default value is ``https://cran.rstudio.com,https://cran.obiba.org``.
 ``org.obiba.opal.ssl.excludedProtocols`` SSL/TLS (comma separated) protocols that HTTPS server must not reply to. Typical configuration value would be: SSLv3. Default is to not exclude any of the SSL/TLS protocols.
 ``org.obiba.opal.maxFormContentSize``    Maximum body size of a HTTP(S) form post request. Default value is ``200000`` bytes.
 ``org.obiba.opal.ws.messageSizeLimit``   Limit of the Protobuf message size. Default value is ``524288000`` bytes (500MB).
