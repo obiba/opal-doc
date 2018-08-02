@@ -237,6 +237,8 @@ The entities can be of different types:
 
 Each entity has a unique identifier. An entity can have several value sets, but only one value set for a particular table.
 
+.. _value-types:
+
 Value Types
 ~~~~~~~~~~~
 

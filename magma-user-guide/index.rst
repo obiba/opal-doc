@@ -28,16 +28,23 @@ Methods
 Global Methods
 ~~~~~~~~~~~~~~
 
-======================= ===========================================================
-Methods                 Description
-======================= ===========================================================
-:doc:`global/value`     Return the variable value within the current value set.
-:doc:`global/this`      Return the variable value within the current view value set.
-:doc:`global/join`      Return the joined variable value referenced by a variable value within the current value set.
-:doc:`global/group`     Return a map of variable values in the same group of occurrence within the current value set.
-:doc:`global/id`        Return the entity identifier within the current value set.
-:doc:`global/variable`  Returns the variable object at the given name.
-======================= ===========================================================
+========================= ===========================================================
+Methods                   Description
+========================= ===========================================================
+:doc:`global/value`       Return the variable value within the current value set.
+:doc:`global/this`        Return the variable value within the current view value set.
+:doc:`global/join`        Return the joined variable value referenced by a variable value within the current value set.
+:doc:`global/group`       Return a map of variable values in the same group of occurrence within the current value set.
+:doc:`global/id`          Return the entity identifier within the current value set.
+:doc:`global/variable`    Returns the variable object at the given name.
+:doc:`global/log`         Provides 'info' level logging of messages and variable values.
+:doc:`global/now`         Returns the current date time wrapped in a value object.
+:doc:`global/newValue`    Creates a new value.
+:doc:`global/newSequence` Creates a new value sequence.
+:doc:`global/created`     Return the value set creation time.
+:doc:`global/lastupdate`  Return the value set last update time.
+:doc:`global/source`      Load a javascript file.
+========================= ===========================================================
 
 Variable Methods
 ~~~~~~~~~~~~~~~~
@@ -62,6 +69,7 @@ Value Sequence Methods
 Methods                      Description
 ============================ ===========================================================
 :doc:`sequence/firstNotNull` Returns the first not null value in a value sequence.
+:doc:`sequence/asSequence`   Turns a value object into a value sequence object.
 ============================ ===========================================================
 
 Boolean Value Methods

@@ -5,3 +5,4 @@ Value Sequence Methods
    :maxdepth: 1
 
    sequence/firstNotNull
+   sequence/asSequence

@@ -10,3 +10,10 @@ Global Methods
    global/group
    global/id
    global/variable
+   global/log
+   global/now
+   global/newValue
+   global/newSequence
+   global/created
+   global/lastupdate
+   global/source

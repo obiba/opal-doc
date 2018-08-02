@@ -3,7 +3,7 @@ $, $val, $value
 
 The current object is a value set. $ will access to a variable value within this value set.
 
-Note that when joining several tables in a view and when the named variable is present in more than one of these tables, the value returned is a value sequence. Values of this sequence appear in the order of the tables defined in the view. For more details see also the presentation about `multilines <http://slides.com/yannickmarcon/opal-multilines>`_ support. If the values of the sequence are known to be identical (because the same data is repeated in several tables), it is possible to use the firstNotNull method to reduce the sequence to one value.
+Note that when joining several tables in a view and when the named variable is present in more than one of these tables, the value returned is a value sequence. Values of this sequence appear in the order of the tables defined in the view. For more details see also the presentation about `multilines <http://slides.com/yannickmarcon/opal-multilines>`_ support. If the values of the sequence are known to be identical (because the same data is repeated in several tables), it is possible to use the :doc:`../sequence/firstNotNull` method to reduce the sequence to one value.
 
 Note also that if a script returns a value sequence and if the derived variable is not "repeatable", the value sequence is automatically reduced with the :doc:`../sequence/firstNotNull` strategy.
 
