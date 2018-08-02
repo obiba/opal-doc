@@ -14,10 +14,10 @@ Opal web services and web application user interface can be accessed through HTT
 =========================================== =========================================================================
 Property                                    Description
 =========================================== =========================================================================
-``org.obiba.opal.http.port``                The port to use for listening for HTTP connections. Default value is 8080, -1 to disable.
-``org.obiba.opal.https.port``               The port to use for listening for HTTPS connections. Default value is 8443, -1 to disable.
-``org.obiba.opal.ajp.port``                 The port to use for the Apache JServ Protocol. Default is -1 (disabled).
-``org.obiba.opal.maxIdleTime``              The maximum time a single read/write HTTP operation can take in millis (default is 30000). See `idleTimeout Jetty configuration <http://www.eclipse.org/jetty/documentation/current/configuring-connectors.html>`_.
+``org.obiba.opal.http.port``                The port to use for listening for HTTP connections. Default value is ``8080``, -1 to disable.
+``org.obiba.opal.https.port``               The port to use for listening for HTTPS connections. Default value is ``8443``, -1 to disable.
+``org.obiba.opal.ajp.port``                 The port to use for the Apache JServ Protocol. Default is ``-1`` (disabled).
+``org.obiba.opal.maxIdleTime``              The maximum time a single read/write HTTP operation can take in millis (default is ``30000``). See `idleTimeout Jetty configuration <http://www.eclipse.org/jetty/documentation/current/configuring-connectors.html>`_.
 ``org.obiba.opal.ssl.excludedProtocols``    Specify the SSL/TLS protocols to be excluded. Usually SSLv3 will be excluded. Use commas for separating multiple protocol names. Default is no protocol is excluded (for legacy reason). See `JSSE Provider documentation <http://docs.oracle.com/javase/8/docs/technotes/guides/security/SunProviders.html#SunJSSEProvider>`_.
 ``org.obiba.opal.ssl.includedCipherSuites`` Specify which Cipher Suites to be included. Use commas for separating multiple cipher suites names. Default is all that is available. See `JSSE Provider documentation <http://docs.oracle.com/javase/8/docs/technotes/guides/security/SunProviders.html#SunJSSEProvider>`_.
 =========================================== =========================================================================
@@ -32,7 +32,7 @@ Opal is accessible using SSH clients: SFTP is available through SSH connections.
 =========================== =========================================================================
 Property                    Description
 =========================== =========================================================================
-``org.obiba.opal.ssh.port`` The port to use for listening for SSH connections. Default value is 8022.
+``org.obiba.opal.ssh.port`` The port to use for listening for SSH connections. Default value is ``8022``.
 =========================== =========================================================================
 
 SMTP Server Configuration
@@ -46,7 +46,7 @@ Property                         Description
 ``org.obiba.opal.smtp.host``     The SMTP server host name.
 ``org.obiba.opal.smtp.port``     The SMTP server port number.
 ``org.obiba.opal.smtp.from``     The "From" email address when sending emails.
-``org.obiba.opal.smtp.auth``     A flag to indicated if authentication against SMTP server is required. Allowed values are: true/false. Default is false (usually not required when server is in the same intranet).
+``org.obiba.opal.smtp.auth``     A flag to indicated if authentication against SMTP server is required. Allowed values are: true/false. Default is ``false`` (usually not required when server is in the same intranet).
 ``org.obiba.opal.smtp.username`` The SMTP user name to be authenticate (if authentication is activated).
 ``org.obiba.opal.smtp.password`` The SMTP user password (if authentication is activated).
 ================================ =========================================================================
@@ -60,11 +60,11 @@ Opal is able to perform R queries by talking with a running Rserve. Opal does no
 Property                            Description
 =================================== =========================================================================
 ``org.obiba.rserver.port``          Port number of the R server controller (allows Opal to start/stop the R server).
-``org.obiba.opal.Rserve.host``      Hostname of the Rserve daemon (default is blank, i.e. the one defined by Rserve (localhost))
-``org.obiba.opal.Rserve.port``      TCP port to connect to (default is blank, i.e. the one defined by Rserve (6311))
+``org.obiba.opal.Rserve.host``      Hostname of the Rserve daemon (default is blank, i.e. the one defined by Rserve: ``localhost``)
+``org.obiba.opal.Rserve.port``      TCP port to connect to (default is blank, i.e. the one defined by Rserve: ``6311``)
 ``org.obiba.opal.Rserve.username``  Username to use for login-in to Rserve (none by default)
 ``org.obiba.opal.Rserve.password``  Password to use for login-in to Rserve (none by default)
-``org.obiba.opal.Rserve.encoding``  Character encoding for strings (default is utf8)
+``org.obiba.opal.Rserve.encoding``  Character encoding for strings (default is ``utf8``)
 ``org.obiba.opal.r.sessionTimeout`` Time in minutes after which an active R session will be automatically terminated (default is 4 hours).
 =================================== =========================================================================
 
@@ -77,8 +77,8 @@ Opal user lookup can include the Agate's user realm. Default configuration enabl
 Property                         Description
 ================================ =========================================================================
 ``org.obiba.realm.url``          Address to connect to Agate server. Default is https://localhost:8444. To disable Agate connection, specify an empty value for this property.
-``org.obiba.realm.service.name`` Application name of this Opal instance in Agate. Default is opal.
-``org.obiba.realm.service.key``  Application key of this Opal instance in Agate. Default is changeit.
+``org.obiba.realm.service.name`` Application name of this Opal instance in Agate. Default is ``opal``.
+``org.obiba.realm.service.key``  Application key of this Opal instance in Agate. Default is ``changeit``.
 ================================ =========================================================================
 
 .. _misc-config:
@@ -95,9 +95,10 @@ Property                                 Description
 ``org.obiba.opal.keys.tableReference``   Fully-qualified name of the identifiers table
 ``org.obiba.opal.taxonomies``            Comma separated list of URIs to taxonomy files in YAML format. Note that file URI schema is supported (allows to read locally defined taxonomy).
 ``org.obiba.opal.plugins.site``          The URL to the plugins repository (default is https://plugins.obiba.org). A plugin repository is not just a list of files, meta-data information about plugins are expected to be provided by a plugins.json file.
+``org.obiba.opal.r.repos``               The list of CRAN repositories from which R packages can be downloaded, comma separated. Default value is ``https://cran.rstudio.com,https://cran.obiba.org``.
 ``org.obiba.opal.ssl.excludedProtocols`` SSL/TLS (comma separated) protocols that HTTPS server must not reply to. Typical configuration value would be: SSLv3. Default is to not exclude any of the SSL/TLS protocols.
-``org.obiba.opal.maxFormContentSize``    Maximum body size of a HTTP(S) form post request. Default value is "200000" bytes.
-``org.obiba.opal.ws.messageSizeLimit``   Limit of the Protobuf message size. Default value is "524288000" bytes (500MB).
+``org.obiba.opal.maxFormContentSize``    Maximum body size of a HTTP(S) form post request. Default value is ``200000`` bytes.
+``org.obiba.opal.ws.messageSizeLimit``   Limit of the Protobuf message size. Default value is ``524288000`` bytes (500MB).
 ``org.obiba.magma.entityIdNames``        Specify the column name per entity type to be used for the entity identifier when exporting data to a file (CSV, SAS, SPSS, Stata). If empty for the considered entity type, the default column name will apply. The format to be used is a comma-separated key-value list, for instance: ``org.obiba.magma.entityIdNames=Participant=Idepic,Biomarker=Biom_Id``
 ``org.obiba.magma.entityIdName``         Specify the default column name to be used for the entity identifier when exporting data to a file (CSV, SAS, SPSS, Stata). If empty, this name depends on the file format.
 ======================================== =========================================================================
