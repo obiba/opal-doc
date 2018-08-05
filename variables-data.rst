@@ -250,23 +250,23 @@ The following table gives more information about the textual representation of a
 
    * - Value Type
      - Value as a String
-   * - integer
+   * - ``integer``
      - The string value must all be decimal digits, except that the first character may be an ASCII minus sign '-' to indicate a negative value. The resulting integer has radix 10 and the supported range is [-2 :sup:`63`, 2 :sup:`63`-1].
-   * - decimal
+   * - ``decimal``
      - As described by `Java Double documentation <https://docs.oracle.com/javase/8/docs/api/java/lang/Double.html#valueOf-java.lang.String->`_.
-   * - text
+   * - ``text``
      - As-is.
-   * - binary
+   * - ``binary``
      - `Base64 <http://en.wikipedia.org/wiki/Base64>`_ encoded.
-   * - locale
+   * - ``locale``
      - | String representation of a locale is <language>[_<country>[_<variant>]] (for instance en, en_CA etc.) where:
        |
        | language: lowercase two-letter ISO-639 code.
        | country: uppercase two-letter ISO-3166 code.
        | variant: vendor specific code, see `Java Locale <https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html>`_.
-   * - boolean
+   * - ``boolean``
      - True value if is equal, ignoring case, to the string "true".
-   * - datetime
+   * - ``datetime``
      - | Date times are represented in `ISO_8601 <http://en.wikipedia.org/wiki/ISO_8601>`_ format: "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
        | Supported input formats are (four digits year is required):
        |
@@ -282,7 +282,7 @@ The following table gives more information about the textual representation of a
        | yyyy/MM/dd HH:mm
        | yyyy.MM.dd HH:mm
        | yyyy MM dd HH:mm
-   * - date
+   * - ``date``
      - | Dates are represented in `ISO_8601 <http://en.wikipedia.org/wiki/ISO_8601>`_ format: "yyyy-MM-dd"
        | Supported input formats are (four digits year is required):
        |
@@ -294,7 +294,7 @@ The following table gives more information about the textual representation of a
        | dd/MM/yyyy
        | dd.MM.yyyy
        | dd MM yyyy
-   * - point
+   * - ``point``
      - | Point coordinates (longitude, latitude).
        | Supported input formats are:
        |
@@ -316,7 +316,7 @@ The following table gives more information about the textual representation of a
        |
        | # String, comma separated latitude and longitude (Google map like): lat,lon
        | 41.12,-71.34
-   * - linestring
+   * - ``linestring``
      - | Array of point coordinates.
        | Supported input format is GeoJSON:
        |
@@ -325,7 +325,7 @@ The following table gives more information about the textual representation of a
        |
        | # GeoJSON coordinates only
        | [[22.2,44.1],[33.4,55.3],[32.12,44]]
-   * - polygon
+   * - ``polygon``
      - | Array of shapes. A shape is a list of points. The last point must be equal to the first point.
        | Supported input format is GeoJSON:
        |

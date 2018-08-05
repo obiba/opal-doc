@@ -12,13 +12,6 @@ Syntax
 
   $join(name,idname[,flat])
 
-.. code-block:: javascript
-
-  $(name)
-  // alternate syntax
-  $val(name)
-  $value(name)
-
 .. list-table::
    :header-rows: 1
    :widths: 10 90

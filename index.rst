@@ -49,17 +49,11 @@ Targeted at individual studies and study consortia, `OBiBa <http://obiba.org/>`_
    :caption: Python User Guide
 
    python-user-guide/index
-   python-user-guide/datasources-commands
-   python-user-guide/import-commands
-   python-user-guide/export-commands
-   python-user-guide/directory-commands
-   python-user-guide/permission-commands
-   python-user-guide/other-commands
+   python-user-guide/commands
 
 .. toctree::
   :maxdepth: 1
   :caption: Magma Javascript API
 
   magma-user-guide/index
-  magma-user-guide/global
-  magma-user-guide/sequence
+  magma-user-guide/methods
