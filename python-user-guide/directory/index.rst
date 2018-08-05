@@ -6,5 +6,5 @@ Opal (internal) users and groups management. Does not apply to any `Agate <http:
 .. toctree::
    :maxdepth: 1
 
-   directory/user
-   directory/group
+   user
+   group
