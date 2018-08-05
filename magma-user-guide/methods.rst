@@ -6,6 +6,7 @@ Magma JS Methods
 
    global/index
    variable/index
+   value/index
    sequence/index
 
 
@@ -54,6 +55,16 @@ Methods                         Description
 ======================= ===========================================================
 Methods                 Description
 ======================= ===========================================================
+:doc:`value/all`        Returns true when the value contains all specified parameters, false otherwise.
+:doc:`value/any`        Returns true value when the value is equal to any of the parameter, false otherwise.
+:doc:`value/empty`      Returns true value if is operating on a sequence that contains zero values.
+:doc:`value/isNull`     Returns true if the value is null.
+:doc:`value/whenNull`   Returns its argument if the value is null. This method may allow avoiding an if/else block.
+:doc:`value/map`        Uses a lookup table to map the a value to another (which may be computed or derived).
+:doc:`value/not`        Returns the contrary of a boolean value or return if it does not match any of the arguments.
+:doc:`value/type`       Returns or changes the value's type.
+:doc:`value/value`      Returns the javascript value from the value object.
+:doc:`value/length`     Returns the length of the value.
 ======================= ===========================================================
 
 **Value Sequence Methods**
