@@ -41,7 +41,7 @@ This type of package is cross-platform (Linux, Windows, Mac).
 
 **Install on Linux or Mac**
 
-1. `Download the most recent version <https://download.obiba.org/opal/stable/>`_
+1. `Download the most recent version <https://github.com/obiba/opal/releases/download/2.10.12/opal-python-client-2.10.12.tar.gz>`_
 2. Decompress the file and enter the installation folder:
 
 .. code-block:: bash
@@ -70,7 +70,7 @@ You can install Cygwin, making sure that CURL, Python, gcc are included and foll
   cd /usr/lib
   cp libcurl.dll.a libcurl.a
   cd <your-desired-dir>
-  curl -C - -O http://download.obiba.org/opal/stable/opal-python-client-X.XX.tar.gz
+  curl -C - -O https://github.com/obiba/opal/releases/download/X.XX/opal-python-client-X.XX.tar.gz
   tar xzvf opal-python-client-X.XX.tar.gz
   cd opal-python-client-X.XX
   python setup.py install --record installed_files.lst
@@ -91,11 +91,11 @@ This Windows installation is the most complicated one but does not required any 
 
 4. Go to the `Python Libs <http://www.lfd.uci.edu/~gohlke/pythonlibs/>`_ site and download the file pycurl-7.19.0.win-amd64-py2.7.‌exe
 5. Run the installer and follow the instructions until the package is installed
-6. `Download the most recent version <https://download.obiba.org/opal/stable/>`_ and follow these steps:
+6. `Download the most recent version <https://github.com/obiba/opal/releases/download/2.10.12/opal-python-client-2.10.12.tar.gz>`_ and follow these steps:
 
 .. code-block:: bash
 
-  unzip http://download.obiba.org/opal/stable/opal-python-client-X.XX.zip
+  unzip opal-python-client-X.XX.tar.gz
   cd opal-python-client-X.XX
   python setup.py bdist_wininst
   cd dist
