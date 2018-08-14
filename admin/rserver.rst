@@ -181,7 +181,11 @@ In case the **Rserve** R binary package does not match the R version, it is poss
 
 .. code-block:: text
 
-  install.packages("Rserve", "http://www.rforge.net/", type="source", lib="/usr/lib/R/site-library")
+  # install regular package
+  install.packages('Rserve', repos='http://cran.rstudio.com', lib='/usr/lib/R/site-library')
+  
+  # OR install package from source
+  install.packages('Rserve', 'http://www.rforge.net/', type='source', lib='/usr/lib/R/site-library')
 
 
 Configuration
