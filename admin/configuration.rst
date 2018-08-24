@@ -69,6 +69,19 @@ Property                            Description
 ``org.obiba.opal.r.repos``          The list of CRAN repositories from which R packages can be downloaded, comma separated. Default value is ``https://cran.rstudio.com,https://cran.obiba.org``.
 =================================== =========================================================================
 
+Login Policy Configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To prevent brute force password guessing, a user can be temporary banned after too many login failures.
+
+=========================================== =========================================================================
+Property                                    Description
+=========================================== =========================================================================
+``org.obiba.opal.security.login.maxRetry``  Number of failed login attempts before being banned (default is ``3``).
+``org.obiba.opal.security.login.retryTime`` Time span in which the maximum of retry count should happen before starting a ban period, in seconds (default is ``300``). No time limit if not positive.
+``org.obiba.opal.security.login.banTime``   Ban time after max retry was reached, in seconds (default is ``300``). No ban if not positive.
+=========================================== =========================================================================
+
 Agate Server Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
