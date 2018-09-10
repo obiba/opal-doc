@@ -15,6 +15,8 @@ Public URL	          Public base URL of the server (not the web-interface one) t
 Language	            Default languages to consider when editing a data dictionary.
 ===================== =====================
 
+.. _encryption-keys:
+
 Encryption Keys
 ---------------
 

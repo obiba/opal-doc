@@ -160,6 +160,8 @@ The example below creates the opaladmin user for opal_ids and opal_data database
 
 Opal requires either *clusterMonitor* or *readAnyDatabase* role on the *admin* database for validation operations. The first role is useful for a cluster setup and the latter if your MongoDB is on a single server.
 
+Opal supports connection to `MongoDB using SSL <https://docs.mongodb.com/manual/tutorial/configure-ssl/>`_: add the ``ssl=true`` (and any other relevant parameters) to the `MongoDB connection string <https://docs.mongodb.com/manual/reference/connection-string/>`_. The system key-pair (see :ref:`encryption-keys`) will be used for connecting to the database. If the MongoDB server certificate is self-signed, its certificate can be added to the Opal trusted certificates store by creating a Opal user authenticated by this certificate. See also usage of property ``org.obiba.opal.security.ssl.allowInvalidCertificates`` in :ref:`misc-config`.
+
 Data Schemas
 ------------
 
