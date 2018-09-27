@@ -6,16 +6,42 @@ Repository
 
 Opal plugins available are:
 
-+----------------------------------------------------------------------+--------------+----------------------------------------------------------------------------------------------------+-----------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------+
-| Name                                                                 | Type         | Description                                                                                        |  Depends                                                  | API                                                                                                               |
-+======================================================================+==============+====================================================================================================+===========================================================+===================================================================================================================+
-| `opal-search-es <https://github.com/obiba/opal-search-es/releases>`_ | opal-search  | | Opal search engine based on Elasticsearch 2.4. Can be used embedded in Opal (default) or         | No dependencies                                           | `Search Plugin API <https://github.com/obiba/opal/tree/master/opal-spi/src/main/java/org/obiba/opal/spi/search>`_ |
-|                                                                      |              | | configured to connect to an Elasticsearch cluster.                                               |                                                           |                                                                                                                   |
-+----------------------------------------------------------------------+--------------+----------------------------------------------------------------------------------------------------+-----------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------+
-| `jennite-vcf-store <https://github.com/obiba/jennite/releases>`_     | vcf-store    | | Stores the genotypes in Variant Call Format (VCF) files (binary flavor, BCF, is also supported). | | `htslib executables <http://www.htslib.org/download/>`_ | `VCF Store Plugin API <https://github.com/obiba/opal/tree/master/opal-spi/src/main/java/org/obiba/opal/spi/vcf>`_ |
-|                                                                      |              | | VCF/BCF files can be downloaded filtered by participant phenotype criteria.                      | | (bcftools, tabix, bgzip)                                |                                                                                                                   |
-+----------------------------------------------------------------------+--------------+----------------------------------------------------------------------------------------------------+-----------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------+
 
+.. list-table::
+  :header-rows: 1
+
+  * - Name
+    - Type
+    - Description
+    - Depends
+    - API
+  * - `opal-search-es <https://github.com/obiba/opal-search-es/releases>`_
+    - opal-search
+    - | Opal search engine based on Elasticsearch 2.4. Can be used embedded in Opal (default)
+      | or configured to connect to an Elasticsearch cluster.
+    - No dependencies
+    - `Search Plugin API <https://github.com/obiba/opal/tree/master/opal-spi/src/main/java/org/obiba/opal/spi/search>`_
+  * - `jennite-vcf-store <https://github.com/obiba/jennite/releases>`_
+    - vcf-store
+    - | Stores the genotypes in Variant Call Format (VCF) files (binary flavor, BCF, is also supported).
+      | VCF/BCF files can be downloaded filtered by participant phenotype criteria.
+    - `htslib executables <http://www.htslib.org/download/>`_ (bcftools, tabix, bgzip)
+    - `VCF Store Plugin API <https://github.com/obiba/opal/tree/master/opal-spi/src/main/java/org/obiba/opal/spi/vcf>`_
+  * - `opal-datasource-limesurvey <https://github.com/obiba/opal-datasource-limesurvey/releases>`_
+    - opal-datasource
+    - Connects to a Limesurvey database to extract variables and data.
+    - No dependencies
+    - `Datasource Plugin API <https://github.com/obiba/opal/tree/master/opal-spi/src/main/java/org/obiba/opal/spi/datasource>`_
+  * - `opal-datasource-redcap <https://github.com/obiba/opal-datasource-redcap/releases>`_
+    - opal-datasource
+    - Connects to a REDCap server to extract variables and data.
+    - No dependencies
+    - `Datasource Plugin API <https://github.com/obiba/opal/tree/master/opal-spi/src/main/java/org/obiba/opal/spi/datasource>`_
+  * - `opal-datasource-spss <https://github.com/obiba/opal-datasource-spss/releases>`_
+    - opal-datasource
+    - Java implementation of a SPSS file reader.
+    - No dependencies
+    - `Datasource Plugin API <https://github.com/obiba/opal/tree/master/opal-spi/src/main/java/org/obiba/opal/spi/datasource>`_
 
 Installation
 ------------
