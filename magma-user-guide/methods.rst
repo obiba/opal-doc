@@ -74,7 +74,6 @@ Methods                 Description
 
 **Value Sequence Methods**
 
-
 ============================ ===========================================================
 Methods                      Description
 ============================ ===========================================================
@@ -125,8 +124,8 @@ Methods                 Description
 ======================= ===========================================================
 Methods                 Description
 ======================= ===========================================================
-:doc:`numeric/compare`  Returns a negative integer, zero, or a positive integer as the value is less than, equal to, or greater than the value argument.
-:doc:`numeric/eq`       Returns if left operand value is equal to right operand value.
+:doc:`bool/compare`     Returns a negative integer, zero, or a positive integer as the value is less than, equal to, or greater than the value argument.
+:doc:`bool/eq`          Returns if left operand value is equal to right operand value.
 :doc:`numeric/ge`       Returns if left operand value is greater equal than right operand value.
 :doc:`numeric/gt`       Returns if left operand value is greater than right operand value.
 :doc:`numeric/le`       Returns if left operand value is lower equal than right operand value.
@@ -151,12 +150,12 @@ Methods                 Description
 ========================= ===========================================================
 Methods                   Description
 ========================= ===========================================================
-:doc:`text/compare`       Returns a negative integer, zero, or a positive integer as the text value is less than, equal to, or greater than the text value argument.
+:doc:`bool/compare`       Returns a negative integer, zero, or a positive integer as the text value is less than, equal to, or greater than the text value argument.
 :doc:`text/compareNoCase` Returns a negative integer, zero, or a positive integer as the text value is less than, equal to, or greater than the text value argument ignoring case.
 :doc:`text/concat`        Returns the text type result of first operand concat second operand.
 :doc:`text/date`          Returns a value of date type given a date format pattern.
 :doc:`text/datetime`      Returns a value of datetime type given a date time format pattern.
-:doc:`text/eq`            Returns if left operand value is equal to right operand value.
+:doc:`bool/eq`            Returns if left operand value is equal to right operand value.
 :doc:`text/matches`       Used to match a regular expression against a string.
 :doc:`text/replace`       Used to find a match between a regular expression and a string, and to replace the matched substring with a new substring.
 :doc:`text/trim`          Returns a copy of the string, with leading and trailing whitespace omitted.

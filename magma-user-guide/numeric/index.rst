@@ -4,8 +4,8 @@ Numeric Value Methods
 .. toctree::
    :maxdepth: 1
 
-   compare
-   eq
+   ../bool/compare
+   ../bool/eq
    ge
    gt
    le

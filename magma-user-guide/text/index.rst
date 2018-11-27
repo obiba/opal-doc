@@ -4,12 +4,12 @@ Text Value Methods
 .. toctree::
    :maxdepth: 1
 
-   compare
+   ../bool/compare
    compareNoCase
    concat
    date
    datetime
-   eq
+   ../bool/eq
    matches
    replace
    trim
