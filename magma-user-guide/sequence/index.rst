@@ -4,7 +4,7 @@ Value Sequence Methods
 .. toctree::
    :maxdepth: 1
 
-   any
+   ../value/any
    empty
    first
    firstNotNull
@@ -13,7 +13,7 @@ Value Sequence Methods
    lastIndexOf
    valueAt
    size
-   map
+   ../value/map
    reduce
    filter
    subset

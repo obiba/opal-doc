@@ -63,7 +63,6 @@ Methods                 Description
 ======================= ===========================================================
 :doc:`value/all`        Returns true when the value contains all specified parameters, false otherwise.
 :doc:`value/any`        Returns true value when the value is equal to any of the parameter, false otherwise.
-:doc:`value/empty`      Returns true value if is operating on a sequence that contains zero values.
 :doc:`value/isNull`     Returns true if the value is null.
 :doc:`value/whenNull`   Returns its argument if the value is null. This method may allow avoiding an if/else block.
 :doc:`value/map`        Uses a lookup table to map the a value to another (which may be computed or derived).
@@ -79,16 +78,16 @@ Methods                 Description
 ============================ ===========================================================
 Methods                      Description
 ============================ ===========================================================
-:doc:`sequence/any`          Returns true value if of the provided values can be found in the value sequence.
+:doc:`value/any`             Returns true value if of the provided values can be found in the value sequence.
 :doc:`sequence/empty`        Returns true value if is operating on a sequence that contains zero values.
 :doc:`sequence/first`        Returns the first value in a value sequence.
 :doc:`sequence/firstNotNull` Returns the first not null value in a value sequence.
 :doc:`sequence/indexOf`      Returns the first position of a value in a value sequence.
 :doc:`sequence/last`         Returns the last value in a value sequence.
 :doc:`sequence/lastIndexOf`  Returns the last position of a value in a value sequence.
-:doc:`sequence/valueAt`      Returns the a value at a specified index within the sequence (0-based).
+:doc:`sequence/valueAt`      Returns the value at a specified index within the sequence (0-based).
 :doc:`sequence/size`         Returns the number of values within a sequence.
-:doc:`sequence/map`          Map each value in the sequence to another value.
+:doc:`value/map`             Map each value in the sequence to another value.
 :doc:`sequence/reduce`       Returns the reduction of the values within a sequence.
 :doc:`sequence/filter`       Returns a sequence which values have been filtered using custom javascript predicating function.
 :doc:`sequence/subset`       Returns a subset of a sequence according to provided begin and end positions.

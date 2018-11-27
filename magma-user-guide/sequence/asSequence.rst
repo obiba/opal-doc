@@ -3,7 +3,7 @@ asSequence
 
 Turns a value object into a value sequence object. A value sequence *is-a* value object but also *has-some* value objects. If the value object on which it is applied is already a value sequence object, no operation is made.
 
-See also :doc:`../global/newValue`, :doc:`../global/newSequence`.
+See also :doc:`../global/newValue`, :doc:`../global/newSequence`, :doc:`isSequence`.
 
 Syntax
 
