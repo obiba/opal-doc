@@ -113,11 +113,11 @@ Methods                      Description
 ======================= ===========================================================
 Methods                 Description
 ======================= ===========================================================
-:doc:`bool/and`         Applies the `ternary and logic <http://en.wikipedia.org/wiki/Ternary_logic>`_ on values.
-:doc:`bool/compare`     Returns 0 if the value represents the same boolean value as the argument; a positive integer if the value represents ``true`` and the argument represents ``false``; and a negative integer if this value represents ``false`` and the argument represents ``true``.
+:doc:`bool/and`         Applies the `ternary AND logic <http://en.wikipedia.org/wiki/Ternary_logic>`_ on values.
+:doc:`bool/compare`     Returns a negative integer, zero, or a positive integer as this object is less than, equal to, or greater than the specified object.
 :doc:`bool/eq`          Returns if left operand value is equal to right operand value.
 :doc:`bool/not`         Returns the contrary of a boolean value or return if it does not match any of the arguments.
-:doc:`bool/or`          Applies the `ternary and logic <http://en.wikipedia.org/wiki/Ternary_logic>`_ on values.
+:doc:`bool/or`          Applies the `ternary OR logic <http://en.wikipedia.org/wiki/Ternary_logic>`_ on values.
 ======================= ===========================================================
 
 **Numeric Value Methods**
