@@ -198,8 +198,8 @@ Methods                 Description
 ======================= ===========================================================
 Methods                 Description
 ======================= ===========================================================
-:doc:`geo/latitude`     Get the latitude of a point value.
 :doc:`geo/longitude`    Get the longitude of a point value.
+:doc:`geo/latitude`     Get the latitude of a point value.
 ======================= ===========================================================
 
 **Measurement Unit Methods**
