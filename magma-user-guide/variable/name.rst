@@ -10,9 +10,11 @@ Syntax
 
 .. code-block:: javascript
 
-
+  name()
 
 Examples
 --------
 
 .. code-block:: javascript
+
+  $('AVar').name()
