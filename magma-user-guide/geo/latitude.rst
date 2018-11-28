@@ -1,20 +1,20 @@
-longitude
-=========
+latitude
+========
 
-Returns the longitude of a point value as a decimal value.
+Returns the latitude of a point value as a decimal value.
 
-See also :doc:`latitude`.
+See also :doc:`longitude`.
 
 Syntax
 ------
 
 .. code-block:: javascript
 
-  longitude()
+  latitude()
 
 Examples
 --------
 
 .. code-block:: javascript
 
-  $('COORDINATE').longitude()
+  $('COORDINATE').latitude()
