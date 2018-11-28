@@ -3,7 +3,7 @@ filter
 
 Filter values of a sequence using a custom javascript predicating function.
 
-See also :doc:`subset`, :doc:`map`, :doc:`reduce`.
+See also :doc:`subset`, :doc:`../value/map`, :doc:`reduce`.
 
 Syntax
 ------

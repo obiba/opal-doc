@@ -7,5 +7,5 @@ Boolean Value Methods
    and
    compare
    eq
-   not
+   ../value/not
    or

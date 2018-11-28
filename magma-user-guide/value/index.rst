@@ -6,7 +6,6 @@ Value Methods
 
    all
    any
-   empty
    isNull
    whenNull
    map

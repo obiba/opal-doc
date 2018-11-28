@@ -115,7 +115,7 @@ Methods                 Description
 :doc:`bool/and`         Applies the `ternary AND logic <http://en.wikipedia.org/wiki/Ternary_logic>`_ on values.
 :doc:`bool/compare`     Returns a negative integer, zero, or a positive integer as this object is less than, equal to, or greater than the specified object.
 :doc:`bool/eq`          Returns if left operand value is equal to right operand value.
-:doc:`bool/not`         Returns the contrary of a boolean value or return if it does not match any of the arguments.
+:doc:`value/not`        Returns the contrary of a boolean value or return if it does not match any of the arguments.
 :doc:`bool/or`          Applies the `ternary OR logic <http://en.wikipedia.org/wiki/Ternary_logic>`_ on values.
 ======================= ===========================================================
 

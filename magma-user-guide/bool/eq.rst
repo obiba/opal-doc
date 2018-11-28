@@ -21,7 +21,7 @@ Syntax
 =============== ============================
 Parameter       Description
 =============== ============================
-``value``       The value to be compared to, can be a primitive type or a Value object.
+``value_i``       The value to be compared to, can be a primitive type or a Value object.
 =============== ============================
 
 Examples

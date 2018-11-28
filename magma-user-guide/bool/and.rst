@@ -15,7 +15,7 @@ Syntax
 =============== ============================
 Parameter       Description
 =============== ============================
-``value``       The boolean value(s) to be compared to.
+``value_i``       The boolean value(s) to be compared to.
 =============== ============================
 
 Examples
