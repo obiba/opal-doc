@@ -114,6 +114,7 @@ Property                                                 Description
 ``org.obiba.magma.entityIdNames``                        Specify the column name per entity type to be used for the entity identifier when exporting data to a file (CSV, SAS, SPSS, Stata). If empty for the considered entity type, the default column name will apply. The format to be used is a comma-separated key-value list, for instance: ``org.obiba.magma.entityIdNames=Participant=Idepic,Biomarker=Biom_Id``
 ``org.obiba.magma.entityIdName``                         Specify the default column name to be used for the entity identifier when exporting data to a file (CSV, SAS, SPSS, Stata). If empty, this name depends on the file format.
 ``org.obiba.opal.security.ssl.allowInvalidCertificates`` When connecting to MongoDB using SSL and when remote certificate is self-signed, the certificate check can be deactivated (not recommended, default is ``false``).
+``org.obiba.opal.jdbc.maxPoolSize``                      Maximum size of the pool of JDBC connections, for each SQL database. Default value is ``100``.
 ======================================================== =========================================================================
 
 Advanced Configuration File
