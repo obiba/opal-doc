@@ -42,6 +42,26 @@ Opal plugins available are:
     - Java implementation of a SPSS file reader.
     - No dependencies
     - `Datasource Plugin API <https://github.com/obiba/opal/tree/master/opal-spi/src/main/java/org/obiba/opal/spi/datasource>`_
+  * - `opal-datasource-readr <https://github.com/obiba/opal-datasource-readr/releases>`_
+    - opal-datasource
+    - R implementation of a rectangular format file reader, based on `readr <https://www.rdocumentation.org/packages/readr>`_.
+    - R server
+    - `Datasource Plugin API <https://github.com/obiba/opal/tree/master/opal-spi/src/main/java/org/obiba/opal/spi/datasource>`_
+  * - `opal-datasource-readxl <https://github.com/obiba/opal-datasource-readxl/releases>`_
+    - opal-datasource
+    - R implementation of a Excel file reader/writer, based on `readxl <https://www.rdocumentation.org/packages/readxl>`_/`writexl <https://www.rdocumentation.org/packages/writexl>`_.
+    - R server
+    - `Datasource Plugin API <https://github.com/obiba/opal/tree/master/opal-spi/src/main/java/org/obiba/opal/spi/datasource>`_
+  * - `opal-datasource-googlesheets4 <https://github.com/obiba/opal-datasource-googlesheets4/releases>`_
+    - opal-datasource
+    - R implementation of a Google Sheets reader, based on `googlesheets4 <https://googlesheets4.tidyverse.org/>`_.
+    - R server
+    - `Datasource Plugin API <https://github.com/obiba/opal/tree/master/opal-spi/src/main/java/org/obiba/opal/spi/datasource>`_
+  * - `opal-datasource-validate <https://github.com/obiba/opal-analysis-validate/releases>`_
+    - opal-analysis
+    - R implementation of a data and mete-data validator, based on `validate <https://www.rdocumentation.org/packages/validate>`_.
+    - R server
+    - `Analysis Plugin API <https://github.com/obiba/opal/tree/master/opal-spi/src/main/java/org/obiba/opal/spi/analysis>`_
 
 Installation
 ------------
