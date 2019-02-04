@@ -22,6 +22,7 @@ Options
 Option                                                                        Description
 ============================================================================= =====================================
 ``--output OUTPUT, -out OUTPUT``                                              CSV/TSV file path where to write the exported annotations. When not specified, standard output is used.
+``--locale LOCALE, -l LOCALE``                                                Exported locale (default is none)
 ``--separator SEPARATOR, -s SEPARATOR``                                       The character separator to be used in the output. When not specified tab character is used.
 ``--taxonomies TAXONOMIES [TAXONOMIES ...], -tx TAXONOMIES [TAXONOMIES ...]`` The list of taxonomy names of interest (default is any that are found in the variable attributes).
 ============================================================================= =====================================

@@ -13,6 +13,7 @@ Options
 Option                                                                        Description
 ============================================================================= =====================================
 ``--input INPUT, -in INPUT``                                                  CSV/TSV input file, typically the output of the export-annot command (default is stdin)
+``--locale LOCALE, -l LOCALE``                                                Destination annotation locale (default is none)
 ``--separator SEPARATOR, -s SEPARATOR``                                       Separator char for CSV/TSV format (default is the tabulation character)
 ``--destination DESTINATION, -d DESTINATION``	                                Destination project name (default is the one(s) specified in the input file)
 ``--tables TABLES [TABLES ...], -t TABLES [TABLES ...]``                      The list of tables which variables are to be annotated (defaults to all that are found in the input file)
