@@ -13,3 +13,5 @@ These commands allow to access to both variables and values.
    table-delete
    annot-import
    annot-export
+   backup-view
+   restore-view
