@@ -6,7 +6,7 @@ view files is JSON. If one or more tables that are referenced by the backed up v
 
 .. code-block:: bash
 
-  opal backup-view <CREDENTIALS> [OPTIONS] [XTRAS]
+  opal restore-view <CREDENTIALS> [OPTIONS] [XTRAS]
 
 Options
 -------
