@@ -96,7 +96,7 @@ If you installed Opal via the RPM package, you may update it using the command:
 
 .. code-block:: bash
 
-  yum install opal
+  yum install opal-server
 
 Zip Distribution Upgrade
 ~~~~~~~~~~~~~~~~~~~~~~~~
