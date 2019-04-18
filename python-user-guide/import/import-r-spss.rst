@@ -1,7 +1,7 @@
 Import SPSS (R)
 ===============
 
-Import a SPSS file, to be found in Opal file system, using R.
+Import a SPSS or compressed SPSS file, to be found in Opal file system, using R.
 
 .. code-block:: bash
 
@@ -31,7 +31,7 @@ Options
        | ``ignore`` : ignore unknown identifiers,
        | ``generate`` : generate a system identifier for each unknown identifier.
    * - ``--path PATH -pa PATH``
-     - Path to the SPSS file to import on the Opal file system
+     - Path to the SPSS or compressed SPSS file to import on the Opal file system
    * - ``--locale LOCALE, -l LOCALE``
      - Language code to be associated to labels
    * - ``--type TYPE, -ty TYPE``

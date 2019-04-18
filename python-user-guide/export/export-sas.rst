@@ -1,7 +1,7 @@
 Export SAS (R)
 ==============
 
-Export in SAS format in Opal file system.
+Export in SAS or SAS Transport format in Opal file system.
 
 .. code-block:: bash
 
@@ -25,7 +25,7 @@ Options
    * - ``--identifiers ID_MAPPING, -id ID_MAPPING``
      - Entity ID mapping name
    * - ``--output OUTPUT, -out OUTPUT``
-     - Output SAS file name on the Opal file system
+     - Output SAS or SAS Transport file name on the Opal file system
 
 Credentials
 -----------

@@ -1,7 +1,7 @@
 Export SPSS (R)
 ===============
 
-Export in SPSS format in Opal file system.
+Export in SPSS or compressed SPSS format in Opal file system.
 
 .. code-block:: bash
 
@@ -25,7 +25,7 @@ Options
    * - ``--identifiers ID_MAPPING, -id ID_MAPPING``
      - Entity ID mapping name
    * - ``--output OUTPUT, -out OUTPUT``
-     - Output SPSS file name on the Opal file system
+     - Output SPSS or compressed SPSS file name on the Opal file system
 
 Credentials
 -----------
