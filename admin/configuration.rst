@@ -16,7 +16,6 @@ Property                                    Description
 =========================================== =========================================================================
 ``org.obiba.opal.http.port``                The port to use for listening for HTTP connections. Default value is ``8080``, -1 to disable.
 ``org.obiba.opal.https.port``               The port to use for listening for HTTPS connections. Default value is ``8443``, -1 to disable.
-``org.obiba.opal.ajp.port``                 The port to use for the Apache JServ Protocol. Default is ``-1`` (disabled).
 ``org.obiba.opal.maxIdleTime``              The maximum time a single read/write HTTP operation can take in millis (default is ``30000``). See `idleTimeout Jetty configuration <http://www.eclipse.org/jetty/documentation/current/configuring-connectors.html>`_.
 ``org.obiba.opal.ssl.excludedProtocols``    Specify the SSL/TLS protocols to be excluded. Usually SSLv3 will be excluded. Use commas for separating multiple protocol names. Default is no protocol is excluded (for legacy reason). See `JSSE Provider documentation <http://docs.oracle.com/javase/8/docs/technotes/guides/security/SunProviders.html#SunJSSEProvider>`_.
 ``org.obiba.opal.ssl.includedCipherSuites`` Specify which Cipher Suites to be included. Use commas for separating multiple cipher suites names. Default is all that is available. See `JSSE Provider documentation <http://docs.oracle.com/javase/8/docs/technotes/guides/security/SunProviders.html#SunJSSEProvider>`_.
@@ -94,6 +93,21 @@ Property                         Description
 ``org.obiba.realm.service.name`` Application name of this Opal instance in Agate. Default is ``opal``.
 ``org.obiba.realm.service.key``  Application key of this Opal instance in Agate. Default is ``changeit``.
 ================================ =========================================================================
+
+System Identifiers Generation Configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When importing data and selecting a identifiers mapping, if an imported identifier does not exist for the selected mapping and the strategy that was chosen is
+to generate a system identifier, then the following default settings apply for system identifiers generation:
+
+======================================= =========================================================================
+Property                                Description
+======================================= =========================================================================
+``org.obiba.opal.identifiers.length``   Length of the numerical part of the identifier (i.e. not including the prefix length). Default is ``10``.
+``org.obiba.opal.identifiers.zeros``    Allow leading zeros in the numerical part of the identifiers. Default is ``false``.
+``org.obiba.opal.identifiers.prefix``   Character prefix to be applied. Default is none.
+``org.obiba.opal.identifiers.checksum`` Add a checksum digit so that the generated identifier can be validated regarding the Luhn algorithm. Default is ``false``.
+======================================= =========================================================================
 
 .. _misc-config:
 
