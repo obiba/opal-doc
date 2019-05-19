@@ -263,27 +263,36 @@ With Active Directory you can specify a mapping between AD groups and roles in S
 Atlassian Crowd User Directory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Opal can authenticate users by using an Crowd.
+Atlassian Crowd is not supported any more because the connector was based on libraries with security issues. OpenID Connect is to be preferred for authentication delegation.
 
-First, you need to enable Crowd client by uncommenting the following in OPAL_HOME/conf/custom-context.xml:
+OpenID Connect Authentication Delegation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: xml
+Opal supports the delegation of the authentication to an alternate ID provider using the OpenID Connect protocol.
 
-  <import resource="file:${OPAL_HOME}/conf/crowd/crowd-context.xml" />
+To declare an ID provider, add a JSON file (one per ID provider, the name of the file does not matter) in the folder **OPAL_HOME/conf/oidc**.
 
-Then configure your Crowd client in OPAL_HOME/conf/crowd/crowd.properties:
+An example of this JSON file, showing the configuration for a test instance of a `Keycloak <https://www.keycloak.org/>`_ server:
 
-.. code-block:: bash
+.. code-block:: json
 
-  application.name=application
-  application.password=password
-  application.login.url=http://crowd.example.com/crowd/console/
-  crowd.server.url=http://crowd.example.com/crowd/services/
-  crowd.base.url=http://crowd.example.com/crowd/
-  session.isauthenticated=session.isauthenticated
-  session.tokenkey=session.tokenkey
-  session.validationinterval=2
-  session.lastvalidation=session.lastvalidation
+  {
+    "name": "kc-test",
+    "clientId": "opal",
+    "secret": "1aa43945-7166-4292-8f46-c4b836054676",
+    "discoveryURI": "http://localhost:8899/auth/realms/obiba/.well-known/openid-configuration",
+    "scope": "openid profile roles",
+    "customParams": {
+      "label": "Keycloak Test",
+      "providerUrl": "http://localhost:8899/auth/realms/obiba/account",
+      "groups": "datashield"
+    },
+    "useNonce": true,
+    "connectTimeout": 500,
+    "readTimeout": 500
+  }
+
+
 
 Other Settings
 ~~~~~~~~~~~~~~
