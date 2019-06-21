@@ -1,0 +1,101 @@
+Project Tables
+==============
+
+Tables are give access to the project data along with their description. A table can be a raw table (i.e. with data persisted in the project'sdatabase) or a logical table (also called view) which is a set of derived variables (data are computed on-demand)
+
+Operations
+----------
+
+Download Dictionary
+~~~~~~~~~~~~~~~~~~~
+
+The whole project data dictionary can be download as an Excel file. This file is compatible with the operations of  and Add/Update TablesAdd. When no tables are selected, the downloaded dictionary contains the definition of all tables. When some tables are selected, the dictionaryViewcontains only the definition of selected tables.
+
+Import Data
+~~~~~~~~~~~
+
+When importing data, Opal relies on the concept of datasource. This allows Opal to abstract the data importation process from the source datasource to the destination datasource regardless of their underlying implementations (file, SQL database etc.).
+
+The importation process follows several steps:
+
+* Data format selection: file-based (CSV, Oapl Archive), server-based (SQL, Limesurvey, Opal)
+* Data format specific options
+* Incremental options
+* Identifiers mapping options
+* Data dictionary update review and table to to import selection
+* Data to import review
+* Archiving options when dealing with a file-based datasource
+
+Some import options can be describved as follow:
+
+.. list-table::
+  :header-rows: 1
+
+  * - Option
+    - Description
+  * - Incremental
+    - | Opal is able to detect new or updated data, relying on entity identifier and some timestamps. By default the data import is not
+      | incremental, i.e. already existing data will be overridden.
+  * - Limit
+    - A maximum number of data rows to be imported. Combined with the  option, this allow to import small chunks of dataIncrementalat a time.
+  * - Identifier Mapping
+    - | If an identifiers mapping is selected, each participant identifier encountered in the imported datasource is expected to be one of
+      | the identifiers registered for this mapping. Depending on the identifiers mapping strategy the import could fail:
+
+      * Each identifiers must be mapped prior importation (default): the import will fail if an imported identifier does not have acorresponding system identifier for the selected mapping
+      * Ignore unknown identifiers at import: only data with identifier having a corresponding system identifier in the selected mappingwill be imported
+      * Generate a system identifier for each unknown imported identifiers: a system identifier will be generated for each unknownimported identifier
+
+      | If no identifiers mapping is selected, the participant identifiers are imported as-is. Unknown participant identifiers will beautomatically added in Opal.
+
+Export Data
+~~~~~~~~~~~
+
+Selected tables (or currently viewed table) can be exported. The exportation process offers several options:
+
+* Data format selection; file-based (CSV, Opal Archive), server-based (SQL)
+* Data format specific options; destination folder or export database name
+* Values filter options; available when a filter has been applied on the table's values
+* Identifier mapping options:
+
+  - if an identifiers mapping is selected each entity to be exported nust have a mapped identifier. Otherwise the export will fail
+  - if no identifiers is selected the data are exported with system identifiers
+
+Copy Data
+~~~~~~~~~
+
+Selected tables (or all tables) can be copied into another project or in the same project but with a different name (table renaming is available onlywhen one table is selected for copy).
+
+Backup Views
+~~~~~~~~~~~~
+
+Create an archived backup of views selection (or all views).
+
+Add Table
+~~~~~~~~~
+
+Adds a table to the project. Each table must have a unique name and an entity type.
+
+Add/Update table from Dictionary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This operation follows a step-by-step procedure:
+
+1- Specify the view name and the data dictionary (optional). The data dictionary can be provided as an xml file (this can be obtained from anexisting view by selecting "Download View XML") or an Excel file (see ). If a view with same name already exists,Excel file templateconfirmation for overriding it is required. If a plain table already exists with same name, the operation is not allowed.
+2- Specify which tables this view refers to (required).
+
+Derived variable algorithms are expressed using Magama Javascript API.
+
+Add View
+~~~~~~~~
+
+Restore Views
+~~~~~~~~~~~~~
+
+Restore backed up views. Restored views of the same name as those of existing views will be skipped unless the override options is checked.
+
+Remove
+~~~~~~
+
+Removes the selected tables/views from the project and deletes its fata.
+
