@@ -40,7 +40,7 @@ Server Software Requirements
 ======== ================= ========================================================== ========================
 Software Suggested version Download link                                              Usage
 ======== ================= ========================================================== ========================
-Java     >= 1.8.x          `Java Oracle downloads <https://www.java.com>`_            Java runtime environment
+Java     = 1.8.x           `Java Oracle downloads <https://www.java.com>`_            Java runtime environment
 R        >= 3.0.x          `R downloads <http://cran.r-project.org/>`_                Statistical analysis engine
 ======== ================= ========================================================== ========================
 

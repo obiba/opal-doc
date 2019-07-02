@@ -16,7 +16,6 @@ Property                                    Description
 =========================================== =========================================================================
 ``org.obiba.opal.http.port``                The port to use for listening for HTTP connections. Default value is ``8080``, -1 to disable.
 ``org.obiba.opal.https.port``               The port to use for listening for HTTPS connections. Default value is ``8443``, -1 to disable.
-``org.obiba.opal.ajp.port``                 The port to use for the Apache JServ Protocol. Default is ``-1`` (disabled).
 ``org.obiba.opal.maxIdleTime``              The maximum time a single read/write HTTP operation can take in millis (default is ``30000``). See `idleTimeout Jetty configuration <http://www.eclipse.org/jetty/documentation/current/configuring-connectors.html>`_.
 ``org.obiba.opal.ssl.excludedProtocols``    Specify the SSL/TLS protocols to be excluded. Usually SSLv3 will be excluded. Use commas for separating multiple protocol names. Default is no protocol is excluded (for legacy reason). See `JSSE Provider documentation <http://docs.oracle.com/javase/8/docs/technotes/guides/security/SunProviders.html#SunJSSEProvider>`_.
 ``org.obiba.opal.ssl.includedCipherSuites`` Specify which Cipher Suites to be included. Use commas for separating multiple cipher suites names. Default is all that is available. See `JSSE Provider documentation <http://docs.oracle.com/javase/8/docs/technotes/guides/security/SunProviders.html#SunJSSEProvider>`_.
@@ -95,6 +94,21 @@ Property                         Description
 ``org.obiba.realm.service.key``  Application key of this Opal instance in Agate. Default is ``changeit``.
 ================================ =========================================================================
 
+System Identifiers Generation Configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When importing data and selecting a identifiers mapping, if an imported identifier does not exist for the selected mapping and the strategy that was chosen is
+to generate a system identifier, then the following default settings apply for system identifiers generation:
+
+======================================= =========================================================================
+Property                                Description
+======================================= =========================================================================
+``org.obiba.opal.identifiers.length``   Length of the numerical part of the identifier (i.e. not including the prefix length). Default is ``10``.
+``org.obiba.opal.identifiers.zeros``    Allow leading zeros in the numerical part of the identifiers. Default is ``false``.
+``org.obiba.opal.identifiers.prefix``   Character prefix to be applied. Default is none.
+``org.obiba.opal.identifiers.checksum`` Add a checksum digit so that the generated identifier can be validated regarding the Luhn algorithm. Default is ``false``.
+======================================= =========================================================================
+
 .. _misc-config:
 
 Miscelaneous Configuration
@@ -113,6 +127,8 @@ Property                                                 Description
 ``org.obiba.opal.ws.messageSizeLimit``                   Limit of the Protobuf message size. Default value is ``524288000`` bytes (500MB).
 ``org.obiba.magma.entityIdNames``                        Specify the column name per entity type to be used for the entity identifier when exporting data to a file (CSV, SAS, SPSS, Stata). If empty for the considered entity type, the default column name will apply. The format to be used is a comma-separated key-value list, for instance: ``org.obiba.magma.entityIdNames=Participant=Idepic,Biomarker=Biom_Id``
 ``org.obiba.magma.entityIdName``                         Specify the default column name to be used for the entity identifier when exporting data to a file (CSV, SAS, SPSS, Stata). If empty, this name depends on the file format.
+``org.obiba.magma.readDataPointsCount``                  Maximum number of data points (number of rows per number of variables) when batches of values are read from a table. Default value is ``100000``.
+``org.obiba.opal.security.multiProfile``                 Allow user to login from different realms with the same username. Note that the user is always logged in one realm at a time (no addition of the privileges). Default value is ``true``.
 ``org.obiba.opal.security.ssl.allowInvalidCertificates`` When connecting to MongoDB using SSL and when remote certificate is self-signed, the certificate check can be deactivated (not recommended, default is ``false``).
 ``org.obiba.opal.jdbc.maxPoolSize``                      Maximum size of the pool of JDBC connections, for each SQL database. Default value is ``100``.
 ======================================================== =========================================================================
@@ -249,27 +265,10 @@ With Active Directory you can specify a mapping between AD groups and roles in S
 Atlassian Crowd User Directory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Opal can authenticate users by using an Crowd.
+Atlassian Crowd is not supported any more because the connector was based on libraries with security issues. OpenID Connect is to be preferred for authentication delegation.
+For more information see section :ref:`oidc`.
 
-First, you need to enable Crowd client by uncommenting the following in OPAL_HOME/conf/custom-context.xml:
 
-.. code-block:: xml
-
-  <import resource="file:${OPAL_HOME}/conf/crowd/crowd-context.xml" />
-
-Then configure your Crowd client in OPAL_HOME/conf/crowd/crowd.properties:
-
-.. code-block:: bash
-
-  application.name=application
-  application.password=password
-  application.login.url=http://crowd.example.com/crowd/console/
-  crowd.server.url=http://crowd.example.com/crowd/services/
-  crowd.base.url=http://crowd.example.com/crowd/
-  session.isauthenticated=session.isauthenticated
-  session.tokenkey=session.tokenkey
-  session.validationinterval=2
-  session.lastvalidation=session.lastvalidation
 
 Other Settings
 ~~~~~~~~~~~~~~
