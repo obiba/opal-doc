@@ -8,6 +8,7 @@ Administrate the Opal system services and settings.
    :caption: System
 
    administration/general-settings
+   administration/identity-providers
    administration/taxonomies
    administration/databases
    administration/plugins
