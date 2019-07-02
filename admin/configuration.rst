@@ -266,33 +266,7 @@ Atlassian Crowd User Directory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Atlassian Crowd is not supported any more because the connector was based on libraries with security issues. OpenID Connect is to be preferred for authentication delegation.
-
-OpenID Connect Authentication Delegation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Opal supports the delegation of the authentication to an alternate ID provider using the OpenID Connect protocol.
-
-To declare an ID provider, add a JSON file (one per ID provider, the name of the file does not matter) in the folder **OPAL_HOME/conf/oidc**.
-
-An example of this JSON file, showing the configuration for a test instance of a `Keycloak <https://www.keycloak.org/>`_ server:
-
-.. code-block:: json
-
-  {
-    "name": "kc-test",
-    "clientId": "opal",
-    "secret": "1aa43945-7166-4292-8f46-c4b836054676",
-    "discoveryURI": "http://localhost:8899/auth/realms/obiba/.well-known/openid-configuration",
-    "scope": "openid profile roles",
-    "customParams": {
-      "label": "Keycloak Test",
-      "providerUrl": "http://localhost:8899/auth/realms/obiba/account",
-      "groups": "datashield"
-    },
-    "useNonce": true,
-    "connectTimeout": 500,
-    "readTimeout": 500
-  }
+For more information see section :ref:`oidc`.
 
 
 

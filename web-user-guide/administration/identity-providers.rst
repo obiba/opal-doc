@@ -1,3 +1,5 @@
+.. _oidc:
+
 Identity Providers
 ==================
 
