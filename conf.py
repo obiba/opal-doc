@@ -20,7 +20,7 @@
 # -- Project information -----------------------------------------------------
 
 project = u'Opal'
-copyright = u'2018, OBiBa'
+copyright = u'2019, OBiBa'
 author = u'OBiBa'
 
 # The short X.Y version
