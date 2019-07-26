@@ -58,13 +58,13 @@ Selected tables (or currently viewed table) can be exported. The exportation pro
 * Values filter options; available when a filter has been applied on the table's values
 * Identifier mapping options:
 
-  - if an identifiers mapping is selected each entity to be exported nust have a mapped identifier. Otherwise the export will fail
+  - if an identifiers mapping is selected each entity to be exported must have a mapped identifier. Otherwise the export will fail
   - if no identifiers is selected the data are exported with system identifiers
 
 Copy Data
 ~~~~~~~~~
 
-Selected tables (or all tables) can be copied into another project or in the same project but with a different name (table renaming is available onlywhen one table is selected for copy).
+Selected tables (or all tables) can be copied into another project or in the same project but with a different name (table renaming is available only when one table is selected for copy).
 
 Backup Views
 ~~~~~~~~~~~~
@@ -79,15 +79,19 @@ Adds a table to the project. Each table must have a unique name and an entity ty
 Add/Update table from Dictionary
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This operation follows a step-by-step procedure:
+A table can be added or updated from a data dictionary file. This data dictionary can be an Excel file (see Excel file template) or a view XML file (this can be obtained from an existing view by selecting "Download View XML"). For importing data dictionary from another format (SPSS file for instance), an alternate solution is to follow the process of importing data with the setting of limiting to 0 data rows (3rd screen in the import data wizard).
 
-1- Specify the view name and the data dictionary (optional). The data dictionary can be provided as an xml file (this can be obtained from anexisting view by selecting "Download View XML") or an Excel file (see ). If a view with same name already exists,Excel file templateconfirmation for overriding it is required. If a plain table already exists with same name, the operation is not allowed.
-2- Specify which tables this view refers to (required).
-
-Derived variable algorithms are expressed using Magama Javascript API.
+An advanced option offers the possibility to merge the data dictionaries when doing an update (otherwise default behavior is to override the properties and attributes).  
 
 Add View
 ~~~~~~~~
+
+This operation follows a step-by-step procedure:
+
+1. Specify the view name and the data dictionary (optional). The data dictionary can be provided as an XML file (this can be obtained from an existing view by selecting "Download View XML") or an Excel file (see Excel file template). If a view with same name already exists, confirmation for overriding it is required. If a plain table already exists with same name, the operation is not allowed.
+2. Specify which tables this view refers to (required).
+
+Derived variable algorithms are expressed using Magama Javascript API.
 
 Restore Views
 ~~~~~~~~~~~~~
@@ -97,5 +101,4 @@ Restore backed up views. Restored views of the same name as those of existing vi
 Remove
 ~~~~~~
 
-Removes the selected tables/views from the project and deletes its fata.
-
+Removes the selected tables/views from the project and deletes its data.
