@@ -79,7 +79,7 @@ Opal R Server is also available as a Zip file. To install Opal zip distribution,
 
 .. code-block:: r
 
-  install.packages(c('rserve', 'opal', 'tidyverse', 'knitr', 'rmarkdown'), repos=c('http://cran.rstudio.com', 'http://cran.obiba.org'), dependencies=TRUE, lib='/usr/local/lib/R/site-library')
+  install.packages(c('rserve', 'opal', 'tidyverse', 'knitr', 'rmarkdown'), repos=c('http://cloud.r-project.org', 'http://cran.obiba.org'), dependencies=TRUE, lib='/usr/local/lib/R/site-library')
 
 Upgrade
 ~~~~~~~
@@ -182,7 +182,7 @@ In case the **Rserve** R binary package does not match the R version, it is poss
 .. code-block:: text
 
   # install regular package
-  install.packages('Rserve', repos='http://cran.rstudio.com', lib='/usr/local/lib/R/site-library')
+  install.packages('Rserve', repos='http://cloud.r-project.org', lib='/usr/local/lib/R/site-library')
 
   # OR install package from source
   install.packages('Rserve', 'http://www.rforge.net/', type='source', lib='/usr/local/lib/R/site-library')

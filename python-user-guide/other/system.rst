@@ -21,16 +21,17 @@ Option           Description
 Credentials
 -----------
 
-Authentication is done by username/password credentials.
+Authentication can be done by username/password credentials OR by personal access token OR by certificate/private key pair (two-way SSL authentication).
 
 ===================================== ====================================
 Option                                Description
 ===================================== ====================================
-``--opal OPAL, -o OPAL``              Opal server base url.
-``--user USER, -u USER``              User name. User with appropriate permissions is expected depending of the REST resource requested.
-``--password PASSWORD, -p PASSWORD``  User password.
-``--ssl-cert SSL_CERT, -sc SSL_CERT`` Path to the certificate (public key) file
-``--ssl-key SSL_KEY, -sk SSL_KEY``    Path to the private key file
+``--opal OPAL, -o OPAL``              Opal server base url
+``--user USER, -u USER``              Credentials auth: user name (requires a password)
+``--password PASSWORD, -p PASSWORD``  Credentials auth: user password (requires a user name)
+``--token TOKEN, -tk TOKEN``          Token auth: User access token
+``--ssl-cert SSL_CERT, -sc SSL_CERT`` Two-way SSL auth: certificate/public key file (requires a private key)
+``--ssl-key SSL_KEY, -sk SSL_KEY``    Two-way SSL auth: private key file (requires a certificate)
 ===================================== ====================================
 
 Extras

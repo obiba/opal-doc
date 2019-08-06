@@ -22,7 +22,7 @@ Then you can install the Opal package and its dependencies with this command wit
 
 .. code-block:: r
 
-  install.packages('opal', repos=c('https://cran.rstudio.com/', 'https://cran.obiba.org'), dependencies=TRUE)
+  install.packages('opal', repos=c('https://cloud.r-project.org/', 'https://cran.obiba.org'), dependencies=TRUE)
 
 On Windows
 ~~~~~~~~~~
@@ -31,7 +31,7 @@ Installing the Opal R package on Windows requires that the package's dependencie
 
 .. code-block:: r
 
-  install.packages(c('RCurl', 'rjson'), repos=c('https://cran.rstudio.com/', 'https://www.stats.ox.ac.uk/pub/RWin/'))
+  install.packages(c('RCurl', 'rjson'), repos=c('https://cloud.r-project.org/', 'https://www.stats.ox.ac.uk/pub/RWin/'))
 
 Once these are installed, the opal package can be installed like so:
 

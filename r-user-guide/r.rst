@@ -1,3 +1,5 @@
+.. _r:
+
 Using R
 =======
 
@@ -8,6 +10,8 @@ On client side, R is to be available. See the `R installation documentation <htt
 
 Installation
 ------------
+
+The Opal Client R package is available in the official CRAN: see `opalr CRAN page <https://cran.r-project.org/package=opalr>`_
 
 On Linux
 ~~~~~~~~
@@ -22,7 +26,7 @@ Then you can install the Opal package and its dependencies with this command wit
 
 .. code-block:: r
 
-  install.packages('opal', repos=c('https://cran.rstudio.com/', 'https://cran.obiba.org'), dependencies=TRUE)
+  install.packages('opalr', repos=c('https://cloud.r-project.org/'), dependencies=TRUE)
 
 On Windows
 ~~~~~~~~~~
@@ -31,13 +35,13 @@ Installing the Opal R package on Windows requires that the package's dependencie
 
 .. code-block:: r
 
-  install.packages(c('RCurl', 'rjson'), repos=c('https://cran.rstudio.com/', 'https://www.stats.ox.ac.uk/pub/RWin/'))
+  install.packages(c('httr', 'rjson'), repos=c('https://cloud.r-project.org/', 'https://www.stats.ox.ac.uk/pub/RWin/'))
 
 Once these are installed, the opal package can be installed like so:
 
 .. code-block:: r
 
-  install.packages('opal', repos='https://cran.obiba.org', type='source')
+  install.packages('opalr', repos=c('https://cloud.r-project.org', 'https://www.stats.ox.ac.uk/pub/RWin/'))
 
 Usage
 -----
@@ -47,7 +51,7 @@ Accessing Opal data using R is straightforward:
 .. code-block:: r
 
   # load opal library
-  library(opal)
+  library(opalr)
 
   # get a reference to the opal server
   o <- opal.login('administrator','password','https://opal-demo.obiba.org')
@@ -65,7 +69,7 @@ Accessing Opal data using R is straightforward:
   # clean remote R session
   opal.logout(o)
 
-See also `Opal R example scripts <https://github.com/datashield/opal/tree/master/inst/examples>`_.
+See also `Opal R example scripts <https://github.com/obiba/opalr/tree/master/inst/examples>`_.
 
 Security
 --------
@@ -85,3 +89,9 @@ Advanced users can login to Opal by providing a key pair: certificate and privat
     sslkey='my-privatekey.pem')
 
   o <- opal.login(url='https://opal-demo.obiba.org', opts=credentials)
+
+Probably the most secure authentication method is by using a personal access token (since Opal 2.15).
+
+.. code-block:: r
+
+  o <- opal.login(token='dXvJKhk17RiO0TguRmR0EQlJxweCFyUX', url='https://opal-demo.obiba.org')
