@@ -33,7 +33,7 @@ Example of usage in Python (see section :ref:`py`)
 
   opal dict "datashield.*" --opal https://opal-demo.obiba.org --token 'dXvJKhk17RiO0TguRmR0EQlJxweCFyUX'
 
-Example of usage with `cURL <https://curl.haxx.se/>`_m command line;
+Example of usage with `cURL <https://curl.haxx.se/>`_ command line;
 
 .. code-block:: bash
 
