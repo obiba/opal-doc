@@ -16,7 +16,7 @@ them carefully. The advantage to using a token over putting your password into a
 
 In addition to that, the scope of the access granted to the token can be restricted by projects, operations that can performed on these projects and system services. Note that this scope does not grant new permissions but rather alter the ones you have.
 
-The personal access token is also the only way to authenticate in a script for users defined in a delegated :ref:`oidc`, as the process of authentication for such realms iplies the redirect of the user to a web page for manual login. The token is guaranteed to be safe for the Opal server as it is created by the user itself.
+The personal access token is also the only way to authenticate in a script for users defined in delegated :ref:`oidc`, as the process of authentication for such realms implies the redirect of the user to a web page for manual login. The token is guaranteed to be safe for the Opal server as it is created by the user itself.
 
 For these reasons, the personal API access token is the recommended way for authenticating within a Opal server (since Opal 2.15).
 
@@ -33,7 +33,7 @@ Example of usage in Python (see section :ref:`py`)
 
   opal dict "datashield.*" --opal https://opal-demo.obiba.org --token 'dXvJKhk17RiO0TguRmR0EQlJxweCFyUX'
 
-Example of usage with `cURL <https://curl.haxx.se/>`_ command line;
+Example of usage with `cURL <https://curl.haxx.se/>`_m command line;
 
 .. code-block:: bash
 
