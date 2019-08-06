@@ -1,3 +1,5 @@
+.. _my-profile:
+
 My Profile
 ==========
 
