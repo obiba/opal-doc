@@ -48,4 +48,4 @@ Opal offers the possibility in the Opal R client API (see `opalr <https://www.rd
 Permissions
 -----------
 
-The use of R service requires permission. Needless to say that it should be granted to trusted users only as the R scripting capabilities are potentially harmful for the hosting system (Opal data are safe though as a user could not transfer a Opal table to a R data.frame in the R server if s/he has no permission to see the values of this table).
+The use of the R service requires permission. Needless to say that it should be granted to trusted users only as the R scripting capabilities are potentially harmful for the hosting system (Opal data are safe though as a user could not transfer a Opal table to a R data.frame in the R server if s/he has no permission to see the values of this table).
