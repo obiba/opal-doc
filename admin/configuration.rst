@@ -50,6 +50,8 @@ Property                         Description
 ``org.obiba.opal.smtp.password`` The SMTP user password (if authentication is activated).
 ================================ =========================================================================
 
+.. _rconf:
+
 R Server Configuration
 ~~~~~~~~~~~~~~~~~~~~~~
 
