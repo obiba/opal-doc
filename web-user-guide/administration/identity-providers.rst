@@ -14,6 +14,11 @@ The only requirement is that the Identity Provider server exposes an OpenID Conn
 `https://auth.example.org/.well-known/openid-configuration` (see `Google Accounts <https://accounts.google.com/.well-known/openid-configuration>`_ or
 `ORCID <https://orcid.org/.well-known/openid-configuration>`_ examples).
 
+Personal Access Tokens
+----------------------
+
+Because of the redirect of the user to the original OpenID Connect server login page, this authentication realm is not suitable for scripting/command line tools such as R, Python etc. The solution for a user defined in that kind of realm is to create one or more personal API access tokens (see :ref:`my-profile`) to perform authentication in scripting clients.
+
 Operations
 ----------
 

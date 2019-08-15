@@ -33,27 +33,28 @@ Options
    * - ``--ropal ROPAL, -ro ROPAL``
      - Remote Opal server base url
    * - ``--ruser RUSER, -ru RUSER``
-     - Remote User name to connect to Opal
+     - Remote user name (exclusive from using token)
    * - ``--rpassword RPASSWORD, -rp RPASSWORD``
-     - Remote User's password
-   * - ``--key KEY, -k KEY``
-     - Location of the certificate key
+     - Remote user password (exclusive from using token)
+   * - ``--rtoken RTOKEN, -rt RTOKEN``
+     -  Remote personal access token (exclusive from user credentials)
    * - ``--rdatasource RDATASOURCE, -rd RDATASOURCE``
      - Remote datasource name
 
 Credentials
 -----------
 
-Authentication is done by username/password credentials.
+Authentication can be done by username/password credentials OR by personal access token OR by certificate/private key pair (two-way SSL authentication).
 
 ===================================== ====================================
 Option                                Description
 ===================================== ====================================
-``--opal OPAL, -o OPAL``              Opal server base url.
-``--user USER, -u USER``              User name. User with appropriate permissions is expected depending of the REST resource requested.
-``--password PASSWORD, -p PASSWORD``  User password.
-``--ssl-cert SSL_CERT, -sc SSL_CERT`` Path to the certificate (public key) file
-``--ssl-key SSL_KEY, -sk SSL_KEY``    Path to the private key file
+``--opal OPAL, -o OPAL``              Opal server base url
+``--user USER, -u USER``              Credentials auth: user name (requires a password)
+``--password PASSWORD, -p PASSWORD``  Credentials auth: user password (requires a user name)
+``--token TOKEN, -tk TOKEN``          Token auth: User access token
+``--ssl-cert SSL_CERT, -sc SSL_CERT`` Two-way SSL auth: certificate/public key file (requires a private key)
+``--ssl-key SSL_KEY, -sk SSL_KEY``    Two-way SSL auth: private key file (requires a certificate)
 ===================================== ====================================
 
 Extras

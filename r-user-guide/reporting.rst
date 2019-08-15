@@ -40,7 +40,7 @@ Report data are coming first, so start with writing a R script that:
 
 **Example**
 
-See an example of such a script: `opal.R <https://github.com/datashield/opal/blob/master/inst/reports/tutorial/opal.R>`_.
+See an example of such a script: `opal.R <https://github.com/obiba/opalr/blob/master/inst/reports/tutorial/opal.R>`_.
 
 Run it in a R console or RStudio.
 
@@ -51,7 +51,7 @@ The R script can be enhanced with presentation directives as specified by `knitr
 
 **Example**
 
-See an example of such a report: `opal-dev.Rmd <https://github.com/datashield/opal/blob/master/inst/reports/tutorial/opal-dev.Rmd>`_.
+See an example of such a report: `opal-dev.Rmd <https://github.com/obiba/opalr/blob/master/inst/reports/tutorial/opal-dev.Rmd>`_.
 
 You can run it in RStudio as described in the `Using R Markdown <https://rmarkdown.rstudio.com/articles_intro.html>`_ article.
 
@@ -60,18 +60,18 @@ See the `Opal Reporting with R output <http://rstudio-pubs-static.s3.amazonaws.c
 Third Step: Prepare for Deployment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-As you might have noticed the `opal-dev.Rmd <https://github.com/datashield/opal/blob/master/inst/reports/tutorial/opal-dev.Rmd>`_ contains the credentials of the user connecting to the Opal server. These can be externalized. Credentials will be provided by the context of execution as R options:
+As you might have noticed the `opal-dev.Rmd <https://github.com/obiba/opalr/blob/master/inst/reports/tutorial/opal-dev.Rmd>`_ contains the credentials of the user connecting to the Opal server. These can be externalized. Credentials will be provided by the context of execution as R options:
 
 * Shell script
 * Opal
 
-See documentation about `opal.login <https://cran.obiba.org/web/opal/opal.login.html>`_ function for available R options.
+See documentation about `opal.login <https://www.rdocumentation.org/packages/opalr>`_ function for available R options.
 
 **Example**
 
-See an example of a production report `opal-prod.Rmd <https://github.com/datashield/opal/blob/master/inst/reports/tutorial/opal-prod.Rmd>`_. Note that no user credentials is provided. RStudio cannot execute it as usual as the editor does not knit the report in the current R session.
+See an example of a production report `opal-prod.Rmd <https://github.com/obiba/opalr/blob/master/inst/reports/tutorial/opal-prod.Rmd>`_. Note that no user credentials is provided. RStudio cannot execute it as usual as the editor does not knit the report in the current R session.
 
-To execute this report you can use the `opal.report <https://cran.datashield.org/web/opal/opal.report.html>`_ helper function that will knit it for you. See an example of a R shell script running it: `opal-exec.R <https://github.com/datashield/opal/blob/master/inst/reports/tutorial/opal-exec.R>`_.
+To execute this report you can use the `opal.report <https://www.rdocumentation.org/packages/opalr>`_ helper function that will knit it for you. See an example of a R shell script running it: `opal-exec.R <https://github.com/obiba/opalr/blob/master/inst/reports/tutorial/opal-exec.R>`_.
 
 For executing it in Opal, see instructions on how to specify the R options in the Reports Administration documentation.
 
@@ -86,20 +86,18 @@ Once a report design is done, it is possible to register it in Opal in order to:
 
 For more details see Reports Administration.
 
-If you have written a shell script, such as `opal-exec.R <https://github.com/datashield/opal/blob/master/inst/reports/tutorial/opal-exec.R>`_ example, it can be executed as any `cron <https://en.wikipedia.org/wiki/Cron>`_ task.
+If you have written a shell script, such as `opal-exec.R <https://github.com/obiba/opalr/blob/master/inst/reports/tutorial/opal-exec.R>`_ example, it can be executed as any `cron <https://en.wikipedia.org/wiki/Cron>`_ task.
 
 Advanced Examples
 -----------------
 
-See advanced examples in the `table <https://github.com/datashield/opal/tree/master/inst/reports/table>`_ folder, where `opal-table.Rmd <https://github.com/datashield/opal/tree/master/inst/reports/table>`_ features:
+See advanced examples in the `table <https://github.com/obiba/opalr/tree/master/inst/reports/table>`_ folder, where `opal-table.Rmd <https://github.com/obiba/opalr/tree/master/inst/reports/table>`_ features:
 
 * R Markdown sub-reports,
 * inline css-styling,
 * access to Opal variables description.
 
 The result of this report is a document that presents the data dictionary of a Opal table with figures and summary statistics.
-
-See `Opal Data Dictionary with R output <http://rstudio-pubs-static.s3.amazonaws.com/12023_275f05c12c5b4ee8b6114660be19b628.html>`_.
 
 Report Execution Flows
 ----------------------

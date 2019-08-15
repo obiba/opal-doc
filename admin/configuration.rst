@@ -50,6 +50,8 @@ Property                         Description
 ``org.obiba.opal.smtp.password`` The SMTP user password (if authentication is activated).
 ================================ =========================================================================
 
+.. _rconf:
+
 R Server Configuration
 ~~~~~~~~~~~~~~~~~~~~~~
 
@@ -65,7 +67,7 @@ Property                            Description
 ``org.obiba.opal.Rserve.password``  Password to use for login-in to Rserve (none by default)
 ``org.obiba.opal.Rserve.encoding``  Character encoding for strings (default is ``utf8``)
 ``org.obiba.opal.r.sessionTimeout`` Time in minutes after which an active R session will be automatically terminated (default is 4 hours).
-``org.obiba.opal.r.repos``          The list of CRAN repositories from which R packages can be downloaded, comma separated. Default value is ``https://cran.rstudio.com,https://cran.obiba.org``.
+``org.obiba.opal.r.repos``          The list of CRAN repositories from which R packages can be downloaded, comma separated. Default value is ``https://cloud.r-project.org,https://cran.obiba.org``.
 =================================== =========================================================================
 
 Login Policy Configuration
