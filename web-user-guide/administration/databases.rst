@@ -99,6 +99,12 @@ Sample script for MySQL database creation:
   GRANT ALL ON opal_data.* TO 'opal'@'localhost' IDENTIFIED BY '<opal-user-password>';
   FLUSH PRIVILEGES;
 
+Note that for more recent MySQL servers using the SHA2 authentication (that is known to not be working with JDBC), you should use the ``mysql_native_password`` directive when creating the user:
+
+.. code-block:: sql
+
+  CREATE USER 'opal' WITH mysql_native_password IDENTIFIED BY '<opal-user-password>';
+
 PostgreSQL
 ^^^^^^^^^^
 
