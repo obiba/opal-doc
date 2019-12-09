@@ -16,12 +16,14 @@ Value Sequence Methods
    ../value/map
    reduce
    filter
+   unique
    subset
    trimmer
    sort
    max
    min
    avg
+   median
    sum
    stddev
    push
