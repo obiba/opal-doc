@@ -88,6 +88,7 @@ Methods                      Description
 :doc:`sequence/size`         Returns the number of values within a sequence.
 :doc:`value/map`             Map each value in the sequence to another value.
 :doc:`sequence/reduce`       Returns the reduction of the values within a sequence.
+:doc:`sequence/unique`       Returns a sequence of distinct values.
 :doc:`sequence/filter`       Returns a sequence which values have been filtered using custom javascript predicating function.
 :doc:`sequence/subset`       Returns a subset of a sequence according to provided begin and end positions.
 :doc:`sequence/trimmer`      Returns a sequence without null values.
@@ -95,6 +96,7 @@ Methods                      Description
 :doc:`sequence/max`          Returns the maximum value of a value sequence.
 :doc:`sequence/min`          Returns the minimum value of a value sequence.
 :doc:`sequence/avg`          Returns the average of a value sequence.
+:doc:`sequence/median`          Returns the median value from a value sequence.
 :doc:`sequence/sum`          Returns the sum of a value sequence.
 :doc:`sequence/stddev`       Returns the standard deviation of a value sequence.
 :doc:`sequence/push`         Adds one or more values after a value to produce a value sequence (deprecated in favor of append).
