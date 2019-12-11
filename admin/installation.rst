@@ -34,7 +34,7 @@ R        >= 3.0.x          `R downloads <http://cran.r-project.org/>`_          
 Install
 -------
 
-Opal is distributed as a Debian/RPM package and as a zip file. The resulting installation has default configuration that makes Opal ready to be used. Once installation is done, see :doc:`configuration` instructions.
+Opal is distributed as a Debian/RPM package, as a zip file and as a Docker image. The resulting installation has default configuration that makes Opal ready to be used. Once installation is done, see :doc:`configuration` instructions.
 
 Debian Package Installation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -75,6 +75,76 @@ Launch Opal. This step will create/update the database schema for Opal and will 
 
 For the administrator accounts, the credentials are "administrator" as username and "password" as password. See User Directories Configuration to change it.
 
+Docker Image Installation
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+OBiBa is an early adopter of the `Docker <https://www.docker.com/>`_ technology, providing its own images from the `Docker Hub repository <https://hub.docker.com/orgs/obiba/repositories>`_.
+
+A typical `docker-compose <https://docs.docker.com/compose/>`_ file (including a MongoDB database and a MySQL database, a DataSHIELD ready R server and all useful plugins) would be:
+
+.. code-block:: yaml
+
+  version: '3'
+  services:
+    opal:
+      image: obiba/opal:latest
+      ports:
+        - "8843:8443"
+        - "8880:8080"
+      links:
+        - rserver
+        - mongo
+        - mysqldata
+      environment:
+        - JAVA_OPTS=-Xms1G -Xmx8G -XX:+UseG1GC
+        - OPAL_ADMINISTRATOR_PASSWORD=password
+        - MONGO_HOST=mongo
+        - MONGO_PORT=27017
+        - MYSQLDATA_HOST=mysqldata
+        - MYSQLDATA_USER=opal
+        - MYSQLDATA_PASSWORD=password
+        - RSERVER_HOST=rserver
+      volumes:
+        - /tmp/opal:/srv
+    mongo:
+      image: mongo
+    mysqldata:
+      image: mysql:5
+      environment:
+        - MYSQL_DATABASE=opal
+        - MYSQL_ROOT_PASSWORD=password
+        - MYSQL_USER=opal
+        - MYSQL_PASSWORD=password
+    rserver:
+      image: obiba/opal-rserver
+      volumes:
+        - /tmp/rserver:/srv
+
+Then environment variables that are exposed by this image are:
+
+=============================== =========================================================================
+Environment Variable            Description
+=============================== =========================================================================
+``JAVA_OPTS``
+``OPAL_ADMINISTRATOR_PASSWORD`` Opal administrator password, required and set at first start.
+``MONGO_HOST``                  MongoDB server host (optional).
+``MONGO_PORT``                  MongoDB server port, default is ``27017``.
+``MYSQLDATA_HOST``              MySQL server host for data storage (optional).
+``MYSQLDATA_PORT``              MySQL server port.
+``MYSQLDATA_DATABASE``          MySQL data database name.
+``MYSQLDATA_USER``              MySQL data database user.
+``MYSQLDATA_PASSWORD``          MySQL data database password.
+``MYSQLIDS_HOST``               MySQL server host for IDs storage (optional).
+``MYSQLIDS_PORT``               MySQL server port.
+``MYSQLIDS_DATABASE``           MySQL IDs database name.
+``MYSQLIDS_USER``               MySQL IDs database user.
+``MYSQLIDS_PASSWORD``           MySQL IDs database password.
+``AGATE_HOST``                  Agate server host (optional).
+``AGATE_PORT``                  Agate server port, default is ``8444``.
+``RSERVER_HOST``                R server host (optional).
+``R_REPOS``                     R CRAN repositories (optional, see ``org.obiba.opal.r.repos`` setting).
+=============================== =========================================================================
+
 Upgrade
 -------
 
@@ -102,6 +172,11 @@ Zip Distribution Upgrade
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 Follow the Installation of Opal Zip distribution above but make sure you don't overwrite your opal-home directory.
+
+Docker Distribution Upgrade
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Change the docker image version and restart the docker container. If the opal-home directory was mounted in user space, it will be reused.
 
 Execution
 ---------
@@ -143,6 +218,15 @@ Execute the command line (bin directory is in your execution PATH)):
   opal
 
 The Opal server log files are located in **OPAL_HOME/logs** directory. If the logs directory does not exist, it will be created by Opal.
+
+**Docker**
+
+When using a docker-compose configuration file, the start up command is:
+
+.. code-block:: bash
+
+  docker-compose -f docker-compose.yml up -d
+
 
 Usage
 ~~~~~
