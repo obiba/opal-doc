@@ -34,6 +34,8 @@ Options
      - Name of the LimeSurvey SQL database as registered in Opal
    * - ``--prefix PREFIX -pr PREFIX``
      - Table prefix of LimeSurvey tables (default: none)
+   * - ``--merge, -mg``
+     - Merge imported data dictionary with the destination one (default is false, i.e. data dictionary is overridden).
 
 Credentials
 -----------

@@ -44,6 +44,8 @@ Options
      - Entity type of the data (e.g. Participant)
    * - ``--valueType VALUETYPE, -vt VALUETYPE``
      - Default value type (text, integer, decimal, boolean etc.). When not specified, "text" is the default.
+   * - ``--merge, -mg``
+     - Merge imported data dictionary with the destination one (default is false, i.e. data dictionary is overridden).
 
 
 Credentials

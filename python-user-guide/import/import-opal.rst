@@ -40,6 +40,8 @@ Options
      -  Remote personal access token (exclusive from user credentials)
    * - ``--rdatasource RDATASOURCE, -rd RDATASOURCE``
      - Remote datasource name
+   * - ``--merge, -mg``
+     - Merge imported data dictionary with the destination one (default is false, i.e. data dictionary is overridden).
 
 Credentials
 -----------
