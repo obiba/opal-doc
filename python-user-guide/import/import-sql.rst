@@ -32,6 +32,8 @@ Options
        | ``generate`` : generate a system identifier for each unknown identifier.
    * - ``--database DATABASE, -db DATABASE``
      - Name of the SQL database as registered in Opal
+   * - ``--merge, -mg``
+     - Merge imported data dictionary with the destination one (default is false, i.e. data dictionary is overridden).
 
 Credentials
 -----------

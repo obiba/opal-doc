@@ -32,6 +32,8 @@ Options
        | ``generate`` : generate a system identifier for each unknown identifier.
    * - ``--path PATH -pa PATH``
      - Path to the zip of XML files to import on the Opal file system
+   * - ``--merge, -mg``
+     - Merge imported data dictionary with the destination one (default is false, i.e. data dictionary is overridden).
 
 Credentials
 -----------

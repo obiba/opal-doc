@@ -38,6 +38,8 @@ Options
      - Entity type (default is Participant)
    * - ``--idVariable IDVARIABLE, -iv IDVARIABLE``
      - SPSS variable that provides the entity ID. If not specified, first variable values are considered to be the entity identifiers.
+   * - ``--merge, -mg``
+     - Merge imported data dictionary with the destination one (default is false, i.e. data dictionary is overridden).
 
 Credentials
 -----------
