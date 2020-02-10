@@ -39,6 +39,7 @@ The optional fields are:
 * The *Account Login* address allows the user to go to it's personal profile page in the ID provider interface (to chenge its password for instance) from the Opal login page.
 * The *Groups* are the group that are to be automatically applied to any users signing in through this ID provider.
 * The *Scope* is the scope value(s) to be sent to the ID provider to initiate the OpenID Connect dialog. This is provider dependent but usually ``openid`` is enough.
+* The *Groups Claim* is the field name in the `UserInfo <https://openid.net/specs/openid-connect-core-1_0.html#UserInfo>`_ object (that is returned by the ID provider) that contains the group names to which the user belongs. These will be automatically applied to the user's profile. Such field is `not one of the standard claims <https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims>`_ and needs to be explicitly set. The expected value type associated to this claim is either an array of strings, or a string which group names are separated by spaces. In the case of Agate, the groups claim name is ``groups``.
 
 Remove
 ~~~~~~
