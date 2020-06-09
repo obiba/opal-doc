@@ -13,35 +13,11 @@ Installation
 
 The Opal Client R package is available in the official CRAN: see `opalr CRAN page <https://cran.r-project.org/package=opalr>`_
 
-On Linux
-~~~~~~~~
-
-Installing the R packages requires the header files for the libcurl system library. To install this on ubuntu/debian (as root):
-
-.. code-block:: bash
-
-  sudo apt-get install libcurl4-openssl-dev
-
-Then you can install the Opal package and its dependencies with this command within an R session:
+You can install the Opal package and its dependencies with this command within an R session:
 
 .. code-block:: r
 
-  install.packages('opalr', repos=c('https://cloud.r-project.org/'), dependencies=TRUE)
-
-On Windows
-~~~~~~~~~~
-
-Installing the Opal R package on Windows requires that the package's dependencies be already installed:
-
-.. code-block:: r
-
-  install.packages(c('httr', 'rjson'), repos=c('https://cloud.r-project.org/', 'https://www.stats.ox.ac.uk/pub/RWin/'))
-
-Once these are installed, the opal package can be installed like so:
-
-.. code-block:: r
-
-  install.packages('opalr', repos=c('https://cloud.r-project.org', 'https://www.stats.ox.ac.uk/pub/RWin/'))
+  install.packages('opalr', dependencies=TRUE)
 
 Usage
 -----
@@ -57,7 +33,7 @@ Accessing Opal data using R is straightforward:
   o <- opal.login('administrator','password','https://opal-demo.obiba.org')
 
   # assign some data to a data.frame
-  opal.assign(o,'CNSIM1','datashield.CNSIM1',variables=list('GENDER','PM_BMI_CONTINUOUS'))
+  opal.assign.table(o,'CNSIM1','CNSIM.CNSIM1',variables=list('GENDER','PM_BMI_CONTINUOUS'))
 
   # do some analysis on the remote R session
   opal.execute(o,'summary(CNSIM1)')
@@ -65,6 +41,9 @@ Accessing Opal data using R is straightforward:
   # get the remote data.frame on the client
   D <- opal.execute(o,'CNSIM1')
   head(D)
+
+  # or send a R script to the R server and execute it
+  rval <- opal.execute.source(o, '/path/to/script.R')
 
   # clean remote R session
   opal.logout(o)

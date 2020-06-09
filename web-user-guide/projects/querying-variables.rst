@@ -1,7 +1,7 @@
 Querying for Variables
 ======================
 
-The data dictionary (i.e. the variables) can be searched for. Each variable proerties, Categories and Attributes are indexed in Opal's search engine. Each time a table is updated, its data dictionary is automatically re-indexed, ensuring an up-to-date variable search service.
+The data dictionary (i.e. the variables) can be searched for. Each variable properties, Categories and Attributes are indexed in Opal's search engine. Each time a table is updated, its data dictionary is automatically re-indexed, ensuring an up-to-date variable search service.
 
 Note that variables of a table are always indexed (with a latency of 1 minute), whereas the indexing of the table values can be scheduled.
 
@@ -40,7 +40,7 @@ The search fields corresponding to the variable properties are:
 
 The search fields corresponding to the variable Attributes are defined by the pattern: ``<namespace>-<name>-<locale>`` (``namespace`` and ``locale`` are not always defined).
 
-Categories atttributes follow the same pattern, prefixed by ``categorycategory-<namespace>-<name>-<locale>``.
+Categories atttributes follow the same pattern, prefixed by ``<category>-<namespace>-<name>-<locale>``.
 
 The nature of the variables can be: CATEGORICAL, CONTINUOUS, TEMPORAL or UNDETERMINED.
 

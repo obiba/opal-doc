@@ -107,7 +107,7 @@ Derived variables (i.e  when the table is a view) are persisted in Opal's embedd
 Script History Revisions
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Each time a script is edited a new history revision is created or 'committed' to Opal's VCS.
+Each time a script is edited a new history revision is created or 'committed' to Opal's version control system.
 
 Commit Differences
 ~~~~~~~~~~~~~~~~~~
@@ -127,7 +127,7 @@ The commit differences are ordered by the oldest changes first (denoted in red) 
 Values
 ------
 
-Values can be displayed for a specific identifier or can be filtered to match to certain criterias.
+Values can be displayed for a specific identifier or can be filtered to match to certain criteria.
 
 Permissions
 -----------
