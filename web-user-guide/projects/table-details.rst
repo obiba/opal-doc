@@ -1,3 +1,5 @@
+.. _table:
+
 Table Details
 =============
 
@@ -27,8 +29,8 @@ The values of the table can be seen in this section. the view port of the values
 
 When the table has been indexed (see Summary section) the rows can be filtered by varialbe criteria. the resulting subset of data can be exported/copied using the usual Export/Copy procedure.
 
-Permisions
-----------
+Permissions
+-----------
 
 Specify the access rights to a particular table and its content.
 
@@ -37,33 +39,33 @@ View dictionary and summaries Permission
 
 Allow the user to see data dictionary with variable data summaries. Does not allow values querying. It induces the read-only access to the parent datasource.
 
-View values Permission
-~~~~~~~~~~~~~~~~~~~~~~
+View dictionary and values Permission
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Allow the user to see the table's data: values querying services are available. Automatically grants the View dictionary and summaries Permission.
 
-Edit dictionary Permission
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Edit dictionary and view summaries Permission
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Applies only to plain tables (i.e. not views).
 
 Allow edition of the table's data dictionary. Automatically grants the **View dictionary and summaries Permission**.
 
-Edit with summaries Permission
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Edit dictionary and view summaries Permission
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Applies only to tables that are views.
 
 Allow edition of the view's data dictionary, i.e. the edition of the derived variables algorithms. Automatically grants the **View dictionary and summaries Permission**. This permission does not grant access to individual-level data.
 
-Edit with values
-~~~~~~~~~~~~~~~~
+Edit dictionary and view values Permission
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Applies only to tables that are views.
 
 Allow edition of the view's data dictionary, i.e. the edition of the derived variables algorithms. Automatically grants the **View dictionary and summaries Permission**. This permission does not grant access to individual-level data.
 
-Administrate Table Permission
+Administrate Permission
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Allow all operations on the table/view (including removing it).
