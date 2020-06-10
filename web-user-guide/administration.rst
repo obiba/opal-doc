@@ -10,6 +10,7 @@ Administrate the Opal system services and settings.
    administration/general-settings
    administration/identity-providers
    administration/r
+   administration/datashield
    administration/taxonomies
    administration/databases
    administration/plugins
