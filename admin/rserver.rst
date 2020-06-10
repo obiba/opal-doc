@@ -81,6 +81,11 @@ Opal R Server is also available as a Zip file. To install Opal zip distribution,
 
   install.packages(c('rserve', 'opal', 'tidyverse', 'knitr', 'rmarkdown'), repos=c('http://cloud.r-project.org', 'http://cran.obiba.org'), dependencies=TRUE, lib='/usr/local/lib/R/site-library')
 
+Docker Image Installation
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The `opal-rserver <https://hub.docker.com/r/obiba/opal-rserver>`_ docker image provided by OBiBa contains a R server (and its controller) with a lot of useful pre-installed system libraries and R packages (`tidyverse <https://www.tidyverse.org/>`_, `Bioconductor <http://bioconductor.org/>`_, Geospatial libraries etc.).
+
 Upgrade
 ~~~~~~~
 

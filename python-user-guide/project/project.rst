@@ -14,7 +14,6 @@ Options
 Option                                          Description
 =============================================== =====================================
 ``--name NAME, -n NAME``                        Project name. If no name and no action is specified, the list of the projects will be returned.
-``--fetch, -f``                                 Fetch a project.
 ``--delete, -de``                               Delete the project specified by the --name option
 ``--force, -f``                                 Skip confirmation on project deletion
 ``--add, -a``                                   Add a project specified by the --name option
@@ -22,6 +21,7 @@ Option                                          Description
 ``--title TITLE, -t TITLE``                     The project's title at creation time (optional).
 ``--description DESCRIPTION, -dc DESCRIPTION``  The project's description at creation time (optional).
 ``--tags TAGS [TAGS ...], -tg TAGS [TAGS ...]`` The project tags at creation time (optional, separated by space).
+``--export-folder EXPORT_FOLDER``               The project's preferred export folder (optional).
 =============================================== =====================================
 
 Credentials
