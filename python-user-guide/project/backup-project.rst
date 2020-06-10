@@ -47,7 +47,7 @@ Option            Description
 Example
 -------
 
-Backup a specific project from a project, wait for the task to complete and download the archive as a zip file:
+Backup a specific project from a project, wait for the task to complete and download the archive as an encrypted zip file:
 
 .. code-block:: bash
 

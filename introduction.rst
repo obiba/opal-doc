@@ -13,3 +13,4 @@ See detailed concepts and tutorials:
    variables-data
    ids
    data-harmonization
+   resources
