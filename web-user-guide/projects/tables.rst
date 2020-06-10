@@ -3,7 +3,15 @@
 Project Tables
 ==============
 
-Tables give access to the project data along with their description. A table can be a raw table (i.e. with data persisted in the project's database) or a logical table (also called view) which is a set of derived variables (data are computed on-demand)
+Tables give access to the project data along with their description. A table can be a raw table (i.e. with data persisted in the project's database) or a logical table (also called view) which is a set of derived variables (data are computed on-demand).
+
+See also details about how to manage tables and variables individually:
+
+.. toctree::
+   :maxdepth: 1
+
+   table-details
+   variable-details
 
 Permissions
 -----------

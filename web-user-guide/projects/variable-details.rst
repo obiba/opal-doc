@@ -1,5 +1,5 @@
-Variable Details
-================
+Variable
+========
 
 A variable describes the data.
 

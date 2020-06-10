@@ -1,7 +1,7 @@
 .. _table:
 
-Table Details
-=============
+Table
+=====
 
 A table can be a raw table or a view
 

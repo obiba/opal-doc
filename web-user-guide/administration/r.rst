@@ -13,8 +13,10 @@ The R server access can be tested, stopped and started. Stopping the R server re
 
 The output of the R commands that are executed on the R server are printed in the *Rserve.log* file that can be downloaded. This file is useful for troubleshooting (bad R command syntax, network failure, system dependency missing etc.).
 
-Packages
-~~~~~~~~
+.. _r-packages:
+
+R Packages
+~~~~~~~~~~
 
 The list of all the R packages installed on the R server side is available. Note that some of the packages are installed at a system level location (such as `/usr/local/lib/R/site-library`) whereas others are at a location that belongs to the `rserver` user (usually `/var/lib/rserver/R/library`). Only the latter can be edited, i.e. packages can be removed or installed. R uses an order for the package lookup and the user's one (`rserver`) comes before the system ones. Then it is valid to have the same package installed at different locations and with different versions.
 
@@ -22,10 +24,11 @@ The CRAN repositories that are referred when performing install or update packag
 
 **Install single package**
 
-Two installation methods are proposed:
+Several installation methods are proposed:
 
 * standard installation using the `install.package()` function based on the configured CRAN repositories.
 * `devtools <https://www.rdocumentation.org/packages/devtools>`_ installation from a GitHub source repository, in which case the Git reference (commit number, tag or branch name) and the fully qualified package name (using the pattern `someUser/someRepo`) are mandatory.
+* `Bioconductor <http://bioconductor.org>`_ manager installation.
 
 **Update all packages**
 
@@ -35,8 +38,8 @@ This operation calls the `update.packages() <https://www.rdocumentation.org/pack
 
 This will be effective if the package location is not a system one.
 
-Sessions
-~~~~~~~~
+R Sessions
+~~~~~~~~~~
 
 Each user R session is created and managed by Opal, whether the context is plain R, DataSHIELD or report execution. The list of the R sessions reports who owns the R session, when was the last R command executed (Last access) and whether a R command is in progress (Status). When removing a R session, the remote R work directory is destroyed and all the associated R resources are freed.
 
