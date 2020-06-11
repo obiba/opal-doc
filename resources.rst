@@ -12,7 +12,7 @@ Resources are datasets or computation units which location is described by a URL
 
 **Instead of storing the data in Opal's database, only the way to access them is to be defined**: the datasets are kept in their original format and location (a SQL database, a SPSS file, R object, etc.) and are read directly from the R/DataSHIELD server-side session. Then as soon as there is a R reader for the dataset or a connector for the analysis services, a resource can be defined. Opal takes care of the permissions (a DataSHIELD user cannot see the resource's credentials) and of the resources assignment to a R/DataSHIELD session.
 
-.. image:: images/resourcer_fig.jpg
+.. image:: images/opal-resources.png
 
 Note that Opal does not require the usage of a database backend (such as MySQL/MariaDB or MongoDB) to manage the resources: this simplifies a lot the deployment of Opal (memory footprint is also drastically reduced) as data access is delegated to the R server.
 
