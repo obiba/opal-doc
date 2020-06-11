@@ -1,4 +1,4 @@
-.. _intro_resources:
+.. _intro-resources:
 
 Resources
 =========

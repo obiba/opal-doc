@@ -3,7 +3,7 @@
 Project Resources
 =================
 
-Some reference to :ref:`intro_resources` can be defined within a project. The resource types are discovered by scanning the R packages in the R server (restarting the R server triggers a new package scan) and find the ones implementing the `Resource Forms <https://github.com/obiba/resourcer#resource-forms>`_ API. Then extending Opal to new type of resources is just a matter of installing the appropriate R package (see :ref:`r-packages` documentation).
+Some reference to :ref:`intro-resources` can be defined within a project. The resource types are discovered by scanning the R packages in the R server (restarting the R server triggers a new package scan) and find the ones implementing the `Resource Forms <https://github.com/obiba/resourcer#resource-forms>`_ API. Then extending Opal to new type of resources is just a matter of installing the appropriate R package (see :ref:`r-packages` documentation).
 
 See also documentation of resource reference details:
 

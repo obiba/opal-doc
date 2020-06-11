@@ -1,3 +1,5 @@
+.. _ids:
+
 Identifiers Mappings
 ====================
 
