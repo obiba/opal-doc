@@ -50,17 +50,17 @@ Fetch the list of entity identifiers associated to a table:
 
 .. code-block:: bash
 
-  opal data datashield.CNSIM1 --opal https://opal-demo.obiba.org --user administrator --password password
+  opal data CNSIM.CNSIM1 --opal https://opal-demo.obiba.org --user administrator --password password
 
 Fetch the variable value for a entity in a table:
 
 .. code-block:: bash
 
   # Get the JSON representation of all participant values in a table
-  opal data datashield.CNSIM1 -o https://opal-demo.obiba.org -u administrator -p password --id 9553295965 -j
+  opal data CNSIM.CNSIM1 -o https://opal-demo.obiba.org -u administrator -p password --id 1444 -j
 
   # Get the JSON representation of a variable value
-  opal data datashield.CNSIM1:GENDER -o https://opal-demo.obiba.org -u administrator -p password --id 9553295965 -j
+  opal data CNSIM.CNSIM1:GENDER -o https://opal-demo.obiba.org -u administrator -p password --id 1444 -j
 
   # Get the raw value. If variable is of binary type, a byte stream is outputed.
-  opal data datashield.CNSIM1:GENDER -o https://opal-demo.obiba.org -u administrator -p password --id 9553295965 -j --raw
+  opal data CNSIM.CNSIM1:GENDER -o https://opal-demo.obiba.org -u administrator -p password --id 1444 -j --raw

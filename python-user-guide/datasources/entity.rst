@@ -56,20 +56,20 @@ Option            Description
 Example
 -------
 
-Fetch the entities with id 9553295965:
+Fetch the entities with id 1444:
 
 .. code-block:: bash
 
-  opal entity 9553295965 --opal https://opal-demo.obiba.org --user administrator --password password
+  opal entity 1444 --opal https://opal-demo.obiba.org --user administrator --password password
 
-Fetch the list of table where entity 9553295965 exists:
-
-.. code-block:: bash
-
-  opal entity 9553295965 --opal https://opal-demo.obiba.org --user administrator --password password --tables
-
-Fetch the list of table where entity 9553295965 of type "Participant" exists:
+Fetch the list of table where entity 1444 exists:
 
 .. code-block:: bash
 
-  opal entity 9553295965 --opal https://opal-demo.obiba.org --user administrator --password password --tables --type Participant
+  opal entity 1444 --opal https://opal-demo.obiba.org --user administrator --password password --tables
+
+Fetch the list of table where entity 1444 of type "Participant" exists:
+
+.. code-block:: bash
+
+  opal entity 1444 --opal https://opal-demo.obiba.org --user administrator --password password --tables --type Participant

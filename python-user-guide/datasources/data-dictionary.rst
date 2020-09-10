@@ -56,13 +56,13 @@ To fetch the dictionary associated to a table in a pretty format:
 
 .. code-block:: bash
 
-  opal dict datashield.CNSIM1 --opal https://opal-demo.obiba.org --user administrator --password password -j
+  opal dict CNSIM.CNSIM1 --opal https://opal-demo.obiba.org --user administrator --password password -j
 
 To fetch the description of a variable:
 
 .. code-block:: bash
 
-  opal dict datashield.CNSIM1:PM_BMI_CONTINUOUS -o https://opal-demo.obiba.org -u administrator -p password -j
+  opal dict CNSIM.CNSIM1:PM_BMI_CONTINUOUS -o https://opal-demo.obiba.org -u administrator -p password -j
 
 Wild cards can also be used:
 
@@ -74,5 +74,5 @@ Wild cards can also be used:
   # Get all tables from datashield datasource
   opal dict "datashield.*" --opal https://opal-demo.obiba.org --user administrator --password password
 
-  # Get all variables datashield.CNSIM1 table
-  opal dict "datashield.CNSIM1:*" --opal https://opal-demo.obiba.org --user administrator --password password
+  # Get all variables CNSIM.CNSIM1 table
+  opal dict "CNSIM.CNSIM1:*" --opal https://opal-demo.obiba.org --user administrator --password password
