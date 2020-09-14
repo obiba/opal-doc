@@ -6,7 +6,7 @@ Opal Python client, a command line scripting tool written in Python, enables aut
 Requirements
 ------------
 
-Python 2.x must be installed on the system. See more about `Python <https://www.python.org/>`_.
+Python 3.x must be installed on the system. See more about `Python <https://www.python.org/>`_.
 
 Installation
 ------------
@@ -41,7 +41,7 @@ This type of package is cross-platform (Linux, Windows, Mac).
 
 **Install on Linux or Mac**
 
-1. `Download the most recent version <https://github.com/obiba/opal/releases/download/2.10.12/opal-python-client-2.10.12.tar.gz>`_
+1. `Download the most recent version <https://github.com/obiba/opal-python-client/releases>`_
 2. Decompress the file and enter the installation folder:
 
 .. code-block:: bash
@@ -53,7 +53,7 @@ This type of package is cross-platform (Linux, Windows, Mac).
 
 .. code-block:: bash
 
-  sudo python setup.py install --record installed_files.lst
+  sudo python3 setup.py install --record installed_files.lst
 
 .. note::
   The *--record* will generate a list of installed files on your system. Since there is no uninstaller, you can use this file to remove the Opal Python Client package. You can do this by executing the following command:
@@ -73,31 +73,22 @@ You can install Cygwin, making sure that CURL, Python, gcc are included and foll
   curl -C - -O https://github.com/obiba/opal/releases/download/X.XX/opal-python-client-X.XX.tar.gz
   tar xzvf opal-python-client-X.XX.tar.gz
   cd opal-python-client-X.XX
-  python setup.py install --record installed_files.lst
+  python3 setup.py install --record installed_files.lst
 
 * Using plain Windows tools
 
-This Windows installation is the most complicated one but does not required any third party tools. You are required to do a few manual installations before the package is fully usable. The following steps were tested on a Windows 7.
+This Windows installation is the most complicated one but does not required any third party tools. You are required to do a few manual installations before the package is fully usable.
 
-1. You must have Python installed on your Windows system. Run this `installer <http://www.python.org/ftp/python/2.7.5/python-2.7.5.msi>`_ in case you don't have one.
-2. Download the `Google protobuf binary <http://code.google.com/p/protobuf/downloads/detail?name=protoc-2.5.0-win32.zip&can=2&q=>`_ and make sure that its containing folder is in your path.
-3. Download the `Google protobuf source <http://code.google.com/p/protobuf/downloads/detail?name=protobuf-2.5.0.zip>`_ package containing the setup.py file and follow these steps:
-
-.. code-block:: bash
-
-  unzip protobuf-2.5.0.zip
-  cd protobuf-2.5.0/python
-  python setup.py install
-
-4. Go to the `Python Libs <http://www.lfd.uci.edu/~gohlke/pythonlibs/>`_ site and download the file pycurl-7.19.0.win-amd64-py2.7.‌exe
-5. Run the installer and follow the instructions until the package is installed
-6. `Download the most recent version <https://github.com/obiba/opal/releases/download/2.10.12/opal-python-client-2.10.12.tar.gz>`_ and follow these steps:
+1. You must have Python installed on your Windows system. Run the installer for python3 `downloaded from python.org <https://www.python.org/downloads/windows/>`_.
+2. Go to the `Python Libs <https://www.lfd.uci.edu/~gohlke/pythonlibs/#pycurl>`_ site and download the file pycurl python package
+3. Run the `pip` installer on this package
+4. `Download the most recent version <https://github.com/obiba/opal-python-client/releases>`_ and follow these steps:
 
 .. code-block:: bash
 
   unzip opal-python-client-X.XX.tar.gz
   cd opal-python-client-X.XX
-  python setup.py bdist_wininst
+  python3 setup.py bdist_wininst
   cd dist
 
 7. Execute the generated installer and follow the instructions (opal-python-client-X.XX.win-amd64.exe)
