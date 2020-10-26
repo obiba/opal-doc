@@ -7,6 +7,7 @@ Other commands, for advanced users.
    :maxdepth: 1
 
    file
+   taxonomy
    system
    plugin
    task
