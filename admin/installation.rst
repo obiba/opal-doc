@@ -42,7 +42,7 @@ Debian Package Installation
 Opal is available as a Debian package from OBiBa Debian repository. To proceed installation, do as follows:
 
 * `Install Debian package <http://www.obiba.org/pages/pkg/>`_. Follow the instructions in the repository main page for installing Opal.
-* Manage Opal Service: after package installation, Opal server is running: see how to manage the Service.
+* Manage Opal Service: after package installation, Opal server is running: see `Server launch`_.
 
 RPM Package Installation
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -50,7 +50,7 @@ RPM Package Installation
 Opal is available as a RPM package from OBiBa RPM repository. To proceed installation, do as follows:
 
 * `Install RPM package <http://www.obiba.org/pages/rpm/>`_. Follow the instructions in the RPM repository main page for installing Opal.
-* Manage Opal Service: after package installation, Opal is running: see how to manage the Service.
+* Manage Opal Service: after package installation, Opal is running: see `Server launch`_.
 
 Zip Distribution Installation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -71,9 +71,9 @@ Set-up example for Linux:
   export OPAL_HOME=`pwd`/opal-home
   ./opal-x-dist/bin/opal
 
-Launch Opal. This step will create/update the database schema for Opal and will start Opal: see Regular Command.
+Launch Opal. This step will create/update the database schema for Opal and will start Opal: see `Server launch`_.
 
-For the administrator accounts, the credentials are "administrator" as username and "password" as password. See User Directories Configuration to change it.
+For the administrator accounts, the credentials are "administrator" as username and "password" as password. See :ref:`user-dirs` to change it.
 
 Docker Image Installation
 ~~~~~~~~~~~~~~~~~~~~~~~~~

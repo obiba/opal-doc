@@ -163,6 +163,7 @@ Several types of file root names are recognized:
     c:\dir\somedir
     c:/dir/somedir
 
+.. _user-dirs:
 
 User Directories
 ----------------
