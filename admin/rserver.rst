@@ -173,26 +173,6 @@ R Server Admin is a REST server and therefore can be queried using the `curl <ht
   # stop R server (ignored if already stopped)
   curl -X DELETE localhost:6312/rserver
 
-Troubleshooting
-^^^^^^^^^^^^^^^
-
-If you encounter an issue during the installation and you can't resolve it, please report it in our `Opal Issue Tracker <https://github.com/obiba/rserver-admin/issues>`_.
-
-Opal logs can be found in **/var/log/opal**. If the installation fails, always refer to this log when reporting an error.
-
-Rserve logs can be found in **/var/lib/rserver/logs/Rserve.log** and might indicate R errors.
-
-In case the **Rserve** R binary package does not match the R version, it is possible to update it from the R console (started as root), with the following command:
-
-.. code-block:: text
-
-  # install regular package
-  install.packages('Rserve', repos='http://cloud.r-project.org', lib='/usr/local/lib/R/site-library')
-
-  # OR install package from source
-  install.packages('Rserve', 'http://www.rforge.net/', type='source', lib='/usr/local/lib/R/site-library')
-
-
 Configuration
 -------------
 
@@ -230,3 +210,35 @@ R Session Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 When a new R session is started on server side the starting state of this session can be configured using the **RSERVER_HOME/conf/Rprofile.R**. Any R command (to be executed by the ``rserver`` user) can be put in this file.
+
+
+Troubleshooting
+---------------
+
+If you encounter an issue during the installation and you can't resolve it, please report it in our `R Server Issue Tracker <https://github.com/obiba/rserver-admin/issues>`_.
+
+Rserve logs can be found in **/var/lib/rserver/logs/Rserve.log** and might indicate R errors.
+
+Rserve package
+~~~~~~~~~~~~~~
+
+In case the **Rserve** R binary package does not match the R version, it is possible to update it from the R console (started as root), with the following command:
+
+.. code-block:: text
+
+  # install regular package
+  install.packages('Rserve', repos='http://cloud.r-project.org', lib='/usr/local/lib/R/site-library')
+
+  # OR install package from source
+  install.packages('Rserve', 'http://www.rforge.net/', type='source', lib='/usr/local/lib/R/site-library')
+
+libgit2/libcurl4-openssl conflicts
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If a conflict is reported between ``libgit2-dev`` and ``libcurl4-openssl-dev`` (known issue on Ubuntu 18 (bionic)), add the following PPA:
+
+.. code-block:: bash
+
+  sudo add-apt-repository ppa:cran/libgit2
+
+And then install the ``opal-rserver`` package.
