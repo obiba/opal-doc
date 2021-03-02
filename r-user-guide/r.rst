@@ -17,7 +17,7 @@ You can install the Opal package and its dependencies with this command within a
 
 .. code-block:: r
 
-  install.packages('opalr', dependencies=TRUE)
+  install.packages('opalr')
 
 Usage
 -----
@@ -30,7 +30,7 @@ Accessing Opal data using R is straightforward:
   library(opalr)
 
   # get a reference to the opal server
-  o <- opal.login('administrator','password','https://opal-demo.obiba.org')
+  o <- opal.login('administrator','password', url = 'https://opal-demo.obiba.org')
 
   # assign some data to a data.frame
   opal.assign.table(o,'CNSIM1','CNSIM.CNSIM1',variables=list('GENDER','PM_BMI_CONTINUOUS'))

@@ -20,7 +20,7 @@ You can install the DataSHIELD implementation for Opal R packages and dependenci
 
 .. code-block:: r
 
-  install.packages('DSOpal', dependencies=TRUE)
+  install.packages('DSOpal')
 
 Usage
 -----
@@ -50,7 +50,7 @@ First thing required to use DataSHIELD is to load datashieldclient, the DataSHIE
 .. code-block:: r
 
   # Install dsBaseClient and dependencies if not already done
-  install.packages('dsBaseClient', repos=c(getOption('repos'), 'https://cran.obiba.org'), dependencies=TRUE)
+  install.packages('dsBaseClient', repos=c(getOption('repos'), 'https://cran.obiba.org'))
 
   # Load DataSHIELD base package
   library(dsBaseClient)

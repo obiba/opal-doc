@@ -50,25 +50,40 @@ Property                         Description
 ``org.obiba.opal.smtp.password`` The SMTP user password (if authentication is activated).
 ================================ =========================================================================
 
+.. _appsconf:
+
+Apps Configuration
+~~~~~~~~~~~~~~~~~~
+
+External applications can be discovered or can self-register. The following settings the apps management defaults.
+
+======================================= =========================================================================
+Property                                Description
+======================================= =========================================================================
+``apps.token``                          Apps self-registration default token. When configured from :ref:`apps` administration page, this value is overridden.
+``apps.discovery.interval``             Apps discovery scheduling in milliseconds. Default is ``10000``.
+``apps.discovery.rock.hosts``           Comma separated list of `Rock <https://rockdoc.obiba.org>`_ R server URLs to discover on start up. Default is ``localhost:8085``. See also :ref:`rconf`.
+======================================= =========================================================================
+
 .. _rconf:
 
 R Server Configuration
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Opal is able to perform R queries by talking with a running Rserve. Opal does not provide R and Rserve: see R Server Installation Guide. Rserve version must be 0.6+. The properties for connecting to Rserve are the following:
+Opal is able to perform R queries by talking with a running R server. See the :ref:`rserver` documentation. The properties for connecting to the default `Rock <https://rockdoc.obiba.org>`_ R server(s) are the following:
 
-=================================== =========================================================================
-Property                            Description
-=================================== =========================================================================
-``org.obiba.rserver.port``          Port number of the R server controller (allows Opal to start/stop the R server).
-``org.obiba.opal.Rserve.host``      Hostname of the Rserve daemon (default is blank, i.e. the one defined by Rserve: ``localhost``)
-``org.obiba.opal.Rserve.port``      TCP port to connect to (default is blank, i.e. the one defined by Rserve: ``6311``)
-``org.obiba.opal.Rserve.username``  Username to use for login-in to Rserve (none by default)
-``org.obiba.opal.Rserve.password``  Password to use for login-in to Rserve (none by default)
-``org.obiba.opal.Rserve.encoding``  Character encoding for strings (default is ``utf8``)
-``org.obiba.opal.r.sessionTimeout`` Time in minutes after which an active R session will be automatically terminated (default is 4 hours).
-``org.obiba.opal.r.repos``          The list of CRAN repositories from which R packages can be downloaded, comma separated. Default value is ``https://cloud.r-project.org,https://cran.obiba.org``.
-=================================== =========================================================================
+======================================= =========================================================================
+Property                                Description
+======================================= =========================================================================
+``rock.default.administrator.username`` Rock administrator user name. Default is ``administrator``.
+``rock.default.administrator.password`` Rock administrator user password. Default is ``password``.
+``rock.default.manager.username``       Rock manager user name.
+``rock.default.manager.password``       Rock manager user password.
+``rock.default.user.username``          Rock regular user name.
+``rock.default.user.password``          Rock regular user password.
+``org.obiba.opal.r.sessionTimeout``     Time in minutes after which an active R session will be automatically terminated (default is 4 hours).
+``org.obiba.opal.r.repos``              The list of CRAN repositories from which R packages can be downloaded, comma separated. Default value is ``https://cloud.r-project.org,https://cran.obiba.org``.
+======================================= =========================================================================
 
 Login Policy Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
