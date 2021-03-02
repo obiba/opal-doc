@@ -16,7 +16,7 @@ The output of the R commands that are executed on the R server are printed in th
 R Servers
 ~~~~~~~~~
 
-Opal can connect to several R servers. All these servers are expected to identical in terms of R base and packages versions. If this is not the case, this can be fixed by removing/installing packages: these operations apply to all the R servers in parallel.
+Opal can connect to several R servers. All these servers are expected to be identical in terms of R base and packages versions. If this is not the case, this can be fixed by removing/installing packages: these operations apply to all the R servers in parallel.
 
 Each R server can be started/stopped and log can be downloaded individually.
 
