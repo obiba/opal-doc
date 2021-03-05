@@ -5,8 +5,8 @@ Apps
 
 An application is an external service that can be used by the system. Applications can be discovered from their URL or can register themselves using the application authentication token.
 
-List
-----
+Registry
+--------
 
 The registered apps can be unregistered. Note that an app that was discovered, will be automatically registered again. To remove it completely it is necessary to remove it from the apps discovery configuration and then unregister it.
 
