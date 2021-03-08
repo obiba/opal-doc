@@ -12,6 +12,7 @@ Import data from files (CSV, XML, SPSS) or a remote server (Opal, Limesurvey).
    import-r-sas
    import-r-spss
    import-r-stata
+   import-r-rds
    import-opal
    import-limesurvey
    import-sql

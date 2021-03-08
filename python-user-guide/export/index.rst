@@ -11,5 +11,6 @@ Export one or more tables to the Opal file system.
    export-sas
    export-spss
    export-stata
+   export-rds
    export-sql
    export-vcf

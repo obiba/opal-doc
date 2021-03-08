@@ -24,6 +24,8 @@ Options
      - Incremental export
    * - ``--identifiers ID_MAPPING, -id ID_MAPPING``
      - Entity ID mapping name
+   * - ``--id-name ID_NAME, -in ID_NAME``
+     - ID column name (optional)
    * - ``--output OUTPUT, -out OUTPUT``
      - Output SPSS or compressed SPSS file name on the Opal file system
 
