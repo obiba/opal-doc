@@ -1,11 +1,11 @@
-Table Permission
-================
+Resources Permission
+====================
 
-Manage permissions on a project's table.
+Manage permissions on a project's resources as a whole. These permissions apply to any resources in the project without needing to name them: after adding a resource the same permission will apply.
 
 .. code-block:: bash
 
-  opal perm-table <CREDENTIALS> [OPTIONS] [EXTRAS]
+  opal perm-resources <CREDENTIALS> [OPTIONS] [EXTRAS]
 
 Options
 -------
@@ -15,11 +15,10 @@ Option                                                Description
 ===================================================== =====================================
 ``--add, -a``                                         Add a permission
 ``--delete, -d``                                      Delete a permission
-``--permission PERM, -pe PERM``                       Permission to apply: ``view``, ``view-value``, ``edit``, ``edit-values``, ``administrate``
+``--permission PERM, -pe PERM``                       Permission to apply: ``view``, ``administrate``
 ``--subject SUBJECT, -s SUBJECT``                     Subject name to which the permission will be granted
 ``--type TYPE, -ty TYPE``                             Subject type: ``user`` or ``group``
 ``--project PROJECT, -pr PROJECT``                    Project name on which the permission is to be set
-``--tables TABLE [TABLE ...], -t TABLE [TABLE ...]``  List of table names on which the permission is to be set (default is all)
 ===================================================== =====================================
 
 Credentials
@@ -52,32 +51,14 @@ Option            Description
 Example
 -------
 
-Add view permission for subject demouser on table CNSIM1 in datashield project:
+Add view permission for subject demouser on any resource in RSRC project:
 
 .. code-block:: bash
 
-  opal perm-table --opal https://opal-demo.obiba.org --user administrator --password password --type USER --project datashield --subject demouser  --permission view --add --tables CNSIM1
+  opal perm-resources --opal https://opal-demo.obiba.org --user administrator --password password --type USER --project RSRC --subject demouser  --permission view --add
 
 Remove the above permission:
 
 .. code-block:: bash
 
-  opal perm-table --opal https://opal-demo.obiba.org --user administrator --password password --type USER --project datashield --subject demouser --delete --tables CNSIM1
-
-Add permission on all tables of datashield project:
-
-.. code-block:: bash
-
-  opal perm-table --opal https://opal-demo.obiba.org --user administrator --password password --type USER --project datashield --subject demouser --permission view --add
-
-Remove permission from all table of datashield project:
-
-.. code-block:: bash
-
-  opal perm-table --opal https://opal-demo.obiba.org --user administrator --password password --type USER --project datashield --subject demouser --delete
-
-Add permission on specific tables:
-
-.. code-block:: bash
-
-  opal perm-table --opal https://opal-demo.obiba.org --user administrator --password password --type USER --project datashield --subject demouser --permission view --add --tables CNSIM1 FNAC
+  opal perm-resource --opal https://opal-demo.obiba.org --user administrator --password password --type USER --project RSRC --subject demouser --delete

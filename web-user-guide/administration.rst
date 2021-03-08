@@ -18,4 +18,5 @@ Opal manages databases for two distinct purposes: for holding the participants i
    administration/taxonomies
    administration/databases
    administration/plugins
+   administration/apps
    administration/jvm

@@ -1,11 +1,12 @@
-Export CSV
-==========
+Export RDS (R)
+==============
 
-Export in CSV format in Opal file system.
+Export in RDS format in Opal file system. A RDS file contains a single serialized R object, which will be a `tibble <https://tibble.tidyverse.org/>`_ and that can be read in R using `base::readRDS() <https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/readRDS>`_.
+
 
 .. code-block:: bash
 
-  opal export-csv <CREDENTIALS> <OPTIONS> [EXTRAS]
+  opal export-r-rds <CREDENTIALS> <OPTIONS> [EXTRAS]
 
 Options
 -------
@@ -26,10 +27,8 @@ Options
      - Entity ID mapping name
    * - ``--id-name ID_NAME, -in ID_NAME``
      - ID column name (optional)
-   * - ``--no-multilines, -nl``
-     - Do not write value sequences as multiple lines
    * - ``--output OUTPUT, -out OUTPUT``
-     - Output directory name on the Opal file system
+     - Output RDS file name on the Opal file system
 
 Credentials
 -----------
@@ -61,8 +60,8 @@ Option            Description
 Example
 -------
 
-Export tables from opal-data. A subdirectory is created with table definition and data as CSV files.
+Export table from opal-data to a RDS file:
 
 .. code-block:: bash
 
-  opal export-csv --opal https://opal-demo.obiba.org --user administrator --password password --datasource opal-data --tables BloodPressure --output /tmp/export
+  opal export-r-rds --opal https://opal-demo.obiba.org --user administrator --password password --datasource CNSIM --tables CNSIM1 --output /tmp/cnsim1.rds

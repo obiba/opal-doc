@@ -9,6 +9,8 @@ These commands allow to set/remove permissions on projects, tables, variables, D
    perm-project
    perm-datasource
    perm-table
+   perm-resources
+   perm-resource
    perm-variable
    perm-system
    perm-r
