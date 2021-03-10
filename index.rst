@@ -9,7 +9,7 @@ OBiBa Opal Documentation
 Targeted at individual studies and study consortia, `OBiBa <http://obiba.org/>`_ software stack (Opal, Mica etc.) provides a software solution for epidemiological data management, analysis and publication. `Opal <http://www.obiba.org/pages/products/opal/>`_ is the core data warehouse application that provides all the necessary tools to import, transform and describe data. Opal can be used with `Agate <http://www.obiba.org/pages/products/agate/>`_, the `OBiBa <http://obiba.org/>`_'s central authentication server.
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
    introduction
 
