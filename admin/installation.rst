@@ -103,7 +103,7 @@ A typical `docker-compose <https://docs.docker.com/compose/>`_ file (including a
         - MYSQLDATA_HOST=mysqldata
         - MYSQLDATA_USER=opal
         - MYSQLDATA_PASSWORD=password
-        - ROCK_HOST=rock
+        - ROCK_HOSTS=rock:8085
       volumes:
         - /tmp/opal:/srv
     mongo:
@@ -141,7 +141,7 @@ Environment Variable            Description
 ``MYSQLIDS_PASSWORD``           MySQL IDs database password.
 ``AGATE_HOST``                  Agate server host (optional).
 ``AGATE_PORT``                  Agate server port, default is ``8444``.
-``ROCK_HOST``                   Rock R server host (optional).
+``ROCK_HOSTS``                  Comma separated Rock R server URLs, for R server discovery (optional, but recommended).
 ``R_REPOS``                     R CRAN repositories (optional, see ``org.obiba.opal.r.repos`` setting).
 =============================== =========================================================================
 
