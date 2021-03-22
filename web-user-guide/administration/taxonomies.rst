@@ -26,7 +26,7 @@ Add a taxonomy from scratch.
 Import Maelstrom Research Taxonomies
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-`Maelstrom Research <https://www.maelstrom-research.org/>`_ provides a complete set of taxonomies to classify variables (classification `based on the experience of more than 700K variables <https://www.maelstrom-research.org/mica/repository#search>`_) and to describe the dataset harmonization process. Importing these taxonomies requires a download key that can be requested at Maelstrom Research (link to request form is provided).
+`Maelstrom Research <https://www.maelstrom-research.org/>`_ provides a complete set of taxonomies to classify variables (classification `based on the experience of more than 700K variables <https://maelstrom-research.org/search#lists?type=networks>`_) and to describe the dataset harmonization process. Importing these taxonomies requires a download key that can be requested at Maelstrom Research (link to request form is provided).
 
 Import Taxonomy from Github
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
