@@ -1,3 +1,5 @@
+.. _python-sql:
+
 SQL
 ===
 

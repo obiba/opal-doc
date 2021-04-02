@@ -13,6 +13,15 @@ See also details about how to manage tables and variables individually:
    table-details
    variable-details
 
+SQL
+---
+
+SQL queries can be executed on one or more tables (or views) of a project. Permission to access the values of the considered tables is required.
+
+The supported SQL syntax is the the one of `SQLite <https://sqlite.org/>`_. More specifically see the `SQL syntax and functions documentation <https://sqlite.org/lang.html>`_.
+
+The result of the SQL query can be downloaded from the web interface in CSV format. For a programmatic access to the SQL API, see the :ref:`python-sql` python command and the ``opal.sql()`` function in the `opalr R package <https://cran.r-project.org/package=opalr>`_.
+
 Permissions
 -----------
 
