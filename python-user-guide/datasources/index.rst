@@ -15,3 +15,4 @@ These commands allow to access to both variables and values.
    annot-export
    backup-view
    restore-view
+   sql
