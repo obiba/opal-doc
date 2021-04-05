@@ -14,7 +14,7 @@ Options
 =================================== =====================================
 Option                              Description
 =================================== =====================================
-``--project PROJECT, -pr PROJECT``  Source project name
+``--project PROJECT, -pr PROJECT``  Source project name, that will be used to resolve the table names in the FROM statement. If not provided, the fully qualified table names must be specified in the query (escaped by backquotes: \`<project>.<table>\`).
 ``--query QUERY, -q QUERY``	        The SQL query
 ``--format FORMAT, -f FORMAT``      The format of the output, can be ``json`` or ``csv``. Default is ``csv``.
 ``--id-name ID_NAME, -in ID_NAME``  Name of the ID column name. Default is ``_id``.
@@ -67,3 +67,9 @@ More advanced SQL query:
 .. code-block:: bash
 
   opal sql --opal https://opal-demo.obiba.org --user administrator --password password --project CNSIM --sql "select count(*) as N, avg(LAB_HDL) as HDL_AVG, GENDER from (select * from CNSIM1 union all select * from CNSIM2) where LAB_HDL is not null group by GENDER"
+
+Simple SQL query with CSV output and without specifying a project in the arguments:
+
+.. code-block:: bash
+
+  opal sql --opal https://opal-demo.obiba.org --user administrator --password password --sql "select * from `CNSIM.CNSIM1` limit 10"

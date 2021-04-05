@@ -22,6 +22,8 @@ The supported SQL syntax is the the one of `SQLite <https://sqlite.org/>`_. More
 
 The result of the SQL query can be downloaded from the web interface in CSV format. For a programmatic access to the SQL API, see the :ref:`python-sql` python command and the ``opal.sql()`` function in the `opalr R package <https://cran.r-project.org/package=opalr>`_.
 
+Note that in Opal, the identifiers is not a variable. When performing assignment of the table data into the SQL environment, the identifiers column is called ``_id`` by default.
+
 Permissions
 -----------
 
