@@ -31,7 +31,6 @@ As an example, let's join the tables ``samples`` (columns ``_id``, ``Donor``, ``
   SELECT Donor AS ID, samples._id AS sample_id, ConsentStatus, Gender
       FROM samples
       LEFT JOIN donors ON donors._id = samples.Donor
-      WHERE ConsentStatus LIKE "%unknown"
       LIMIT 10
 
 And then make aggregations, for instance counting the number of donors having at least one "unknown" consent, per gender:
