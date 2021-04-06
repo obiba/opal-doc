@@ -16,13 +16,32 @@ See also details about how to manage tables and variables individually:
 SQL
 ---
 
-SQL queries can be executed on one or more tables (or views) of a project. Permission to access the values of the considered tables is required.
+SQL is a very powerful language for data manipulation. SQL support in Opal allows to easily join tables and make aggregations. SQL queries can be executed on one or more tables (or views) of a project from the web interface (or all projects using the programmatic API). Permission to access the values of the considered tables is required.
 
 The supported SQL syntax is the the one of `SQLite <https://sqlite.org/>`_. More specifically see the `SQL syntax and functions documentation <https://sqlite.org/lang.html>`_.
 
 The result of the SQL query can be downloaded from the web interface in CSV format. For a programmatic access to the SQL API, see the :ref:`python-sql` python command and the ``opal.sql()`` function in the `opalr R package <https://cran.r-project.org/package=opalr>`_.
 
-Note that in Opal, the identifiers is not a variable. When performing assignment of the table data into the SQL environment, the identifiers column is called ``_id`` by default.
+Note that in Opal, there is no variable for accessing the identifiers. Then when performing assignment of the table data into the SQL environment, an identifiers column is added and called ``_id`` by default.
+
+As an example, let's join the tables ``samples`` (columns ``_id``, ``Donor``, ``ConsentStatus``) and ``donors`` (columns ``_id``, ``Gender``):
+
+.. code-block:: sql
+
+  SELECT Donor AS ID, samples._id AS sample_id, ConsentStatus, Gender
+      FROM samples
+      LEFT JOIN donors ON donors._id = samples.Donor
+      WHERE ConsentStatus LIKE "%unknown"
+
+And then make aggregations, for instance counting the number of donors having at least one "unknown" consent, per gender:
+
+.. code-block:: sql
+
+  SELECT COUNT(DISTINCT Donor) AS DonorsCount, Gender
+      FROM samples
+      LEFT JOIN donors ON donors._id = samples.Donor
+      WHERE ConsentStatus LIKE "%unknown"
+      GROUP BY Gender
 
 Permissions
 -----------
