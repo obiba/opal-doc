@@ -5,6 +5,8 @@ SQL
 
 Execute a SQL query on one or more tables of a project. Permission to access values of these tables is required.
 
+See more SQL query examples in the Project Tables :ref:`sql` section.
+
 .. code-block:: bash
 
   opal sql <CREDENTIALS> [OPTIONS] [XTRAS]
