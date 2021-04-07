@@ -16,3 +16,4 @@ These commands allow to access to both variables and values.
    backup-view
    restore-view
    sql
+   sql-history
