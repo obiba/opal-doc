@@ -18,7 +18,7 @@ See also details about how to manage tables and variables individually:
 SQL
 ---
 
-SQL is a very powerful language for data manipulation. SQL support in Opal allows to easily join tables, filtering and grouping data, make aggregations etc. SQL queries can be executed on one or more tables (or views) of a project from the web interface (or all projects using the programmatic API). Permission to access the values of the considered tables is required.
+SQL is a very powerful language for data manipulation. SQL support in Opal allows to easily join tables, filtering, sorting and grouping data, make aggregations etc. SQL queries can be executed on one or more tables (or views) of a project from the web interface (or all projects using the programmatic API). Permission to access the values of the considered tables is required.
 
 The supported SQL syntax is the the one of `SQLite <https://sqlite.org/>`_. More specifically see the `SQL syntax and functions documentation <https://sqlite.org/lang.html>`_.
 
@@ -104,6 +104,18 @@ See the `scalar functions documentation <https://sqlite.org/lang_corefunc.html>`
   SELECT round(LAB_HDL, 1) as HDL_ABS, GENDER
       FROM CNSIM1
       LIMIT 10
+
+Paging
+~~~~~~
+
+The directive ``LIMIT`` and ``OFFSET`` (combined with ``ORDER BY``) can be used to extract some part of the data. The following query gets the 101st to 111th lines of the query result output ordered by the identifiers:
+
+.. code-block:: sql
+
+  SELECT *
+    FROM CNSIM1
+    ORDER BY _id
+    LIMIT 10 OFFSET 100
 
 Union of Tables
 ~~~~~~~~~~~~~~~
