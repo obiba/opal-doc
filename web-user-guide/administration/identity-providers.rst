@@ -30,8 +30,7 @@ Open a form dialog to specify the connection details to the ID provider.
 There are some required fields:
 
 * An ID provider must be identified by a *Name*,
-* The Opal application has been registered in the this provider: these are the *Client ID* and *Client Secret* fields.
-* The *Discovery URI* must follow the `OpenID Connect configuration discovery specifications <https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfig>`_.
+* The Opal application has been registered in the this provider: these are the *Client ID* and *Client Secret* fields.* The *Discovery URI* must follow the `OpenID Connect configuration discovery specifications <https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfig>`_.
 
 The optional fields are:
 
@@ -40,6 +39,10 @@ The optional fields are:
 * The *Groups* are the group that are to be automatically applied to any users signing in through this ID provider.
 * The *Scope* is the scope value(s) to be sent to the ID provider to initiate the OpenID Connect dialog. This is provider dependent but usually ``openid`` is enough.
 * The *Groups Claim* is the field name in the `UserInfo <https://openid.net/specs/openid-connect-core-1_0.html#UserInfo>`_ object (that is returned by the ID provider) that contains the group names to which the user belongs. These will be automatically applied to the user's profile. Such field is `not one of the standard claims <https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims>`_ and needs to be explicitly set. The expected value type associated to this claim is either an array of strings, or a string which group names are separated by spaces. In the case of Agate, the groups claim name is ``groups``.
+
+.. note::
+
+  To register Opal as a client of the OIDC provider it will be necessary to provide its callback URL which is: ``https://opal.example.org/auth/callback/``.
 
 Remove
 ~~~~~~
