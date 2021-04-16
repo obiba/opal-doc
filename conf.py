@@ -20,7 +20,7 @@
 # -- Project information -----------------------------------------------------
 
 project = u'Opal'
-copyright = u'2019, OBiBa'
+copyright = u'2025, OBiBa'
 author = u'OBiBa'
 
 # The short X.Y version
@@ -41,6 +41,7 @@ release = u''
 extensions = [
     'sphinx.ext.githubpages',
     'sphinx_rtd_theme',
+    'sphinxcontrib.httpdomain',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
