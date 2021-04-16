@@ -26,6 +26,10 @@ The result of the SQL query can be downloaded from the web interface in CSV form
 
 Note that in Opal, there is no variable for accessing the identifiers. Then when performing assignment of the table data into the SQL environment, an identifiers column is added and called ``_id`` by default.
 
+.. note::
+
+  **SQL API is read-only**. Statements like CREATE, ALTER, DROP, INSERT, DELETE are not supported.
+
 Table and Variable Naming
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
