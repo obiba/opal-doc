@@ -14,7 +14,7 @@ Targeted at individual studies and study consortia, `OBiBa <http://obiba.org/>`_
    introduction
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Administrator Guide
 
    admin/installation
@@ -23,7 +23,7 @@ Targeted at individual studies and study consortia, `OBiBa <http://obiba.org/>`_
    admin/rserver
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Web User Guide
 
    web-user-guide/index
@@ -33,7 +33,7 @@ Targeted at individual studies and study consortia, `OBiBa <http://obiba.org/>`_
    web-user-guide/my-profile
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: R DataSHIELD User Guide
 
    r-user-guide/index
@@ -42,18 +42,30 @@ Targeted at individual studies and study consortia, `OBiBa <http://obiba.org/>`_
    r-user-guide/reporting
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Python User Guide
 
    python-user-guide/index
    python-user-guide/commands
 
 .. toctree::
-  :maxdepth: 1
+  :maxdepth: 2
   :caption: Magma Javascript API
 
   magma-user-guide/index
   magma-user-guide/methods
+
+.. toctree::
+  :maxdepth: 2
+  :caption: REST API Guide
+
+  rest/index
+  rest/projects
+  rest/project
+  rest/datasources
+  rest/datasource
+  rest/table.rst
+  rest/resource.rst
 
 Partners and Funders
 ====================

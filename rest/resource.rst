@@ -1,0 +1,11 @@
+Resource
+========
+
+Get
+---
+
+Update
+------
+
+Remove
+------
