@@ -34,7 +34,7 @@ The read/write operations can be controlled:
 
 * **Default**, the user permissions apply,
 * **Read only**, no data can be imported, nor modified/deleted.
-* **Read only, without individual-level data**, no data can exported, nor extracted. Only reporting, analysis or DataSHIELD actions can be performed. 
+* **Read only, without individual-level data**, no data can exported, nor extracted. Only reporting, analysis or DataSHIELD actions can be performed.
 
 Project Tasks
 ~~~~~~~~~~~~~
@@ -84,7 +84,7 @@ Example of usage in Python (see section :ref:`py`)
 
 .. code-block:: python
 
-  opal dict "datashield.*" --opal https://opal-demo.obiba.org --token 'dXvJKhk17RiO0TguRmR0EQlJxweCFyUX'
+  opal dict "CNSIM.*" --opal https://opal-demo.obiba.org --token 'dXvJKhk17RiO0TguRmR0EQlJxweCFyUX'
 
 Example of usage with `cURL <https://curl.haxx.se/>`_ command line;
 
