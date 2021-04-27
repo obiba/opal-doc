@@ -13,6 +13,147 @@ See also details about how to manage tables and variables individually:
    table-details
    variable-details
 
+.. _sql:
+
+SQL
+---
+
+SQL is a very powerful language for data manipulation. SQL support in Opal allows to easily join tables, filtering, sorting and grouping data, make aggregations etc. SQL queries can be executed on one or more tables (or views) of a project from the web interface (or all projects using the programmatic API). Permission to access the values of the considered tables is required.
+
+The supported SQL syntax is the the one of `SQLite <https://sqlite.org/>`_. More specifically see the `SQL syntax and functions documentation <https://sqlite.org/lang.html>`_.
+
+The result of the SQL query can be downloaded from the web interface in CSV format. For a programmatic access to the SQL API, see the :ref:`python-sql` python command and the ``opal.sql()`` function in the `opalr R package <https://cran.r-project.org/package=opalr>`_.
+
+Note that in Opal, there is no variable for accessing the identifiers. Then when performing assignment of the table data into the SQL environment, an identifiers column is added and called ``_id`` by default.
+
+.. note::
+
+  **SQL API is read-only**. Statements like CREATE, ALTER, DROP, INSERT, DELETE are not supported.
+
+Table and Variable Naming
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When executed in the context of a project, the simple table name can be used:
+
+.. code-block:: sql
+
+  SELECT * FROM CNSIM1 LIMIT 10
+
+If this simple table name contains a ``.`` character it must be escaped by backquotes:
+
+.. code-block:: sql
+
+  SELECT * FROM `StandingHeight.Baseline` LIMIT 10
+
+When there is no project context, or when referring a table that is not in the current project, use the fully qualified table name with backquotes:
+
+.. code-block:: sql
+
+  SELECT * FROM `CNSIM.CNSIM1` LIMIT 10
+
+To desambiguate the column names, the table name can be used in ``SELECT``, ``JOIN`` etc. statements:
+
+.. code-block:: sql
+
+  SELECT CNSIM1._id, CNSIM1.GENDER, `CNSIM.CNSIM2`.PM_BMI_CATEGORICAL
+    FROM CNSIM1
+    LEFT JOIN `CNSIM.CNSIM2` ON CNSIM1._id = `CNSIM.CNSIM2`._id
+
+The same escape rule applies to variable names, when they contain a ``.`` character:
+
+.. code-block:: sql
+
+  SELECT `InstrumentRun.timeStart`
+    FROM StandingHeight
+    LIMIT 10
+
+or with fully qualified table name:
+
+.. code-block:: sql
+
+  SELECT `baseline.StandingHeight`.`InstrumentRun.timeStart`
+    FROM `baseline.StandingHeight`
+    LIMIT 10
+
+Functions
+~~~~~~~~~
+
+**Agregate Functions**
+
+See the `aggregation functions documentation <https://sqlite.org/lang_aggfunc.html>`_.
+
+.. code-block:: sql
+
+  SELECT avg(LAB_HDL) as HDL_AVG, GENDER
+      FROM CNSIM1
+      WHERE LAB_HDL is not null
+      GROUP BY GENDER
+
+**Date and Time Functions**
+
+See the `date and time functions documentation <https://sqlite.org/lang_datefunc.html>`_.
+
+.. code-block:: sql
+
+  SELECT *, date('now') AS extraction_date
+      FROM CNSIM1
+      LIMIT 10
+
+**Scalar Functions**
+
+See the `scalar functions documentation <https://sqlite.org/lang_corefunc.html>`_.
+
+.. code-block:: sql
+
+  SELECT round(LAB_HDL, 1) as HDL_ABS, GENDER
+      FROM CNSIM1
+      LIMIT 10
+
+Paging
+~~~~~~
+
+The directive ``LIMIT`` and ``OFFSET`` (combined with ``ORDER BY``) can be used to extract some part of the data. The following query gets the 101st to 111th lines of the query result output ordered by the identifiers:
+
+.. code-block:: sql
+
+  SELECT *
+    FROM CNSIM1
+    ORDER BY _id
+    LIMIT 10 OFFSET 100
+
+Union of Tables
+~~~~~~~~~~~~~~~
+
+When tables have the same columns, they can be stacked as follow:
+
+.. code-block:: sql
+
+  SELECT * FROM CNSIM1
+    UNION ALL SELECT * FROM CNSIM2
+    LIMIT 10
+
+Join Tables
+~~~~~~~~~~~
+
+Let's join the tables ``samples`` (columns ``_id``, ``Donor``, ``ConsentStatus``) and ``donors`` (columns ``_id``, ``Gender``):
+
+.. code-block:: sql
+
+  SELECT Donor AS ID, samples._id AS sample_id, ConsentStatus, Gender
+      FROM samples
+      LEFT JOIN donors ON donors._id = samples.Donor
+      LIMIT 10
+
+And then make aggregations, for instance counting the number of donors having at least one "unknown" consent, per gender:
+
+.. code-block:: sql
+
+  SELECT count(DISTINCT Donor) AS DonorsCount, Gender
+      FROM samples
+      LEFT JOIN donors ON donors._id = samples.Donor
+      WHERE ConsentStatus LIKE "%unknown"
+      GROUP BY Gender
+
 Permissions
 -----------
 
