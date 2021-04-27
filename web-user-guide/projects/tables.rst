@@ -28,7 +28,8 @@ Note that in Opal, there is no variable for accessing the identifiers. Then when
 
 .. note::
 
-  **SQL API is read-only**. Statements like CREATE, ALTER, DROP, INSERT, DELETE are not supported.
+  * **SQL API is read-only**. Statements like CREATE, ALTER, DROP, INSERT, DELETE are not supported.
+  * **Maximum number of columns is 2,000**. SQL queries cannot be executed on tables with more than 1,999 variables (+ identifier). Use views to extract the variables of interest.
 
 Table and Variable Naming
 ~~~~~~~~~~~~~~~~~~~~~~~~~
