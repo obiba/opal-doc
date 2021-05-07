@@ -26,6 +26,11 @@ To register itself, an application must provide a registration token in its requ
 
   Rock server self-registration.
 
+Edit Registration Token
+^^^^^^^^^^^^^^^^^^^^^^^
+
+The apps registration token can be defined at system level (see :ref:`appsconf`) and overridden from this administration page. Use the Generate button to create a secure token. Leave empty to reset to system's default.
+
 Discovery
 ~~~~~~~~~
 
@@ -36,3 +41,14 @@ Applications can be discovered at runtime. When discovered, the application is a
   :alt: Rock discovery
 
   Rock server discovery.
+
+Add Rock App
+^^^^^^^^^^^^
+
+Add a Rock R server to discover, by providing its URL (http...) and selecting an authentication strategy:
+
+* **Default**, the credentials specified by the system configuration will apply (see :ref:`rconf`).
+* **Administrator**, Opal will use a Rock administrator user both for managing the R server (start/stop server and install/remove packages) and creating R sessions.
+* **Manager and User**, Opal will use a Rock manager user for managing the R server and a standard Rock user for creating R sessions.
+
+See `Rock Security <https://rockdoc.obiba.org/en/latest/introduction.html#security>`_ documentation.
