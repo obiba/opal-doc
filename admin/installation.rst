@@ -119,6 +119,10 @@ A typical `docker-compose <https://docs.docker.com/compose/>`_ file (including a
       image: obiba/rock
       volumes:
         - /tmp/rock:/srv
+      environment:
+        - ROCK_ADMINISTRATOR_NAME=administrator
+        - ROCK_ADMINISTRATOR_PASSWORD=password
+
 
 Then environment variables that are exposed by this image are:
 
