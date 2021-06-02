@@ -145,6 +145,8 @@ Environment Variable            Description
 ``R_REPOS``                     R CRAN repositories (optional, see ``org.obiba.opal.r.repos`` setting).
 =============================== =========================================================================
 
+See also the `Rock R server Docker documentation <https://rockdoc.obiba.org/en/latest/admin/installation.html#docker-image-installation>`_
+
 Upgrade
 -------
 
