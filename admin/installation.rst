@@ -116,7 +116,7 @@ A typical `docker-compose <https://docs.docker.com/compose/>`_ file (including a
         - MYSQL_USER=opal
         - MYSQL_PASSWORD=password
     rock:
-      image: obiba/rock
+      image: obiba/rock:latest
       volumes:
         - /tmp/rock:/srv
       environment:
