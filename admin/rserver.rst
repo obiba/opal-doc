@@ -34,7 +34,7 @@ Opal supports multiple clusters of R servers, each one is designated by a **prof
 DataSHIELD Profiles
 -------------------
 
-Based on Opal's capability to handle different profiles (clusters) of R servers, it is also possible to define several `DataSHIELD <https://datashield.org>`_ profiles. A DataSHIELD profile is a R server profile combined with a DataSHIELD configuration (allowed functions, options and permissions). DataSHIELD users can then decide in which environment their analysis are to be performed, for a better reproducible science. Such configuration is easy to setup when `deploying Rock with Docker <https://rockdoc.obiba.org/en/latest/admin/installation.html#docker-image-installation>`_, eliminating the burden of dealing with several versions of R and packages, and of installing potentially hundreds of R packages.
+Based on Opal's capability to handle different profiles (clusters) of R servers, it is also possible to define several `DataSHIELD <https://datashield.org>`_ profiles. A DataSHIELD profile is a R server profile combined with a DataSHIELD configuration (allowed functions, options and permissions). DataSHIELD users can then decide in which environment their analysis are to be performed, for a better reproducible science. DataSHIELD administrators can also fine tune the DataSHIELD configurations for advanced usages. Such configuration is easy to setup when `deploying Rock with Docker <https://rockdoc.obiba.org/en/latest/admin/installation.html#docker-image-installation>`_, eliminating the burden of dealing with several versions of R and packages, and of installing potentially hundreds of R packages.
 
 .. figure:: ../images/opal-datashield-profiles.png
   :scale: 50 %
