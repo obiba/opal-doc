@@ -48,7 +48,7 @@ Accessing Opal data using R is straightforward:
   # clean remote R session
   opal.logout(o)
 
-See also `Opal R example scripts <https://github.com/obiba/opalr/tree/master/inst/examples>`_.
+See also `Opal R documentation <https://www.obiba.org/opalr/>`_.
 
 Security
 --------
