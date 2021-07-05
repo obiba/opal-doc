@@ -146,6 +146,12 @@ Environment Variable            Description
 ``AGATE_HOST``                  Agate server host (optional).
 ``AGATE_PORT``                  Agate server port, default is ``8444``.
 ``ROCK_HOSTS``                  Comma separated Rock R server URLs, for R server discovery (optional, but recommended).
+``ROCK_ADMINISTRATOR_USER``     Default Rock server administrator user name (optional).
+``ROCK_ADMINISTRATOR_PASSWORD`` Default Rock server administrator user password (optional).
+``ROCK_MANAGER_USER``           Default Rock server manager user name (optional).
+``ROCK_MANAGER_PASSWORD``       Default Rock server manager user password (optional).
+``ROCK_USER_USER``              Default Rock server user user name (optional).
+``ROCK_USER_PASSWORD``          Default Rock server user user password (optional).
 ``R_REPOS``                     R CRAN repositories (optional, see ``org.obiba.opal.r.repos`` setting).
 =============================== =========================================================================
 

@@ -87,6 +87,18 @@ Property                                Description
 ``org.obiba.opal.r.repos``              The list of CRAN repositories from which R packages can be downloaded, comma separated. Default value is ``https://cloud.r-project.org,https://cran.obiba.org``.
 ======================================= =========================================================================
 
+DataSHIELD Configuration
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Some minimal default DataSHIELD infrastructure settings can be defined.
+
+======================================= =========================================================================
+Property                                Description
+======================================= =========================================================================
+``datashield.r.parser``                 DataSHIELD R parser version: ``v1`` or ``v2`` See `DataSHIELD4J library documentation <https://github.com/obiba/datashield4j>`_. Default is the latest.
+======================================= =========================================================================
+
+
 Login Policy Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
