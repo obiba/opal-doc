@@ -60,7 +60,9 @@ External applications can be discovered or can self-register. The following sett
 ======================================= =========================================================================
 Property                                Description
 ======================================= =========================================================================
-``apps.token``                          Apps self-registration default token. Default is empty (self-registration not allowed). When configured from :ref:`apps` administration page, this value is overridden.
+``apps.registration.token``             Apps self-registration default token. Default is empty (self-registration not allowed). When configured from :ref:`apps` administration page, this value is overridden.
+``apps.registration.include``           White list rule to accept an app self-registration: (java) regular expression applied to app's server address. If not defined (default) all apps are filtered-in.
+``apps.registration.exclude``           Black list rule to accept an app self-registration: (java) regular expression applied to app's server address. If not defined (default) no app is filtered-out.
 ``apps.discovery.interval``             Apps discovery scheduling in milliseconds. Default is ``10000``.
 ``apps.discovery.rock.hosts``           Comma separated list of `Rock <https://rockdoc.obiba.org>`_ R server URLs to discover on start up. Default is ``localhost:8085``. See also :ref:`rconf`.
 ======================================= =========================================================================
