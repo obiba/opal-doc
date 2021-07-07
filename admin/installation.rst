@@ -117,19 +117,13 @@ A typical `docker-compose <https://docs.docker.com/compose/>`_ file (including a
         - MYSQL_PASSWORD=password
     rock:
       image: obiba/rock:latest
-      volumes:
-        - /tmp/rock:/srv
-      environment:
-        - ROCK_ADMINISTRATOR_NAME=administrator
-        - ROCK_ADMINISTRATOR_PASSWORD=password
-
 
 Then environment variables that are exposed by this image are:
 
 =============================== =========================================================================
 Environment Variable            Description
 =============================== =========================================================================
-``JAVA_OPTS``
+``JAVA_OPTS``                   Java VM arguments.
 ``OPAL_ADMINISTRATOR_PASSWORD`` Opal administrator password, required and set at first start.
 ``MONGO_HOST``                  MongoDB server host (optional).
 ``MONGO_PORT``                  MongoDB server port, default is ``27017``.
