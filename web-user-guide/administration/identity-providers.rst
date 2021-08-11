@@ -30,7 +30,8 @@ Open a form dialog to specify the connection details to the ID provider.
 There are some required fields:
 
 * An ID provider must be identified by a *Name*,
-* The Opal application has been registered in the this provider: these are the *Client ID* and *Client Secret* fields.* The *Discovery URI* must follow the `OpenID Connect configuration discovery specifications <https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfig>`_.
+* The Opal application has been registered in the this provider: these are the *Client ID* and *Client Secret* fields.
+* The *Discovery URI* must follow the `OpenID Connect configuration discovery specifications <https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfig>`_.
 
 The optional fields are:
 
