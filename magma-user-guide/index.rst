@@ -1,3 +1,5 @@
+.. _magmajs:
+
 Magma JS Introduction
 =====================
 

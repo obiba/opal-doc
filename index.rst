@@ -50,6 +50,13 @@ Targeted at individual studies and study consortia, `OBiBa <http://obiba.org/>`_
 
 .. toctree::
   :maxdepth: 1
+  :caption: Cookbook
+
+  cookbook/index
+  cookbook/import-data
+
+.. toctree::
+  :maxdepth: 1
   :caption: Magma Javascript API
 
   magma-user-guide/index

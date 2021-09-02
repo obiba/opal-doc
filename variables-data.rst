@@ -18,6 +18,8 @@ The following diagram shows the relationships between the different concepts:
 Variables
 ---------
 
+.. _vars-cats:
+
 Variables and Categories
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
