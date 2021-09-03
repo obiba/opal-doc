@@ -99,7 +99,7 @@ The R attribute keys that can be used are:
   * - ``opal.occurrence_group``
     - Name of the occurrence group, when several variables are repeated together.
   * - ``opal.index``
-    - Postion in the variables list.
+    - Position in the variables list, for ordering.
 
 .. rubric:: Full Data Dictionary
 
