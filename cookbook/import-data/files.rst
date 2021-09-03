@@ -4,7 +4,7 @@ How to Import Data from Files
 Importing CSV Data
 ------------------
 
-The following applies to any delimited textual file formats, CSV (comma delimiter) being is the most common one.
+The following applies to any delimited textual file formats, CSV (comma delimiter) being the most common one.
 
 Opal supports two CSV importers:
 
