@@ -12,22 +12,30 @@ From a Table
 
 This is a manual operation that can be very straightforward.
 
-1. Go to the table's page
-2. Select variables (either all or only the ones of interest)
-3. Select **Add to view**
+.. rubric:: Procedure
 
-⇒ The view is created (or updated if it already exists) with the selected variables.
+.. note::
+
+  1. Go to the table's page
+  2. Select variables (either all or only the ones of interest)
+  3. Select **Add to view**
+
+  ⇒ The view is created (or updated if it already exists) with the selected variables.
 
 From a Variable
 ---------------
 
 This operation allows to fine tune the transformation script, useful when setting categories from an originally continuous variable.
 
-1. Go to the variable's page
-2. Select from the **Derive** menu the appropriate derivation operation
-3. Follow derivation wizard instructions
+.. rubric:: Procedure
 
-⇒ The view is created (or updated if it already exists) with the selected variables.
+.. note::
+
+  1. Go to the variable's page
+  2. Select from the **Derive** menu the appropriate derivation operation
+  3. Follow derivation wizard instructions
+
+  ⇒ The view is created (or updated if it already exists) with the selected variable.
 
 Using Excel
 -----------
@@ -39,13 +47,15 @@ It can be convenient for batch processing and for Excel lovers, to prepare the v
 
 The derivation script is to be defined in the **script** column (see :ref:`magmajs`).
 
-When the Excel file is ready:
+.. rubric:: Procedure
 
-1. Go to the project's tables page
-2. Select **Add Table > Add view...**
-3. Upload the Excel file and select the table on which the view is based
+.. note::
 
-⇒ The view is created with the provided variables.
+  1. Go to the project's tables page
+  2. Select **Add Table > Add view...**
+  3. Upload the Excel file and select the table on which the view is based
+
+  ⇒ The view is created with the provided variables.
 
 Using R
 -------
@@ -55,3 +65,14 @@ The `opalr R package <https://www.obiba.org/opalr>`_ is very powerful for intera
 A view can be created with the `opal.table_create() <https://www.obiba.org/opalr/reference/opal.table_create.html>`_ function and its data dictionary updated with the `opal.table_dictionary_update() <https://www.obiba.org/opalr/reference/opal.table_dictionary_update.html>`_ function.
 
 See also data dictionary management examples from the `Opal Projects vignette <https://www.obiba.org/opalr/articles/opal-projects.html#dictionaries-1>`_.
+
+.. rubric:: Procedure
+
+.. note::
+
+  0. Preliminary: install opalr R package
+  1. Connect to Opal server using ``opal.login()``
+  2. Make the view's data dictionary in R
+  3. Create the view with ``opal.table_create()`` or update the view with ``opal.table_dictionary_update()``
+
+  ⇒ The view is created or updated with the provided variables.

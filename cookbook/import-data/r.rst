@@ -4,10 +4,10 @@ How to Import Data from R
 If the Opal server's data importers are not sufficient (unsupported data format, missing data extraction options etc.), the recommended alternative is to use a R script to:
 
 * Extract data by connecting to a data source in R
-* Perform data cleansing (optional)
-* Build the data dictionary (optional)
+* [optional] Perform data cleansing
+* [optional] Build the data dictionary
 * Save data into a Opal table
-* Automate data import operations (optional)
+* [optional] Automate data import operations
 
 Prerequisite
 ------------
@@ -71,7 +71,7 @@ Before Import
 
 The data dictionary can be fully or partially described directly in the tibble that will be imported.
 
-**Raw R Attributes**
+.. rubric:: Raw R Attributes
 
 The data dictionary can be fine-tuned before saving the data into a Opal table. As an example, a R column of type ``double`` can be saved as a variable with the ``integer`` value type in place of the default ``decimal`` one. This is done by setting the R vector attributes with some Opal keys. For instance, the column *var1* will be interpreted as a vector of integer values at *mydata* importation time:
 
@@ -101,11 +101,11 @@ The R attribute keys that can be used are:
   * - ``opal.index``
     - Postion in the variables list.
 
-**Full Data Dictionary**
+.. rubric:: Full Data Dictionary
 
 Another approach is to apply the full data dictionary (same structure as in the :download:`Excel template <../../archive/opalVariableTemplate.xls>`) to the tibble to be saved. Use the `dictionary.apply() <https://www.obiba.org/opalr/reference/dictionary.apply.html>`_ for that purpose.
 
-**Taxonomy Term Annotations**
+.. rubric:: Taxonomy Term Annotations
 
 To annotate one or more variables with a taxonomy term without having to define a full data dictionary, see the `dictionary.annotate() <https://www.obiba.org/opalr/reference/dictionary.annotate.html>`_ documentation.
 
@@ -114,7 +114,7 @@ After Import
 
 After the data import, the data dictionary can be amended in Opal.
 
-**Table Dictionary**
+.. rubric:: Table Dictionary
 
 After data have been saved it is NOT possible to modify the value types. See previous section (*Before Import*) to control value types at importation time.
 
@@ -122,6 +122,20 @@ Other data dictionary properties and attributes can be set using the same data s
 
 See the `opal.table_dictionary_update() <https://www.obiba.org/opalr/reference/opal.table_dictionary_update.html>`_ documentation (that can be usefully combined with `opal.table_dictionary_get() <https://www.obiba.org/opalr/reference/opal.table_dictionary_get.html>`_).
 
-**View Dictionary**
+.. rubric:: View Dictionary
 
 See also the :ref:`cb-views` for making a view based on the imported table using R.
+
+Procedure
+---------
+
+.. note::
+
+  0. Preliminary: install opalr R package
+  1. Connect to Opal server using ``opal.login()``
+  2. Load and prepare data in R as a ``tibble`` object
+  3. [optional] Fine tune data dictionary using ``attributes()`` or ``dictionary.apply()`` or ``dictionary.annotate()``
+  4. Save data using ``opal.table_save()``
+  5. [optional] Update data dictionary using ``opal.table_dictionary_get()``
+
+  ⇒ The table is created/updated with the imported data and is to be accessed directly or through a view
