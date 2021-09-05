@@ -38,7 +38,7 @@ If the destination project does not exist yet, it is possible to create it using
 .. code-block:: r
 
   # create a new project with a database backend for storing tables' data
-  opal.project_create(o, "dummy", database = TRUE)
+  opal.project_create(o, "myproject", database = TRUE)
 
 You can find more information in the `Opal Projects vignette <https://www.obiba.org/opalr/articles/opal-projects.html>`_.
 
@@ -56,8 +56,8 @@ Make sure your data are `tidy <https://r4ds.had.co.nz/tidy-data.html>`_, and ide
 
 .. code-block:: r
 
-  # save 'mydata' tibble into 'mytable' table
-  opal.table_save(o, mydata, project = "dummy", table = "mytable")
+  # save 'data' tibble into 'mytable' table, using 'id' column to provide identifiers
+  opal.table_save(o, data, project = "myproject", table = "mytable", id.name = "id")
 
 See the `opal.table_save() <https://www.obiba.org/opalr/reference/opal.table_save.html>`_ documentation for more details about saving operation options.
 
@@ -73,11 +73,7 @@ The data dictionary can be fully or partially described directly in the tibble t
 
 .. rubric:: Raw R Attributes
 
-The data dictionary can be fine-tuned before saving the data into a Opal table. As an example, a R column of type ``double`` can be saved as a variable with the ``integer`` value type in place of the default ``decimal`` one. This is done by setting the R vector attributes with some Opal keys. For instance, the column *var1* will be interpreted as a vector of integer values at *mydata* importation time:
-
-.. code-block:: r
-
-  attributes(mydata$var1) <- list(opal.value_type = 'integer')
+The data dictionary can be fine-tuned before saving the data into a Opal table. As an example, a R column of type ``double`` can be saved as a variable with the ``integer`` value type in place of the default ``decimal`` one. This is done by setting the R vector attributes with some Opal keys.
 
 The R attribute keys that can be used are:
 
@@ -101,30 +97,92 @@ The R attribute keys that can be used are:
   * - ``opal.index``
     - Position in the variables list, for ordering.
 
+For instance, the column *cyl* will be interpreted as a vector of integer values at *data* importation time:
+
+.. code-block:: r
+
+  data <- tibble::as_tibble(mtcars)
+  # apply 'opal.value_type' attribute to 'cyl' column
+  attributes(data$cyl) <- list(opal.value_type = 'integer')
+
+Another example makes a numerical variable with categories in Opal from a factor column in R:
+
+.. code-block:: r
+
+  data <- tibble::as_tibble(mtcars)
+  # make column a factor, each level will be a category
+  data$cyl <- as.factor(data$cyl)
+  # append 'opal.value_type' attribute to 'cyl' column
+  attributes(data$cyl) <- append(attributes(data$cyl), list(opal.value_type = 'integer'))
+
 .. rubric:: Full Data Dictionary
 
 Another approach is to apply the full data dictionary (same structure as in the :download:`Excel template <../../archive/opalVariableTemplate.xls>`) to the tibble to be saved. Use the `dictionary.apply() <https://www.obiba.org/opalr/reference/dictionary.apply.html>`_ for that purpose.
+
+It is not necessary to use Excel to define this data dictionary:
+
+.. code-block:: r
+
+  data <- tibble::as_tibble(mtcars)
+  variables <- tibble::tribble(
+    ~name, ~valueType, ~`label:en`,  ~`Namespace::Name`, ~unit, ~repeatable, ~index,
+    "mpg", "decimal", "Mpg label",  "Value1", "years", 0, 1,
+    "cyl", "integer", "Cyl label",  "Value2", "kg/m2", 0, 2,
+    "disp", "decimal", "Disp label", NA, NA, 1, 3
+  )
+  categories <- tibble::tribble(
+    ~variable, ~name, ~missing, ~`label:en`,
+    "cyl", "4", 0, "Four",
+    "cyl", "6", 0, "Six",
+    "cyl", "8", 1, "Height"
+  )
+  data <- dictionary.apply(data, variables, categories)
 
 .. rubric:: Taxonomy Term Annotations
 
 To annotate one or more variables with a taxonomy term without having to define a full data dictionary, see the `dictionary.annotate() <https://www.obiba.org/opalr/reference/dictionary.annotate.html>`_ documentation.
 
+.. code-block:: r
+
+  # annotate some variables with a taxonomy term
+  data <- dictionary.annotate(data,
+    variables = c("A_SDC_EDU_LEVEL", "A_SDC_EDU_LEVEL_AGE"),
+    taxonomy = "Mlstr_area",
+    vocabulary = "Sociodemographic_economic_characteristics",
+    term = "Education")
+
 After Import
 ~~~~~~~~~~~~
 
-After the data import, the data dictionary can be amended in Opal.
-
 .. rubric:: Table Dictionary
 
-After data have been saved it is NOT possible to modify the value types. See previous section (*Before Import*) to control value types at importation time.
+After data have been saved the data dictionary can be amended, except the variable value types. See previous section (*Before Import*) to control value types at importation time.
 
 Other data dictionary properties and attributes can be set using the same data structure as in the :download:`Excel template <../../archive/opalVariableTemplate.xls>`, expressed in R.
 
 See the `opal.table_dictionary_update() <https://www.obiba.org/opalr/reference/opal.table_dictionary_update.html>`_ documentation (that can be usefully combined with `opal.table_dictionary_get() <https://www.obiba.org/opalr/reference/opal.table_dictionary_get.html>`_).
 
+As an example the following data dictionary defined in R is applied to an Opal table:
+
+.. code-block:: r
+
+  variables <- tibble::tribble(
+    ~name, ~valueType, ~`label:en`,  ~`Namespace::Name`, ~unit, ~repeatable, ~index,
+    "mpg", "decimal", "Mpg label",  "Value1", "years", 0, 1,
+    "cyl", "integer", "Cyl label",  "Value2", "kg/m2", 0, 2,
+    "disp", "decimal", "Disp label", NA, NA, 1, 3
+  )
+  categories <- tibble::tribble(
+    ~variable, ~name, ~missing, ~`label:en`,
+    "cyl", "4", 0, "Four",
+    "cyl", "6", 0, "Six",
+    "cyl", "8", 1, "Height"
+  )
+  opal.table_dictionary_update(o, "myproject", "mytable", variables, categories)
+
 .. rubric:: View Dictionary
 
-See also the :ref:`cb-views` for making a view based on the imported table using R.
+When data type has not been specified before the import and needs to be changed, an Opal view can transform values on the fly. See the :ref:`cb-views` for making a view based on the imported table using R.
 
 Procedure
 ---------

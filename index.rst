@@ -54,6 +54,7 @@ Targeted at individual studies and study consortia, `OBiBa <http://obiba.org/>`_
 
   cookbook/index
   cookbook/import-data
+  cookbook/r-datashield
 
 .. toctree::
   :maxdepth: 1

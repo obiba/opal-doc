@@ -6,6 +6,6 @@ Importing data, to make them available for other services (R/DataSHIELD analysis
 .. toctree::
    :maxdepth: 1
 
-   import-data/files.rst
-   import-data/r.rst
-   import-data/views.rst
+   import-data/files
+   import-data/r
+   import-data/views
