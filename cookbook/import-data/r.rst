@@ -9,8 +9,11 @@ If the Opal server's data importers are not sufficient (unsupported data format,
 * Save data into a Opal table
 * [optional] Automate data import operations
 
-Prerequisite
-------------
+Prerequisites
+-------------
+
+Install R Packages
+~~~~~~~~~~~~~~~~~~
 
 Opal is a server application. The client R script will connect the Opal server. Then the prerequisites are:
 
@@ -18,6 +21,9 @@ Opal is a server application. The client R script will connect the Opal server. 
 * Client: having the `opalr R package <https://www.obiba.org/opalr/>`_ installed, and data sources accessible.
 
 See also the :ref:`r` documentation.
+
+Connect with Server
+~~~~~~~~~~~~~~~~~~~
 
 Your script must start with:
 
@@ -31,7 +37,7 @@ Your script must start with:
 See the `opal.login() <https://www.obiba.org/opalr/reference/opal.login.html>`_ documentation for more details about credentials.
 
 Prepare Project
----------------
+~~~~~~~~~~~~~~~
 
 If the destination project does not exist yet, it is possible to create it using R:
 

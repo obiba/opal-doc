@@ -31,6 +31,8 @@ Edit Registration Token
 
 The apps registration token can be defined at system level (see :ref:`appsconf`) and overridden from this administration page. Use the Generate button to create a secure token. Leave empty to reset to system's default.
 
+.. _apps-discovery:
+
 Discovery
 ~~~~~~~~~
 

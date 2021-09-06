@@ -13,10 +13,10 @@ Opal has two different strategies for establishing connection with R servers (se
 
 Whatever the chosen registration strategy, the name R profile in Opal is the name of the ``cluster`` declared in the Rock R server (see `Cluster Node Configuration <https://rockdoc.obiba.org/en/latest/admin/configuration.html#cluster-node-configuration>`_ documentation).
 
-Using the `Docker <https://www.docker.com/>`_ technology, several R servers can run on the same host. A R server packaged in a Docker container is also easier to maintain, when R packages are to be updated or when a computation envrionment is to be restored. Therefore, the following instructions will recommend the Docker usage and more specifically the `docker-compose <https://docs.docker.com/compose/>`_ tool.
+Using the `Docker <https://www.docker.com/>`_ technology, several R servers can run on the same host. A R server packaged in a Docker container is also easier to maintain, when R packages are to be updated or when a computation envrionment is to be restored. Therefore, the following instructions will recommend the Docker usage and more specifically the `Docker Compose <https://docs.docker.com/compose/>`_ tool.
 
-Docker Images
--------------
+Step 1 - Prepare Docker Images
+------------------------------
 
 The following R server Docker images are proposed:
 
@@ -37,85 +37,47 @@ From these base images, it is possible to make your own, with additional R packa
 * `obiba/rock-demo:geo Dockerfile <https://github.com/obiba/docker-rock-demo/blob/geo/Dockerfile>`_ installs geo system libraries and a DataSHIELD R package for geolocalized data analysis.
 * `obiba/rock-demo:omics Dockerfile <https://github.com/obiba/docker-rock-demo/blob/omics/Dockerfile>`_ installs some Bioconductor R packages for omics analysis, along with the dsOmics DataSHIELD interface.
 
-Docker Compose
---------------
+Step 2 - Docker Compose Configuration
+-------------------------------------
 
-Your docker-compose configuration can include the Opal server: it is not mandatory, as the Opal server can be installed from a native package, whereas the multiple R servers will be started from docker images. The following docker-compose examples will include the Opal image, for illustrating the Opal configuration for service discovery (``ROCK_HOSTS`` environment variable).
+Your Docker Compose configuration can include the Opal server but it is not mandatory, as the Opal server can be installed from a native package, whereas the multiple R servers will be started from docker images.
 
-.. rubric:: Single Rock Server
-
-For basic DataSHIELD usage ``datashield/rock-base`` is the recommended image:
-
-.. code-block:: yaml
-
-  version: '3'
-  services:
-      opal:
-          image: obiba/opal:latest
-          ports:
-                  - "9943:8443"
-                  - "9980:8080"
-          links:
-                  - mongo
-                  - datashield
-          environment:
-                  - OPAL_ADMINISTRATOR_PASSWORD=${OPAL_ADMINISTRATOR_PASSWORD}
-                  - MONGO_HOST=mongo
-                  - MONGO_PORT=27017
-                  - ROCK_HOSTS=datashield:8085
-          volumes:
-                  - ${OPAL_DIR}:/srv
-      mongo:
-          image: mongo
-      datashield:
-          image: datashield/rock-base:latest
-          environment:
-              - ROCK_ID=${ROCK_ID}
-              - ROCK_CLUSTER=default
-              - ROCK_TAGS=${ROCK_TAGS}
-
-.. rubric:: Multiple Rock Servers
+.. rubric:: Compose Multiple Rock Servers
 
 Different ``datashield/rock-base`` images can be used to expose different R packages versions. The DataSHIELD researcher can specify the appropriate profile name at connection time to ensure that the analysis envrionment is reproducible.
 
+In the following example, several R servers will be accessible through their own port number, and the Opal server must me configured accordingly.
+
 .. code-block:: yaml
 
   version: '3'
   services:
-      opal:
-          image: obiba/opal:latest
-          ports:
-                  - "9943:8443"
-                  - "9980:8080"
-          links:
-                  - mongo
-                  - rock
-                  - datashield
-                  - datashield-61
-          environment:
-                  - OPAL_ADMINISTRATOR_PASSWORD=${OPAL_ADMINISTRATOR_PASSWORD}
-                  - MONGO_HOST=mongo
-                  - MONGO_PORT=27017
-                  - ROCK_HOSTS=datashield:8085,datashield-61:8085
-          volumes:
-                  - ${OPAL_DIR}:/srv
-      mongo:
-          image: mongo
       datashield:
           image: datashield/rock-base:latest
+          ports:
+              - ${PORT_DEFAULT}:8085
           environment:
               - ROCK_ID=${ROCK_ID}
               - ROCK_CLUSTER=default
               - ROCK_TAGS=${ROCK_TAGS}
       datashield-61:
           image: datashield/rock-base:6.1-R4.1
+          ports:
+              - ${PORT_BASE61}:8085
           environment:
               - ROCK_ID=${ROCK_ID}-base-6.1
               - ROCK_CLUSTER=base-6.1
               - ROCK_TAGS=${ROCK_TAGS}
 
-Initializing DataSHIELD Settings
---------------------------------
+.. rubric:: Discover Rock Servers in Opal
+
+To configure Rock apps discovery in Opal, you can:
+
+* Either set the ``apps.discovery.rock.hosts`` property in the **opal-config.properties** file, see :ref:`appsconf` documentation. Opal server restart is then required.
+* Or declare dynamically the new apps in the **Administration > Apps** page, *Discovery* section, see :ref:`apps-discovery` documentation. No Opal server restart is necessary.
+
+Step 3 - Initialize DataSHIELD Settings
+---------------------------------------
 
 Connecting Opal to a R server with DataSHIELD R packages is not enough for having a functional DataSHIELD profile: DataSHIELD settings must be initialized, i.e. the allowed aggregate and assign functions along with R options must be declared.
 
