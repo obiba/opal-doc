@@ -42,7 +42,7 @@ Step 2 - Docker Compose Configuration
 
 Your Docker Compose configuration can include the Opal server but it is not mandatory, as the Opal server can be installed from a native package, whereas the multiple R servers will be started from docker images.
 
-.. rubric:: Compose Multiple Rock Servers
+.. rubric:: Start Multiple Rock Servers
 
 Different ``datashield/rock-base`` images can be used to expose different R packages versions. The DataSHIELD researcher can specify the appropriate profile name at connection time to ensure that the analysis envrionment is reproducible.
 
