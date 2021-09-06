@@ -88,15 +88,15 @@ From Administration Page
 
   1. Go to **Administration > DataSHIELD** page
   2. Select a profile in the *Profiles* section
-  3. Press **Initialize** in the *Settings* section
-  4. Press **Enable** in the *Status* section
+  3. Press **Initialize** in the profile's *Settings* section
+  4. Press **Enable** in the profile's *Status* section
 
   ⇒ The DataSHIELD settings are read from the installed DataSHIELD R packages and set as the profile's configuration.
 
 Using R
 ~~~~~~~
 
-The `opalr R package <https://www.obiba.org/opalr/>`_ has many functions for DataSHIELD administration, starting with ``dsadmin.*``. Initializing and enabling a profile can be done from R as follow:
+The `opalr R package <https://www.obiba.org/opalr/>`_ (see :ref:`r` documentation) has many functions for DataSHIELD administration, their name starting with ``dsadmin.``. Initializing and enabling a profile can be done from R as follow:
 
 .. code-block:: r
 
