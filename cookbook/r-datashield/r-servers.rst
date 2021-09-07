@@ -26,7 +26,7 @@ The following R server Docker images are proposed:
   * - Image
     - Description
   * - `obiba/rock <https://hub.docker.com/r/obiba/rock>`_
-    - | `Rock R server <https://www.obiba.org/pages/products/rock/>`_ application with R and useful R packages and system libraries. Everything you need for a standard R server to connect to Opal (reporting, resources, analysis).
+    - | `Rock R server <https://www.obiba.org/pages/products/rock/>`_ application with R and useful R packages and system libraries. Everything you need for a standard R server connected to Opal (reporting, resources, analysis).
       | Available tags are: ``latest``, ``<rock_version>`` (for instance ``1.0``) and ``<rocker_version>-R<r-version>`` (for instance ``1.0-R4.1``).
   * - `datashield/rock-base <https://hub.docker.com/r/datashield/rock-base>`_
     - | Based on ``obiba/rock`` image and includes the `dsBase <http://datashield.github.io/dsBase/>`_ R package for basic DataSHIELD analysis. This is the recommended base image for the DataSHIELD users.
