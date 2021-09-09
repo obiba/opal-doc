@@ -6,4 +6,5 @@ Data analyses happen in the R server backend, managed by Opal. Flexibility and s
 .. toctree::
    :maxdepth: 1
 
-   r-datashield/r-servers
+   r-datashield/r-profiles
+   r-datashield/datashield-profiles

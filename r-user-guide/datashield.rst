@@ -1,3 +1,5 @@
+.. _datashield:
+
 Using DataSHIELD
 ================
 

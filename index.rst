@@ -24,6 +24,14 @@ Targeted at individual studies and study consortia, `OBiBa <http://obiba.org/>`_
 
 .. toctree::
    :maxdepth: 1
+   :caption: Cookbook
+
+   cookbook/index
+   cookbook/import-data
+   cookbook/r-datashield
+
+.. toctree::
+   :maxdepth: 1
    :caption: Web User Guide
 
    web-user-guide/index
@@ -47,14 +55,6 @@ Targeted at individual studies and study consortia, `OBiBa <http://obiba.org/>`_
 
    python-user-guide/index
    python-user-guide/commands
-
-.. toctree::
-  :maxdepth: 1
-  :caption: Cookbook
-
-  cookbook/index
-  cookbook/import-data
-  cookbook/r-datashield
 
 .. toctree::
   :maxdepth: 1
