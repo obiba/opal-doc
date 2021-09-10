@@ -1,7 +1,7 @@
 How to NOT Import Data
 ======================
 
-There are different reasons one would not import data into Opal:
+There are different reasons why one would not import data into Opal:
 
 * data are too large (timepoint series, genomes etc.)
 * data are not tabular (linkage, multidimensional etc.)
