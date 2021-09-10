@@ -17,6 +17,8 @@ Whatever the chosen registration strategy, the name of the R profile in Opal is 
 
 Using the `Docker <https://www.docker.com/>`_ technology, several R servers can run on the same host. An R server packaged in a Docker container is also easier to maintain, when R packages are to be updated or when a computation environment is to be restored. Therefore, the following instructions will recommend the Docker usage and more specifically the `Docker Compose <https://docs.docker.com/compose/>`_ tool.
 
+.. _prepare-docker-images:
+
 Step 1 - Prepare Docker Images
 ------------------------------
 

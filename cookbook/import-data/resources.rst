@@ -32,6 +32,31 @@ The `dsOmics R/DataSHIELD package <https://github.com/isglobal-brge/dsOmics>`_ i
 * `zzz.R <https://github.com/isglobal-brge/dsOmics/blob/master/R/zzz.R>`_ registers the package's specific resolvers on library load,
 * `resource.js <https://github.com/isglobal-brge/dsOmics/blob/master/inst/resources/resource.js>`_ declares and documents the handled resources, so that Opal can discover them, generate corresponding resource creation forms, and load the R library before resource assignment in the R server.
 
+Once the package is built, it needs to be installed in the Opal's R server(s).
+
+Using Docker
+~~~~~~~~~~~~
+
+In order to have a reproducible production environment, it is recommended to prepare a Docker image of the R server including your new package. See the :ref:`prepare-docker-images` documentation in the R server profiles documentation.
+
+From Administration Page
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+The package must be available in the official `CRAN <https://www.r-project.org/>`_ repository or in a `GitHub <https://github.com>`_ source code repository or in `Bioconductor <https://bioconductor.org/>`_ repository.
+
+.. note::
+
+  1. Go to **Administration > R** page
+  2. Select the ``default`` R servers cluster
+  3. Select **Packages** tab
+  4. Press **Install** and follow instructions of *Install package*
+  5. Repeat for other R server clusters
+
+Using R
+~~~~~~~
+
+In addition to the operations that can be performed from the web page, it is possible to upload a local R package to Opal directly using the `oadmin.install_local_package() <https://www.obiba.org/opalr/reference/oadmin.install_local_package.html>`_ function. See also the other ``oadmin.install*`` functions.
+
 Step 2 - Declare Resource in Opal
 ---------------------------------
 
@@ -45,7 +70,7 @@ From Project Page
   1. Go to the project's page and select the **Resources** tab
   2. Press **Add Resource** and select the *Category* (nature of the resource) and the *Type* (service or data format and location) of the resource
   3. Fill in the connection form: *Parameters* and *Credentials*, and *Save*
-  4. [optional] from the created resource page, press **Test** to try resource assignment in the **default** R server. This will check if the R resource resolver can be found, but will not establish a connection with the resource
+  4. [optional] From the created resource page, press **Test** to try resource assignment in the **default** R server. This will check if the R resource resolver can be found, but will not establish a connection with the resource
 
 Using R
 ~~~~~~~
