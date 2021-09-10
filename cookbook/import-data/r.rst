@@ -1,16 +1,21 @@
 How to Import Data from R
 =========================
 
-If the Opal server's data importers are not sufficient (unsupported data format, missing data extraction options etc.), the recommended alternative is to use a R script to:
+If the Opal server's data importers are not sufficient (unsupported data format, missing data extraction options etc.), the recommended alternative is to use a R script (which execution can be automated to update data) as follows:
 
-* Extract data by connecting to a data source in R
-* [optional] Perform data cleansing
-* [optional] Build the data dictionary
-* Save data into a Opal table
-* [optional] Automate data import operations
+.. note::
 
-Prerequisites
--------------
+  0. Preliminary: install opalr R package
+  1. Connect to Opal server using ``opal.login()``
+  2. Load and prepare data in R as a ``tibble`` object
+  3. [optional] Fine tune data dictionary using ``attributes()`` or ``dictionary.apply()`` or ``dictionary.annotate()``
+  4. Save data using ``opal.table_save()``
+  5. [optional] Update data dictionary using ``opal.table_dictionary_get()``
+
+  ⇒ The table is created/updated with the imported data and is to be accessed directly or through a view
+
+Step 1 - Prerequisites
+----------------------
 
 Install R Packages
 ~~~~~~~~~~~~~~~~~~
@@ -22,8 +27,8 @@ Opal is a server application. The client R script will connect the Opal server. 
 
 See also the :ref:`r` documentation.
 
-Connect with Server
-~~~~~~~~~~~~~~~~~~~
+Connect with Opal Server
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 Your script must start with:
 
@@ -48,8 +53,11 @@ If the destination project does not exist yet, it is possible to create it using
 
 You can find more information in the `Opal Projects vignette <https://www.obiba.org/opalr/articles/opal-projects.html>`_.
 
-Import Data
------------
+Step 2 - Prepare Data in R
+--------------------------
+
+Load Data in R
+~~~~~~~~~~~~~~
 
 There are many ways of having data available in R whether the source is a file, a database, a remote service etc. Some reference manuals can be found at:
 
@@ -58,22 +66,10 @@ There are many ways of having data available in R whether the source is a file, 
 * `rio: A Swiss-Army Knife for Data I/O <https://cran.r-project.org/package=rio>`_
 * ...
 
-Make sure your data are `tidy <https://r4ds.had.co.nz/tidy-data.html>`_, and identify which column holds the identifiers. The expected R data structure for data import into Opal is a `tibble <https://r4ds.had.co.nz/tibbles.html>`_. Saving the data into a Opal table is as simple as:
+Make sure your data are `tidy <https://r4ds.had.co.nz/tidy-data.html>`_, and identify which column holds the identifiers. The expected R data structure for data import into Opal is a `tibble <https://r4ds.had.co.nz/tibbles.html>`_.
 
-.. code-block:: r
-
-  # save 'data' tibble into 'mytable' table, using 'id' column to provide identifiers
-  opal.table_save(o, data, project = "myproject", table = "mytable", id.name = "id")
-
-See the `opal.table_save() <https://www.obiba.org/opalr/reference/opal.table_save.html>`_ documentation for more details about saving operation options.
-
-Data Dictionary
----------------
-
-The data dictionary in Opal is a rich description of the data.
-
-Before Import
-~~~~~~~~~~~~~
+[optional] Prepare Data Dictionary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The data dictionary can be fully or partially described directly in the tibble that will be imported.
 
@@ -157,12 +153,28 @@ To annotate one or more variables with a taxonomy term without having to define 
     vocabulary = "Sociodemographic_economic_characteristics",
     term = "Education")
 
-After Import
-~~~~~~~~~~~~
+Step 3 - Import Data
+--------------------
+
+Saving the data into a Opal table is as simple as:
+
+.. code-block:: r
+
+  # save 'data' tibble into 'mytable' table, using 'id' column to provide identifiers
+  opal.table_save(o, data, project = "myproject", table = "mytable", id.name = "id")
+
+See the `opal.table_save() <https://www.obiba.org/opalr/reference/opal.table_save.html>`_ documentation for more details about saving operation options.
+
+You can follow the import task progress in the project's **Tasks** page.
+
+Step 4 - [optional] Update Data Dictionary
+------------------------------------------
+
+The data dictionary in Opal is the rich description of the data.
 
 .. rubric:: Table Dictionary
 
-After data have been saved the data dictionary can be amended, except the variable value types. See previous section (*Before Import*) to control value types at importation time.
+After data have been saved the data dictionary can be amended, except the variable value types. See previous section (*Prepare Data Dictionary*) to control value types at importation time.
 
 Other data dictionary properties and attributes can be set using the same data structure as in the :download:`Excel template <../../archive/opalVariableTemplate.xls>`, expressed in R.
 
@@ -189,17 +201,3 @@ As an example the following data dictionary defined in R is applied to an Opal t
 .. rubric:: View Dictionary
 
 When data type has not been specified before the import and needs to be changed, an Opal view can transform values on the fly. See the :ref:`cb-views` for making a view based on the imported table using R.
-
-Procedure
----------
-
-.. note::
-
-  0. Preliminary: install opalr R package
-  1. Connect to Opal server using ``opal.login()``
-  2. Load and prepare data in R as a ``tibble`` object
-  3. [optional] Fine tune data dictionary using ``attributes()`` or ``dictionary.apply()`` or ``dictionary.annotate()``
-  4. Save data using ``opal.table_save()``
-  5. [optional] Update data dictionary using ``opal.table_dictionary_get()``
-
-  ⇒ The table is created/updated with the imported data and is to be accessed directly or through a view

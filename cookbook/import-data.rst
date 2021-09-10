@@ -9,3 +9,4 @@ Importing data, to make them available for other services (R/DataSHIELD analysis
    import-data/files
    import-data/r
    import-data/views
+   import-data/resources

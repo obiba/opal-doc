@@ -15,7 +15,7 @@ Opal has two different strategies for establishing connection with R servers (se
 
 Whatever the chosen registration strategy, the name of the R profile in Opal is the name of the ``cluster`` declared in the Rock R server configuration (see `Cluster Node Configuration <https://rockdoc.obiba.org/en/latest/admin/configuration.html#cluster-node-configuration>`_ documentation).
 
-Using the `Docker <https://www.docker.com/>`_ technology, several R servers can run on the same host. A R server packaged in a Docker container is also easier to maintain, when R packages are to be updated or when a computation environment is to be restored. Therefore, the following instructions will recommend the Docker usage and more specifically the `Docker Compose <https://docs.docker.com/compose/>`_ tool.
+Using the `Docker <https://www.docker.com/>`_ technology, several R servers can run on the same host. An R server packaged in a Docker container is also easier to maintain, when R packages are to be updated or when a computation environment is to be restored. Therefore, the following instructions will recommend the Docker usage and more specifically the `Docker Compose <https://docs.docker.com/compose/>`_ tool.
 
 Step 1 - Prepare Docker Images
 ------------------------------
@@ -69,7 +69,7 @@ In the following example, several R servers will be accessible through their own
 
 .. warning::
 
-  Make sure there is always a R servers cluster name called ``default``, which is the default profile name expected by Opal when none is specified.
+  Make sure there is always an R servers cluster name called ``default``, which is the default profile name expected by Opal when none is specified.
 
 Step 3 - Discover Rock R Servers in Opal
 ----------------------------------------
@@ -84,7 +84,7 @@ You can then verify in the **Administration > R** page that several R servers ar
 Step 4 - Use R Profiles from R Client
 -------------------------------------
 
-In a R console, install the `opalr R package <https://www.obiba.org/opalr/>`_. See also the :ref:`r` documentation.
+In an R console, install the `opalr R package <https://www.obiba.org/opalr/>`_. See also the :ref:`r` documentation.
 
 The following script will list the R profiles on the `opal-demo <https://opal-demo.obiba.org>`_ server:
 
@@ -101,7 +101,7 @@ The following script will list the R profiles on the `opal-demo <https://opal-de
   # disconnect
   opal.logout(o)
 
-When an R operation requires to assign data and perform calculations in a R server, the R server profile can be specified at login time: a remote R session will be created in a R server from the named cluster.
+When an R operation requires to assign data and perform calculations in an R server, the R server profile can be specified at login time: a remote R session will be created in an R server from the named cluster.
 
 .. code-block:: r
 
@@ -124,7 +124,7 @@ When an R operation requires to assign data and perform calculations in a R serv
 Step 5 - Troubleshooting
 ------------------------
 
-If anything goes wrong in a R server, check the output of the R commands in the R server logs.
+If anything goes wrong in an R server, check the output of the R commands in the R server logs.
 
 .. note::
 
@@ -132,4 +132,4 @@ If anything goes wrong in a R server, check the output of the R commands in the 
   2. Select the R server profile/cluster,
   3. Download the R server logs.
 
-This log may contain information, when for instance a R package is broken or some R function calls output some error/warning messages without failing properly.
+This log may contain information, when for instance an R package is broken or some R function calls output some error/warning messages without failing properly.

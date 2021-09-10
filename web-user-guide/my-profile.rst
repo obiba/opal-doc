@@ -10,6 +10,8 @@ Account Settings
 
 This section gives information about the user account: groups and how to change the password. As Opal is able to delegate the user authentication to tier systems (such as `Agate <http://agatedoc.obiba.org>`_ or :ref:`oidc`), Opal may have no control on the user's password. Unless the user has been defined in Opal (the *opal-user-realm*), the password update may be delegated to the original realm of the user.
 
+.. _pat:
+
 Personal Access Tokens
 ----------------------
 

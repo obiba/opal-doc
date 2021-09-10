@@ -69,7 +69,7 @@ Advanced users can login to Opal by providing a key pair: certificate and privat
 
   o <- opal.login(url='https://opal-demo.obiba.org', opts=credentials)
 
-Probably the most secure authentication method is by using a personal access token (since Opal 2.15).
+The **recommended authentication method is by using a personal access token**: projects and operations can have a token's specific limited scope. See :ref:`pat` documentation.
 
 .. code-block:: r
 
