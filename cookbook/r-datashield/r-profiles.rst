@@ -5,7 +5,7 @@ How to Set up R Server Profiles
 
 Opal is able to connect to multiple R servers: see :ref:`rserver` documentation. The benefits of having multiple R servers are:
 
-* Having different versions of R and/or R packages (i.e. profiles) installed, for reproducible science,
+* Having different versions of R and/or R packages (i.e. profiles) installed, for reproducible science (see also :ref:`cb-renv`),
 * Balance the computation load other several R servers with same profile.
 
 Opal has two different strategies for establishing connection with R servers (see :ref:`apps` documentation):

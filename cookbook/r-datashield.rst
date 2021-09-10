@@ -10,3 +10,4 @@ Data analyses happen in the R server backend, managed by Opal. Flexibility and s
    r-datashield/datashield-profiles
    r-datashield/authz
    r-datashield/performance
+   r-datashield/renv

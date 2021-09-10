@@ -1,7 +1,11 @@
+.. _cb-datashield-profiles:
+
 How to Set up DataSHIELD Profiles
 =================================
 
 Opal is able to connect to multiple R servers: see :ref:`rserver` documentation. R servers are organized in clusters. The cluster name is the R server profile name. From each R server profile, a DataSHIELD profile can be derived.
+
+See also :ref:`cb-renv`.
 
 The following instructions will guide you in setting up the DataSHIELD profiles.
 
