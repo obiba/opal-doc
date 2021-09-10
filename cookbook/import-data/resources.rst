@@ -1,3 +1,5 @@
+.. _cb-resources:
+
 How to NOT Import Data
 ======================
 
