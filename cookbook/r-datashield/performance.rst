@@ -45,7 +45,7 @@ The solution can be to increase the hardware resources (see previous section) or
 
 Opal will take in charge the creation of the R sessions in the way that it optimizes the usage of the cluster of R servers.
 
-The advantage of this solution is that it does not require to modify the setup (database and Opal). Only new R servers will be declared in Opal and this can be done dynamically (service discovery or self-registration as documented in :ref:`apps`).
+The advantage of this solution is that it does not require to modify the setup (database and Opal). Only new R servers will have to be declared in Opal and this can be done dynamically (service discovery or self-registration as documented in :ref:`apps`).
 
 Keep Your Software Updated
 --------------------------
