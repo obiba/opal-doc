@@ -48,7 +48,7 @@ Your Docker Compose configuration can include the Opal server but it is not mand
 
 Different ``datashield/rock-base`` images can be used to expose different R packages versions. The DataSHIELD researcher can specify the appropriate profile name at connection time to ensure that the analysis envrionment is reproducible.
 
-In the following example, several R servers will be accessible through their own port number, and the Opal server must me configured accordingly.
+In the following example, several R servers will be accessible through their own port number, and the Opal server must be configured accordingly.
 
 .. code-block:: yaml
 

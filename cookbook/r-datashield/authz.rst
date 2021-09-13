@@ -6,7 +6,12 @@ Apply DataSHIELD Permissions
 
 It is recommended to grant permissions by group, and then assign each user to the appropriate groups.
 
-Note that the DataSHIELD permissions are to be applied per table, whereas it is possible to apply the permission to any resource of a project.
+There are to kind of permissions that need to be granted:
+
+* Permission to use the DataSHIELD service, defined globally
+* Permission to use data (table or resource) in the context of DataSHIELD, defined per table of per resource
+
+Note that the DataSHIELD-compatible permissions (view dictionary and summary, without individual values access) are to be applied per table, whereas it is possible to apply similar permission (view, without resource credentials access) to any resource of a project in a single operation.
 
 From Web Page
 ~~~~~~~~~~~~~
@@ -16,14 +21,14 @@ From Web Page
   As a system administrator:
 
   1. [optional] Group local users (if not already done): go to **Administration > Users and Groups** and edit users so that they belong to the relevant group
-  2. [optional] Configure :ref:`oidc` so that the users are automatically granted the appropriate group: go to **Admnistration > Identity Providers** and configure each ID provider (groups can be automatically applied or extracted from the received UserInfo).
+  2. [optional] Configure :ref:`oidc` so that the users are automatically granted the appropriate group: go to **Administration > Identity Providers** and configure each ID provider (groups can be automatically applied or extracted from the received UserInfo).
   3. Grant group the permission to *use* the DataSHIELD service: go to **Administration > DataSHIELD**, *Permissions* section (bottom of the page)
 
   As a system administrator or as a project administrator:
 
-  1. Grant group the permission to *view dictionnary and summary (no access to individual values)* of a Table: go to project's table page, select the **Permissions** tab
-  2. Grant group the permission to *view (no credentials)* a Resource: go to the project's resource page, select the **Permissions** tab
-  3. Grant group the permission to *view (no credentials)* any Resources of a project: go to the project's resources list page, select the **Permissions** tab
+  * Grant group the permission to *view dictionnary and summary (no access to individual values)* of a Table: go to project's table page, select the **Permissions** tab
+  * Grant group the permission to *view (no credentials)* a Resource: go to the project's resource page, select the **Permissions** tab
+  * Grant group the permission to *view (no credentials)* any Resources of a project: go to the project's resources list page, select the **Permissions** tab
 
 Using R
 ~~~~~~~
