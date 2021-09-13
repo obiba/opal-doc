@@ -150,3 +150,5 @@ Note that:
 * There is no check whether each DataSHIELD servers have the same profile settings.
 
 For user-friendliness and reproducibility, it should be encouraged to coordinate when planning DataSHIELD profiles. Sharing the same R server Docker image and initialization R scripts should help.
+
+When dealing with different DataSHIELD server profiles that have incompatible client-side packages, see proposed solution of :ref:`cb-renv`.
