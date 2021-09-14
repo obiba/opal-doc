@@ -9,8 +9,8 @@ This concept of R environment is covered by the `renv R package <https://rstudio
 
 In order to help with setting up such project, you can start with the `DSProjectTemplate <https://github.com/datashield/DSProjectTemplate>`_.
 
-Add a Dependency on an R Package from GitHub
---------------------------------------------
+Adding a Dependency on an R Package from GitHub
+-----------------------------------------------
 
 As an example some of the DataSHIELD R packages are not available in the official CRAN repository. For R packages saved on `GitHub <https://github.com>`_ you can use the following procedure to include a new dependency:
 
@@ -20,8 +20,8 @@ As an example some of the DataSHIELD R packages are not available in the officia
   2. Edit your analysis script to make use of this package; for example ``library(dsSurvivalClient)``
   3. Run ``renv::snapshot()`` to register this package as part of your project environment
 
-Remove a Dependency on an R Package
------------------------------------
+Removing a Dependency on an R Package
+-------------------------------------
 
 This is as simple as:
 
