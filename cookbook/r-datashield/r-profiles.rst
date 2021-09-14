@@ -8,10 +8,15 @@ Opal is able to connect to multiple R servers: see :ref:`rserver` documentation.
 * Having different versions of R and/or R packages (i.e. profiles) installed, for reproducible science (see also :ref:`cb-renv`),
 * Balance the computation load other several R servers with same profile.
 
+
+.. figure:: ../../images/opal-rock-profiles.png
+  :scale: 50 %
+  :alt: Rock horizontal scalability
+
 Opal has two different strategies for establishing connection with R servers (see :ref:`apps` documentation):
 
 * Self-registration, which is flexible and then appropriate for load balancing,
-* Service discovery, which is preferred for managing multple R server profiles.
+* Service discovery, which is preferred for managing multiple R server profiles.
 
 Whatever the chosen registration strategy, the name of the R profile in Opal is the name of the ``cluster`` declared in the Rock R server configuration (see `Cluster Node Configuration <https://rockdoc.obiba.org/en/latest/admin/configuration.html#cluster-node-configuration>`_ documentation).
 
@@ -22,19 +27,26 @@ Using the `Docker <https://www.docker.com/>`_ technology, several R servers can 
 Step 1 - Prepare Docker Images
 ------------------------------
 
-The following R server Docker images are proposed:
+The following Rock R server Docker images are proposed:
 
 .. list-table::
+  :widths: 300 10000
   :header-rows: 1
 
   * - Image
     - Description
   * - `obiba/rock <https://hub.docker.com/r/obiba/rock>`_
-    - | `Rock R server <https://www.obiba.org/pages/products/rock/>`_ application with R and useful R packages and system libraries. Everything you need for a standard R server connected to Opal (reporting, resources, analysis).
-      | Available tags are: ``latest``, ``<rock_version>`` (for instance ``1.0``) and ``<rocker_version>-R<r-version>`` (for instance ``1.0-R4.1``).
+    - | `Rock R server <https://www.obiba.org/pages/products/rock/>`_ application with R and useful R packages and system libraries.
+      | Everything you need for a standard R server connected to Opal (reporting, resources, analysis).
+      | Available tags are:
+      | - ``latest``, ``<rock_version>`` (for instance ``1.0``)
+      | - ``<rock_version>-R<r-version>`` (for instance ``1.0-R4.1``).
   * - `datashield/rock-base <https://hub.docker.com/r/datashield/rock-base>`_
-    - | Based on ``obiba/rock`` image and includes the `dsBase <http://datashield.github.io/dsBase/>`_ R package for basic DataSHIELD analysis. This is the recommended base image for the DataSHIELD users.
-      | Available tags are: ``latest``, ``<dsbase_version>`` (for instance ``6.1``) and ``<dsbase_version>-R<r_version>`` (for instance ``6.1-R4.1``).
+    - | Based on ``obiba/rock`` image and includes the `dsBase <http://datashield.github.io/dsBase/>`_ R package for basic DataSHIELD analysis.
+      | This is the recommended base image for the DataSHIELD users.
+      | Available tags are:
+      | - ``latest``, ``<dsbase_version>`` (for instance ``6.1``)
+      | - ``<dsbase_version>-R<r_version>`` (for instance ``6.1-R4.1``).
 
 From these base images, it is possible to make your own, with additional R packages and system libraries installed. See for instance these demo images:
 
