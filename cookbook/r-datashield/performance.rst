@@ -33,8 +33,8 @@ Cloud facilities offer the possibility to start Virtual Machines (VM), which is 
 
 The solution can be to use barebone servers, i.e. dedicated servers that are accessed directly and not shared with others.
 
-R Server Load Balancing
------------------------
+Do R Server Load Balancing
+--------------------------
 
 When many users are using the same R server simultaneously (R server can handle multiple R sessions in parallel), all the system's CPU cores may be in use. In addition to that the sytem's memory is shared among all the concurrent R sessions, which can break the R sessions running out of memory when one of them is too greedy.
 
