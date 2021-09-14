@@ -6,7 +6,7 @@ Apply DataSHIELD Permissions
 
 It is recommended to grant permissions by group, and then assign each user to the appropriate groups.
 
-There are two kind of permissions that need to be granted:
+There are two kinds of permissions that need to be granted:
 
 * Permission to use the DataSHIELD service, defined globally
 * Permission to use data (table or resource) in the context of DataSHIELD, defined per table of per resource
