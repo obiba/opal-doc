@@ -55,7 +55,7 @@ New software version can bring new functionalities, and can also improve the ope
 Save your R/DataSHIELD Workspace
 --------------------------------
 
-When conducting a R/DataSHIELD analysis, it can takes some computation time to get intermediate results. Instead of redoing the computations again and again at each R/DataSHIELD session, it is possible to save a snapshot of your R server session into a file that will be kept safe in Opal. The following R/DataSHIELD sessions can then reinstate at login time a previously saved workspace.
+When conducting a R/DataSHIELD analysis, it can take some computation time to get intermediate results. Instead of redoing the computations again and again at each R/DataSHIELD session, it is possible to save a snapshot of your R server session into a file that will be kept safe in Opal. The following R/DataSHIELD sessions can then reinstate a previously saved workspace.
 
 In the context of DataSHIELD, assign some data, make some preliminary computations and save R workspace:
 
