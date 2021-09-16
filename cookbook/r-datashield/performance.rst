@@ -98,7 +98,7 @@ In the context of DataSHIELD, assign some data, make some preliminary computatio
   # end session
   datashield.logout(conns)
 
-Then in a next DataSHIELD, reinstate the saved R workspace:
+Then in the next DataSHIELD session, reinstate the saved R workspace:
 
 .. code-block:: r
 
