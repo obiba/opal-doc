@@ -51,3 +51,79 @@ Keep Your Software Updated
 --------------------------
 
 New software version can bring new functionalities, and can also improve the operations performance. Unless stated in the release note and in the the release announcement, new versions of Opal are backward compatible. Make sure your IT department is keeping applications updated, which is also recommended for preventing security issues.
+
+Save your R/DataSHIELD Workspace
+--------------------------------
+
+When conducting a R/DataSHIELD analysis, it can takes some computation time to get intermediate results. Instead of redoing the computations again and again at each R/DataSHIELD session, it is possible to save a snapshot of your R server session into a file that will be kept safe in Opal. The following R/DataSHIELD sessions can then reinstate at login time a previously saved workspace.
+
+In the context of DataSHIELD, assign some data, make some preliminary computations and save R workspace:
+
+.. code-block:: r
+
+  library(DSOpal)
+  library(dsBaseClient)
+  builder <- DSI::newDSLoginBuilder()
+  builder$append(server = "study1",
+             user = "dsuser", password = "password",
+             url = "https://opal-demo.obiba.org")
+  builder$append(server = "study2",
+             user = "dsuser", password = "password",
+             url = "https://opal-demo.obiba.org")
+  logindata <- builder$build()
+
+  ##
+  # start session: connect to the studies, no assignment
+  ##
+  conns <- datashield.login(logindata)
+
+  # assign a table per study
+  datashield.assign.table(conns, "cnsim", list(study1 = "CNSIM.CNSIM1", study2 = "CNSIM.CNSIM2"))
+  # assign a resource and coerce to a data.frame
+  datashield.assign.resource(conns, "cnsimClient", list(study1 = "RSRC.CNSIM1", study2 = "RSRC.CNSIM2"))
+  datashield.assign.expr(conns, "cnsim.rsrc", quote(as.resource.data.frame(cnsimClient, strict = TRUE)))
+
+  # get some summaries
+  ds.summary("cnsim")
+  ds.summary("cnsim.rsrc")
+
+  # remove the resource client symbol
+  ds.rm("cnsimClient")
+  # verify symbols
+  datashield.symbols(conns)
+
+  # save remote R workspaces with a name
+  datashield.workspace_save(conns, "assigned")
+
+  # end session
+  datashield.logout(conns)
+
+Then in a next DataSHIELD, reinstate the saved R workspace:
+
+.. code-block:: r
+
+  library(DSOpal)
+  library(dsBaseClient)
+  builder <- DSI::newDSLoginBuilder()
+  builder$append(server = "study1",
+             user = "dsuser", password = "password",
+             url = "https://opal-demo.obiba.org")
+  builder$append(server = "study2",
+             user = "dsuser", password = "password",
+             url = "https://opal-demo.obiba.org")
+  logindata <- builder$build()
+
+  ##
+  # start session: restore saved workspace
+  ##
+  conns <- datashield.login(logindata, restore = "assigned")
+
+  # verify symbols
+  datashield.symbols(conns)
+
+  # get some summaries
+  ds.summary("cnsim")
+  ds.summary("cnsim.rsrc")
+
+  # end session
+  datashield.logout(conns)
