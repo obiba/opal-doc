@@ -16,6 +16,11 @@ Use Resources
 
 If data are too large to be imported in the Opal's database, consider using the :ref:`intro-resources` as described in :ref:`cb-resources`. This will also save CPU and memory usage at data assignment time in R.
 
+Remove Unsused R Objects
+------------------------
+
+Accumulating temporary R objects in the server-side R session will result in an increased usage of the R server's memory, with a potential of server failure. Use the `DSI::datashield.rm() <https://datashield.github.io/DSI/reference/datashield.rm.html>`_ function, or the more informative `dsBaseClient::ds.rm() <http://datashield.github.io/dsBaseClient/reference/ds.rm.html>`_ function to release some R server memory.
+
 Save your R/DataSHIELD Workspace
 --------------------------------
 
