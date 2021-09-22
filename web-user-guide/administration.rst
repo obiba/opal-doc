@@ -13,6 +13,7 @@ Opal manages databases for two distinct purposes: for holding the participants i
 
    administration/general-settings
    administration/identity-providers
+   administration/users-groups
    administration/r
    administration/datashield
    administration/taxonomies
