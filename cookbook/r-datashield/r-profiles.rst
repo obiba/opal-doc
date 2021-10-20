@@ -47,11 +47,15 @@ The following Rock R server Docker images are proposed:
       | Available tags are:
       | - ``latest``, ``<dsbase_version>`` (for instance ``6.1``)
       | - ``<dsbase_version>-R<r_version>`` (for instance ``6.1-R4.1``).
+  * - `datashield/rock-omics <https://hub.docker.com/r/datashield/rock-omics>`_
+    - | Based on ``datashield/rock-base`` image and includes the `dsOmics <https://github.com/isglobal-brge/dsOmics>`_ R package for omics related DataSHIELD analysis.
+      | Available tags are:
+      | - ``latest``, ``<dsomics_version>`` (for instance ``1.0`` or ``1.0.7``).
 
 From these base images, it is possible to make your own, with additional R packages and system libraries installed. See for instance these demo images:
 
 * `obiba/rock-demo:geo Dockerfile <https://github.com/obiba/docker-rock-demo/blob/geo/Dockerfile>`_ installs geo system libraries and a DataSHIELD R package for geolocalized data analysis.
-* `obiba/rock-demo:omics Dockerfile <https://github.com/obiba/docker-rock-demo/blob/omics/Dockerfile>`_ installs some Bioconductor R packages for omics analysis, along with the dsOmics DataSHIELD interface.
+* `obiba/rock-demo:exposome Dockerfile <https://github.com/obiba/docker-rock-demo/blob/exposome/Dockerfile>`_ installs some Bioconductor R packages for exposome analysis, along with the `dsExposome <https://github.com/isglobal-brge/dsExposome>`_ DataSHIELD package.
 
 Step 2 - Docker Compose Configuration
 -------------------------------------
