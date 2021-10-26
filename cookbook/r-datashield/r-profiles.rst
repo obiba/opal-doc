@@ -47,10 +47,12 @@ The following Rock R server Docker images are proposed:
       | Available tags are:
       | - ``latest``, ``<dsbase_version>`` (for instance ``6.1``)
       | - ``<dsbase_version>-R<r_version>`` (for instance ``6.1-R4.1``).
+      | As a reference, see `datashield/rock-base Dockerfile <https://github.com/datashield/docker-rock-base/blob/main/Dockerfile>`_.
   * - `datashield/rock-omics <https://hub.docker.com/r/datashield/rock-omics>`_
     - | Based on ``datashield/rock-base`` image and includes the `dsOmics <https://github.com/isglobal-brge/dsOmics>`_ R package for omics related DataSHIELD analysis.
       | Available tags are:
       | - ``latest``, ``<dsomics_version>`` (for instance ``1.0`` or ``1.0.7``).
+      | As a reference, see `datashield/rock-omics Dockerfile <https://github.com/obiba/docker-rock-omics/blob/master/Dockerfile>`_.
 
 From these base images, it is possible to make your own, with additional R packages and system libraries installed. See for instance these demo images:
 
