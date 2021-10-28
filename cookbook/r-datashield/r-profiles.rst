@@ -47,7 +47,12 @@ The following Rock R server Docker images are proposed:
       | Available tags are:
       | - ``latest``, ``<dsBase_version>`` (for instance ``6.1``)
       | - ``<dsbase_version>-R<r_version>`` (for instance ``6.1-R4.1``).
-      | As a reference, see `datashield/rock-base Dockerfile <https://github.com/datashield/docker-rock-base/blob/main/Dockerfile>`_.
+      | As a reference, see `datashield/rock-base Dockerfile <https://github.com/datashield/docker-rock/blob/main/base/Dockerfile>`_.
+  * - `datashield/rock-mediation <https://hub.docker.com/r/datashield/rock-mediation>`_
+    - | Based on ``datashield/rock-base`` image and includes the `dsMediation <https://github.com/datashield/dsMediation>`_ R package for mediation related DataSHIELD analysis.
+      | Available tags are:
+      | - ``latest``, ``<dsMediation_version>`` (for instance ``0.0.1``).
+      | As a reference, see `datashield/rock-mediation Dockerfile <https://github.com/datashield/docker-rock/blob/main/mediation/Dockerfile>`_.
   * - `datashield/rock-omics <https://hub.docker.com/r/datashield/rock-omics>`_
     - | Based on ``datashield/rock-base`` image and includes the `dsOmics <https://github.com/isglobal-brge/dsOmics>`_ R package for omics related DataSHIELD analysis.
       | Available tags are:
