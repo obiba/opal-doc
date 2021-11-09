@@ -83,7 +83,7 @@ Property                                Description
 ``rock.default.manager.password``       Rock manager user password.
 ``rock.default.user.username``          Rock regular user name.
 ``rock.default.user.password``          Rock regular user password.
-``org.obiba.opal.r.endpoint=true``      Enable/disable the plain R web service. When disabled, even the system administrator cannot interact directly with a plain R session. Use of the DataSHIELD web service is recommended instead. Default is ``true`` (enabled).
+``org.obiba.opal.r.endpoint``           Enable/disable the plain R web service. When disabled, even the system administrator cannot interact directly with a plain R session. Use of the DataSHIELD web service is recommended instead. Default is ``true`` (enabled).
 ``org.obiba.opal.r.sessionTimeout``     Time in minutes after which an active R session will be automatically terminated (default is 4 hours).
 ``org.obiba.opal.r.repos``              The list of CRAN repositories from which R packages can be downloaded, comma separated. Default value is ``https://cloud.r-project.org,https://cran.obiba.org``.
 ======================================= =========================================================================
@@ -373,7 +373,7 @@ Example of Apache directives that:
       ProxyPassReverse / https://localhost:8443/
   </VirtualHost>
 
-For performance, you can also activate Apache's compression module (mod_deflate) with the following settings (note the json content type setting) in file */etc/apache2/mods-available/deflate.conf*:
+For performance, you can also activate Apache's compression module (requires ``deflate`` module) with the following settings (note the json content type setting) in file */etc/apache2/mods-available/deflate.conf*:
 
 .. code-block:: text
 
@@ -389,3 +389,16 @@ For performance, you can also activate Apache's compression module (mod_deflate)
         AddOutputFilterByType DEFLATE application/json
     </IfModule>
   </IfModule>
+
+Recommended security headers are (to be added to the ``apache2.conf`` file, requires ``headers`` module):
+
+.. code-block:: text
+
+  # Security Headers, see https://securityheaders.com/
+  Header set Strict-Transport-Security "max-age=63072000"
+  Header set X-Frame-Options DENY
+  Header set X-XSS-Protection 1;mode=block
+  Header set X-Content-Type-Options nosniff
+  Header set Content-Security-Policy "frame-ancestors 'none'"
+  Header set Referrer-Policy "same-origin"
+  Header set Permissions-Policy "fullscreen=(self)"
