@@ -83,6 +83,7 @@ Property                                Description
 ``rock.default.manager.password``       Rock manager user password.
 ``rock.default.user.username``          Rock regular user name.
 ``rock.default.user.password``          Rock regular user password.
+``org.obiba.opal.r.endpoint=true``      Enable/disable the plain R web service. When disabled, even the system administrator cannot interact directly with a plain R session. Use of the DataSHIELD web service is recommended instead. Default is ``true`` (enabled).
 ``org.obiba.opal.r.sessionTimeout``     Time in minutes after which an active R session will be automatically terminated (default is 4 hours).
 ``org.obiba.opal.r.repos``              The list of CRAN repositories from which R packages can be downloaded, comma separated. Default value is ``https://cloud.r-project.org,https://cran.obiba.org``.
 ======================================= =========================================================================
