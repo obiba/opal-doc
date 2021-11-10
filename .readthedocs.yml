@@ -1,3 +1,9 @@
+version: 2
+
+python:
+  install:
+  - requirements: docs/requirements.txt
+
 # Build PDF & HTML
 formats:
     - pdf
