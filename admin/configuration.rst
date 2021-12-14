@@ -404,11 +404,10 @@ Recommended security headers are (to be added to the ``apache2.conf`` file, requ
   Header set Permissions-Policy "fullscreen=(self)"
   Header onsuccess edit Set-Cookie ^(.+)$ "$1;HttpOnly;Secure;SameSite=Strict"
 
+Proxy Configuration
+-------------------
 
-  Proxy Configuration
-  -------------------
-
-  Outbound connections may go through a proxy, depending on the host institution's network setup. It is possible to declare the proxy settings by modifying the ``JAVA_OPTS`` environment variable. As an example:
+Outbound connections may go through a proxy, depending on the host institution's network setup. It is possible to declare the proxy settings by modifying the ``JAVA_OPTS`` environment variable. As an example:
 
 .. code-block:: sh
 
