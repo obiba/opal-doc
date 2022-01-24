@@ -28,7 +28,7 @@ Software Suggested version Download link                                        
 Java     8                 `OpenJDK 8 downloads <http://openjdk.java.net/projects/jdk8/>`_  Java runtime environment
 MySQL    >= 5.5.x          `MySQL downloads <http://www.mysql.com/downloads/mysql/>`_       Database engine
 MongoDB  >= 2.4.x          `MongoDB downloads <http://www.mongodb.org/downloads>`_          Database engine
-R        >= 3.0.x          `R downloads <http://cran.r-project.org/>`_                      Statistical analysis engine
+R        >= 4.x          `R downloads <http://cran.r-project.org/>`_                      Statistical analysis engine
 ======== ================= ================================================================ ========================
 
 Install
