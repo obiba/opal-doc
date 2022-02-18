@@ -141,6 +141,17 @@ Property                                Description
 ``org.obiba.opal.identifiers.checksum`` Add a checksum digit so that the generated identifier can be validated regarding the Luhn algorithm. Default is ``false``.
 ======================================= =========================================================================
 
+Cross Site Resource Forgery (CSRF)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+`CSRF <https://owasp.org/www-community/attacks/csrf>`_ attacks can be mitigated by a built-in interceptor. Default behavior allows connections (http or https) from ``localhost`` and ``127.0.0.1``. Requests from pages served by Opal should be allowed as well (https only), unless network settings or proxies modify or do not report the referer URL.
+
+======================================= =========================================================================
+Property                                Description
+======================================= =========================================================================
+``csrf.allowed``                        Comma separated list of client ``host:port`` explicitly allowed to connect to Opal server. Use ``*`` as a wildcard. Default is empty.
+======================================= =========================================================================
+
 .. _misc-config:
 
 Miscelaneous Configuration
