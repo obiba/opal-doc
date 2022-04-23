@@ -25,16 +25,7 @@ Option                                                                Descriptio
 
 .. include:: ../common-credentials.rst
 
-Extras
-------
-
-================= =================
-Option            Description
-================= =================
-``-h, --help``    Show the command help's message.
-``--verbose, -v`` Verbose output.
-``--json, -j``    Output pretty-print JSON
-================= =================
+.. include:: ../common-extras-json.rst
 
 Example
 -------

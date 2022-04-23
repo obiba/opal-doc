@@ -22,15 +22,7 @@ Option                                                                        De
 
 .. include:: ../common-credentials.rst
 
-Extras
-------
-
-================= =================
-Option            Description
-================= =================
-``-h, --help``    Show the command help's message.
-``--verbose, -v`` Verbose output.
-================= =================
+.. include:: ../common-extras.rst
 
 Example
 -------
