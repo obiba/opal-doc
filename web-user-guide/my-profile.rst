@@ -19,8 +19,6 @@ Two-factor authentication (2FA) is an extra step added to the log-in process: in
 
 Note that the 2FA feature is not available for users that identify from an external ID provider (i.e. through the OpenID Connect protocol). It is assumed that any 2FA/multi-factor auth process would be part of the external authentication flow.
 
-Note also that the 2FA mechanism does not apply when authenticating with a Personal Access Token.
-
 The process of enabling 2FA is the following:
 
 * Login with your username and password,
@@ -33,12 +31,15 @@ To verify:
 * Logout and login again with your username and password,
 * Press "Sign In" and enter the requested temporary PIN code provided by the Authenticator app and "Validate".
 
-When 2FA is enabled, it affects the R and Python APIs:
+In case the Authenticator app settings are lost, you can contact the system's administrator to disable your 2FA setting: as an administrator, go to Administration > Profiles pages and in the list of user profiles, press "Disable 2FA" for the considered user.
+
+When 2FA is enabled, it affects the client libraries:
 
 * **R**, when using `opal.login()` function with username and password you will be prompted to enter the PIN code.
-* **Python**, the Opal Python Client currently does not support 2FA, then use a Personal Access Token instead.
+* **Python**, the Opal Python commands accept the argument ``--otp`` (stands for "one-time password") to capture the PIN code from the prompt.
+* **Java**, the PIN code cannot be provided.
 
-In case the Authenticator app settings are lost, you can contact the system's administrator to disable your 2FA setting: as an administrator, go to Administration > Profiles pages and in the list of user profiles, press "Disable 2FA" for the considered user.
+Note that the 2FA mechanism does not apply when authenticating with a Personal Access Token. This "API key" is the recommended authentication process.
 
 Personal Access Tokens
 ----------------------
