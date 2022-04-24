@@ -105,13 +105,15 @@ Login Policy Configuration
 
 To prevent brute force password guessing, a user can be temporarily banned after too many login failures.
 
-=========================================== =========================================================================
-Property                                    Description
-=========================================== =========================================================================
-``org.obiba.opal.security.login.maxRetry``  Number of failed login attempts before being banned (default is ``3``).
-``org.obiba.opal.security.login.retryTime`` Time span in which the maximum of retry count should happen before starting a ban period, in seconds (default is ``300``). No time limit if not positive.
-``org.obiba.opal.security.login.banTime``   Ban time after max retry, within the retry time span, was reached, in seconds (default is ``300``). No ban if not positive.
-=========================================== =========================================================================
+===================================================== =========================================================================
+Property                                              Description
+===================================================== =========================================================================
+``org.obiba.opal.security.login.maxRetry``            Number of failed login attempts before being banned (default is ``3``).
+``org.obiba.opal.security.login.retryTime``           Time span in which the maximum of retry count should happen before starting a ban period, in seconds (default is ``300``). No time limit if not positive.
+``org.obiba.opal.security.login.banTime``             Ban time after max retry, within the retry time span, was reached, in seconds (default is ``300``). No ban if not positive.
+``org.obiba.opal.security.login.pat.expiresIn``       Time in days after which a personal access token is automatically removed. Default is ``-1`` (i.e. tokens never expire).
+``org.obiba.opal.security.login.pat.activityTimeout`` Time in days since last access after which a personal access token is marked as being expired. This state can be reverted by user. Default is ``60``.
+===================================================== =========================================================================
 
 Agate Server Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -174,7 +176,7 @@ Property                                                 Description
 ``org.obiba.opal.security.multiProfile``                 Allow user to login from different realms with the same username. Note that the user is always logged in one realm at a time (no addition of the privileges). Default value is ``true``.
 ``org.obiba.opal.security.ssl.allowInvalidCertificates`` When connecting to MongoDB using SSL and when remote certificate is self-signed, the certificate check can be deactivated (not recommended, default is ``false``).
 ``org.obiba.opal.jdbc.maxPoolSize``                      Maximum size of the pool of JDBC connections, for each SQL database. Default value is ``100``.
-``productionMode``                                       When set to ``false`` the CSRF check is disabled and plugin jars conflict checks are skipped. Default value is ``true``. 
+``productionMode``                                       When set to ``false`` the CSRF check is disabled and plugin jars conflict checks are skipped. Default value is ``true``.
 ======================================================== =========================================================================
 
 Advanced Configuration File
