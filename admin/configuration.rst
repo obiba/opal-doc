@@ -174,6 +174,7 @@ Property                                                 Description
 ``org.obiba.opal.security.multiProfile``                 Allow user to login from different realms with the same username. Note that the user is always logged in one realm at a time (no addition of the privileges). Default value is ``true``.
 ``org.obiba.opal.security.ssl.allowInvalidCertificates`` When connecting to MongoDB using SSL and when remote certificate is self-signed, the certificate check can be deactivated (not recommended, default is ``false``).
 ``org.obiba.opal.jdbc.maxPoolSize``                      Maximum size of the pool of JDBC connections, for each SQL database. Default value is ``100``.
+``productionMode``                                       When set to ``false`` the CSRF check is disabled and plugin jars conflict checks are skipped. Default value is ``true``. 
 ======================================================== =========================================================================
 
 Advanced Configuration File
