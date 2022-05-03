@@ -112,7 +112,7 @@ Property                                              Description
 ``org.obiba.opal.security.login.retryTime``           Time span in which the maximum of retry count should happen before starting a ban period, in seconds (default is ``300``). No time limit if not positive.
 ``org.obiba.opal.security.login.banTime``             Ban time after max retry, within the retry time span, was reached, in seconds (default is ``300``). No ban if not positive.
 ``org.obiba.opal.security.login.pat.expiresIn``       Time in days after which a personal access token is automatically removed. Default is ``-1`` (i.e. tokens never expire).
-``org.obiba.opal.security.login.pat.activityTimeout`` Time in days since last access after which a personal access token is marked as being expired. This state can be reverted by user. Default is ``60``.
+``org.obiba.opal.security.login.pat.activityTimeout`` Time in days since last access after which a personal access token is marked as being inactive. This state can be reverted by user. Default is ``60`` (2 months).
 ===================================================== =========================================================================
 
 Agate Server Configuration
