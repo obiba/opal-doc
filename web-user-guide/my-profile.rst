@@ -12,6 +12,35 @@ This section gives information about the user account: groups and how to change 
 
 .. _pat:
 
+Two-factor Authentication
+-------------------------
+
+Two-factor authentication (2FA) is an extra step added to the log-in process: in addition to your username and password, a temporary code is requested. This temporary code is to be provided by an "authenticator" app installed on your mobile phone. The technology used is the time-based one-time password (`TOTP <https://en.wikipedia.org/wiki/Time-based_one-time_password>`_), that consists of generating synchronized temporary codes both in the mobile app and the Opal server. There are several authenticator apps available in app stores; we recommend installing either **Microsoft Authenticator** (free, fully featured and robust solution, available on Android and Apple app stores) or **FreeOTP+** (open source solution, available on Android app store only).
+
+Note that the 2FA feature is not available for users that identify from an external ID provider (i.e. through the OpenID Connect protocol). It is assumed that any 2FA/multi-factor auth process would be part of the external authentication flow.
+
+The process of enabling 2FA is the following:
+
+* Login with your username and password,
+* Go to your profile page,
+* Install an Authenticator app on your mobile phone (see above for recommended ones),
+* Press "Enable 2FA": a QR code appears (shown only once!), to be scanned by your Authenticator app to register your account's 2FA settings.
+
+To verify:
+
+* Logout and login again with your username and password,
+* Press "Sign In" and enter the requested temporary PIN code provided by the Authenticator app and "Validate".
+
+In case the Authenticator app settings are lost, you can contact the system's administrator to disable your 2FA setting: as an administrator, go to Administration > Profiles pages and in the list of user profiles, press "Disable 2FA" for the considered user.
+
+When 2FA is enabled, it affects the client libraries:
+
+* **R**, when using `opal.login()` function with username and password you will be prompted to enter the PIN code.
+* **Python**, the Opal Python commands accept the argument ``--otp`` (stands for "one-time password") to capture the PIN code from the prompt.
+* **Java**, the PIN code cannot be provided.
+
+Note that the 2FA mechanism does not apply when authenticating with a Personal Access Token. This "API key" is the recommended authentication process.
+
 Personal Access Tokens
 ----------------------
 

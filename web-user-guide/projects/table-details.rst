@@ -73,10 +73,15 @@ Allow all operations on the table/view (including removing it).
 Operations
 ----------
 
+Reconnect Resource
+~~~~~~~~~~~~~~~~~~
+
+When the table is a view over a resource (see :ref:`resource_view` in Resource documentation), it is possible to reset the connection with the underlying resource. This can be convenient when the connection is lost (because resource lives in a remote server for instance) or has failed unexpectedly.
+
 Add Variables to View
 ~~~~~~~~~~~~~~~~~~~~~
 
-This operation consist of making a derived variable for each of the selected variables (see ) and adding them to a view (either#Variable Selectionan existing one or one that would be created for that purpose). Options are:
+This operation consist of making a derived variable for each of the selected variables (see ) and adding them to a view (either an existing one or one that would be created for that purpose). Options are:
 
 * derived variable name can be changed (default is the original variable name)
 * categorical variables can be recoded (i.e. category names are turned to a numerical value)
@@ -124,7 +129,13 @@ Only available if the table is a view.
 Edit View
 ~~~~~~~~~
 
-Edit the view properties, i.e. its name and the table references: these tables can be ordered and can be flagged as being *inner*. An *inner*  table means that the entities of this table do not contribute to the entities of the view (similar to a SQL inner join). A typical use case is when data collected by the study are joined with data from a governmental database: if one would like to restrict the participants of the resulting view to the ones that of the study, the governmental table would be joined to the view as an *inner* table.
+**View over Tables**
+
+When the view is based on other tables, you can edit the view properties, i.e. its name and the table references: these tables can be ordered and can be flagged as being *inner*. An *inner* table means that the entities of this table do not contribute to the entities of the view (similar to a SQL inner join). A typical use case is when data collected by the study are joined with data from a governmental database: if one would like to restrict the participants of the resulting view to the ones that of the study, the governmental table would be joined to the view as an *inner* table.
+
+**View over Resource**
+
+When the view is based on a resource (see :ref:`resource_view` in Resource documentation), you can edit the views properties: table name, ID column name, resource reference etc. Depending on the type of operation, the connection with the underlying resource could be reestablished.
 
 Remove View
 ~~~~~~~~~~~
