@@ -53,13 +53,16 @@ The personal access token is also the only way to authenticate in a script for u
 
 For these reasons, the personal API access token is the recommended way for authenticating within a Opal server (since Opal 2.15).
 
-Projects
+Settings
 ~~~~~~~~
+
+Projects
+^^^^^^^^
 
 The projects that are accessible using the token can be limited. When none is enumerated, all the projects accessible by the user will be accessible using the token.
 
 Project Data
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 The read/write operations can be controlled:
 
@@ -68,7 +71,7 @@ The read/write operations can be controlled:
 * **Read only, without individual-level data**, no data can imported/exported, nor modified/deleted/extracted. Only reporting, analysis or DataSHIELD actions can be performed.
 
 Project Tasks
-~~~~~~~~~~~~~
+^^^^^^^^^^^^^
 
 This scope is for controlling which tasks can be launched on project:
 
@@ -83,7 +86,7 @@ This scope is for controlling which tasks can be launched on project:
 * **Export VCF**, export a VCF, when a VCF store plugin is installed (not available when project's data are read-only without access to individual-level data).
 
 Project Administration
-~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^
 
 This scope of operations is for managing projects:
 
@@ -92,7 +95,7 @@ This scope of operations is for managing projects:
 * **Delete**, to delete a project.
 
 Services
-~~~~~~~~
+^^^^^^^^
 
 Along with project data, some system services can be used:
 
@@ -100,6 +103,21 @@ Along with project data, some system services can be used:
 * **DataSHIELD**, which allows to create a DataSHIELD's R session in the R server backend, and assign some data (tables or resources), even when the user and token have not the permission to read individual-level data.
 * **SQL**, which allows to make :ref:`sql` queries on tables, as soon as the user and token have permission to read individual-level data.
 * **Administrate system**, which allows to manage plugins, DataSHIELD configuration and much more (*administrator* users only).
+
+Operations
+~~~~~~~~~~
+
+Remove
+^^^^^^
+
+You can permanently remove a token, effect is immediate.
+
+Note that if the token has reached the end-of-life (system setting, by default there is no expiration timeout), it will be automatically removed, no action needed.
+
+Renew
+^^^^^
+
+There is an inactivity timeout (system setting, 2 months by default) after which a token is not functional. When a token has been marked as being inactive, it can be renewed an unlimited number of times (until the token expires).
 
 Examples
 ~~~~~~~~
