@@ -17,7 +17,7 @@ Two-factor Authentication
 
 Two-factor authentication (2FA) is an extra step added to the log-in process: in addition to your username and password, a temporary code is requested. This temporary code is to be provided by an "authenticator" app installed on your mobile phone. The technology used is the time-based one-time password (`TOTP <https://en.wikipedia.org/wiki/Time-based_one-time_password>`_), that consists of generating synchronized temporary codes both in the mobile app and the Opal server. There are several authenticator apps available in app stores; we recommend installing either **Microsoft Authenticator** (free, fully featured and robust solution, available on Android and Apple app stores) or **FreeOTP+** (open source solution, available on Android app store only).
 
-Note that the 2FA feature is not available for users that identify from an external ID provider (i.e. through the OpenID Connect protocol). It is assumed that any 2FA/multi-factor auth process would be part of the external authentication flow.
+Note that the 2FA feature is not available for users that identify from an external ID provider (i.e. through the OpenID Connect protocol, or in Agate). It is assumed that any 2FA/multi-factor auth process would be part of the external authentication flow.
 
 The process of enabling 2FA is the following:
 
