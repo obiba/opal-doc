@@ -124,6 +124,7 @@ Opal user lookup can include the Agate's user realm. Default configuration enabl
 Property                         Description
 ================================ =========================================================================
 ``org.obiba.realm.url``          Address to connect to Agate server. Default is https://localhost:8444. To disable Agate connection, specify an empty value for this property.
+``org.obiba.realm.publicUrl``    Public address to create a link from Opal's user profile page to the Agate's one where personal information, password and two-factor authentication can be managed. Default is empty.
 ``org.obiba.realm.service.name`` Application name of this Opal instance in Agate. Default is ``opal``.
 ``org.obiba.realm.service.key``  Application key of this Opal instance in Agate. Default is ``changeit``.
 ================================ =========================================================================
