@@ -95,15 +95,15 @@ Sample script for MySQL database creation:
 
   CREATE DATABASE opal_data CHARACTER SET utf8 COLLATE utf8_bin;
 
-  CREATE USER 'opal' IDENTIFIED BY '<opal-user-password>';
-  GRANT ALL ON opal_data.* TO 'opal'@'localhost' IDENTIFIED BY '<opal-user-password>';
+  CREATE USER 'opal'@'localhost' IDENTIFIED BY '<opal-user-password>';
+  GRANT ALL ON opal_data.* TO 'opal'@'localhost';
   FLUSH PRIVILEGES;
 
 Note that for more recent MySQL servers using the SHA2 authentication (that is known to not be working with JDBC), you should use the ``mysql_native_password`` directive when creating the user:
 
 .. code-block:: sql
 
-  CREATE USER 'opal' WITH mysql_native_password IDENTIFIED BY '<opal-user-password>';
+  CREATE USER 'opal'@'localhost' WITH mysql_native_password IDENTIFIED BY '<opal-user-password>';
 
 PostgreSQL
 ^^^^^^^^^^
