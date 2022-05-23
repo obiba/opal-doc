@@ -74,19 +74,27 @@ R Server Configuration
 
 Opal is able to perform R queries by talking with a running R server. See the :ref:`rserver` documentation. The properties for connecting to the default `Rock <https://rockdoc.obiba.org>`_ R server(s) are the following:
 
-======================================= =========================================================================
-Property                                Description
-======================================= =========================================================================
-``rock.default.administrator.username`` Rock administrator user name. Default is ``administrator``.
-``rock.default.administrator.password`` Rock administrator user password. Default is ``password``.
-``rock.default.manager.username``       Rock manager user name.
-``rock.default.manager.password``       Rock manager user password.
-``rock.default.user.username``          Rock regular user name.
-``rock.default.user.password``          Rock regular user password.
-``org.obiba.opal.r.endpoint``           Enable/disable the plain R web service. When disabled, even the system administrator cannot interact directly with a plain R session. Use of the DataSHIELD web service is recommended instead. Default is ``true`` (enabled).
-``org.obiba.opal.r.sessionTimeout``     Time in minutes after which an active R session will be automatically terminated (default is 4 hours).
-``org.obiba.opal.r.repos``              The list of CRAN repositories from which R packages can be downloaded, comma separated. Default value is ``https://cloud.r-project.org,https://cran.obiba.org``.
-======================================= =========================================================================
+============================================== =========================================================================
+Property                                       Description
+============================================== =========================================================================
+``rock.default.administrator.username``        Rock administrator user name. Default is ``administrator``.
+``rock.default.administrator.password``        Rock administrator user password. Default is ``password``.
+``rock.default.manager.username``              Rock manager user name.
+``rock.default.manager.password``              Rock manager user password.
+``rock.default.user.username``                 Rock regular user name.
+``rock.default.user.password``                 Rock regular user password.
+``org.obiba.opal.r.endpoint``                  Enable/disable the plain R web service. When disabled, even the system administrator cannot interact directly with a plain R session. Use of the DataSHIELD web service is recommended instead. Default is ``true`` (enabled).
+``org.obiba.opal.r.sessionTimeout``            Time in minutes after which an inactive R session will be automatically terminated (default is 4 hours).
+``org.obiba.opal.r.sessionTimeout.R``          Time in minutes after which an inactive R session with **R context** will be automatically terminated (default is to fallback to ``org.obiba.opal.r.sessionTimeout``).
+``org.obiba.opal.r.sessionTimeout.DataSHIELD`` Time in minutes after which an inactive R session with **DataSHIELD context** will be automatically terminated (default is to fallback to ``org.obiba.opal.r.sessionTimeout``).
+``org.obiba.opal.r.sessionTimeout.Import``     Time in minutes after which an inactive R session with **Import context** will be automatically terminated (default is to fallback to ``org.obiba.opal.r.sessionTimeout``).
+``org.obiba.opal.r.sessionTimeout.Export``     Time in minutes after which an inactive R session with **Export context** will be automatically terminated (default is to fallback to ``org.obiba.opal.r.sessionTimeout``).
+``org.obiba.opal.r.sessionTimeout.Report``     Time in minutes after which an inactive R session with **Report context** will be automatically terminated (default is to fallback to ``org.obiba.opal.r.sessionTimeout``).
+``org.obiba.opal.r.sessionTimeout.SQL``        Time in minutes after which an inactive R session with **SQL context** will be automatically terminated (default is to fallback to ``org.obiba.opal.r.sessionTimeout``).
+``org.obiba.opal.r.sessionTimeout.Analyse``    Time in minutes after which an inactive R session with **Analyse context** will be automatically terminated (default is to fallback to ``org.obiba.opal.r.sessionTimeout``).
+``org.obiba.opal.r.sessionTimeout.View``       Time in minutes after which an inactive R session with **View context** will be automatically terminated (default is to fallback to ``org.obiba.opal.r.sessionTimeout``).
+``org.obiba.opal.r.repos``                     The list of CRAN repositories from which R packages can be downloaded, comma separated. Default value is ``https://cloud.r-project.org,https://cran.obiba.org``.
+============================================== =========================================================================
 
 DataSHIELD Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~
