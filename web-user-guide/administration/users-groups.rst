@@ -22,7 +22,7 @@ Operations
 Add User with Password
 ~~~~~~~~~~~~~~~~~~~~~~
 
-At least 6 characters are required for the user password. After a user has been added, a personal folder is added in the home folder of the Opal's :ref:`file-system`.
+The password must contain at least 8 characters, with at least one digit, one upper case alphabet, one lower case alphabet, one special character (which includes ``@#$%^&+=!``) and no white space. After a user has been added, a personal folder is added in the home folder of the Opal's :ref:`file-system`.
 
 Add User with Certificate
 ~~~~~~~~~~~~~~~~~~~~~~~~~
