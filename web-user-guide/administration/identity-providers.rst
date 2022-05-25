@@ -43,6 +43,13 @@ The optional fields are:
 * *Groups Mapping by Claim value* is an optional field name in the `UserInfo <https://openid.net/specs/openid-connect-core-1_0.html#UserInfo>`_ object (that is returned by the ID provider) that contains the group names to which the user belongs. These will be automatically applied to the user's profile. Such field is `not one of the standard claims <https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims>`_ and needs to be explicitly set. The expected value type associated to this claim is either an array of strings, or a string which group names are separated by spaces (or commas). In the case of Agate, the groups claim name is ``groups``.
 * *Groups Mapping by Javascript* is an optional Javascript code chunk that will process the `UserInfo <https://openid.net/specs/openid-connect-core-1_0.html#UserInfo>`_ object to extract a group name or an array of group names to which the Opal user will belong.
 
+More advanced options are:
+
+* *Nonce* to validate ID token with `Nonce <https://openid.net/specs/openid-connect-core-1_0.html#IDToken>`_. Uncheck this option when Agate is used as a ID provider.
+* *Connect Timeout* is the maximum time to wait before a connection is established, in milliseconds. Zero implies no timeout (default).
+* *Read Timeout* is the maximum time to wait before a response is received, in milliseconds. Zero implies no timeout (default).
+* *Public URL*, in case Opal is accessible from different public URLs, it is possible to specify which one is to be used for this ID provider. When not specified, the system's public URL applies. Note that this ID provider will be only visible when Opal base URL matches this public URL.
+
 .. note::
 
   To register Opal as a client of the OIDC provider it will be necessary to provide its callback URL which is: ``https://opal.example.org/auth/callback/``.
