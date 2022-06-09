@@ -22,14 +22,14 @@ Server Software Requirements
 
 `Java <https://www.java.com>`_ is the minimum software requirement, other software are for a fully functional system. While Java is required by Opal server application, MongoDB, MySQL, R can be installed on another server. See also :doc:`rserver`.
 
-======== ================= ================================================================ ========================
-Software Suggested version Download link                                                    Usage
-======== ================= ================================================================ ========================
-Java     8                 `OpenJDK 8 downloads <http://openjdk.java.net/projects/jdk8/>`_  Java runtime environment
-MySQL    >= 5.5.x          `MySQL downloads <http://www.mysql.com/downloads/mysql/>`_       Database engine
-MongoDB  >= 2.4.x          `MongoDB downloads <http://www.mongodb.org/downloads>`_          Database engine
-R        >= 4.x            `R downloads <http://cran.r-project.org/>`_                      Statistical analysis engine
-======== ================= ================================================================ ========================
+======== ================= ==================================================================================================== ========================
+Software Suggested version Download link                                                                                        Usage
+======== ================= ==================================================================================================== ========================
+Java     8                 `OpenJDK 8 downloads <http://openjdk.java.net/projects/jdk8/>`_                                      Java runtime environment
+MySQL    >= 5.5.x          `MySQL downloads <http://www.mysql.com/downloads/mysql/>`_                                           Database engine
+MongoDB  <= 4.2.x          `MongoDB Community downloads <https://www.mongodb.com/docs/v4.2/administration/install-community/>`_ Database engine
+R        >= 4.x            `R downloads <http://cran.r-project.org/>`_                                                          Statistical analysis engine
+======== ================= ==================================================================================================== ========================
 
 Install
 -------
@@ -107,7 +107,7 @@ A typical `docker-compose <https://docs.docker.com/compose/>`_ file (including a
       volumes:
         - /tmp/opal:/srv
     mongo:
-      image: mongo
+      image: mongo:4.2
     mysqldata:
       image: mysql:5
       environment:
