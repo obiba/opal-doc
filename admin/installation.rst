@@ -105,7 +105,7 @@ A typical `docker-compose <https://docs.docker.com/compose/>`_ file (including a
         - MYSQLDATA_PASSWORD=password
         - ROCK_HOSTS=rock:8085
       volumes:
-        - /tmp/opal:/srv
+        - /some/path/opal:/srv
     mongo:
       image: mongo:4.2
     mysqldata:
