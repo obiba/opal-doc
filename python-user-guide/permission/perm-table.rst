@@ -13,13 +13,14 @@ Options
 ===================================================== =====================================
 Option                                                Description
 ===================================================== =====================================
+``--fetch, -f``                                       Fetch permissions
 ``--add, -a``                                         Add a permission
 ``--delete, -d``                                      Delete a permission
 ``--permission PERM, -pe PERM``                       Permission to apply: ``view``, ``view-value``, ``edit``, ``edit-values``, ``administrate``
-``--subject SUBJECT, -s SUBJECT``                     Subject name to which the permission will be granted
+``--subject SUBJECT, -s SUBJECT``                     Subject name to which the permission will be granted (required on add/delete)
 ``--type TYPE, -ty TYPE``                             Subject type: ``user`` or ``group``
 ``--project PROJECT, -pr PROJECT``                    Project name on which the permission is to be set
-``--tables TABLE [TABLE ...], -t TABLE [TABLE ...]``  List of table names on which the permission is to be set (default is all)
+``--tables TABLE [TABLE ...], -t TABLE [TABLE ...]``  List of table names on which the permission is to be get/set (default is all)
 ===================================================== =====================================
 
 .. include:: ../common-credentials.rst

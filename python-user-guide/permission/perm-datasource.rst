@@ -13,10 +13,11 @@ Options
 ==================================== =====================================
 Option                               Description
 ==================================== =====================================
+``--fetch, -f``                      Fetch permissions
 ``--add, -a``                        Add a permission
 ``--delete, -d``                     Delete a permission
 ``--permission PERM, -pe PERM``      Permission to apply: ``administrate``, ``add-table``, ``view-value``
-``--subject SUBJECT, -s SUBJECT``    Subject name to which the permission will be granted
+``--subject SUBJECT, -s SUBJECT``    Subject name to which the permission will be granted (required on add/delete)
 ``--type TYPE, -ty TYPE``            Subject type: ``user`` or ``group``
 ``--project PROJECT, -pr PROJECT``   Project name on which the permission is to be set
 ==================================== =====================================
