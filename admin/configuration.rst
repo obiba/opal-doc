@@ -280,7 +280,7 @@ The example shiro.ini file below demonstrates how encryption is configured.
   # when you only need a small number of statically-defined roles.
   # Format is:
   # role=permission[,permission]*
-  opal-administrator = *
+  admin = *
 
 Passwords must be encrypted using shiro-hasher tools (included in Opal tools directory):
 
