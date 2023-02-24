@@ -30,13 +30,16 @@ The Opal Python Client is available on the official `Python Package Index <https
 
 .. note::
 
-  This python package depends on the `pycurl <https://pypi.org/project/pycurl/>`_ package which has some system dependencies. You may need
-  to install these before.
+  This python package depends on the `pycurl <https://pypi.org/project/pycurl/>`_ package which has some system dependencies. One simple solution
+  is to install the ``pycurl`` system package before.
 
   .. code-block:: bash
 
     # on Debian systems
-    sudo apt-get install libcurl4-openssl-dev libssl-dev
+    sudo apt-get install python3-pycurl
+
+    # on RPM systems
+    sudo yum install python3-pycurl
 
 
 Usage
