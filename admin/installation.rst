@@ -125,6 +125,7 @@ Environment Variable            Description
 =============================== =========================================================================
 ``JAVA_OPTS``                   Java VM arguments.
 ``OPAL_ADMINISTRATOR_PASSWORD`` Opal administrator password, required and set at first start.
+``APP_URL``                     Opal public URL (optional, see ``org.obiba.opal.public.url`` setting).
 ``MONGO_HOST``                  MongoDB server host (optional).
 ``MONGO_PORT``                  MongoDB server port, default is ``27017``.
 ``MONGO_USER``                  MongoDB server user (optional).
