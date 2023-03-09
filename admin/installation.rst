@@ -118,7 +118,7 @@ A typical `docker-compose <https://docs.docker.com/compose/>`_ file (including a
     rock:
       image: obiba/rock:latest
 
-Then environment variables that are exposed by this image are:
+The environment variables that are exposed by this image are:
 
 =============================== =========================================================================
 Environment Variable            Description
