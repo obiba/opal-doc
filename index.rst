@@ -54,6 +54,7 @@ Targeted at individual studies and study consortia, `OBiBa <http://obiba.org/>`_
    :caption: Python User Guide
 
    python-user-guide/index
+   python-user-guide/api
    python-user-guide/commands
 
 .. toctree::
