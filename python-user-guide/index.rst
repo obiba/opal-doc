@@ -1,7 +1,7 @@
 Python Introduction
 ===================
 
-Opal Python client, a command line scripting tool written in Python, enables automation of tasks in a Opal server.
+Opal Python client, a command line scripting tool (see :ref:`py`) and an API (see :ref:`apipy`) written in Python, enables automation of tasks in a Opal server.
 
 Requirements
 ------------
