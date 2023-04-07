@@ -158,8 +158,9 @@ Environment Variable            Description
 ``POSTGRESIDS_DATABASE``        PostgreSQL IDs database name.
 ``POSTGRESIDS_USER``            PostgreSQL IDs database user.
 ``POSTGRESIDS_PASSWORD``        PostgreSQL IDs database password.
-``AGATE_HOST``                  Agate server host (optional).
-``AGATE_PORT``                  Agate server port, default is ``8444``.
+``AGATE_URL``                   Agate server URL (optional).
+``AGATE_HOST``                  [Deprecated, use ``AGATE_URL``] Agate server host (optional).
+``AGATE_PORT``                  [Deprecated, use ``AGATE_URL``] Agate server port, default is ``8444``.
 ``ROCK_HOSTS``                  Comma separated Rock R server URLs, for R server discovery (optional, but recommended).
 ``ROCK_ADMINISTRATOR_USER``     Default Rock server administrator user name (optional).
 ``ROCK_ADMINISTRATOR_PASSWORD`` Default Rock server administrator user password (optional).
