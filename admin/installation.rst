@@ -89,32 +89,31 @@ A typical `docker-compose <https://docs.docker.com/compose/>`_ file (including a
     opal:
       image: obiba/opal:latest
       ports:
-        - "8843:8443"
         - "8880:8080"
       links:
         - rock
         - mongo
         - mysqldata
       environment:
-        - JAVA_OPTS=-Xms1G -Xmx8G -XX:+UseG1GC
-        - OPAL_ADMINISTRATOR_PASSWORD=password
+        #- JAVA_OPTS=-Xms1G -Xmx8G -XX:+UseG1GC
+        - OPAL_ADMINISTRATOR_PASSWORD=${OPAL_ADMINISTRATOR_PASSWORD}
         - MONGO_HOST=mongo
         - MONGO_PORT=27017
         - MYSQLDATA_HOST=mysqldata
-        - MYSQLDATA_USER=opal
-        - MYSQLDATA_PASSWORD=password
+        - MYSQLDATA_DATABASE=${MYSQLDATA_DATABASE}
+        - MYSQLDATA_USER=${MYSQLDATA_USER}
+        - MYSQLDATA_PASSWORD=${MYSQLDATA_PASSWORD}
         - ROCK_HOSTS=rock:8085
       volumes:
         - /some/path/opal:/srv
     mongo:
-      image: mongo:4.2
+      image: mongo:6.0
     mysqldata:
-      image: mysql:5
+      image: mysql
       environment:
-        - MYSQL_DATABASE=opal
-        - MYSQL_ROOT_PASSWORD=password
-        - MYSQL_USER=opal
-        - MYSQL_PASSWORD=password
+        - MYSQL_DATABASE=${MYSQLDATA_DATABASE}
+        - MYSQL_USER=${MYSQLDATA_USER}
+        - MYSQL_PASSWORD=${MYSQLDATA_PASSWORD}
     rock:
       image: obiba/rock:latest
 
