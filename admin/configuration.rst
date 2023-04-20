@@ -95,6 +95,7 @@ Property                                       Description
 ``org.obiba.opal.r.sessionTimeout.Analyse``    Time in minutes after which an inactive R session with **Analyse context** will be automatically terminated (default is to fallback to ``org.obiba.opal.r.sessionTimeout``).
 ``org.obiba.opal.r.sessionTimeout.View``       Time in minutes after which an inactive R session with **View context** will be automatically terminated (default is to fallback to ``org.obiba.opal.r.sessionTimeout``).
 ``org.obiba.opal.r.repos``                     The list of CRAN repositories from which R packages can be downloaded, comma separated. Default value is ``https://cloud.r-project.org,https://cran.obiba.org``.
+``org.obiba.opal.r.quota.workspaces.expires``  The number of days since last modification date after which a saved R/DataSHIELD workspace is removed. Default value is ``365`` (one year). 
 ============================================== =========================================================================
 
 DataSHIELD Configuration
