@@ -19,6 +19,7 @@ Property                                    Description
 ``org.obiba.opal.maxIdleTime``              The maximum time a single read/write HTTP operation can take in millis (default is ``30000``). See `idleTimeout Jetty configuration <http://www.eclipse.org/jetty/documentation/current/configuring-connectors.html>`_.
 ``org.obiba.opal.ssl.excludedProtocols``    Specify the SSL/TLS protocols to be excluded. Usually SSLv3 will be excluded. Use commas for separating multiple protocol names. Default is no protocol is excluded (for legacy reason). See `JSSE Provider documentation <http://docs.oracle.com/javase/8/docs/technotes/guides/security/SunProviders.html#SunJSSEProvider>`_.
 ``org.obiba.opal.ssl.includedCipherSuites`` Specify which Cipher Suites to be included. Use commas for separating multiple cipher suites names. Default is all that is available. See `JSSE Provider documentation <http://docs.oracle.com/javase/8/docs/technotes/guides/security/SunProviders.html#SunJSSEProvider>`_.
+``org.obiba.opal.server.context-path``      The context path when server is accessed at a subdirectory (for instance in ``http://example.org/opal`` the context path is ``/opal``). Default is empty.  
 =========================================== =========================================================================
 
 The HTTPS server requires a certificate. If none can be found Opal creates a default one to ensure that HTTPS is always available. It should be configured afterward, following the procedure described in HTTPS Configuration.
