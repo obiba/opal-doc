@@ -52,3 +52,9 @@ Simple SQL query with CSV output and without specifying a project in the argumen
 .. code-block:: bash
 
   opal sql --opal https://opal-demo.obiba.org --user administrator --password password --query "select * from `CNSIM.CNSIM1` limit 10"
+
+You can also escape the backticks (`) when executing from a Linux terminal (Bash)
+
+.. code-block:: bash
+
+  opal sql --opal https://opal-demo.obiba.org --user administrator --password password --query "select * from \`CNSIM.CNSIM1\` limit 10"
