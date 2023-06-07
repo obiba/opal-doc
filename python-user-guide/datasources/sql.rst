@@ -33,22 +33,22 @@ Simple SQL query with CSV output:
 
 .. code-block:: bash
 
-  opal sql --opal https://opal-demo.obiba.org --user administrator --password password --project CNSIM --sql "select * from CNSIM1 limit 10"
+  opal sql --opal https://opal-demo.obiba.org --user administrator --password password --project CNSIM --query "select * from CNSIM1 limit 10"
 
 Simple SQL query with JSON output:
 
 .. code-block:: bash
 
-  opal sql --opal https://opal-demo.obiba.org --user administrator --password password --project CNSIM --sql "select * from CNSIM1 limit 10" --format json
+  opal sql --opal https://opal-demo.obiba.org --user administrator --password password --project CNSIM --query "select * from CNSIM1 limit 10" --format json
 
 More advanced SQL query:
 
 .. code-block:: bash
 
-  opal sql --opal https://opal-demo.obiba.org --user administrator --password password --project CNSIM --sql "select count(*) as N, avg(LAB_HDL) as HDL_AVG, GENDER from (select * from CNSIM1 union all select * from CNSIM2) where LAB_HDL is not null group by GENDER"
+  opal sql --opal https://opal-demo.obiba.org --user administrator --password password --project CNSIM --query "select count(*) as N, avg(LAB_HDL) as HDL_AVG, GENDER from (select * from CNSIM1 union all select * from CNSIM2) where LAB_HDL is not null group by GENDER"
 
 Simple SQL query with CSV output and without specifying a project in the arguments:
 
 .. code-block:: bash
 
-  opal sql --opal https://opal-demo.obiba.org --user administrator --password password --sql "select * from `CNSIM.CNSIM1` limit 10"
+  opal sql --opal https://opal-demo.obiba.org --user administrator --password password --query "select * from `CNSIM.CNSIM1` limit 10"
