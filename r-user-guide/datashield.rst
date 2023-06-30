@@ -173,4 +173,4 @@ For example, pre conditions could validate that the input data has a minimum siz
 Contributing to DataSHIELD Packages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-DataSHIELD packages sources are hosted on GitHub. Some DataSHIELD developers documentation is also available. For more information visit the `DataSHIELD web site <http://datashield.ac.uk>`_.
+DataSHIELD packages sources are hosted on GitHub. Some DataSHIELD developers documentation is also available. For more information visit the `DataSHIELD web site <https://datashield.org/>`_.

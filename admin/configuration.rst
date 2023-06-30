@@ -19,7 +19,7 @@ Property                                    Description
 ``org.obiba.opal.maxIdleTime``              The maximum time a single read/write HTTP operation can take in millis (default is ``30000``). See `idleTimeout Jetty configuration <http://www.eclipse.org/jetty/documentation/current/configuring-connectors.html>`_.
 ``org.obiba.opal.ssl.excludedProtocols``    Specify the SSL/TLS protocols to be excluded. Usually SSLv3 will be excluded. Use commas for separating multiple protocol names. Default is no protocol is excluded (for legacy reason). See `JSSE Provider documentation <http://docs.oracle.com/javase/8/docs/technotes/guides/security/SunProviders.html#SunJSSEProvider>`_.
 ``org.obiba.opal.ssl.includedCipherSuites`` Specify which Cipher Suites to be included. Use commas for separating multiple cipher suites names. Default is all that is available. See `JSSE Provider documentation <http://docs.oracle.com/javase/8/docs/technotes/guides/security/SunProviders.html#SunJSSEProvider>`_.
-``org.obiba.opal.server.context-path``      The context path when server is accessed at a subdirectory (for instance in ``http://example.org/opal`` the context path is ``/opal``). Default is empty.  
+``org.obiba.opal.server.context-path``      The context path when server is accessed at a subdirectory (for instance in ``http://example.org/opal`` the context path is ``/opal``). Default is empty.
 =========================================== =========================================================================
 
 The HTTPS server requires a certificate. If none can be found Opal creates a default one to ensure that HTTPS is always available. It should be configured afterward, following the procedure described in HTTPS Configuration.
@@ -319,13 +319,19 @@ With Active Directory you can specify a mapping between AD groups and roles in S
   adRealm.groupRolesMap = "CN=shiroGroup,CN=Users,DC=myorg":"myrole"
   #adRealm.principalSuffix =
 
-Atlassian Crowd User Directory
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Logging
+-------
 
-Atlassian Crowd is not supported any more because the connector was based on libraries with security issues. OpenID Connect is to be preferred for authentication delegation.
-For more information see section :ref:`oidc`.
+The runtime messages can be configured in the **OPAL_HOME/conf/logback.xml** file. See `Logback documentation <https://logback.qos.ch/documentation.html>`_.
 
+By default, Logback is configured to output files in the **OPAL_HOME/logs** folder. The log files are:
 
+* ``opal.log``, contains the Opal application main log messages,
+* ``rest.log``, contains the web services specific log messages,
+* ``datashield.log``, contains the DataSHIELD activity log messages,
+* ``sql.log``, contains the SQL API specific log messages.
+
+These log files can be downloaded from the web interface (**Administration > Java Virtual Machine > Logs** or **Administration > DataSHIELD > Logs**) or using the `opalr R package <https://www.obiba.org/opalr/>`_.
 
 Other Settings
 ~~~~~~~~~~~~~~
