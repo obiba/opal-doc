@@ -29,4 +29,4 @@ Backup a specific project from a project, wait for the task to complete and down
 
 .. code-block:: bash
 
-  opal backup-project --opal https://opal-demo.obiba.org --user administrator --password password --project CNSIM --archive /home/administrator/backup/CNSIM | opal task --opal https://opal-demo.obiba.org --user administrator --password password --wait && opal file --opal https://opal-demo.obiba.org --user administrator --password password --download-password foobar123 /home/administrator/backup/CNSIM > CNSIM.zip
+  opal backup-project --opal https://opal-demo.obiba.org --user administrator --password password --project CNSIM --archive /home/administrator/backup/CNSIM | opal task --opal https://opal-demo.obiba.org --user administrator --password password --wait && opal file --download --opal https://opal-demo.obiba.org --user administrator --password password --download-password foobar123 /home/administrator/backup/CNSIM > CNSIM.zip
