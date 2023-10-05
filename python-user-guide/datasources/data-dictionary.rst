@@ -16,6 +16,16 @@ Argument      Description
 ``RESOURCE``	Resource identification in the format ``<datasource>[.<table>[:<variable>]]``. Wild card * is supported. Each project has a datasource which is identified by the project's name.
 ============= ===========
 
+
+Options
+---------
+
+================= ===========
+Option            Description
+================= ===========
+``--excel, -xls``	Excel file path that will contain variables metadata. The ``RESOURCE`` must be of ``<datasource>.<table>:*`` format.
+================= ===========
+
 .. include:: ../common-credentials.rst
 
 .. include:: ../common-extras-json.rst
@@ -53,3 +63,6 @@ Wild cards can also be used:
 
   # Get all variables CNSIM.CNSIM1 table
   opal dict "CNSIM.CNSIM1:*" --opal https://opal-demo.obiba.org --user administrator --password password
+
+  # Get all variables CNSIM.CNSIM1 table in Excel format
+  opal dict "CNSIM.CNSIM1:*" --opal https://opal-demo.obiba.org --user administrator --password password --excel /tmp/CNSIM1.xlsx
