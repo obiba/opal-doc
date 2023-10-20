@@ -114,6 +114,7 @@ A typical `docker-compose <https://docs.docker.com/compose/>`_ file (including a
         - MYSQL_DATABASE=${MYSQLDATA_DATABASE}
         - MYSQL_USER=${MYSQLDATA_USER}
         - MYSQL_PASSWORD=${MYSQLDATA_PASSWORD}
+        - MYSQL_RANDOM_ROOT_PASSWORD=yes
     rock:
       image: obiba/rock:latest
 
