@@ -46,7 +46,7 @@ Datasources are the entry point in Opal for accessing to :doc:`../../variables-d
     -
     -
     -
-  * - Opal SQL Datasource
+  * - Opal SQL Datasource (deprecated)
     -
     -
     -
@@ -192,8 +192,8 @@ SQL Based Datasources
 
 SQL based datasources are convenient for variables and data storage. With some limitations, this type of datasource can be used for import and export.
 
-Opal SQL Datasource
-~~~~~~~~~~~~~~~~~~~
+Opal SQL Datasource (deprecated)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Opal SQL is the most versatile datasource type with MongoDB datasource. The underlying SQL database schema is a `EAV <https://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model>`_ which allows to store an unlimited number of variables.
 
@@ -214,7 +214,7 @@ NoSQL document oriented datasources are convenient alternative to SQL based data
 MongoDB Datasource
 ~~~~~~~~~~~~~~~~~~
 
-MongoDB is the most versatile datasource type with Opal SQL datasource.
+MongoDB is the most versatile datasource type and is the recommended one for replacing deprecated Opal SQL datasources.
 
 Other Server Based Datasources
 ------------------------------

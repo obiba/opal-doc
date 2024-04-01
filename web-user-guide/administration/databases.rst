@@ -15,14 +15,14 @@ Opal currently supports two different type of database engines:
 
 The following table summarizes the different database usages depending on the database engine and the schema used to store the data.
 
-=========================== =============== ======= ======= =======
-Database Engine             Data Schema     Storage Import  Export
-=========================== =============== ======= ======= =======
-MySQL, MariaDB              Opal SQL        x
-MySQL, MariaDB, PostgreSQL  Tabular SQL     x       x       x
-MySQL, MariaDB, PostgreSQL  Limesurvey              x
-MongoDB                     Opal Documents  x
-=========================== =============== ======= ======= =======
+=========================== ====================== ======= ======= =======
+Database Engine             Data Schema            Storage Import  Export
+=========================== ====================== ======= ======= =======
+MySQL, MariaDB              Opal SQL (deprecated)  x
+MySQL, MariaDB, PostgreSQL  Tabular SQL            x       x       x
+MySQL, MariaDB, PostgreSQL  Limesurvey                     x
+MongoDB                     Opal Documents         x
+=========================== ====================== ======= ======= =======
 
 Database Engines
 ----------------
@@ -175,15 +175,12 @@ Depending on the database engine and usage, an administrator will be asked to sp
 
 .. _opal-sql:
 
-Opal SQL
-~~~~~~~~
+Opal SQL (deprecated)
+~~~~~~~~~~~~~~~~~~~~~
 
 The purpose of this SQL data schema is to be able to accommodate any number of variables from the Opal table abstraction point of view. A SQL-table will have a limit in terms of number of columns that can be added (this limit depends on the database engine). The Opal SQL schema follows the `Entity-attribute-value <https://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model>`_ model (EAV), which allows to describe Opal tables with thousands of variables. However the price of the EAV schema is that querying data requires a lot of SQL join requests. Opal tries its best by caching SQL query results but there is still a performance price for this flexibility.
 
-You may choose this data schema when:
-
-* the number of expected variables is large (more than several hundreds),
-* flexibility is preferred to performance.
+Deprecation notice: starting from Opal 5.0, the "Opal SQL" schema will not be supported. The project backup/restore service can be used for the migration (available from the project administration page or using the R/Pyhton libraries).
 
 .. _tabular-sql:
 
