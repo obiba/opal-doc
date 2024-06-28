@@ -25,7 +25,7 @@ Note that the R and the DataSHIELD services require an additional specific usage
   
   * - A project
     - **Administrate** project
-    - Full access to the project.
+    - Full access to the project: tables and resources can be created, modified and deleted at will. Perrmissions to project's entities can be granted.
 
 Tables
 ~~~~~~
@@ -157,7 +157,7 @@ System
   
   * - System
     - **Administrate**
-    - Full access to the system: configuration, users and groups, permissions, taxonomies, databases, R servers, DataSHIELD profiles etc. This is the highest levl of permissions.
+    - Full access to the system: configuration, users and groups, permissions, taxonomies, databases, R servers, DataSHIELD profiles etc. This is the highest level of permissions.
   
   * - R service
     - **Use**
