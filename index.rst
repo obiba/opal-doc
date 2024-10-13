@@ -48,7 +48,6 @@ Targeted at individual studies and study consortia, `OBiBa <http://obiba.org/>`_
    r-user-guide/index
    r-user-guide/r
    r-user-guide/datashield
-   r-user-guide/reporting
 
 .. toctree::
    :maxdepth: 1

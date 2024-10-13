@@ -70,7 +70,7 @@ The read/write operations can be controlled:
 
 * **Default**, the user permissions apply,
 * **Read only**, no data can be imported, nor modified/deleted. Individual-level data are still accessible.
-* **Read only, without individual-level data**, no data can imported/exported, nor modified/deleted/extracted. Only reporting, analysis or DataSHIELD actions can be performed.
+* **Read only, without individual-level data**, no data can imported/exported, nor modified/deleted/extracted. Only analysis or DataSHIELD actions can be performed.
 
 Project Tasks
 ^^^^^^^^^^^^^

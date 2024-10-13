@@ -25,7 +25,7 @@ Server Software Requirements
 ======== ================= ==================================================================================================== ========================
 Software Suggested version Download link                                                                                        Usage
 ======== ================= ==================================================================================================== ========================
-Java     8                 `OpenJDK 8 downloads <http://openjdk.java.net/projects/jdk8/>`_                                      Java runtime environment
+Java     21                `OpenJDK downloads <https://jdk.java.net/>`_                                                         Java runtime environment
 MySQL    >= 5.5.x          `MySQL downloads <http://www.mysql.com/downloads/mysql/>`_                                           Database engine
 MongoDB  <= 6.0.x          `MongoDB Community downloads <https://www.mongodb.com/docs/v4.2/administration/install-community/>`_ Database engine
 R        >= 4.x            `R downloads <http://cran.r-project.org/>`_                                                          Statistical analysis engine
