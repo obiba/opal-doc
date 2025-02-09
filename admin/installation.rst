@@ -90,7 +90,7 @@ A typical `docker-compose <https://docs.docker.com/compose/>`_ file (including a
       image: obiba/opal:latest
       ports:
         - "8880:8080"
-      links:
+      depends_on:
         - rock
         - mongo
         - mysqldata
