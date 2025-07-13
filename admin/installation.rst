@@ -134,28 +134,32 @@ Environment Variable            Description
 ``MONGODATA_DATABASE``          MongoDB server data database name.
 ``MONGOIDS_DATABASE``           MongoDB server IDs database name (optional, ignored if a MySQL, MariaDB or PostgreSQL one is defined).
 ``MYSQLDATA_HOST``              MySQL server host for data storage (optional).
-``MYSQLDATA_PORT``              MySQL server port.
+``MYSQLDATA_PORT``              MySQL server port for data storage (optional).
 ``MYSQLDATA_DATABASE``          MySQL data database name.
 ``MYSQLDATA_USER``              MySQL data database user.
 ``MYSQLDATA_PASSWORD``          MySQL data database password.
 ``MYSQLIDS_HOST``               MySQL server host for IDs storage (optional).
-``MYSQLIDS_PORT``               MySQL server port.
+``MYSQLIDS_PORT``               MySQL server port for IDs storage (optional).
 ``MYSQLIDS_DATABASE``           MySQL IDs database name.
 ``MYSQLIDS_USER``               MySQL IDs database user.
 ``MYSQLIDS_PASSWORD``           MySQL IDs database password.
 ``MARIADBDATA_HOST``            MariaDB server host for data storage (optional).
+``MARIADBDATA_PORT``            MariaDB server port for data storage (optional).
 ``MARIADBDATA_DATABASE``        MariaDB data database name.
 ``MARIADBDATA_USER``            MariaDB data database user.
 ``MARIADBDATA_PASSWORD``        MariaDB data database password.
 ``MARIADBIDS_HOST``             MariaDB server host for IDs storage (optional, ignored if a MySQL one is defined).
+``MARIADBIDS_PORT``             MariaDB server port for IDs storage (optional).
 ``MARIADBIDS_DATABASE``         MariaDB IDs database name.
 ``MARIADBIDS_USER``             MariaDB IDs database user.
 ``MARIADBIDS_PASSWORD``         MariaDB IDs database password.
 ``POSTGRESDATA_HOST``           PostgreSQL server host for data storage (optional).
+``POSTGRESDATA_PORT``           PostgreSQL server port for data storage (optional).
 ``POSTGRESDATA_DATABASE``       PostgreSQL data database name.
 ``POSTGRESDATA_USER``           PostgreSQL data database user.
 ``POSTGRESDATA_PASSWORD``       PostgreSQL data database password.
 ``POSTGRESIDS_HOST``            PostgreSQL server host for IDs storage (optional, ignored if a MySQL or MariaDB one is defined).
+``POSTGRESIDS_PORT``            PostgreSQL server port for IDs storage (optional).
 ``POSTGRESIDS_DATABASE``        PostgreSQL IDs database name.
 ``POSTGRESIDS_USER``            PostgreSQL IDs database user.
 ``POSTGRESIDS_PASSWORD``        PostgreSQL IDs database password.
@@ -170,6 +174,7 @@ Environment Variable            Description
 ``ROCK_USER_USER``              Default Rock server user user name (optional).
 ``ROCK_USER_PASSWORD``          Default Rock server user user password (optional).
 ``R_REPOS``                     R CRAN repositories (optional, see ``org.obiba.opal.r.repos`` setting).
+``CSRF_ALLOWED``                Comma separated list of allowed CSRF origins (optional, see ``csrf.allowed`` setting).
 =============================== =========================================================================
 
 See also the `Rock R server Docker documentation <https://rockdoc.obiba.org/en/latest/admin/installation.html#docker-image-installation>`_.
