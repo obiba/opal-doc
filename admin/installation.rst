@@ -173,11 +173,31 @@ Environment Variable            Description
 ``ROCK_MANAGER_PASSWORD``       Default Rock server manager user password (optional).
 ``ROCK_USER_USER``              Default Rock server user user name (optional).
 ``ROCK_USER_PASSWORD``          Default Rock server user user password (optional).
+``ROCK_POD_IMAGES_ALLOWED``     Comma separated list of allowed Rock pod images (optional), when Opal runs in a Kubernetes environment.
+``ROCK_POD_SPECS``              Default Rock pod specifications in JSON format (optional), when Opal runs in a Kubernetes environment.
 ``R_REPOS``                     R CRAN repositories (optional, see ``org.obiba.opal.r.repos`` setting).
 ``CSRF_ALLOWED``                Comma separated list of allowed CSRF origins (optional, see ``csrf.allowed`` setting).
 =============================== =========================================================================
 
 See also the `Rock R server Docker documentation <https://rockdoc.obiba.org/en/latest/admin/installation.html#docker-image-installation>`_.
+
+Kubernetes Installation
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Some Helm chart values can be overridden by providing a `values.yaml` file: see default `values.yaml <https://github.com/obiba/helm-charts/blob/master/obiba-opal/values.yaml>`_. This file can include any of the configuration options available in the Rock R server Helm chart.
+
+The OBiBa Helm charts repository can be added with the following command:
+
+.. code-block:: bash
+
+  helm repo add obiba https://www.obiba.org/helm-charts
+
+The deployment then can be done using the following command:
+
+.. code-block:: bash
+
+  helm install myopal obiba-opal
+
 
 Upgrade
 -------
