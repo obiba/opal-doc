@@ -198,6 +198,7 @@ The deployment then can be done using the following command:
 
   helm install myopal obiba-opal
 
+See Helm chart documentation for more details: `OBiBa Opal chart README <https://github.com/obiba/helm-charts/blob/master/obiba-opal/README.md>`_.
 
 Upgrade
 -------
