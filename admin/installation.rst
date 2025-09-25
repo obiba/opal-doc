@@ -196,7 +196,7 @@ The deployment then can be done using the following command:
 
 .. code-block:: bash
 
-  helm install myopal obiba/obiba-opal
+  helm install myopal obiba/opal
 
 See Helm chart documentation for more details: `OBiBa Opal chart README <https://github.com/obiba/helm-charts/blob/master/obiba-opal/README.md>`_.
 
