@@ -9,12 +9,12 @@ Delete one or more tables of a project.
 
 Options
 -------
-===================== =====================================
-Option                Description
-===================== =====================================
-``--project, -pr``	  Source project name
-``--tables, -t``	    List of table names which will be deleted (default is all)
-===================== =====================================
+==================================================================== =====================================
+Option                                                               Description
+==================================================================== =====================================
+``--project, -pr``	                                                 Source project name
+``--tables TABLE1 [--tables TABLE2 ...], -t TABLE1 [-t TABLE2 ...]`` List of table names which will be deleted (default is all)
+==================================================================== =====================================
 
 .. include:: ../common-credentials.rst
 
@@ -27,7 +27,7 @@ Delete some tables from a project:
 
 .. code-block:: bash
 
-  opal delete-table --opal https://opal-demo.obiba.org --user administrator --password password --project project_test --tables Table1 Table2
+  opal delete-table --opal https://opal-demo.obiba.org --user administrator --password password --project project_test --tables Table1 --tables Table2
 
 Delete all tables from a project:
 

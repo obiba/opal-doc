@@ -10,19 +10,19 @@ Manage a user in the Opal internal user directory.
 Options
 -------
 
-============================================= =====================================
-Option                                        Description
-============================================= =====================================
-``--name NAME, -n NAME``                      User name
-``--fetch, -f``                               Fetch a user (all users are returned if no option --name is given)
-``--delete, -de``                             Delete the user specified by the --name option
-``--add, -a``                                 Add a user specified by the --name option
-``--update, -ud``                             Update user password/certificate, status (enable/disable) and groups
-``--upassword PWD, -upa PWD``                 User password of at least six characters.
-``--ucertificate CERT, -uc CERT``             User certificate (public key) file
-``--disabled, -di``                           Disable user account (if omitted the user is enabled by default).
-``--groups GRP [GRP ...], -g GRP [GRP ...]``  User groups (separated by space)
-============================================= =====================================
+============================================================ =====================================
+Option                                                       Description
+============================================================ =====================================
+``--name NAME, -n NAME``                                     User name
+``--fetch, -f``                                              Fetch a user (all users are returned if no option --name is given)
+``--delete, -de``                                            Delete the user specified by the --name option
+``--add, -a``                                                Add a user specified by the --name option
+``--update, -ud``                                            Update user password/certificate, status (enable/disable) and groups
+``--upassword PWD, -upa PWD``                                User password of at least six characters.
+``--ucertificate CERT, -uc CERT``                            User certificate (public key) file
+``--disabled, -di``                                          Disable user account (if omitted the user is enabled by default).
+``--groups GRP1 [--groups GRP2 ...], -g GRP1 [-g GRP2 ...]`` User groups (separated by space)
+============================================================ =====================================
 
 .. include:: ../common-credentials.rst
 
@@ -59,7 +59,7 @@ Create the user (disabled) user4 with groups group1, group2 and group3
 
 .. code-block:: bash
 
-  opal user --opal https://opal-demo.obiba.org --user administrator --password password --add --name user4 --disabled --upassword 123456 --groups  group1 group2 group3
+  opal user --opal https://opal-demo.obiba.org --user administrator --password password --add --name user4 --disabled --upassword 123456 --groups  group1 --groups group2 --groups group3
 
 Update user2's password
 
@@ -83,7 +83,7 @@ Update user2's groups
 
 .. code-block:: bash
 
-  opal user --opal https://opal-demo.obiba.org --user administrator --password password --update --name user2 --groups group1 group2
+  opal user --opal https://opal-demo.obiba.org --user administrator --password password --update --name user2 --groups group1 --groups group2
 
 Delete the user user3
 

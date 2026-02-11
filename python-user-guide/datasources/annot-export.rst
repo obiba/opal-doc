@@ -18,14 +18,14 @@ Argument      Description
 
 Options
 -------
-============================================================================= =====================================
-Option                                                                        Description
-============================================================================= =====================================
-``--output OUTPUT, -out OUTPUT``                                              CSV/TSV file path where to write the exported annotations. When not specified, standard output is used.
-``--locale LOCALE, -l LOCALE``                                                Exported locale (default is none)
-``--separator SEPARATOR, -s SEPARATOR``                                       The character separator to be used in the output. When not specified tab character is used.
-``--taxonomies TAXONOMIES [TAXONOMIES ...], -tx TAXONOMIES [TAXONOMIES ...]`` The list of taxonomy names of interest (default is any that are found in the variable attributes).
-============================================================================= =====================================
+========================================================================================== =====================================
+Option                                                                                     Description
+========================================================================================== =====================================
+``--output OUTPUT, -out OUTPUT``                                                           CSV/TSV file path where to write the exported annotations. When not specified, standard output is used.
+``--locale LOCALE, -l LOCALE``                                                             Exported locale (default is none)
+``--separator SEPARATOR, -s SEPARATOR``                                                    The character separator to be used in the output. When not specified tab character is used.
+``--taxonomies TAXONOMY1 [--taxonomies TAXONOMY2 ...], -tx TAXONOMY1 [-tx TAXONOMY2 ...]`` The list of taxonomy names of interest (default is any that are found in the variable attributes).
+========================================================================================== =====================================
 
 .. include:: ../common-credentials.rst
 
@@ -38,4 +38,4 @@ Export annotations of the Mlstr_area taxonomy from a specific table:
 
 .. code-block:: bash
 
-  opal export-annot --opal https://opal-demo.obiba.org --user administrator --password password CLSA --taxonomies Mlstr_area --out /tmp/clsa-area.tsv
+  opal export-annot --opal https://opal-demo.obiba.org --user administrator --password password CLSA --taxonomies Mlstr_area --output /tmp/clsa-area.tsv

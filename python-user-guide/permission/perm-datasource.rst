@@ -29,14 +29,14 @@ Option                               Description
 Example
 -------
 
-Add add-table permission for subject demouser on datashield project:
+Add add-table permission for subject demouser on CNSIM project:
 
 .. code-block:: bash
 
-  opal perm-datasource --opal https://opal-demo.obiba.org --user administrator --password password --type USER --subject demouser --permission add-table --project datashield --add
+  opal perm-datasource --opal https://opal-demo.obiba.org --user administrator --password password --type USER --subject demouser --permission add-table --project CNSIM --add
 
 Remove the above permission:
 
 .. code-block:: bash
 
-  opal perm-datasource --opal https://opal-demo.obiba.org --user administrator --password password --type USER --subject demouser  --project datashield --delete
+  opal perm-datasource --opal https://opal-demo.obiba.org --user administrator --password password --type USER --subject demouser  --project CNSIM --delete

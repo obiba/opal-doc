@@ -18,7 +18,7 @@ Options
      - Description
    * - ``--destination DESTINATION, -d DESTINATION``
      - Destination datasource name
-   * - ``--tables TABLES [TABLES ...], -t TABLES [TABLES ...]``
+   * - ``--tables TABLE1 [--tables TABLE2 ...], -t TABLE1 [-t TABLE2 ...]``
      - The list of tables to be imported (defaults to all)
    * - ``--incremental -i``
      - Incremental import
@@ -50,4 +50,4 @@ Import tables from 20-onyx ZIP file to the opal-data datasource:
   opal import-xml --opal https://opal-demo.obiba.org --user administrator --password password --path /home/administrator/20-onyx-data.zip --destination opal-data
 
   # Import only ArmSpan and BloodPressure tables
-  opal import-xml --opal https://opal-demo.obiba.org --user administrator --password password --path /home/administrator/20-onyx-data.zip --destination opal-data --tables ArmSpan BloodPressure
+  opal import-xml --opal https://opal-demo.obiba.org --user administrator --password password --path /home/administrator/20-onyx-data.zip --destination opal-data --tables ArmSpan --tables BloodPressure
