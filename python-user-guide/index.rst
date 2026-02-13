@@ -44,3 +44,26 @@ This command will display which sub-commands are available. Further, given a sub
   opal <subcommand> --help
 
 This command will display available subcommands.
+
+Upgrade Notes
+-------------
+
+Since version 6.0.0, the command line options have slightly changed. The new syntax for multiple values is to repeat the option for each value instead of providing a list of values.
+
+For example, the new syntax for multiple tables is:
+
+.. code-block:: bash
+
+  opal <subcommand> --tables TABLE01 --tables TABLE02
+
+instead of:
+
+.. code-block:: bash
+
+  opal <subcommand> --tables TABLE01 TABLE02
+
+For backward compatibility, the old syntax is still supported with the alternative command `opal-legacy`:
+
+.. code-block:: bash
+
+  opal-legacy <subcommand> --tables TABLE01 TABLE02

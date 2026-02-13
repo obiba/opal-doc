@@ -18,7 +18,7 @@ Options
      - Description
    * - ``--project PROJECT, -pr PROJECT``
      - Project name into which genotypes data will be imported
-   * - ``--vcf FILE01 FILE02, -vcf FILE01 FILE02``
+   * - ``--vcf FILE01 --vcf FILE02``
      - List of VCF/BCF (optionally compressed) file paths (in Opal file system)
 
 .. include:: ../common-credentials.rst
@@ -32,4 +32,4 @@ Import VCF files into the project TEST:
 
 .. code-block:: bash
 
-  opal import-vcf --opal https://opal-demo.obiba.org --user administrator --password password --project TEST --vcf /path/to/file01.vcf.gz /path/to/file02.vcf.gz
+  opal import-vcf --opal https://opal-demo.obiba.org --user administrator --password password --project TEST --vcf /path/to/file01.vcf.gz --vcf /path/to/file02.vcf.gz
