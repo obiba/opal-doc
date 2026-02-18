@@ -18,7 +18,7 @@ Options
      - Description
    * - ``--destination DESTINATION, -d DESTINATION``
      - Destination datasource name
-   * - ``--tables TABLES [TABLES ...], -t TABLES [TABLES ...]``
+   * - ``--tables TABLE1 [--tables TABLE2 ...], -t TABLE1 [-t TABLE2 ...]``
      - The list of tables to be imported (defaults to all)
    * - ``--incremental -i``
      - Incremental import
@@ -54,4 +54,4 @@ Copy tables BloodPressure and ArmSpan from Opal on demo.obiba.org to Opal on loc
 
 .. code-block:: bash
 
-  opal import-opal -o http://localhost:8080 -u administrator -p password  --ro https://opal-demo.obiba.org --ru administrator --rp password --rdatasource onyx --destination opal-data --tables BloodPressure ArmSpan
+  opal import-opal -o http://localhost:8080 -u administrator -p password  --ro https://opal-demo.obiba.org --ru administrator --rp password --rdatasource onyx --destination opal-data --tables BloodPressure  --tables ArmSpan

@@ -29,4 +29,4 @@ Restore a project from the archive folder ``CNSIM`` into an existing project:
 
 .. code-block:: bash
 
-  opal restore-project --opal https://opal-demo.obiba.org --user administrator --password password --project datashield --archive /home/administrator/backup/CNSIM
+  opal restore-project --opal https://opal-demo.obiba.org --user administrator --password password --project CNSIM --archive /home/administrator/backup/CNSIM

@@ -30,4 +30,4 @@ Restore a specific view file ``CNSIM.json`` into a project:
 
 .. code-block:: bash
 
-  opal restore-view --opal https://opal-demo.obiba.org --user administrator --password password --project datashield --views CNSIM
+  opal restore-view --opal https://opal-demo.obiba.org --user administrator --password password --project CNSIM --views CNSIM

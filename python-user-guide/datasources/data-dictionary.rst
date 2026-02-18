@@ -27,7 +27,7 @@ To fetch the dictionary associated to a datasource:
 
 .. code-block:: bash
 
-  opal dict datashield --opal https://opal-demo.obiba.org --user administrator --password password
+  opal dict CNSIM --opal https://opal-demo.obiba.org --user administrator --password password
 
 To fetch the dictionary associated to a table in a pretty format:
 
@@ -48,8 +48,8 @@ Wild cards can also be used:
   # Get all datasources
   opal dict "*" --opal https://opal-demo.obiba.org --user administrator --password password
 
-  # Get all tables from datashield datasource
-  opal dict "datashield.*" --opal https://opal-demo.obiba.org --user administrator --password password
+  # Get all tables from CNSIM datasource
+  opal dict "CNSIM.*" --opal https://opal-demo.obiba.org --user administrator --password password
 
   # Get all variables CNSIM.CNSIM1 table
   opal dict "CNSIM.CNSIM1:*" --opal https://opal-demo.obiba.org --user administrator --password password

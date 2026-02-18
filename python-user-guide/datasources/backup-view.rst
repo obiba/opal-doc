@@ -30,4 +30,4 @@ Backup a specific view from a project into file ``CNSIM.json``:
 
 .. code-block:: bash
 
-  opal backup-view --opal https://opal-demo.obiba.org --user administrator --password password --project datashield --views CNSIM
+  opal backup-view --opal https://opal-demo.obiba.org --user administrator --password password --project CNSIM --views CNSIM

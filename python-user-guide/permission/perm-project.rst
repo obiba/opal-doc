@@ -29,14 +29,14 @@ Option                               Description
 Example
 -------
 
-Add administrate permission for subject demouser on datashield project:
+Add administrate permission for subject demouser on CNSIM project:
 
 .. code-block:: bash
 
-  opal perm-project --opal https://opal-demo.obiba.org --user administrator --password password --type USER --subject demouser --permission administrate --project datashield --add
+  opal perm-project --opal https://opal-demo.obiba.org --user administrator --password password --type USER --subject demouser --permission administrate --project CNSIM --add
 
 Remove the above permission:
 
 .. code-block:: bash
 
-  opal perm-project --opal https://opal-demo.obiba.org --user administrator --password password --type USER --subject demouser --project datashield --delete
+  opal perm-project --opal https://opal-demo.obiba.org --user administrator --password password --type USER --subject demouser --project CNSIM --delete

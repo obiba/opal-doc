@@ -18,7 +18,7 @@ Options
      - Description
    * - ``--datasource DATASOURCE, -d DATASOURCE``
      - Datasource name
-   * - ``--tables TABLES [TABLES ...], -t TABLES [TABLES ...]``
+   * - ``--tables TABLE1 [--tables TABLE2 ...], -t TABLE1 [-t TABLE2 ...]``
      - The list of tables to be exported
    * - ``--incremental -i``
      - Incremental export

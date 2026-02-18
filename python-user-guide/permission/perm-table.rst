@@ -30,32 +30,32 @@ Option                                                Description
 Example
 -------
 
-Add view permission for subject demouser on table CNSIM1 in datashield project:
+Add view permission for subject demouser on table CNSIM1 in CNSIM project:
 
 .. code-block:: bash
 
-  opal perm-table --opal https://opal-demo.obiba.org --user administrator --password password --type USER --project datashield --subject demouser  --permission view --add --tables CNSIM1
+  opal perm-table --opal https://opal-demo.obiba.org --user administrator --password password --type USER --project CNSIM --subject demouser  --permission view --add --tables CNSIM1
 
 Remove the above permission:
 
 .. code-block:: bash
 
-  opal perm-table --opal https://opal-demo.obiba.org --user administrator --password password --type USER --project datashield --subject demouser --delete --tables CNSIM1
+  opal perm-table --opal https://opal-demo.obiba.org --user administrator --password password --type USER --project CNSIM --subject demouser --delete --tables CNSIM1
 
-Add permission on all tables of datashield project:
-
-.. code-block:: bash
-
-  opal perm-table --opal https://opal-demo.obiba.org --user administrator --password password --type USER --project datashield --subject demouser --permission view --add
-
-Remove permission from all table of datashield project:
+Add permission on all tables of CNSIM project:
 
 .. code-block:: bash
 
-  opal perm-table --opal https://opal-demo.obiba.org --user administrator --password password --type USER --project datashield --subject demouser --delete
+  opal perm-table --opal https://opal-demo.obiba.org --user administrator --password password --type USER --project CNSIM --subject demouser --permission view --add
+
+Remove permission from all table of CNSIM project:
+
+.. code-block:: bash
+
+  opal perm-table --opal https://opal-demo.obiba.org --user administrator --password password --type USER --project CNSIM --subject demouser --delete
 
 Add permission on specific tables:
 
 .. code-block:: bash
 
-  opal perm-table --opal https://opal-demo.obiba.org --user administrator --password password --type USER --project datashield --subject demouser --permission view --add --tables CNSIM1 FNAC
+  opal perm-table --opal https://opal-demo.obiba.org --user administrator --password password --type USER --project CNSIM --subject demouser --permission view --add --tables CNSIM1 --tables FNAC
