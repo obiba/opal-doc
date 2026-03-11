@@ -22,14 +22,15 @@ Server Software Requirements
 
 `Java <https://www.java.com>`_ is the minimum software requirement, other software are for a fully functional system. While Java is required by Opal server application, MongoDB, MySQL, R can be installed on another server. See also :doc:`rserver`.
 
-======== ================= ==================================================================================================== ========================
-Software Suggested version Download link                                                                                        Usage
-======== ================= ==================================================================================================== ========================
-Java     21                `OpenJDK downloads <https://jdk.java.net/>`_                                                         Java runtime environment
-MySQL    >= 5.5.x          `MySQL downloads <http://www.mysql.com/downloads/mysql/>`_                                           Database engine
-MongoDB  <= 6.0.x          `MongoDB Community downloads <https://www.mongodb.com/docs/v4.2/administration/install-community/>`_ Database engine
-R        >= 4.x            `R downloads <http://cran.r-project.org/>`_                                                          Statistical analysis engine
-======== ================= ==================================================================================================== ========================
+========== ================= ==================================================================================================== ========================
+Software   Suggested version Download link                                                                                        Usage
+========== ================= ==================================================================================================== ========================
+Java       21                `OpenJDK downloads <https://jdk.java.net/>`_                                                         Java runtime environment
+PostgreSQL >= 9.x            `PostgreSQL <https://www.postgresql.org/>`_                                                          Database engine
+MongoDB    >= 4.x            `MongoDB Community downloads <https://www.mongodb.com/docs/v4.2/administration/install-community/>`_ Database engine
+MySQL      >= 5.5.x          `MySQL downloads <http://www.mysql.com/downloads/mysql/>`_                                           Database engine
+R          >= 4.x            `R downloads <http://cran.r-project.org/>`_                                                          Statistical analysis engine
+========== ================= ==================================================================================================== ========================
 
 Install
 -------
