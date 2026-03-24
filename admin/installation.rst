@@ -108,7 +108,7 @@ A typical `docker-compose <https://docs.docker.com/compose/>`_ file (including a
       volumes:
         - /some/path/opal:/srv
     mongo:
-      image: mongo:6.0
+      image: mongo:8.0
     mysqldata:
       image: mysql
       environment:
