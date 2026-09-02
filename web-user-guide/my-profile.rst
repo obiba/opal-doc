@@ -145,6 +145,25 @@ Example of usage with `cURL <https://curl.haxx.se/>`_ command line;
 
 
 
+R Activity
+----------
+
+The R sessions that were opened on your behalf are summarized per execution context (plain R, DataSHIELD, report execution etc.) and per profile: how many sessions, when the first and last of them were active, the R execution time they consumed and the total time they stayed open. Each row can be expanded to the individual sessions it covers.
+
+DataSHIELD Quota
+----------------
+
+If a quota applies to you, this section reports what you have spent against it over its rolling window (see :ref:`ds-quotas`). There is one bar per limited metric:
+
+* **execution time**, the time the R server spent running your commands;
+* **session time**, the wall-clock life of your DataSHIELD sessions, idle time included — an open session counts even when it is doing nothing, because it holds an R server for as long as it lives.
+
+The line below each bar says where the limit comes from: a personal quota, the quota of one of your groups, or the system default. A metric with no quota is reported as unlimited.
+
+When an allowance is spent, Opal refuses to open **new** DataSHIELD sessions for you. Sessions already open keep working, and no analysis in progress is interrupted. The window rolls, so capacity comes back on its own as past activity ages out of it — you are told roughly when.
+
+Session time is the exception: sessions you still hold keep spending the allowance for as long as they are open, so waiting does not bring capacity back. Close the DataSHIELD sessions you are not using — from R, ``DSI::datashield.logout()`` — and the counter stops growing. Sessions are also closed automatically after a period of inactivity, but only after several hours by default.
+
 Bookmarks
 ---------
 
