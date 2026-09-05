@@ -485,7 +485,16 @@ Opal says so at startup when it happens:
   OpenTelemetry export enabled.
   WARNING: conf/logback.xml declares no OpenTelemetry appender, so no log record will be exported ...
 
-To fix it, copy the ``otel``, ``otelrest``, ``otelraw`` and ``otelds`` appenders — and the ``appender-ref`` entries that use them — from the ``logback.xml`` of the distribution (**OPAL_DIST/conf/logback.xml**, or **/usr/share/opal/conf/logback.xml** on the packages) into your own.
+To fix it, copy the ``otel``, ``otelrest``, ``otelraw`` and ``otelds`` appenders — and the ``appender-ref`` entries that use them — from the ``logback.xml`` of the distribution into your own. Where that copy is depends on the packaging:
+
+=================== =========================================================================
+Installation        Distribution copy of ``logback.xml``
+=================== =========================================================================
+Zip distribution    **OPAL_DIST/conf/logback.xml**
+Debian package      **/usr/share/opal-server-<version>/conf/logback.xml**
+RPM package         no ``conf`` directory is installed under ``/usr/share``; ``/etc/opal`` is installed ``noreplace``, so the upgrade leaves the new file beside yours as **/etc/opal/logback.xml.rpmnew**
+Docker image        **/usr/share/opal/conf/logback.xml**
+=================== =========================================================================
 
 Tracing the rest of the server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
