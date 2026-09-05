@@ -177,6 +177,9 @@ Environment Variable            Description
 ``ROCK_POD_SPECS``              Default Rock pod specifications in JSON format (optional), when Opal runs in a Kubernetes environment.
 ``R_REPOS``                     R CRAN repositories (optional, see ``org.obiba.opal.r.repos`` setting).
 ``CSRF_ALLOWED``                Comma separated list of allowed CSRF origins (optional, see ``csrf.allowed`` setting).
+``OTEL_EXPORTER_OTLP_ENDPOINT`` OpenTelemetry collector OTLP/HTTP URL, for instance ``http://collector:4318`` (optional). Setting it enables the log, trace and metric export: see :ref:`otelconf`.
+``OTEL_SERVICE_NAME``           Name reported to the OpenTelemetry backend, default is ``opal`` (optional).
+``OTEL_RESOURCE_ATTRIBUTES``    Comma separated ``key=value`` resource attributes added to every exported record (optional).
 =============================== =========================================================================
 
 See also the `Rock R server Docker documentation <https://rockdoc.obiba.org/en/latest/admin/installation.html#docker-image-installation>`_.
@@ -245,6 +248,8 @@ When Opal is installed through a Debian/RPM package, Opal server can be managed 
 
 Options for the Java Virtual Machine can be modified if Opal service needs more memory. To do this, modify the value of the environment variable ``JAVA_ARGS`` in the file **/etc/default/opal**.
 
+That file is the service's environment: the OpenTelemetry settings go there too, see :ref:`otelconf`. Secrets belong in **/etc/default/opal-secrets** instead, which the service also reads and which can be made unreadable to the ``opal`` user.
+
 Main actions on Opal service are: ``start``, ``stop``, ``status``, ``restart``. For more information about available actions on Opal service, type:
 
 .. code-block:: bash
@@ -264,7 +269,12 @@ Environment variable Required Description
 ``JAVA_OPTS``        no       Options for the Java Virtual Machine. For example: `-Xmx4096m -XX:MaxPermSize=256m`
 ==================== ======== ===========
 
-To change the defaults update:  ``bin/opal`` or ``bin/opal.bat``
+Rather than editing ``bin/opal`` or ``bin/opal.bat``, which live in the distribution and are replaced by the next one, put these in **OPAL_HOME/conf/opal-env.sh**: the launch script sources it if it is there. The file ships in the distribution's ``conf`` directory — copy it across if your **OPAL_HOME** predates it, as nothing writes into ``conf`` on your behalf. This is also where the OpenTelemetry settings go, see :ref:`otelconf`.
+
+.. code-block:: bash
+
+  # OPAL_HOME/conf/opal-env.sh
+  export JAVA_OPTS="-Xms1G -Xmx2G -XX:+UseG1GC"
 
 Execute the command line (bin directory is in your execution PATH)):
 

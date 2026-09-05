@@ -332,6 +332,8 @@ By default, Logback is configured to output files in the **OPAL_HOME/logs** fold
 
 These log files can be downloaded from the web interface (**Administration > Java Virtual Machine > Logs** or **Administration > DataSHIELD > Logs**) or using the `opalr R package <https://www.obiba.org/opalr/>`_.
 
+These messages can also be sent to an OpenTelemetry collector, in addition to being written to file: see :ref:`otelconf`.
+
 Other Settings
 ~~~~~~~~~~~~~~
 
@@ -356,6 +358,152 @@ The session timeout is in milliseconds and allowed values are:
 * a negative value means sessions never expire.
 * a non-negative value (0 or greater) means session timeout will occur as expected.
 
+
+.. _otelconf:
+
+OpenTelemetry
+-------------
+
+Opal can export its logs, its DataSHIELD traces and its DataSHIELD metrics to an `OpenTelemetry <https://opentelemetry.io/>`_ collector, using the OTLP protocol. This is *in addition to* the log files described above: the entries written to **OPAL_HOME/logs/datashield.log** do not change, and the files remain the local record when the collector is unreachable.
+
+Enabling
+~~~~~~~~
+
+Nothing is exported until an OTLP endpoint is set. Setting one turns the three signals on together.
+
+Opal embeds the OTLP/HTTP sender only, so the endpoint is the ``http/protobuf`` one: port ``4318`` on a standard collector, **not** the ``4317`` gRPC port.
+
+Where the variables are set depends on how Opal was installed. Each of these files ships with the settings below already listed, commented out — with one caveat for the zip distribution: nothing ever writes into an existing **OPAL_HOME/conf**, so if yours predates this feature, copy ``conf/opal-env.sh`` across from the new distribution yourself.
+
+=================== =========================================================================
+Installation        Environment file
+=================== =========================================================================
+Zip distribution    **OPAL_HOME/conf/opal-env.sh**, sourced by ``bin/opal``. Use ``export VAR=value``.
+Debian/RPM package  **/etc/default/opal**, read by systemd. Use ``VAR=value``, without ``export``.
+Docker image        The ``environment`` section of the compose file, or ``-e`` on ``docker run``.
+=================== =========================================================================
+
+For example, with a collector running on the same host:
+
+.. code-block:: bash
+
+  OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318
+  OTEL_RESOURCE_ATTRIBUTES=deployment.environment=production,service.namespace=my-node
+
+Settings
+~~~~~~~~
+
+===================================== =========================================================================
+Environment Variable                  Description
+===================================== =========================================================================
+``OTEL_EXPORTER_OTLP_ENDPOINT``       Base URL of the OTLP/HTTP collector, for instance ``https://collector.example.org:4318``. Setting it is what enables the export.
+``OTEL_EXPORTER_OTLP_LOGS_ENDPOINT``  Full URL of the logs endpoint, when the signals do not go to the same collector. Also enables the export on its own.
+``OTEL_SERVICE_NAME``                 Name reported to the backend. Default is ``opal``.
+``OTEL_RESOURCE_ATTRIBUTES``          Comma separated ``key=value`` pairs added to every record, span and measurement. Useful to tell nodes apart in a federated study.
+``OTEL_METRIC_EXPORT_INTERVAL``       Milliseconds between metric exports. Default is ``60000``.
+===================================== =========================================================================
+
+The other `OpenTelemetry SDK environment variables <https://opentelemetry.io/docs/languages/sdk-configuration/>`_ are honoured as well, with two things to know:
+
+* only ``OTEL_EXPORTER_OTLP_ENDPOINT`` and ``OTEL_EXPORTER_OTLP_LOGS_ENDPOINT`` switch the export on. The signal specific variants for traces and metrics are applied once it is on, but do not enable it by themselves.
+* the exporter protocol defaults to ``http/protobuf`` and has to stay there. Opal bundles the HTTP sender only, so setting ``OTEL_EXPORTER_OTLP_PROTOCOL`` to ``grpc`` makes the export fail at startup.
+
+Securing the endpoint
+~~~~~~~~~~~~~~~~~~~~~
+
+The DataSHIELD stream carries submitted R expressions, user names and client addresses. Anywhere other than a collector on ``localhost``, it needs TLS, and usually a credential.
+
+========================================== =========================================================================
+Environment Variable                       Description
+========================================== =========================================================================
+``OTEL_EXPORTER_OTLP_CERTIFICATE``         Path to the PEM certificate of the collector's certificate authority.
+``OTEL_EXPORTER_OTLP_CLIENT_CERTIFICATE``  Path to the client certificate, when the collector requires mutual TLS.
+``OTEL_EXPORTER_OTLP_CLIENT_KEY``          Path to the client private key.
+``OTEL_EXPORTER_OTLP_HEADERS``             Comma separated headers, for instance ``Authorization=Bearer%20<token>``. Values are URL encoded.
+========================================== =========================================================================
+
+.. warning::
+
+  On the Debian and RPM packages, **/etc/default/opal** is world readable, so a collector token does not belong in it. The service also reads **/etc/default/opal-secrets**, which systemd opens as ``root`` before dropping to the ``opal`` user, so it can be kept private:
+
+  .. code-block:: bash
+
+    echo 'OTEL_EXPORTER_OTLP_HEADERS=Authorization=Bearer%20<token>' > /etc/default/opal-secrets
+    chmod 600 /etc/default/opal-secrets
+
+What is exported
+~~~~~~~~~~~~~~~~
+
+**Logs.** The Opal application messages, the web services messages and the DataSHIELD activity, under the scope names ``org.obiba.opal.*``, ``org.obiba.opal.web.security.AuditInterceptor`` and ``datashield.user`` respectively. The SQL log is not exported.
+
+The DataSHIELD records carry their context as attributes. The ``ds_*`` names of the log file are historical, so they are renamed on the way out — in an appender placed after the file appender, so the file itself keeps them:
+
+====================== =================================== =========================================================
+datashield.log field   Exported attribute                  Content
+====================== =================================== =========================================================
+``ds_id``              ``datashield.session.id``           The DataSHIELD session the operation belongs to.
+``ds_profile``         ``datashield.profile``              The DataSHIELD profile in use.
+``ds_action``          ``datashield.action``               ``OPEN``, ``ASSIGN``, ``PARSE``, ``AGGREGATE``, ``CLOSE``, ...
+``ds_symbol``          ``datashield.symbol``               The R symbol being assigned.
+``ds_eval``            ``datashield.script``               The R expression evaluated, in full.
+``ds_script_in``       ``datashield.script.submitted``     The expression as the user submitted it (``PARSE`` only).
+``ds_script_out``      ``datashield.script.generated``     The expression the parser generated (``PARSE`` only).
+``ds_map``             ``datashield.script.mapping``       The DataSHIELD to R function mapping applied (``PARSE`` only).
+``ds_table``           ``datashield.table``                The table a symbol was assigned from.
+``r_duration``         ``datashield.r.duration``           Milliseconds spent in the R server.
+``r_size``             ``datashield.r.size``               Bytes returned by the R server.
+``username``           ``enduser.id``                      The authenticated user.
+``ip``                 ``client.address``                  The client address.
+====================== =================================== =========================================================
+
+**Traces.** One trace per DataSHIELD session, on the instrumentation scope ``org.obiba.opal.datashield``. A ``datashield.session`` span covers the life of the session and carries the session id, the profile, the user and the client address; under it sits one span per operation — ``datashield.open``, ``.assign``, ``.parse``, ``.aggregate``, ``.close``, ``.ws_save``, ``.ws_restore`` — in the order the audit log records them. A failure sets the span status to ``ERROR``: a script the DataSHIELD parser refuses shows up as a ``datashield.parse`` span in error, carrying the submitted expression.
+
+Each exported log record also carries the trace id of its session, so a backend such as Grafana can go from a span to the audit lines it produced, and back. That holds whether or not anything else is instrumenting the HTTP layer: an audit record is anchored to its session, not to the request that happened to trigger it.
+
+**Metrics.** On the same scope:
+
+================================= ================== ==============================
+Instrument                        Kind               Dimensions
+================================= ================== ==============================
+``datashield.session.active``     Observable gauge   profile
+``datashield.operation.count``    Counter            action, profile, outcome
+``datashield.operation.duration`` Histogram, seconds action, profile, outcome
+``datashield.quota.rejection``    Counter            quota metric
+================================= ================== ==============================
+
+Session identifiers, user names, R expressions and symbol names are never used as metric dimensions.
+
+Upgrading an existing installation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The OpenTelemetry appenders live in **OPAL_HOME/conf/logback.xml**, which belongs to the installation: an upgrade never overwrites it, so an Opal upgraded from a version that predates them keeps a file that has none. Traces and metrics are then exported and log records are not.
+
+Opal says so at startup when it happens:
+
+.. code-block:: bash
+
+  OpenTelemetry export enabled.
+  WARNING: conf/logback.xml declares no OpenTelemetry appender, so no log record will be exported ...
+
+To fix it, copy the ``otel``, ``otelrest``, ``otelraw`` and ``otelds`` appenders — and the ``appender-ref`` entries that use them — from the ``logback.xml`` of the distribution (**OPAL_DIST/conf/logback.xml**, or **/usr/share/opal/conf/logback.xml** on the packages) into your own.
+
+Tracing the rest of the server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The spans above cover the DataSHIELD operations themselves. Adding the `OpenTelemetry Java agent <https://opentelemetry.io/docs/zero-code/java/agent/>`_ to the JVM arguments fills in what happens underneath them — the JDBC and Hibernate calls, the MongoDB lookups, the HTTP calls to the R server — nested inside the DataSHIELD spans. A session trace then shows each audited operation together with the work it caused. Opal needs no change for this:
+
+.. code-block:: bash
+
+  # zip distribution, in OPAL_HOME/conf/opal-env.sh
+  export JAVA_OPTS="$JAVA_OPTS -javaagent:/path/opentelemetry-javaagent.jar"
+
+  # Debian/RPM package, in /etc/default/opal
+  JAVA_ARGS="... -javaagent:/opt/opentelemetry-javaagent.jar"
+
+Two things to expect with the agent running:
+
+* it logs a warning that ``GlobalOpenTelemetry.set`` calls are ignored. That is normal, and nothing is lost: Opal keeps its own SDK for the log appenders and uses the agent's for spans and metrics.
+* the HTTP server spans stay in traces of their own. A DataSHIELD trace is rooted on the session rather than on a request, so it does not nest under the request that started it, and the part of a request that runs outside a DataSHIELD operation stays in that request's trace. The two are tied together by span links: the session span links to the request that opened the session, and each operation span to the request that asked for it, so a backend such as Grafana offers one trace from the other.
 
 Reverse Proxy Configuration
 ---------------------------
