@@ -334,31 +334,6 @@ These log files can be downloaded from the web interface (**Administration > Jav
 
 These messages can also be sent to an OpenTelemetry collector, in addition to being written to file: see :ref:`otelconf`.
 
-Other Settings
-~~~~~~~~~~~~~~
-
-Shiro's default session timeout is 1800s (half an hour). The session timeout can be set explicitly in the shiro.ini file, in the [main] section:
-
-.. code-block:: bash
-
-  # =======================
-  # Shiro INI configuration
-  # =======================
-
-  [main]
-  # Objects and their properties are defined here,
-  # Such as the securityManager, Realms and anything else needed to build the SecurityManager
-  # 3,600,000 milliseconds = 1 hour
-  securityManager.sessionManager.globalSessionTimeout = 3600000
-
-  # ...
-
-The session timeout is in milliseconds and allowed values are:
-
-* a negative value means sessions never expire.
-* a non-negative value (0 or greater) means session timeout will occur as expected.
-
-
 .. _otelconf:
 
 OpenTelemetry
@@ -460,18 +435,87 @@ datashield.log field   Exported attribute                  Content
 
 Each exported log record also carries the trace id of its session, so a backend such as Grafana can go from a span to the audit lines it produced, and back. That holds whether or not anything else is instrumenting the HTTP layer: an audit record is anchored to its session, not to the request that happened to trigger it.
 
-**Metrics.** On the same scope:
+**Metrics.** Four instruments on the same scope, covering the DataSHIELD workload rather than the server as a whole. They are described in full below.
 
-================================= ================== ==============================
-Instrument                        Kind               Dimensions
-================================= ================== ==============================
-``datashield.session.active``     Observable gauge   profile
-``datashield.operation.count``    Counter            action, profile, outcome
-``datashield.operation.duration`` Histogram, seconds action, profile, outcome
-``datashield.quota.rejection``    Counter            quota metric
-================================= ================== ==============================
+.. _otelmetrics:
 
-Session identifiers, user names, R expressions and symbol names are never used as metric dimensions.
+Metrics
+~~~~~~~
+
+Four instruments are exported, on the ``org.obiba.opal.datashield`` instrumentation scope, once every ``OTEL_METRIC_EXPORT_INTERVAL`` milliseconds — a minute by default. They describe the DataSHIELD workload; the JVM and the HTTP layer are not instrumented by Opal itself, and come from the OpenTelemetry Java agent when it is installed, see `Tracing the rest of the server`_.
+
+================================= ================== ============ =========================================================
+Instrument                        Kind               Unit         Measures
+================================= ================== ============ =========================================================
+``datashield.session.active``     Observable gauge   sessions     Open DataSHIELD sessions, counted at each export.
+``datashield.operation.count``    Counter            operations   DataSHIELD operations, completed or failed.
+``datashield.operation.duration`` Histogram          seconds      Time spent on a DataSHIELD operation.
+``datashield.quota.rejection``    Counter            rejections   Sessions refused because a usage quota was spent.
+================================= ================== ============ =========================================================
+
+``datashield.session.active``
+  The number of R sessions running in the DataSHIELD execution context, by ``datashield.profile``. It is asked of the session manager when the exporter collects, rather than maintained as sessions come and go: a session also ends by timing out and by losing its R server, so a counter incremented around the REST endpoints would drift upwards forever. A profile with no session reports nothing at all — the series disappears rather than reading zero.
+
+``datashield.operation.count``
+  Incremented once per operation, when the operation ends, whether it succeeded or failed. Attributes are ``datashield.action``, ``datashield.profile`` and ``datashield.outcome``.
+
+``datashield.operation.duration``
+  The duration of that same operation, in seconds, under the same three attributes — recorded from the same measurement as the operation's span, so a graph and a trace never disagree. The explicit bucket boundaries are 0.005, 0.01, 0.025, 0.05, 0.075, 0.1, 0.25, 0.5, 0.75, 1, 2.5, 5, 7.5, 10, 30, 60 and 300 seconds: the OpenTelemetry defaults are laid out for milliseconds, and would put nearly every R operation in one bucket.
+
+``datashield.quota.rejection``
+  Incremented when a user is refused a new session because their allowance is spent, by ``datashield.quota.metric``. A quota is held against a user and a metric, not against a profile, so there is no profile dimension. A user who has spent both allowances increments both series, and the same refusal is *also* counted as an ``OPEN`` operation in error — the quota check runs inside the operation.
+
+Attributes
+++++++++++
+
+===========================  =============================================================================  =========================================
+Attribute                    Values                                                                         On
+===========================  =============================================================================  =========================================
+``datashield.action``        ``OPEN``, ``CLOSE``, ``PARSE``, ``ASSIGN``, ``AGGREGATE``, ``WS_SAVE``,         operation.count, operation.duration
+                             ``WS_RESTORE``
+``datashield.profile``       The DataSHIELD profile the session runs on, absent when unknown                 session.active, operation.count, operation.duration
+``datashield.outcome``       ``ok``, or ``error`` when the operation threw                                   operation.count, operation.duration
+``datashield.quota.metric``  ``EXECUTION_TIME``, ``SESSION_TIME``                                            quota.rejection
+===========================  =============================================================================  =========================================
+
+The actions are those of the audit log, and mean the same thing there — ``PARSE`` is the DataSHIELD parser vetting a submitted expression on the request thread, ``AGGREGATE`` and ``ASSIGN`` are the R server evaluating what came out of it, ``OPEN`` covers starting the R session and seeding it. The actions the audit log records without an operation to time, ``RM``, ``LS`` and ``QUOTA``, are not counted here.
+
+.. note::
+
+  Session identifiers, user names, R expressions and symbol names are never metric attributes. Each attribute multiplies the number of time series a backend has to keep, so anything that identifies one operation rather than a class of them stays on the logs and the spans, where it can be looked up on demand. To go from a suspicious curve to the operations behind it, filter the DataSHIELD logs or traces on the same action, profile and time range.
+
+Names in the backend
+++++++++++++++++++++
+
+The names above are the OTLP ones. A Prometheus flavoured backend — Prometheus itself, Mimir, Grafana Cloud — renames them on ingestion: dots become underscores, a real unit is appended, and a monotonic counter gets ``_total``. What Opal exports as ``datashield.operation.count`` is therefore queried as ``datashield_operation_count_total``.
+
+================================= =========================================================================
+Instrument                        Prometheus time series
+================================= =========================================================================
+``datashield.session.active``     ``datashield_session_active``
+``datashield.operation.count``    ``datashield_operation_count_total``
+``datashield.operation.duration`` ``datashield_operation_duration_seconds_bucket``, ``..._sum``, ``..._count``
+``datashield.quota.rejection``    ``datashield_quota_rejection_total``
+================================= =========================================================================
+
+Attributes become labels under the same rule: ``datashield_action``, ``datashield_profile``, ``datashield_outcome``, ``datashield_quota_metric``. The ``OTEL_SERVICE_NAME`` and ``OTEL_RESOURCE_ATTRIBUTES`` values land on every series as well, which is what tells the nodes of a federated study apart.
+
+.. code-block:: none
+
+  # operations per second, by action
+  sum by (datashield_action) (rate(datashield_operation_count_total[5m]))
+
+  # share of operations that fail, by profile
+  sum by (datashield_profile) (rate(datashield_operation_count_total{datashield_outcome="error"}[5m]))
+    / sum by (datashield_profile) (rate(datashield_operation_count_total[5m]))
+
+  # 95th percentile of the time an aggregation takes
+  histogram_quantile(0.95, sum by (le) (
+    rate(datashield_operation_duration_seconds_bucket{datashield_action="AGGREGATE"}[5m])))
+
+  # sessions open right now, and refusals over the day
+  sum by (datashield_profile) (datashield_session_active)
+  sum by (datashield_quota_metric) (increase(datashield_quota_rejection_total[1d]))
 
 Upgrading an existing installation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -513,6 +557,30 @@ Two things to expect with the agent running:
 
 * it logs a warning that ``GlobalOpenTelemetry.set`` calls are ignored. That is normal, and nothing is lost: Opal keeps its own SDK for the log appenders and uses the agent's for spans and metrics.
 * the HTTP server spans stay in traces of their own. A DataSHIELD trace is rooted on the session rather than on a request, so it does not nest under the request that started it, and the part of a request that runs outside a DataSHIELD operation stays in that request's trace. The two are tied together by span links: the session span links to the request that opened the session, and each operation span to the request that asked for it, so a backend such as Grafana offers one trace from the other.
+
+Other Settings
+--------------
+
+Shiro's default session timeout is 1800s (half an hour). The session timeout can be set explicitly in the shiro.ini file, in the [main] section:
+
+.. code-block:: bash
+
+  # =======================
+  # Shiro INI configuration
+  # =======================
+
+  [main]
+  # Objects and their properties are defined here,
+  # Such as the securityManager, Realms and anything else needed to build the SecurityManager
+  # 3,600,000 milliseconds = 1 hour
+  securityManager.sessionManager.globalSessionTimeout = 3600000
+
+  # ...
+
+The session timeout is in milliseconds and allowed values are:
+
+* a negative value means sessions never expire.
+* a non-negative value (0 or greater) means session timeout will occur as expected.
 
 Reverse Proxy Configuration
 ---------------------------
