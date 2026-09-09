@@ -9,6 +9,7 @@ Other commands, for advanced users.
    file
    taxonomy
    system
+   datashield-quota
    plugin
    task
    rest

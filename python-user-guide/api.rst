@@ -20,6 +20,7 @@ Package                         Description
 ``obiba_opal.analysis``         Table analysis related classes, to launch an analysis command and export analysis output.
 ``obiba_opal.core``             Core classes for establishing a connection with an Opal server, send requests and aget responses.
 ``obiba_opal.data``             Table data and entities related classes, to get list of entities, values and value sets.
+``obiba_opal.datashield``       DataSHIELD management classes, to add/update/delete/list the usage quotas and to report the usage consumed against them.
 ``obiba_opal.dictionary``       Table dictionary related classes, to list tables and variables and to manage variable annotations.
 ``obiba_opal.exports``          Various export commands.
 ``obiba_opal.file``             File management classes, to upload, download, get info and delete files.
