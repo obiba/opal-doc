@@ -184,7 +184,7 @@ See also the `Rock R server Docker documentation <https://rockdoc.obiba.org/en/l
 Kubernetes Installation
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Some Helm chart values can be overridden by providing a `values.yaml` file: see default `values.yaml <https://github.com/obiba/helm-charts/blob/master/obiba-opal/values.yaml>`_.
+Some Helm chart values can be overridden by providing a `values.yaml` file: see default `values.yaml <https://github.com/obiba/helm-charts/blob/master/opal/values.yaml>`_.
 
 The OBiBa Helm charts repository can be added with the following command:
 
@@ -198,7 +198,7 @@ The deployment then can be done using the following command:
 
   helm install myopal obiba/opal
 
-See Helm chart documentation for more details: `OBiBa Opal chart README <https://github.com/obiba/helm-charts/blob/master/obiba-opal/README.md>`_.
+See Helm chart documentation for more details: `OBiBa Opal chart README <https://github.com/obiba/helm-charts/blob/master/opal/README.md>`_.
 
 Upgrade
 -------
