@@ -443,20 +443,22 @@ For example, with a collector running on the same host:
 Settings
 ~~~~~~~~
 
-===================================== =========================================================================
-Environment Variable                  Description
-===================================== =========================================================================
-``OTEL_EXPORTER_OTLP_ENDPOINT``       Base URL of the OTLP/HTTP collector, for instance ``https://collector.example.org:4318``. Setting it is what enables the export.
-``OTEL_EXPORTER_OTLP_LOGS_ENDPOINT``  Full URL of the logs endpoint, when the signals do not go to the same collector. Also enables the export on its own.
-``OTEL_SERVICE_NAME``                 Name reported to the backend. Default is ``opal``.
-``OTEL_RESOURCE_ATTRIBUTES``          Comma separated ``key=value`` pairs added to every record, span and measurement. Useful to tell nodes apart in a federated study.
-``OTEL_METRIC_EXPORT_INTERVAL``       Milliseconds between metric exports. Default is ``60000``.
-===================================== =========================================================================
+======================================= =========================================================================
+Environment Variable                    Description
+======================================= =========================================================================
+``OTEL_EXPORTER_OTLP_ENDPOINT``         Base URL of the OTLP/HTTP collector, for instance ``https://collector.example.org:4318``. Setting it is what enables the export.
+``OTEL_EXPORTER_OTLP_LOGS_ENDPOINT``    Full URL of the logs endpoint, when the signals do not go to the same collector. Also enables the export on its own.
+``OTEL_EXPORTER_OTLP_TRACES_ENDPOINT``  Full URL of the traces endpoint, when the signals do not go to the same collector. Also enables the export on its own.
+``OTEL_EXPORTER_OTLP_METRICS_ENDPOINT`` Full URL of the metrics endpoint, when the signals do not go to the same collector. Also enables the export on its own.
+``OTEL_SERVICE_NAME``                   Name reported to the backend. Default is ``opal``.
+``OTEL_RESOURCE_ATTRIBUTES``            Comma separated ``key=value`` pairs added to every record, span and measurement. Useful to tell nodes apart in a federated study.
+``OTEL_METRIC_EXPORT_INTERVAL``         Milliseconds between metric exports. Default is ``60000``.
+======================================= =========================================================================
 
 The other `OpenTelemetry SDK environment variables <https://opentelemetry.io/docs/languages/sdk-configuration/>`_ are honoured as well, with two things to know:
 
-* only ``OTEL_EXPORTER_OTLP_ENDPOINT`` and ``OTEL_EXPORTER_OTLP_LOGS_ENDPOINT`` switch the export on. The signal specific variants for traces and metrics are applied once it is on, but do not enable it by themselves.
-* the exporter protocol defaults to ``http/protobuf`` and has to stay there. Opal bundles the HTTP sender only, so setting ``OTEL_EXPORTER_OTLP_PROTOCOL`` to ``grpc`` makes the export fail at startup.
+* any one of the four endpoint variables switches the export on: the global ``OTEL_EXPORTER_OTLP_ENDPOINT``, or a signal specific one on its own. A deployment that only wants the traces, or only the metrics, sets that endpoint and nothing else.
+* the exporter protocol defaults to ``http/protobuf`` and has to stay there. Opal bundles the HTTP sender only, so setting ``OTEL_EXPORTER_OTLP_PROTOCOL`` to ``grpc`` makes the SDK fail to build. Opal logs ``Failed to initialize OpenTelemetry, continuing without it``, starts normally, and exports nothing.
 
 Securing the endpoint
 ~~~~~~~~~~~~~~~~~~~~~
