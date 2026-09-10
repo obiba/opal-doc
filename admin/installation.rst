@@ -177,6 +177,7 @@ Environment Variable            Description
 ``ROCK_POD_SPECS``              Default Rock pod specifications in JSON format (optional), when Opal runs in a Kubernetes environment.
 ``R_REPOS``                     R CRAN repositories (optional, see ``org.obiba.opal.r.repos`` setting).
 ``CSRF_ALLOWED``                Comma separated list of allowed CSRF origins (optional, see ``csrf.allowed`` setting).
+``CSRF_ALLOWED_AGENTS``         Comma separated list of allowed client user agents, for requests without a ``Referer`` header (optional, see ``csrf.allowed-agents`` setting).
 ``OTEL_EXPORTER_OTLP_ENDPOINT`` OpenTelemetry collector OTLP/HTTP URL, for instance ``http://collector:4318`` (optional). Setting it enables the log, trace and metric export: see :ref:`otelconf`.
 ``OTEL_SERVICE_NAME``           Name reported to the OpenTelemetry backend, default is ``opal`` (optional).
 ``OTEL_RESOURCE_ATTRIBUTES``    Comma separated ``key=value`` resource attributes added to every exported record (optional).

@@ -161,6 +161,7 @@ Cross Site Resource Forgery (CSRF)
 Property                                Description
 ======================================= =========================================================================
 ``csrf.allowed``                        Comma separated list of client ``host:port`` explicitly allowed to connect to Opal server. Use ``*`` as a wildcard. Default is empty.
+``csrf.allowed-agents``                 Comma separated list of ``User-Agent`` fragments, matched case insensitively, allowed to connect when the request carries no ``Referer`` header - the API clients. Default is ``curl,python,java,HTTP.jl``.
 ======================================= =========================================================================
 
 .. _config-db:
