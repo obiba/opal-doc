@@ -81,42 +81,181 @@ Docker Image Installation
 
 OBiBa is an early adopter of the `Docker <https://www.docker.com/>`_ technology, providing its own images from the `Docker Hub repository <https://hub.docker.com/orgs/obiba/repositories>`_.
 
-A typical `docker-compose <https://docs.docker.com/compose/>`_ file (including a MongoDB database and a MySQL database, a DataSHIELD ready R server and all useful plugins) would be:
+The image needs no database server to run: since Opal 6.0.0 the configuration (projects, users, permissions, registered databases...) is kept in an embedded H2 database in the Opal home directory (see :ref:`config-db`), and the data databases are registered afterwards, from the **Administration > Databases** page or through the environment variables below. The `docker-opal <https://github.com/obiba/docker-opal>`_ repository has the complete `docker compose <https://docs.docker.com/compose/>`_ files of the setups that follow.
+
+Each setup puts its containers on a network of its own, on which the service names resolve (``rock``, ``mongo``...) and which is named so that several stacks can coexist on a host without seeing each other.
+
+**Standalone**
+
+The smallest setup is Opal and a DataSHIELD ready R server, with no database server at all. This is enough to log in, work with resources and DataSHIELD, and register a data database later on:
 
 .. code-block:: yaml
 
   services:
     opal:
       image: obiba/opal:latest
+      networks:
+        - opal-h2
+      ports:
+        - "8880:8080"
+      depends_on:
+        - rock
+      environment:
+        - OPAL_ADMINISTRATOR_PASSWORD=${OPAL_ADMINISTRATOR_PASSWORD}
+        - ROCK_HOSTS=rock:8085
+      volumes:
+        - opal-home:/srv
+    rock:
+      image: obiba/rock:latest
+      networks:
+        - opal-h2
+      volumes:
+        - rock-home:/srv
+
+  volumes:
+    opal-home:
+    rock-home:
+
+  networks:
+    opal-h2:
+      name: opal-h2
+
+
+**With data databases**
+
+A typical setup including a MongoDB database and a PostgreSQL database (in addition to the DataSHIELD ready R server and all useful plugins) would be:
+
+.. code-block:: yaml
+
+  services:
+    opal:
+      image: obiba/opal:latest
+      networks:
+        - opal
       ports:
         - "8880:8080"
       depends_on:
         - rock
         - mongo
-        - mysqldata
+        - postgresdata
       environment:
         #- JAVA_OPTS=-Xms1G -Xmx8G -XX:+UseG1GC
         - OPAL_ADMINISTRATOR_PASSWORD=${OPAL_ADMINISTRATOR_PASSWORD}
         - MONGO_HOST=mongo
         - MONGO_PORT=27017
-        - MYSQLDATA_HOST=mysqldata
-        - MYSQLDATA_DATABASE=${MYSQLDATA_DATABASE}
-        - MYSQLDATA_USER=${MYSQLDATA_USER}
-        - MYSQLDATA_PASSWORD=${MYSQLDATA_PASSWORD}
+        - MONGO_USER=${MONGO_USER}
+        - MONGO_PASSWORD=${MONGO_PASSWORD}
+        - POSTGRESDATA_HOST=postgresdata
+        - POSTGRESDATA_DATABASE=${POSTGRESDATA_DATABASE}
+        - POSTGRESDATA_USER=${POSTGRESDATA_USER}
+        - POSTGRESDATA_PASSWORD=${POSTGRESDATA_PASSWORD}
         - ROCK_HOSTS=rock:8085
       volumes:
-        - /some/path/opal:/srv
+        - opal-home:/srv
     mongo:
       image: mongo:8.0
-    mysqldata:
-      image: mysql
+      networks:
+        - opal
       environment:
-        - MYSQL_DATABASE=${MYSQLDATA_DATABASE}
-        - MYSQL_USER=${MYSQLDATA_USER}
-        - MYSQL_PASSWORD=${MYSQLDATA_PASSWORD}
-        - MYSQL_RANDOM_ROOT_PASSWORD=yes
+        - MONGO_INITDB_ROOT_USERNAME=${MONGO_USER}
+        - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
+      volumes:
+        - mongo-data:/data/db
+    postgresdata:
+      image: postgres:18
+      networks:
+        - opal
+      environment:
+        - POSTGRES_DB=${POSTGRESDATA_DATABASE}
+        - POSTGRES_USER=${POSTGRESDATA_USER}
+        - POSTGRES_PASSWORD=${POSTGRESDATA_PASSWORD}
+      volumes:
+        - postgres-data:/var/lib/postgresql
     rock:
       image: obiba/rock:latest
+      networks:
+        - opal
+      volumes:
+        - rock-home:/srv
+
+  volumes:
+    opal-home:
+    mongo-data:
+    postgres-data:
+    rock-home:
+
+  networks:
+    opal:
+      name: opal
+
+**All on PostgreSQL**
+
+The configuration database itself can be on a PostgreSQL server rather than embedded, with the ``POSTGRESCONFIG_*`` variables. As Opal writes its configuration to whatever database is configured at its first start, these variables must be there from the beginning: they cannot be added to an Opal that has already started once. A setup with one PostgreSQL server for the configuration and one for the data, and no MongoDB, would be:
+
+.. code-block:: yaml
+
+  services:
+    opal:
+      image: obiba/opal:latest
+      networks:
+        - opal-postgres
+      ports:
+        - "8880:8080"
+      depends_on:
+        - rock
+        - postgresconfig
+        - postgresdata
+      environment:
+        - OPAL_ADMINISTRATOR_PASSWORD=${OPAL_ADMINISTRATOR_PASSWORD}
+        - POSTGRESCONFIG_HOST=postgresconfig
+        - POSTGRESCONFIG_DATABASE=opal_config
+        - POSTGRESCONFIG_USER=opal
+        - POSTGRESCONFIG_PASSWORD=${POSTGRESCONFIG_PASSWORD}
+        - POSTGRESDATA_HOST=postgresdata
+        - POSTGRESDATA_DATABASE=opal
+        - POSTGRESDATA_USER=opal
+        - POSTGRESDATA_PASSWORD=${POSTGRESDATA_PASSWORD}
+        - ROCK_HOSTS=rock:8085
+      volumes:
+        - opal-home:/srv
+    postgresconfig:
+      image: postgres:18
+      networks:
+        - opal-postgres
+      environment:
+        - POSTGRES_DB=opal_config
+        - POSTGRES_USER=opal
+        - POSTGRES_PASSWORD=${POSTGRESCONFIG_PASSWORD}
+      volumes:
+        - opal-config:/var/lib/postgresql
+    postgresdata:
+      image: postgres:18
+      networks:
+        - opal-postgres
+      environment:
+        - POSTGRES_DB=opal
+        - POSTGRES_USER=opal
+        - POSTGRES_PASSWORD=${POSTGRESDATA_PASSWORD}
+      volumes:
+        - opal-data:/var/lib/postgresql
+    rock:
+      image: obiba/rock:latest
+      networks:
+        - opal-postgres
+      volumes:
+        - rock-home:/srv
+
+  volumes:
+    opal-home:
+    opal-config:
+    opal-data:
+    rock-home:
+
+  networks:
+    opal-postgres:
+      name: opal-postgres
+
+The configuration is then in the ``postgresconfig`` server, while the secret key that encrypts the credentials it holds is still in the Opal home volume: back up and restore the two together (see :ref:`config-db`).
 
 The environment variables that are exposed by this image are:
 
@@ -127,6 +266,11 @@ Environment Variable            Description
 ``OPAL_ADMINISTRATOR_PASSWORD`` Opal administrator password, required and set at first start.
 ``APP_URL``                     Opal public URL (optional, see ``org.obiba.opal.public.url`` setting).
 ``APP_CONTEXT_PATH``            Opal server URL context (optional, see ``org.obiba.opal.server.context-path`` setting).
+``POSTGRESCONFIG_HOST``         PostgreSQL server host for the configuration database (optional, to be set before the first start; default is the embedded H2 database, see :ref:`config-db`).
+``POSTGRESCONFIG_PORT``         PostgreSQL server port for the configuration database, default is ``5432``.
+``POSTGRESCONFIG_DATABASE``     PostgreSQL configuration database name, an existing and empty database, default is ``opal_config``.
+``POSTGRESCONFIG_USER``         PostgreSQL configuration database user, default is ``opal``.
+``POSTGRESCONFIG_PASSWORD``     PostgreSQL configuration database password, required when ``POSTGRESCONFIG_HOST`` is set.
 ``MONGO_HOST``                  MongoDB server host (optional).
 ``MONGO_PORT``                  MongoDB server port, default is ``27017``.
 ``MONGO_USER``                  MongoDB server user (optional).
@@ -287,11 +431,11 @@ The Opal server log files are located in **OPAL_HOME/logs** directory. If the lo
 
 **Docker**
 
-When using a docker-compose configuration file, the start up command is:
+When using a docker compose configuration file, the start up command is:
 
 .. code-block:: bash
 
-  docker-compose -f docker-compose.yml up -d
+  docker compose -f docker-compose.yml up -d
 
 
 Usage
