@@ -164,6 +164,17 @@ Property                                Description
 ``csrf.allowed-agents``                 Comma separated list of ``User-Agent`` fragments, matched case insensitively, allowed to connect when the request carries no ``Referer`` header - the API clients. Default is ``curl,python,java,HTTP.jl``.
 ======================================= =========================================================================
 
+Cross-Origin Resource Sharing (CORS)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+`CORS <https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS>`_ allows web applications served from other origins to call Opal web services from a browser. It is disabled by default.
+
+======================================= =========================================================================
+Property                                Description
+======================================= =========================================================================
+``cors.allowed``                        Comma separated list of origins (for instance ``https://app.example.org``) allowed to make cross-origin requests, with credentials. Use ``*`` as a wildcard. Default is empty (CORS disabled).
+======================================= =========================================================================
+
 .. _config-db:
 
 Configuration Database
