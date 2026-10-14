@@ -51,6 +51,7 @@ Opal ensures data access security through a variety of mechanisms:
 * Data are extracted from Biobank database as CSV files. These files are then imported in Opal database through the Opal application. There is no direct link between Opal and the Biobank Data Repository.
 
 .. image:: images/opal-network.png
+    :scale: 50 %
 
 Data Harmonization across Studies
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -63,6 +64,7 @@ The aim of the data harmonization process is to transform study-specific data in
 * Processing algorithms are then developed to derive study-specific variables into DataSchema format variables.
 
 .. image:: images/harmonization-network.png
+    :scale: 50 %
 
 Study Consortium Web Portal
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -75,6 +77,7 @@ Note that when accessing harmonized data summaries:
 * Individual-level data are never extracted from Opal servers (data aggregations are computed in Opal).
 
 .. image:: images/harmonization-portal.png
+    :scale: 50 %
 
 Distributed analyses with DataSHIELD
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

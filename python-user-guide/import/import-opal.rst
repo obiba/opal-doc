@@ -54,4 +54,4 @@ Copy tables BloodPressure and ArmSpan from Opal on demo.obiba.org to Opal on loc
 
 .. code-block:: bash
 
-  opal import-opal -o http://localhost:8080 -u administrator -p password  --ro https://opal-demo.obiba.org --ru administrator --rp password --rdatasource onyx --destination opal-data --tables BloodPressure  --tables ArmSpan
+  opal import-opal -o http://localhost:8080 -u administrator -p password  --ro https://opal-demo.obiba.org --ru administrator --rp password --rdatasource amber --destination opal-data --tables BloodPressure  --tables ArmSpan

@@ -42,12 +42,12 @@ Options
 Example
 -------
 
-Import tables from 20-onyx ZIP file to the opal-data datasource:
+Import tables from 20-amber ZIP file to the opal-data datasource:
 
 .. code-block:: bash
 
   # Import all tables
-  opal import-xml --opal https://opal-demo.obiba.org --user administrator --password password --path /home/administrator/20-onyx-data.zip --destination opal-data
+  opal import-xml --opal https://opal-demo.obiba.org --user administrator --password password --path /home/administrator/20-amber-data.zip --destination opal-data
 
   # Import only ArmSpan and BloodPressure tables
-  opal import-xml --opal https://opal-demo.obiba.org --user administrator --password password --path /home/administrator/20-onyx-data.zip --destination opal-data --tables ArmSpan --tables BloodPressure
+  opal import-xml --opal https://opal-demo.obiba.org --user administrator --password password --path /home/administrator/20-amber-data.zip --destination opal-data --tables ArmSpan --tables BloodPressure

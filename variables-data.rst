@@ -10,10 +10,12 @@ The following diagram presents a 'traditional' view of what is a table:
 * the 'cells' are the variable entity values.
 
 .. image:: images/magma-table.png
+    :scale: 50 %
 
 The following diagram shows the relationships between the different concepts:
 
 .. image:: images/magma.png
+    :scale: 50 %
 
 Variables
 ---------
@@ -233,8 +235,9 @@ Entities
 The entities can be of different types:
 
 * Participant (most common)
-* Instrument (provided by Onyx)
-* Workstation (provided by Onyx)
+* Instrument
+* Workstation
+* Medication
 * ... (any that might fit your needs)
 
 Each entity has a unique identifier. An entity can have several value sets, but only one value set for a particular table.

@@ -16,6 +16,7 @@ DataSHIELD (`Wolfson et al., 2010 <http://ije.oxfordjournals.org/content/39/5/13
 The following figure illustrates the basic IT infrastructure that underpins DataSHIELD; it reflects a hypothetical implementation based on a pooled analysis involving data from six studies. The individual-level data that provide the basis of the analysis remain on ’data computers’ (DCs) at their home bases. An additional computer is identified as the ‘analysis computer’ (AC). This is the computer on which the primary statistician will type the commands to enact and control the pooled analysis.
 
 .. image:: ../images/datashield.png
+    :scale: 50 %
 
 Please consult the `DataSHIELD project <http://datashield.org/>`_ for further information.
 
@@ -29,6 +30,7 @@ Opal uses the `R <http://www.r-project.org/>`_ statistical environment to implem
 * an R package for Opal (installed on the Analysis Computer)
 
 .. image:: ../images/opal-datashield.png
+    :scale: 50 %
 
 Opal Server Component
 ~~~~~~~~~~~~~~~~~~~~~

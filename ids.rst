@@ -11,6 +11,7 @@ Participant Identifier Separation
 The following diagram shows the different identifiers that can be assigned to one participant.
 
 .. image:: images/participant-id-separation.png
+    :scale: 50 %
 
 Opal separates the participant identifiers from the participant's data in two databases:
 
@@ -37,7 +38,7 @@ Data Exportation
 
 The same identifiers mapping process can apply when exporting data. To avoid collusion between research projects requesting for data, each of them will be delivered data with participant's identifiers specific to them. This way "Research Project ABC" will not be able to put in common its Study data with "Research Project 123". It will only be possible if the Study allows it.
 
-Integration with Onyx
----------------------
+Integration with Amber
+----------------------
 
-`Onyx <https://www.obiba.org/pages/products/onyx/>`_ is the OBiBa's solution for collecting participants data. Data exported by Onyx can be directly imported in Opal. If participant is assigned a different identifier in each data collection sites, then it will be required to define in Opal a identifiers mapping for each of these sites.
+`Amber <https://www.obiba.org/pages/products/amber/>`_ is the OBiBa's solution for collecting participants data. Data exported by Amber can be directly imported in Opal. If participant is assigned a different identifier in each data collection sites, then it will be required to define in Opal a identifiers mapping for each of these sites.

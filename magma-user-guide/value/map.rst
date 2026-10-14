@@ -28,7 +28,7 @@ Syntax
    * - ``key_i:value_i``
      - A list of key/value pairs: the value to be mapped and the mapping value, explicitly provided or the result of an operation or a function.
    * - ``defaultValue``
-     - optional value to return when the lookup value is not found in the list of key/value pairs. (since Opal 1.5.1 and Onyx 1.8.3)
+     - optional value to return when the lookup value is not found in the list of key/value pairs.
    * - ``nullValue``
      - optional value to return when the lookup value is null.
    * - ``mapper``

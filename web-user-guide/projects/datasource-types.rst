@@ -138,7 +138,7 @@ For more information about CSV format:
 Opal Archive Datasource
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Opal Archive datasource is a fully featured file-based datasource. This datasource comes as a .zip file (that can be optionally encrypted) containing a folder for each table having: the full data dictionary in a XML file, a XML data file per entity. This is the file format used when exporting data from Onyx.
+Opal Archive datasource is a fully featured file-based datasource. This datasource comes as a .zip file (that can be optionally encrypted) containing a folder for each table having: the full data dictionary in a XML file, a XML data file per entity.
 
 SPSS Datasource
 ~~~~~~~~~~~~~~~

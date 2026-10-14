@@ -51,5 +51,6 @@ The count of entities matching each of the variable criteria will be displayed. 
 illustrated by the venn diagram:
 
 .. image:: ../../images/entities-venn.png
+    :scale: 50 %
 
 A view can be built with a entities filter script that reproduces the search criteria.
