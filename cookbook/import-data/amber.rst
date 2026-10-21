@@ -32,7 +32,7 @@ Importing Case Reports or Interviews
      * **State**, the state of the records (``Completed`` by default),
      * **From** and **To**, the period in which the records were last updated,
 
-  7. Optionally, set the **Entity type** (by default, ``Participant``, or ``CaseReport`` when a case report form allows several records per participant),
+  7. Optionally, set the **Entity type** that replaces ``Participant`` (the ``CaseReport`` tables of a case report form that allows several records per participant keep their entity type),
   8. Follow the next import steps (incremental, identifiers mapping, tables selection) and launch the import task,
   9. When the import task is completed, go to the new tables' page.
 

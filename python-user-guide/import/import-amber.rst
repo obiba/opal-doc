@@ -56,7 +56,7 @@ Options
    * - ``--to TO, -to TO``
      - Records updated until this date (``YYYY-MM-DD``)
    * - ``--type TYPE, -ty TYPE``
-     - Entity type (default is the one defined by Amber)
+     - Entity type replacing the ``Participant`` one defined by Amber
    * - ``--merge, -mg``
      - Merge imported data dictionary with the destination one (default is false, i.e. data dictionary is overridden).
 

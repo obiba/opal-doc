@@ -243,6 +243,8 @@ Amber datasource imports the records collected by `Amber <https://www.obiba.org/
 
 Opal connects to Amber with an Amber API key, created by an Amber administrator in Amber Studio: the key is limited to the data extraction of some studies, it cannot modify anything (see the `Amber API keys documentation <https://amberdoc.obiba.org/en/latest/studio-user-guide/administration/api-keys.html>`_). The extractions made with a key are audited in Amber.
 
+The certificate of the Amber server is always verified: an Amber server with a self-signed certificate, or a certificate issued by a private certificate authority, requires this certificate (or authority) to be added to the trust store of the Java runtime of Opal.
+
 The import options are:
 
 * **Amber URL**, the Amber API URL, e.g. ``https://amber.example.org/api``,
@@ -253,7 +255,7 @@ The import options are:
 * **Campaign**, interviews only and optional, the name of the campaign of the interviews,
 * **State**, optional, the state of the records (``completed`` by default),
 * **From** and **To**, optional, the period in which the records were last updated, which is convenient for importing the new records only,
-* **Entity type**, optional, the entity type of the tables is defined by Amber otherwise (``Participant``, or ``CaseReport`` when a case report form allows several records per participant).
+* **Entity type**, optional, replaces the ``Participant`` entity type defined by Amber; the ``CaseReport`` tables of a case report form that allows several records per participant keep their entity type, and refer to this one.
 
 There is one table per form revision (and per interview step). The data dictionary follows the form items:
 
