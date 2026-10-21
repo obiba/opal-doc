@@ -71,10 +71,10 @@ Import the completed case reports of the ``Baseline`` case report form of the st
 
 .. code-block:: bash
 
-  opal import-amber -o http://localhost:8080 -u administrator -p password --amber https://amber.example.org/api --key amb_xxxxxx --study MyStudy --crf Baseline --destination mystudy
+  opal import-amber -o https://opal-demo.obiba.org -u administrator -p password --amber https://amber.example.org/api --key amb_xxxxxx --study MyStudy --crf Baseline --destination mystudy
 
 Import the interviews of the ``Autumn`` campaign of the ``Follow-up`` interview design, updated since January 1st 2026:
 
 .. code-block:: bash
 
-  opal import-amber -o http://localhost:8080 -u administrator -p password --amber https://amber.example.org/api --key amb_xxxxxx --study MyStudy --design Follow-up --campaign Autumn --from 2026-01-01 --incremental --destination mystudy
+  opal import-amber -o https://opal-demo.obiba.org -u administrator -p password --amber https://amber.example.org/api --key amb_xxxxxx --study MyStudy --design Follow-up --campaign Autumn --from 2026-01-01 --incremental --destination mystudy
