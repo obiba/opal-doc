@@ -1,7 +1,7 @@
 Import Commands
 ===============
 
-Import data from files (CSV, XML, SPSS) or a remote server (Opal, Limesurvey).
+Import data from files (CSV, XML, SPSS) or a remote server (Opal, Amber, Limesurvey).
 
 .. toctree::
    :maxdepth: 1
@@ -14,6 +14,7 @@ Import data from files (CSV, XML, SPSS) or a remote server (Opal, Limesurvey).
    import-r-stata
    import-r-rds
    import-opal
+   import-amber
    import-limesurvey
    import-sql
    import-ids
