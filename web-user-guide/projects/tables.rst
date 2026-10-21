@@ -201,7 +201,7 @@ When importing data, Opal relies on the concept of datasource. This allows Opal 
 
 The importation process follows several steps:
 
-* Data format selection: file-based (CSV, Opal Archive), server-based (SQL, Limesurvey, Opal)
+* Data format selection: file-based (CSV, Opal Archive), server-based (SQL, Limesurvey, Opal, Amber)
 * Data format specific options
 * Incremental options
 * Identifiers mapping options
