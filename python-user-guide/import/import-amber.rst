@@ -1,7 +1,7 @@
 Import Amber
 ============
 
-Import case reports or interviews, with their data dictionary and their uploaded files, from an `Amber <https://www.obiba.org/pages/products/amber/>`_ server. Opal connects to Amber with an Amber API key, created by an Amber administrator in Amber Studio, giving access to the study (see :doc:`../../cookbook/import-data/amber`).
+Import the case reports of a case report form, or the interviews of an interview design, with their data dictionary and their uploaded files, from an `Amber <https://www.obiba.org/pages/products/amber/>`_ server. Opal connects to Amber with an Amber API key, created by an Amber administrator in Amber Studio, giving access to the study (see :doc:`../../cookbook/import-data/amber`).
 
 .. code-block:: bash
 
@@ -38,10 +38,10 @@ Options
      - Amber API key giving access to the study
    * - ``--study STUDY, -st STUDY``
      - Amber study name
-   * - ``--form FORM, -fo FORM``
-     - Amber case report form name, or interview design name
-   * - ``--interviews, -itw``
-     - Import the interviews of an interview design (default is the case reports of a case report form)
+   * - ``--crf CRF, -cr CRF``
+     - Amber case report form name, to import its case reports (exclusive from ``--design``)
+   * - ``--design DESIGN, -ds DESIGN``
+     - Amber interview design name, to import its interviews, i.e. the data of each of its steps' forms (exclusive from ``--crf``)
    * - ``--campaign CAMPAIGN, -ca CAMPAIGN``
      - Amber campaign name, to filter the interviews
    * - ``--state STATE, -sta STATE``
@@ -71,10 +71,10 @@ Import the completed case reports of the ``Baseline`` case report form of the st
 
 .. code-block:: bash
 
-  opal import-amber -o http://localhost:8080 -u administrator -p password --amber https://amber.example.org/api --key amb_xxxxxx --study MyStudy --form Baseline --destination mystudy
+  opal import-amber -o http://localhost:8080 -u administrator -p password --amber https://amber.example.org/api --key amb_xxxxxx --study MyStudy --crf Baseline --destination mystudy
 
 Import the interviews of the ``Autumn`` campaign of the ``Follow-up`` interview design, updated since January 1st 2026:
 
 .. code-block:: bash
 
-  opal import-amber -o http://localhost:8080 -u administrator -p password --amber https://amber.example.org/api --key amb_xxxxxx --study MyStudy --form Follow-up --interviews --campaign Autumn --from 2026-01-01 --incremental --destination mystudy
+  opal import-amber -o http://localhost:8080 -u administrator -p password --amber https://amber.example.org/api --key amb_xxxxxx --study MyStudy --design Follow-up --campaign Autumn --from 2026-01-01 --incremental --destination mystudy
