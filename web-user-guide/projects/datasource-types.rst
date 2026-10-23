@@ -66,6 +66,11 @@ Datasources are the entry point in Opal for accessing to :doc:`../../variables-d
     - x
     -
     -
+  * - Amber Datasource
+    -
+    - x
+    -
+    -
   * - MongoDB Datasource
     -
     -
@@ -230,3 +235,32 @@ Opal Datasource
 ~~~~~~~~~~~~~~~
 
 Opal datasource allows one Opal server to connect to a remote Opal server. This can be useful when syncing datasources in different Opal instances.
+
+Amber Datasource
+~~~~~~~~~~~~~~~~
+
+Amber datasource imports the records collected by `Amber <https://www.obiba.org/pages/products/amber/>`_, either the case reports of a case report form or the interviews of an interview design, with their fully described data dictionary and the uploaded files.
+
+Opal connects to Amber with an Amber API key, created by an Amber administrator in Amber Studio: the key is limited to the data extraction of some studies, it cannot modify anything (see the `Amber API keys documentation <https://amberdoc.obiba.org/en/latest/studio-user-guide/administration/api-keys.html>`_). The extractions made with a key are audited in Amber.
+
+The certificate of the Amber server is always verified: an Amber server with a self-signed certificate, or a certificate issued by a private certificate authority, requires this certificate (or authority) to be added to the trust store of the Java runtime of Opal.
+
+The import options are:
+
+* **Amber URL**, the Amber API URL, e.g. ``https://amber.example.org/api``,
+* **API key**, the Amber API key giving access to the study,
+* **Case reports** or **Interviews**, the type of records to import,
+* **Study**, the name of the study,
+* **Case report form** or **Interview design**, the name of the form,
+* **Campaign**, interviews only and optional, the name of the campaign of the interviews,
+* **State**, optional, the state of the records (``completed`` by default),
+* **From** and **To**, optional, the period in which the records were last updated, which is convenient for importing the new records only,
+* **Entity type**, optional, replaces the ``Participant`` entity type defined by Amber; the ``CaseReport`` tables of a case report form that allows several records per participant keep their entity type, and refer to this one.
+
+There is one table per form revision (and per interview step). The data dictionary follows the form items:
+
+* the form item labels and choices are the variable labels and categories,
+* the uploaded files are ``binary`` variables, their content is imported,
+* a matrix is split into one variable per row: categorical for a radio matrix, ``boolean`` for a checkbox matrix,
+* the variables of a repeatable group are repeatable (one value per occurrence).
+

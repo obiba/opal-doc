@@ -5,7 +5,7 @@ Import a SPSS file, to be found in Opal file system.
 
 .. code-block:: bash
 
-  opal import-xml <CREDENTIALS> <OPTIONS> [EXTRAS]
+  opal import-spss <CREDENTIALS> <OPTIONS> [EXTRAS]
 
 Options
 -------

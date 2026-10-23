@@ -5,7 +5,7 @@ Import an archive of XML files, to be found in Opal file system.
 
 .. code-block:: bash
 
-  opal import-spss <CREDENTIALS> <OPTIONS> [EXTRAS]
+  opal import-xml <CREDENTIALS> <OPTIONS> [EXTRAS]
 
 Options
 -------

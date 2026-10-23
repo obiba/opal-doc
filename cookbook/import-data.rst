@@ -7,6 +7,7 @@ Importing data, to make them available for other services (R/DataSHIELD analysis
    :maxdepth: 1
 
    import-data/files
+   import-data/amber
    import-data/r
    import-data/views
    import-data/resources
