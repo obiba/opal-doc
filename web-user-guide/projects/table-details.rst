@@ -70,6 +70,32 @@ Administrate Permission
 
 Allow all operations on the table/view (including removing it).
 
+.. _view_versions:
+
+Versions
+--------
+
+Only available if the table is a view and the user can edit it.
+
+History
+~~~~~~~
+
+The history lists all the changes of the view, the latest first: the view itself, its entity filter and its variable scripts. Each change can be compared with the previous version or with the current one. The tags of a change are shown next to it.
+
+Tags
+~~~~
+
+A tag is a name, with an optional message, given to the latest version of the view, for instance to mark the version used for a publication. The tags are listed most recent first. The name of a tag must be unique in the view and must not contain spaces or any of these characters: ``~ ^ : ? * [ \``.
+
+Each tag can be:
+
+* downloaded: the view definition at that version is saved as an XML file named after the view and the tag, in the same format as the **Download View XML** operation.
+* restored: the dictionary, the variable scripts and the entity filter of the view are replaced by the tagged version. This is recorded as a new change, so the current version stays in the history.
+
+A view cannot be restored if one of its source tables or its resource does not exist anymore. A user who can see the values of the view must also be allowed to see the values of the tables or the resource that the tagged version refers to.
+
+The tags are deleted when the view is renamed or removed.
+
 Operations
 ----------
 
@@ -137,15 +163,21 @@ When the view is based on other tables, you can edit the view properties, i.e. i
 
 When the view is based on a resource (see :ref:`resource_view` in Resource documentation), you can edit the views properties: table name, ID column name, resource reference etc. Depending on the type of operation, the connection with the underlying resource could be reestablished.
 
+.. warning::
+
+  Renaming a view restarts its history of changes: the earlier versions, including the history of its variables, are no longer listed and all its tags are deleted (see :ref:`view_versions`).
+
 Remove View
 ~~~~~~~~~~~
 
-This operation will only remove the logical description of the view. It will not affect the referred data.
+This operation will only remove the logical description of the view and its tags (see :ref:`view_versions`). It will not affect the referred data.
 
 Entity Filter
 ~~~~~~~~~~~~~
 
 A script can be defined to restrict the view entities to the ones matching some criteria (for instance, all women older than 50 years). This scrip tmust return a logical value: *true*, the entity is kept, *false* (or *null*), it is excluded.
+
+The changes of this script are listed in the **History** section of the Entity filter panel, which is shown to the users who can edit the view, once the view has had an entity filter. Each revision can be compared with the previous one or with the current one, and an older revision can be restored. This operation is tracked as a new revision.
 
 Variable Search
 ~~~~~~~~~~~~~~~
