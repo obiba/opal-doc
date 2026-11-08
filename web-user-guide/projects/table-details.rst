@@ -56,19 +56,49 @@ Edit dictionary and view summaries Permission
 
 Applies only to tables that are views.
 
-Allow edition of the view's data dictionary, i.e. the edition of the derived variables algorithms. Automatically grants the **View dictionary and summaries Permission**. This permission does not grant access to individual-level data.
+Allow edition of the view's data dictionary: labels, descriptions, categories, attributes, etc. Automatically grants the **View dictionary and summaries Permission**. This permission does not grant access to individual-level data.
+
+Changing how the view computes its values is subject to the permissions on its sources, see :ref:`view_derivation_permissions`.
 
 Edit dictionary and view values Permission
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Applies only to tables that are views.
 
-Allow edition of the view's data dictionary, i.e. the edition of the derived variables algorithms. Automatically grants the **View dictionary and summaries Permission**. This permission does not grant access to individual-level data.
+Allow edition of the view's data dictionary, as above, and access to the view's individual-level data. Automatically grants the **View dictionary and values Permission**.
+
+Changing how the view computes its values is subject to the permissions on its sources, see :ref:`view_derivation_permissions`.
 
 Administrate Permission
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Allow all operations on the table/view (including removing it).
+
+.. _view_derivation_permissions:
+
+Permissions on the Sources of a View
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Whatever the permission on the view, an operation that changes how the view computes its values requires to be allowed to see the values of all its sources:
+
+* for a view over tables, the **View dictionary and values Permission** (or higher) on each of the referred tables,
+* for a view over a resource, the **Administrate Permission** on the resource,
+* in both cases, the **View dictionary and values Permission** (or higher) on every other table that the scripts of the view read (derivation scripts, *sameAs*, entity filter), once the change is applied.
+
+Scripts that compute the name of the table they read cannot be checked: such changes are reserved to system administrators. System administrators are not subject to these checks.
+
+The operations concerned are:
+
+* editing the script of a derived variable, or adding a derived variable with a script (including the **Add Variables to View** operation),
+* changing, adding or removing the referred tables, or changing the resource settings of the view (ID column, profile, all columns etc.),
+* editing or removing the entity filter,
+* adding variables to a view over a resource, or changing the column a variable is read from, or renaming such a variable,
+* renaming a derived variable to the name of another variable of the view (which replaces it),
+* adding or updating variables from a view XML or Excel file,
+* restoring a script revision, an entity filter revision or a tag of the view (see :ref:`view_versions`),
+* creating a view with derived variable scripts or an entity filter.
+
+Other dictionary edits (labels, descriptions, categories, attributes, etc.) do not need these permissions. When a source is not accessible, the corresponding edit and restore actions are not proposed, and the table references of the view that cannot be accessed are not shown as links.
 
 .. _view_versions:
 
@@ -92,7 +122,7 @@ Each tag can be:
 * downloaded: the view definition at that version is saved as an XML file named after the view and the tag, in the same format as the **Download View XML** operation.
 * restored: the dictionary, the variable scripts and the entity filter of the view are replaced by the tagged version. This is recorded as a new change, so the current version stays in the history.
 
-A view cannot be restored if one of its source tables or its resource does not exist anymore. A user who can see the values of the view must also be allowed to see the values of the tables or the resource that the tagged version refers to.
+A view cannot be restored if one of its source tables or its resource does not exist anymore. Restoring a tag that changes how the view computes its values requires to be allowed to see the values of its sources (see :ref:`view_derivation_permissions`). A user who can see the values of the view must also be allowed to see the values of the tables or the resource that the tagged version refers to.
 
 The tags are deleted when the view is renamed or removed.
 
@@ -178,6 +208,8 @@ Entity Filter
 A script can be defined to restrict the view entities to the ones matching some criteria (for instance, all women older than 50 years). This scrip tmust return a logical value: *true*, the entity is kept, *false* (or *null*), it is excluded.
 
 The changes of this script are listed in the **History** section of the Entity filter panel, which is shown to the users who can edit the view, once the view has had an entity filter. Each revision can be compared with the previous one or with the current one, and an older revision can be restored. This operation is tracked as a new revision.
+
+Editing, removing or restoring the entity filter requires to be allowed to see the values of the sources of the view (see :ref:`view_derivation_permissions`).
 
 Variable Search
 ~~~~~~~~~~~~~~~
