@@ -19,6 +19,17 @@ Personal Access Tokens
 
 Because of the redirect of the user to the original OpenID Connect server login page, this authentication realm is not suitable for scripting/command line tools such as R, Python etc. The solution for a user defined in that kind of realm is to create one or more personal API access tokens (see :ref:`my-profile`) to perform authentication in scripting clients.
 
+Bearer Tokens
+-------------
+
+A client that already holds a token issued by an enabled ID provider (for instance a portal or a service account of the same identity infrastructure) can call the Opal REST API with it, in the ``Authorization`` header:
+
+.. code-block:: bash
+
+  curl -H "Authorization: Bearer <JWT>" -H "Accept: application/json" https://opal.example.org/ws/projects
+
+The token must be a `JWT <https://datatracker.ietf.org/doc/html/rfc7519>`_ signed by the ID provider: its signature is checked against the keys published by the provider, and its issuer, audience (the *Client ID* of the ID provider) and expiration are verified. The user name and the groups are then extracted from the token claims with the *Username Mapping* and *Groups Mapping* settings, the same way as after a login with the web browser. A regular Opal session is opened, so the token is needed only once per session.
+
 Operations
 ----------
 

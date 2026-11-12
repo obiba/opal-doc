@@ -155,7 +155,7 @@ Property                                Description
 Cross Site Resource Forgery (CSRF)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-`CSRF <https://owasp.org/www-community/attacks/csrf>`_ attacks can be mitigated by a built-in interceptor. Default behavior allows connections (http or https) from ``localhost`` and ``127.0.0.1``. Requests from pages served by Opal should be allowed as well (https only), unless network settings or proxies modify or do not report the referer URL.
+`CSRF <https://owasp.org/www-community/attacks/csrf>`_ attacks can be mitigated by a built-in interceptor. Default behavior allows connections (http or https) from ``localhost`` and ``127.0.0.1``. Requests from pages served by Opal should be allowed as well (https only), unless network settings or proxies modify or do not report the referer URL. The check does not apply to the requests that authenticate with a header (``X-Opal-Auth`` personal access token or ``Authorization``), as a browser cannot attach these from another site.
 
 ======================================= =========================================================================
 Property                                Description
