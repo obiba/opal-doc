@@ -155,7 +155,7 @@ Property                                Description
 Cross Site Resource Forgery (CSRF)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-`CSRF <https://owasp.org/www-community/attacks/csrf>`_ attacks can be mitigated by a built-in interceptor. Default behavior allows connections (http or https) from ``localhost`` and ``127.0.0.1``. Requests from pages served by Opal should be allowed as well (https only), unless network settings or proxies modify or do not report the referer URL.
+`CSRF <https://owasp.org/www-community/attacks/csrf>`_ attacks can be mitigated by a built-in interceptor. Default behavior allows connections (http or https) from ``localhost`` and ``127.0.0.1``. Requests from pages served by Opal should be allowed as well (https only), unless network settings or proxies modify or do not report the referer URL. The check does not apply to the requests that authenticate with a header (``X-Opal-Auth`` personal access token or ``Authorization``), as a browser cannot attach these from another site.
 
 ======================================= =========================================================================
 Property                                Description
@@ -218,6 +218,8 @@ Tasks
 ~~~~~
 
 The tasks (imports, exports, copies, backups, analyses...) are recorded in the configuration database, so that their history survives a restart. A task that was still pending or running when Opal stopped is not run again: it is restored as failed, or as canceled if a cancel had been requested.
+
+As the tasks history serves as an audit trail, only a system administrator can delete tasks. The exception is the file bundles (downloads of a set of files), that their owner can delete once downloaded.
 
 ===================================== =========================================================================
 Property                              Description

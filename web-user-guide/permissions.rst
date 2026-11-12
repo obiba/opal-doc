@@ -7,6 +7,7 @@ Permissions are defined per entity to be accessed: a table, a resource, a projec
 * When an entity is part of a hierarchy (a variable is in a table which is in a project), the parent entities are de-facto read-only.
 * When an entity is created, the creator has full access to it, including the permission to delete or grant access permission to it.
 * When an entity refers to another entity, the most restrictive permissions applies.
+* Changing how a view computes its values (derivation scripts, entity filter, referred tables or resource) requires to be allowed to see the values of all the view's sources, whatever the permission on the view (see :ref:`view_derivation_permissions`).
 
 Project
 -------
@@ -71,7 +72,8 @@ Tables
   * - A table
     - | **Edit** table dictionary
       | **View** summaries
-    - Edit dictionary and view values summary (no access to individual values).
+    - | Edit dictionary and view values summary (no access to individual values).
+      | On a view, changing how values are computed also requires to see the values of the view's sources.
     - x
     - 
     - 
@@ -80,7 +82,8 @@ Tables
   * - A table
     - | **Edit** table dictionary
       | **View** values
-    - Edit dictionary and view individual values.
+    - | Edit dictionary and view individual values.
+      | On a view, changing how values are computed also requires to see the values of the view's sources.
     - x
     - x
     - x
@@ -88,7 +91,7 @@ Tables
 
   * - A table
     - **Administrate** table
-    - Full access to the table, including edition of the dictionary and individual values.
+    - Full access to the table, including edition of the dictionary and individual values, and the table analyses.
     - x
     - x
     - x
@@ -169,7 +172,7 @@ System
 
   * - DataSHIELD service
     - **Administrate**
-    - Administrate the DataSHIELD service: manage R packages, add and modify profiles.
+    - Administrate the DataSHIELD service: add and modify profiles, methods and options, and read the R quotas and their usage. Installing or removing R packages requires the system **Administrate** permission.
 
   * - DataSHIELD service
     - **Use profile**

@@ -185,7 +185,9 @@ The expected/produced file extension is .sav.
 
 SAS R Datasource
 ^^^^^^^^^^^^^^^^
-The expected/produced file extension is .sas7bdat. If when importing, a file exists with same base name in the same parent folder and with extension .sas7bcat, it will be automatically used as the catalog file.
+The expected file extensions are .sas7bdat and .xpt (SAS Transport). If when importing a .sas7bdat file, a file exists with same base name in the same parent folder and with extension .sas7bcat, it will be automatically used as the catalog file.
+
+The export from the user interface produces a .xpt file. The .sas7bdat export is deprecated and remains available from the REST API and the :doc:`Python client <../../python-user-guide/export/export-sas>` only. Variable names that are not valid in SAS are adjusted in the exported file.
 
 Stata R Datasource
 ^^^^^^^^^^^^^^^^^^

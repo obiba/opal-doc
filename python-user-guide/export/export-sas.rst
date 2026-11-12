@@ -3,6 +3,12 @@ Export SAS (R)
 
 Export in SAS or SAS Transport format in Opal file system.
 
+.. note::
+
+  Prefer the SAS Transport format (``.xpt``). The ``.sas7bdat`` export relies on the ``write_sas()`` function of the `haven <https://haven.tidyverse.org/>`_ R package, which is deprecated in favour of ``write_xpt()``.
+
+Variable names that are not valid in these formats are adjusted in the exported file: characters other than ASCII letters, digits and underscores are replaced by an underscore, a leading digit is prefixed by an underscore and names are limited to 32 characters.
+
 .. code-block:: bash
 
   opal export-r-sas <CREDENTIALS> <OPTIONS> [EXTRAS]
@@ -36,8 +42,8 @@ Options
 Example
 -------
 
-Export table from opal-data to a SAS file:
+Export table from opal-data to a SAS Transport file:
 
 .. code-block:: bash
 
-  opal export-r-sas --opal https://opal-demo.obiba.org --user administrator --password password --datasource opal-data --tables StandingHeight --output /tmp/sh.sas7bdat
+  opal export-r-sas --opal https://opal-demo.obiba.org --user administrator --password password --datasource opal-data --tables StandingHeight --output /tmp/sh.xpt

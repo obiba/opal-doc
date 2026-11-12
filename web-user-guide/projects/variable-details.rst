@@ -26,6 +26,8 @@ Custom derivation
 
 Derive a variable by editing its derivation script manually.
 
+This requires to be allowed to see the values of the sources of the view (see :ref:`view_derivation_permissions`).
+
 Remove
 ~~~~~~
 
@@ -102,12 +104,12 @@ Statistical summary of the variable:
 Script
 ------
 
-Derived variables (i.e  when the table is a view) are persisted in Opal's embedded Version Control System which tracks all changes to a script over time. One practical use case is revising the history of changes and if necessary revert the script to a previous revision.
+Derived variables (i.e  when the table is a view) are persisted in Opal's embedded Version Control System which tracks all changes to a script over time. One practical use case is revising the history of changes and if necessary revert the script to a previous revision. The history of the whole view, and its tags, are in the view's :ref:`view_versions`.
 
 Script History Revisions
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Each time a script is edited a new history revision is created or 'committed' to Opal's version control system.
+Each time a script is edited a new history revision is created or 'committed' to Opal's version control system. The revisions are listed in the **History** section of the Script panel, which is shown to the users who can edit the view.
 
 Commit Differences
 ~~~~~~~~~~~~~~~~~~
@@ -117,7 +119,9 @@ Commit revisions are organized in a descending order, i.e., the latest commit at
 Reverting Changes
 ~~~~~~~~~~~~~~~~~
 
-By editing and saving an older revision, a script  content is reverted to its previous version. This operation is tracked as a new revision.
+An older revision can be restored from the **History** section. Only the script is restored: the value type, the categories and the attributes of the variable are not changed. This operation is tracked as a new revision.
+
+Editing or restoring a script requires to be allowed to see the values of the sources of the view (see :ref:`view_derivation_permissions`): otherwise the script is shown read-only and no restore action is proposed.
 
 Review Commit Differences
 ~~~~~~~~~~~~~~~~~~~~~~~~~

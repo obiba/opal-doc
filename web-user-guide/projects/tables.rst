@@ -280,3 +280,5 @@ Remove
 ~~~~~~
 
 Removes the selected tables/views from the project and deletes its data.
+
+A table or a view that is used by a view cannot be removed, unless all the views using it are part of the selection. The removal is all or nothing: if one of the selected tables cannot be removed, none is.
