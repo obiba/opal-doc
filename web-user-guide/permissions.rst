@@ -91,7 +91,7 @@ Tables
 
   * - A table
     - **Administrate** table
-    - Full access to the table, including edition of the dictionary and individual values.
+    - Full access to the table, including edition of the dictionary and individual values, and the table analyses.
     - x
     - x
     - x
@@ -172,7 +172,7 @@ System
 
   * - DataSHIELD service
     - **Administrate**
-    - Administrate the DataSHIELD service: manage R packages, add and modify profiles.
+    - Administrate the DataSHIELD service: add and modify profiles, methods and options, and read the R quotas and their usage. Installing or removing R packages requires the system **Administrate** permission.
 
   * - DataSHIELD service
     - **Use profile**

@@ -219,6 +219,8 @@ Tasks
 
 The tasks (imports, exports, copies, backups, analyses...) are recorded in the configuration database, so that their history survives a restart. A task that was still pending or running when Opal stopped is not run again: it is restored as failed, or as canceled if a cancel had been requested.
 
+As the tasks history serves as an audit trail, only a system administrator can delete tasks. The exception is the file bundles (downloads of a set of files), that their owner can delete once downloaded.
+
 ===================================== =========================================================================
 Property                              Description
 ===================================== =========================================================================
