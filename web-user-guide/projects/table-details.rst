@@ -22,6 +22,11 @@ The data of the table can be indexed in Opal's internal search engine. Indexing 
 * to have pre-computed variable summaries
 * to filter the table-entities by their values (and subsequently copy/export a subset of the data)
 
+Used by Views
+-------------
+
+The views that refer to the table (or to the view) are listed, whatever their project. The views that the user is not allowed to see are not named, only counted. While a view refers to it, a table or a view cannot be renamed or removed: the views must be removed first, or removed together with the table (see the **Remove** operation of the :ref:`tables`).
+
 Values
 ------
 
@@ -124,6 +129,8 @@ Each tag can be:
 
 A view cannot be restored if one of its source tables or its resource does not exist anymore. Restoring a tag that changes how the view computes its values requires to be allowed to see the values of its sources (see :ref:`view_derivation_permissions`). A user who can see the values of the view must also be allowed to see the values of the tables or the resource that the tagged version refers to.
 
+A new view can also be created from a tag: the view definition at that version is copied into a view with a new name (default is the view name followed by the tag name), in the same project or in another one. If a view with this name already exists, a confirmation is asked before overriding it; the override is recorded as a new change of that view.
+
 The tags are deleted when the view is renamed or removed.
 
 Operations
@@ -162,7 +169,7 @@ The table can be copied into another project or in the same project but with a d
 Remove Table
 ~~~~~~~~~~~~
 
-This operation deletes the data and the data dictionary associated with the table. This cannot be undone.
+This operation deletes the data and the data dictionary associated with the table. This cannot be undone. It is refused when the table is used by a view (see the **Used by Views** section).
 
 Variable Selection
 ~~~~~~~~~~~~~~~~~~
@@ -182,6 +189,11 @@ Download View XML
 
 Only available if the table is a view.
 
+Copy View
+~~~~~~~~~
+
+The view definition (not the data) is copied into a new view, in the same project or in another one. If a view with the same name already exists in the destination project, a confirmation is asked before overriding it; the override is recorded as a new change of that view.
+
 Edit View
 ~~~~~~~~~
 
@@ -192,6 +204,8 @@ When the view is based on other tables, you can edit the view properties, i.e. i
 **View over Resource**
 
 When the view is based on a resource (see :ref:`resource_view` in Resource documentation), you can edit the views properties: table name, ID column name, resource reference etc. Depending on the type of operation, the connection with the underlying resource could be reestablished.
+
+The name of a view cannot be changed while another view refers to it (see the **Used by Views** section).
 
 .. warning::
 
