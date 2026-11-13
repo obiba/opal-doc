@@ -446,10 +446,3 @@ To access Opal with a web browser the following urls may be used (port numbers m
 
 * http://localhost:8080 will provide a connection without encryption,
 * https://localhost:8443 will provide a connection secured with ssl.
-
-Troubleshooting
-~~~~~~~~~~~~~~~
-
-If you encounter an issue during the installation and you can't resolve it, please report it in our `Opal Issue Tracker <https://github.com/obiba/opal/issues>`_.
-
-Opal logs can be found in **/var/log/opal**. If the installation fails, always refer to this log when reporting an error.

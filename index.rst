@@ -21,6 +21,7 @@ Targeted at individual studies and study consortia, `OBiBa <http://obiba.org/>`_
    admin/configuration
    admin/plugins
    admin/rserver
+   admin/troubleshooting
 
 .. toctree::
    :maxdepth: 1
