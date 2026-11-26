@@ -7,4 +7,5 @@ Projects
    projects/datasource-types
    projects/tables
    projects/resources
+   projects/backup-restore
    projects/querying-variables
